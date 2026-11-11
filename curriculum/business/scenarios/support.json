@@ -1,0 +1,114 @@
+{
+  "id": "support",
+  "label": "客服与技术支持",
+  "scenes": [
+    {
+      "id": "biz-support-01",
+      "label": "澄清问题",
+      "context": "模拟支持来电中，B说团队资料页面打不开。A负责第一线支持，当前没有已确认的平台故障公告。双方需要先澄清具体页面、错误表现、影响人员和开始时间，不能仅凭一句描述认定根因。",
+      "roles": {
+        "a": {"label": "一线支持专员", "label_en": "First-line Support Specialist", "objective": "把笼统故障描述转成可记录的问题摘要，并判断正确的下一步检查。", "private_information": ["你能查看服务状态和账号权限，但不能远程控制B的设备。"], "constraints": ["不索取密码或验证码；未核实前不能承诺这是平台故障或客户网络问题。"]},
+        "b": {"label": "资料平台用户", "label_en": "Document Platform User", "objective": "解释自己遇到的实际阻碍，获得能继续工作的检查步骤。", "private_information": ["首页能打开，只有昨天同事发来的文件夹链接显示无权访问；旁边同事可打开该链接。"], "constraints": ["不能修改团队权限，也不能向支持发送文件夹中的保密资料。"]}
+      },
+      "stages": ["请B描述最后一次操作和屏幕提示", "区分整个服务、单个页面和单个账号的影响", "确认开始时间及此前是否可用", "复述问题并提出权限或链接检查"],
+      "complications": ["B把无权访问说成页面坏了，需要核对提示原文。", "B同时提到手机加载慢，双方需把第二个问题分开记录。"],
+      "targets": [
+        {"expression": "What exactly do you see when you open the link?", "meaning_zh": "打开链接时，你具体看到什么？", "function": "澄清可观察表现"},
+        {"expression": "Is the whole site unavailable, or just this folder?", "meaning_zh": "是整个网站无法访问，还是只有这个文件夹？", "function": "界定影响范围"},
+        {"expression": "Let me summarize the issue before we try a fix.", "meaning_zh": "尝试解决前，我先总结一下问题。", "function": "确认共同问题描述"}
+      ],
+      "success_criteria": {"a": ["问清提示、范围、时间和最近操作。", "复述具体问题并确认下一步，不索取敏感凭据或猜测根因。"], "b": ["提供页面提示并区分可用与不可用功能。", "说明自己的权限和保密限制，确认问题摘要是否准确。"]},
+      "tags": ["问题澄清", "影响范围", "一线支持"]
+    },
+    {
+      "id": "biz-support-02",
+      "label": "描述复现",
+      "context": "模拟技术支持会中，B报告虚构订单在导出时少了一列备注。A需要收集可供工程人员重复执行的步骤，双方使用专门的训练记录，不接触真实订单内容。",
+      "roles": {
+        "a": {"label": "技术支持工程师", "label_en": "Technical Support Engineer", "objective": "获得环境、输入条件、步骤、预期和实际结果，确认是否稳定复现。", "private_information": ["你在默认视图中未复现，怀疑与自定义列选择有关，但尚无证据。"], "constraints": ["不能把怀疑写成确定原因；仅使用获准的训练账号和脱敏截图。"]},
+        "b": {"label": "订单运营专员", "label_en": "Order Operations Specialist", "objective": "按实际顺序重现问题，并让支持理解缺列对交接的影响。", "private_information": ["你先进入保存的精简视图，再勾选备注列，然后点快速导出；完整导出尚未试过。"], "constraints": ["不能关闭全团队设置或覆盖公共视图；只能修改自己的训练视图。"]}
+      },
+      "stages": ["记录设备、浏览器和训练记录编号", "由B逐步重走操作并说明起始视图", "对照预期字段和实际文件", "重复一次并记录出现条件及未测路径"],
+      "complications": ["B跳过了切换视图这一步，A需要回到起点核对。", "第二次完整导出正常，需要把快速导出与完整导出分开记录。"],
+      "targets": [
+        {"expression": "What did you do immediately before clicking Export?", "meaning_zh": "点击导出前，你紧接着做了什么？", "function": "补全复现步骤"},
+        {"expression": "What did you expect to see in the file?", "meaning_zh": "你预计文件中应该显示什么？", "function": "明确预期结果"},
+        {"expression": "Does it happen every time with the same steps?", "meaning_zh": "按相同步骤操作，每次都会出现吗？", "function": "核实复现稳定性"}
+      ],
+      "success_criteria": {"a": ["记录起始条件、步骤、预期和实际结果。", "区分已复现条件与未测路径，不将怀疑当结论。"], "b": ["按顺序提供可重复的操作步骤。", "比较两种导出结果，说明哪些步骤未试过并守住操作权限。"]},
+      "tags": ["复现步骤", "预期与实际", "故障记录"]
+    },
+    {
+      "id": "biz-support-03",
+      "label": "已知限制",
+      "context": "模拟支持咨询中，B尝试把250MB的培训视频上传到团队资料库，页面提示文件过大。A需核对当前服务的文件上限并说明适用替代方式，本轮不是故障根因排查。",
+      "roles": {
+        "a": {"label": "产品支持顾问", "label_en": "Product Support Advisor", "objective": "解释已知上传限制及其适用范围，帮助B选择符合团队要求的处理方式。", "private_information": ["当前单文件上限为200MB，升级套餐不会改变此上限；暂无可承诺的提升日期。"], "constraints": ["不能把限制说成即将修复的故障，不能推荐绕过组织安全要求的外部存储。"]},
+        "b": {"label": "内部培训协调员", "label_en": "Internal Training Coordinator", "objective": "找到团队可访问的视频提供方式，并确认是否需要付费升级。", "private_information": ["视频可拆成两个章节，团队也有已批准的视频平台，但你不确定资料库是否能放访问链接。"], "constraints": ["不能使用公开无权限链接；不能自行购买升级套餐。"]}
+      },
+      "stages": ["核对提示和单个文件大小", "明确当前限制及套餐关系", "比较拆分、压缩或获准平台链接", "确认替代方式的访问测试和后续信息需求"],
+      "complications": ["B听同事说付费就能传更大文件，需要明确核验当前规则。", "压缩后字幕不清晰，双方需改评拆分或受控链接。"],
+      "targets": [
+        {"expression": "The current limit is two hundred megabytes per file.", "meaning_zh": "当前每个文件的上限为200MB。", "function": "说明可核对的产品限制"},
+        {"expression": "A plan upgrade would not change this particular limit.", "meaning_zh": "升级套餐不会改变这一项限制。", "function": "纠正付费升级误解"},
+        {"expression": "Would a link to your approved video platform work?", "meaning_zh": "链接到你们已批准的视频平台可以吗？", "function": "讨论合规替代方式"}
+      ],
+      "success_criteria": {"a": ["明确说明上限及其与套餐的关系。", "提供符合客户访问要求的替代方向，不承诺未知发布日期。"], "b": ["说明文件用途及访问限制。", "核对升级是否有用，选择一种替代方式并提出访问测试。"]},
+      "tags": ["产品限制", "文件上传", "替代方式"]
+    },
+    {
+      "id": "biz-support-04",
+      "label": "临时替代",
+      "context": "模拟支持处理中，某培训预约工具的自动提醒暂不可用，预约记录仍正常。B在下午有一场20人的课程，A需要协商临时通知流程，正式恢复时间尚未确认。",
+      "roles": {
+        "a": {"label": "支持事件协调员", "label_en": "Support Incident Coordinator", "objective": "提供有限期、权限清楚的临时流程，解释额外工作和恢复后的核对动作。", "private_information": ["客户管理员可导出仅含课程联系字段的名单，通过客户已批准的邮件工具发送；系统恢复后可能补发提醒。"], "constraints": ["不能让客户使用个人邮箱群发，也不能保证不会出现重复通知，须请工程确认补发行为。"]},
+        "b": {"label": "课程运营管理员", "label_en": "Course Operations Administrator", "objective": "确保本场学员收到一次清晰提醒，并控制名单访问和后续重复通知风险。", "private_information": ["你有名单导出权限，但只有另一名同事有批准邮件工具的发送权限，对方午饭后才上线。"], "constraints": ["不能把名单转发给无权限人员；临时方式仅愿用于今天这场课。"]}
+      },
+      "stages": ["确认本场课程的通知时间需求", "说明临时导出与授权发送步骤", "核对权限、额外工作及重复通知风险", "约定使用期限、恢复确认和通知记录核对"],
+      "complications": ["发送同事临时忙碌，双方需寻找已有授权替代人而非共享账号。", "自动提醒恢复早于预期，需要核对已发名单避免重复或矛盾通知。"],
+      "targets": [
+        {"expression": "This is a temporary workaround, not a permanent fix.", "meaning_zh": "这是临时替代方式，不是永久修复。", "function": "限定替代方案性质"},
+        {"expression": "Who is authorized to send the reminder?", "meaning_zh": "谁有权限发送提醒？", "function": "核实临时流程权限"},
+        {"expression": "Let's check what was sent before turning automation back on.", "meaning_zh": "恢复自动通知前，我们先核对已发送的内容。", "function": "管理恢复和重复通知风险"}
+      ],
+      "success_criteria": {"a": ["说明临时步骤、局限和需要的授权。", "确认使用期限及恢复核对任务，不以替代方案宣称已修复。"], "b": ["说明课程截止时间和操作权限。", "确认谁发送、如何记录，以及自动流程恢复后需核对什么。"]},
+      "tags": ["临时替代", "业务连续性", "恢复核对"]
+    },
+    {
+      "id": "biz-support-05",
+      "label": "处理进展",
+      "context": "模拟工单更新电话中，B的跨仓库存同步已延迟两小时。A在上午10点承诺11点更新状态，现在是11点，工程团队仍在排查，尚未给出恢复时间。库存查询页面可用，但数据可能滞后。",
+      "roles": {
+        "a": {"label": "支持进度负责人", "label_en": "Support Case Owner", "objective": "按约更新已完成检查、仍未知内容和业务影响，给出下次更新时间而非虚构修复时间。", "private_information": ["工程已确认数据源仍有记录，正在检查同步队列；尚不能保证不存在遗漏。"], "constraints": ["不能把记录存在说成数据完整已证实，也不能为了安抚而编造恢复倒计时。"]},
+        "b": {"label": "仓库值班经理", "label_en": "Warehouse Duty Manager", "objective": "获取足以安排午间出库的状态和风险说明，知道何时再等更新。", "private_information": ["12点有一次集中出库；你可先处理已人工核对的15笔订单，但不能把旧库存当实时数据。"], "constraints": ["不能暂停所有业务超过半小时；未经批准不直接修改同步数据。"]}
+      },
+      "stages": ["按约主动说明当前状态", "区分已完成检查和未知事项", "询问下一业务截止并确认临时处理边界", "给出下次更新时间、渠道和升级条件"],
+      "complications": ["B要求保证半小时恢复，A需区分期望与已确认信息。", "工程在通话中送来新日志但未完成分析，需要说明不能立即下结论。"],
+      "targets": [
+        {"expression": "Here's what we've confirmed since the last update.", "meaning_zh": "这是上次更新后我们已确认的情况。", "function": "提供有内容的进展更新"},
+        {"expression": "We don't have a reliable restoration time yet.", "meaning_zh": "目前还没有可靠的恢复时间。", "function": "诚实表达时间不确定性"},
+        {"expression": "I'll update you at noon, even if the investigation is still ongoing.", "meaning_zh": "中午我会更新，即使调查仍在进行。", "function": "承诺更新而非虚构修复"}
+      ],
+      "success_criteria": {"a": ["说明至少一项已完成检查和一项未知点。", "核对业务期限，给出准确的下次更新安排而不保证未证实结果。"], "b": ["解释下一业务动作及不能承担的风险。", "确认临时处理范围和更新渠道，对含糊状态提出澄清。"]},
+      "tags": ["工单进展", "不确定性", "状态更新"]
+    },
+    {
+      "id": "biz-support-06",
+      "label": "关闭支持事项",
+      "context": "模拟支持收尾中，B此前无法导出月报。A已部署经批准的配置修正，并在训练账号测试成功，现在联系B确认真实工作流程是否恢复。工单尚未关闭，长期监测不在本轮结论内。",
+      "roles": {
+        "a": {"label": "支持结案专员", "label_en": "Support Resolution Specialist", "objective": "让客户按原任务验证修正，记录结果与剩余问题，获得明确结案或保持开放的回应。", "private_information": ["本次修正只针对导出字段映射，另一个打印分页请求仍在独立工单中。"], "constraints": ["不能以内部测试代替客户确认，不能把不同问题合并后全部标记已解决。"]},
+        "b": {"label": "业务报表负责人", "label_en": "Business Reporting Owner", "objective": "检查原来缺失字段是否恢复，确认哪些问题已解决及再次出现时如何联系。", "private_information": ["你现在有10分钟可测试，打印分页仍不好看，但不妨碍本月导出。"], "constraints": ["只能确认本次所测文件；不能保证所有历史报表和格式都正常。"]}
+      },
+      "stages": ["回顾原始问题及本次修正范围", "由B重复原业务任务并核对结果", "把剩余问题移至准确的独立记录", "确认结案意愿、摘要和重开联系方式"],
+      "complications": ["B说看起来好了但尚未检查字段，A需邀请具体核对。", "B提起打印分页问题，双方需保留独立跟进而非误报全部解决。"],
+      "targets": [
+        {"expression": "Could you repeat the original task and check the missing fields?", "meaning_zh": "你能重复原来的任务，核对之前缺失的字段吗？", "function": "请求客户验证原问题"},
+        {"expression": "The printing request will remain open as a separate case.", "meaning_zh": "打印需求会作为独立事项继续保持开放。", "function": "区分剩余问题"},
+        {"expression": "Are you comfortable closing this export issue now?", "meaning_zh": "现在可以关闭这项导出问题了吗？", "function": "征求明确结案确认"}
+      ],
+      "success_criteria": {"a": ["请B按原任务验证，不以内部测试直接结案。", "分清已解决和仍开放事项，确认结案回应及再次联系方法。"], "b": ["具体核对原来缺失字段并报告结果。", "限定自己确认范围，明确是否同意结案和剩余问题需怎样跟进。"]},
+      "tags": ["支持结案", "客户验证", "剩余事项"]
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8efda">
+  <title>Say! 口语复习台</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#review">跳到复习记录</a>
+  <div class="paper-noise" aria-hidden="true"></div>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#review" aria-label="口语复习台首页">
+        <span class="brand-bubble">Say!</span>
+        <span><b>口语复习台</b><small>Review a little, grow every day.</small></span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <a class="nav-item active" href="#review" aria-current="page"><span aria-hidden="true">⌁</span> 我的复习台</a>
+      </nav>
+      <div class="streak-note">
+        <span class="tape" aria-hidden="true"></span>
+        <b id="session-count">正在读取练习记录</b>
+        <p>不只记住一句表达，<br>还要练会一个场景。</p>
+      </div>
+      <p class="local-note">本地存档 · 只读复习</p>
+    </aside>
+
+    <main id="review" tabindex="-1">
+      <header class="topbar">
+        <span class="eyebrow">YOUR SPEAKING TRAIL</span>
+        <div id="sync-status" class="status-pill" data-state="loading" role="status" aria-live="polite">
+          <i aria-hidden="true"></i><span id="save-status">正在读取本地存档…</span>
+        </div>
+      </header>
+
+      <section id="review-view" class="view" aria-labelledby="review-title">
+        <div class="review-header">
+          <span class="scribble-label mint">REVIEW, REPAIR, RETRY</span>
+          <h1 id="review-title">我的复习台</h1>
+          <p>商务也好，日常也好。回看真实表现，把下一次练习落到具体场景。</p>
+        </div>
+
+        <section class="archive-note paper-card" aria-labelledby="archive-title">
+          <div class="archive-note-copy">
+            <span class="number-dot" aria-hidden="true">✓</span>
+            <div><h2 id="archive-title">在对话里练，在这里复盘</h2><p>练完自动归档表达、纠正与下一步。商务记录看沟通任务和证据，不以是否成交评判表现。</p></div>
+          </div>
+          <button id="refresh-data" class="text-button" type="button">立即刷新 <span aria-hidden="true">↻</span></button>
+        </section>
+
+        <form id="review-filters" class="filter-row" role="search" aria-label="筛选复习存档" autocomplete="off">
+          <div class="filter-field">
+            <label for="filter-domain">练习领域</label>
+            <select id="filter-domain" name="domain">
+              <option value="all">全部领域</option>
+              <option value="business">商务英语</option>
+              <option value="everyday">日常英语</option>
+              <option value="other">其他</option>
+              <option value="unclassified">未分类</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-category">场景分类</label>
+            <select id="filter-category" name="category"><option value="all">全部分类</option></select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-industry">行业</label>
+            <select id="filter-industry" name="industry"><option value="all">全部行业</option></select>
+          </div>
+          <div class="filter-field filter-search">
+            <label for="filter-search">搜索存档</label>
+            <input id="filter-search" name="search" type="search" placeholder="场景、表达、角色或证据…" aria-describedby="filter-help">
+          </div>
+          <button id="reset-filters" class="reset-button" type="reset">重置筛选</button>
+        </form>
+        <div class="filter-caption">
+          <p id="result-count" role="status" aria-live="polite" aria-atomic="true">正在读取存档…</p>
+          <p id="filter-help">分类与行业来自已有存档；旧记录缺少领域时保留为「未分类」。</p>
+        </div>
+
+        <section class="stats-section" aria-labelledby="stats-title">
+          <h2 id="stats-title" class="small-heading">当前筛选 · 复习概览</h2>
+          <dl class="review-stats">
+            <div><dt>次练习</dt><dd id="stat-sessions">—</dd></div>
+            <div><dt>个场景</dt><dd id="stat-scenes">—</dd></div>
+            <div><dt>已掌握表达</dt><dd id="stat-mastered">—</dd></div>
+            <div><dt>待复习表达</dt><dd id="stat-review">—</dd></div>
+            <div><dt>未观察表达</dt><dd id="stat-unobserved">—</dd></div>
+          </dl>
+          <p id="assessment-note" class="assessment-note">同一句表达按领域和场景分别记录；未观察的表达不计入掌握比例。</p>
+        </section>
+
+        <div id="empty-review" class="empty-state paper-card hidden">
+          <span class="empty-mark" aria-hidden="true">…</span>
+          <h2>第一张复习卡，等你开口</h2>
+          <p>回到对话开始一次口语练习。结束后归档会自动出现在这里，不需要在网页重复设置。</p>
+        </div>
+        <div id="no-results" class="empty-state paper-card hidden">
+          <span class="empty-mark" aria-hidden="true">⌕</span>
+          <h2>没有匹配的归档</h2>
+          <p>记录还在，试试放宽领域、分类或行业，或换一个关键词。</p>
+          <button id="clear-no-results" class="text-button" type="button">清除全部筛选</button>
+        </div>
+        <div id="load-unavailable" class="empty-state paper-card hidden">
+          <span class="empty-mark" aria-hidden="true">!</span>
+          <h2>暂时读不到本地存档</h2>
+          <p>请通过本地复习台服务打开页面，确认服务可用后点击「立即刷新」。这里不会覆盖或改写记录。</p>
+        </div>
+        <section id="technical-review" class="paper-card hidden" aria-label="当前筛选的跨场景技术观察"></section>
+        <div id="review-list" class="review-list" aria-label="当前筛选的场景复习卡"></div>
+        <p class="archive-footer">只读复盘，不在网页发起对话。每 8 秒检查更新，保留你的筛选和展开状态。</p>
+        <noscript><p class="paper-card empty-state">请启用 JavaScript，以读取本地复习存档。</p></noscript>
+      </section>
+    </main>
+  </div>
+  <script src="app.js" defer></script>
+</body>
+</html>

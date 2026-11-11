@@ -1,0 +1,70 @@
+{
+  "id": "int-web3-broadcast-timeout",
+  "track_id": "web3",
+  "label": "广播超时后恢复付款 / Recovering an unknown broadcast",
+  "context": "Simulated interview: a fictional custodial withdrawal service sends a fixed-behavior ERC-20 token on Ethereum L1 from an ordinary EOA. Its RPC call times out after sending a signed payment. PostgreSQL stores the withdrawal and reserves the user's token entitlement; a separate authorized signer does not broadcast. No real wallet, employer or personal experience is involved.",
+  "assumptions": [
+    "The service has accepted one withdrawal and reserved the user's token entitlement in PostgreSQL. A signed payment has been handed to a worker; the RPC response is lost. The candidate must design which execution identities and recovery records the service needs.",
+    "PostgreSQL supports local transactions and unique constraints. The authorized signer can retrieve results by a signing-request identity, and suitable RPC providers expose blocks, receipts and Ethereum finalized data. These capabilities do not form a distributed transaction.",
+    "Product success means the authorized recipient receives the intended amount of the agreed fixed-behavior token under trusted Ethereum finalized evidence, and the user's entitlement is settled once. No universal confirmation count or existing timeout-recovery algorithm is assumed."
+  ],
+  "roles": {
+    "candidate": {
+      "label": "候选后端工程师",
+      "label_en": "Backend candidate",
+      "objective": "Explain a recoverable timeout workflow, including reservation safety, repeat transmission and the evidence needed to settle.",
+      "constraints": ["Use the simulated architecture rather than claiming past employment.", "Keep signing, broadcast, execution and settlement outcomes separate.", "Do not request keys, secrets or real customer transactions."]
+    },
+    "interviewer": {
+      "label": "技术面试官",
+      "label_en": "Technical interviewer",
+      "objective": "Elicit the fictional candidate's recovery boundaries and diagnose whether their retry policy can create a second executable payment.",
+      "constraints": ["Probe the candidate's actual answer, one question at a time.", "Judge the learner's questions and diagnosis, never the coach candidate's answer as learner evidence.", "If a concept was not elicited, record not_observed rather than infer knowledge."]
+    }
+  },
+  "stages": ["Confirm the payment architecture and meaning of success.", "Explain the anchor recovery workflow in English.", "Probe one failure window selected from the actual answer.", "Summarize the invariant and, if time permits, transfer it to a changed condition."],
+  "complications": ["A node returns nonce too low while all registered attempt receipts are null.", "A worker's lease expires, but the old worker still holds valid signed bytes and later sends them.", "An included payment disappears after a non-final reorganization."],
+  "terms": [
+    {"en": "business intent", "zh": "业务意图"},
+    {"en": "nonce slot", "zh": "钱包序号槽位"},
+    {"en": "signed transaction bytes", "zh": "已签名交易原字节"},
+    {"en": "broadcast timeout", "zh": "广播超时"},
+    {"en": "reservation", "zh": "资金预留"},
+    {"en": "canonical inclusion", "zh": "规范链包含关系"},
+    {"en": "transaction receipt", "zh": "交易回执"},
+    {"en": "finality", "zh": "最终性"},
+    {"en": "fencing token", "zh": "版本围栏令牌"},
+    {"en": "replacement attempt", "zh": "替换交易尝试"}
+  ],
+  "targets": [
+    {"expression": "A timeout tells us ..., not ...", "meaning_zh": "区分超时能证明与不能证明的事情", "function": "qualify evidence"},
+    {"expression": "I would preserve ... until ...", "meaning_zh": "说明保留状态及解除条件", "function": "state a safety boundary"},
+    {"expression": "The retry must reuse ...", "meaning_zh": "明确重试复用的身份", "function": "explain recovery"},
+    {"expression": "This protects ..., but it cannot ...", "meaning_zh": "说明机制的能力边界", "function": "limit a guarantee"}
+  ],
+  "concepts": ["timeout-semantics", "idempotency", "finality", "fencing-boundaries"],
+  "sources": [
+    {"path": "web3-go/04-Web3架构与产品机制/05-链上交易构造广播与追踪/07-可靠广播与未知结果.md", "sections": ["第 1 层：超时究竟留下了什么义务", "第 4 层：哪一个提交边界之后才允许广播", "第 6 层：租约过期为什么不能撤销旧广播", "第 7 层：nonce too low 为什么不是付款成功", "第 9 层：广播证据怎样交接到资金终结"]},
+    {"path": "web3-go/04-Web3架构与产品机制/05-链上交易构造广播与追踪/02-业务意图幂等与交易身份.md", "sections": ["第 5 层：广播调用自身的重试该用哪个身份", "第 6 层：同 nonce 能否等价于业务恰好一次"]},
+    {"path": "web3-go/04-Web3架构与产品机制/05-链上交易构造广播与追踪/09-回执解析与业务成功判定.md", "sections": ["第 1 层：执行成功与业务成功差在哪里", "第 7 层：判定证据怎样安全交给终结器"]}
+  ],
+  "coach_only": {
+    "anchor": {"id": "broadcast-anchor", "prompt": "The RPC call timed out after our withdrawal worker sent a signed payment. What should the service do next without risking a second payment?"},
+    "followups": [
+      {"id": "broadcast-unknown", "depth": "foundation", "trigger": "Use if the answer calls the timeout a failed payment or proposes immediately releasing the reservation.", "prompt": "What does the timeout actually prove about whether the node received the transaction?"},
+      {"id": "broadcast-retry", "depth": "implementation", "trigger": "Use if the answer says retry but does not name the durable object being retried.", "prompt": "After a crash, which stored identities and bytes must the worker recover before sending again?"},
+      {"id": "broadcast-nonce", "depth": "implementation", "trigger": "Use if the answer treats nonce too low as successful payment or relies only on one transaction hash.", "prompt": "How would you determine what actually consumed that nonce if the known attempt hashes do not explain it?"},
+      {"id": "broadcast-fence", "depth": "system", "trigger": "Use if the answer claims a lease or fencing token prevents every action by an old worker.", "prompt": "What can the old worker still do if it already holds valid signed bytes?"},
+      {"id": "broadcast-final", "depth": "system", "trigger": "Use if the answer proposes settling from a receipt without specifying canonical business evidence and finality.", "prompt": "What evidence must connect the receipt to the authorized payment before you finalize the ledger?"}
+    ],
+    "reference_answer": "A timeout leaves the broadcast result unknown; it does not prove that payment failed. I would retain the reservation and recover the original intent, nonce slot, authorized attempt and signed bytes. Normal broadcasting starts only after the attempt and its durable task commit. Retries resend those exact bytes; a fee replacement is a separately authorized attempt in the same slot, not an automatic new-nonce payment. The service queries all registered attempts and records block-specific observations. Null receipts are inconclusive; nonce too low requires investigating which transaction consumed the slot. A lease fences database updates but cannot revoke bytes already held by a worker. Before settlement, the service verifies the actual payload, the expected token effect and canonical inclusion covered by trusted finalized evidence. One local transaction then applies the business result, reservation change and outbox record once. Prolonged uncertainty triggers investigation or a controlled pause, not automatic unfreezing or repayment.",
+    "rubric": [
+      {"concept_id": "timeout-semantics", "depth": "foundation", "criterion": "Distinguishes missing RPC acknowledgement from execution failure; retains the pending obligation and reservation while evidence is inconclusive.", "interviewer_criterion": "Asks what the timeout proves and identifies premature failure or release in the fictional answer; does not accept a retry slogan as a state model.", "acceptable_alternatives": ["Explicit UNKNOWN or equivalent recoverable pending state with investigation."], "misconceptions": ["HTTP timeout proves the chain did not execute.", "A null receipt permits automatic refund."]},
+      {"concept_id": "idempotency", "depth": "implementation", "criterion": "Recovers the same intent and slot, persists attempt/task before broadcast and retransmits identical signed bytes; distinguishes approved same-slot replacement from a new executable payment.", "interviewer_criterion": "Requests the recovered identities and a send-before-ack crash trace; notices when a new nonce escapes local ledger deduplication.", "acceptable_alternatives": ["An equivalent durable journal and task protocol with the same persist-before-send boundary."], "misconceptions": ["A unique settlement row prevents two on-chain transfers.", "Rebuilding any same-amount transaction is a safe retry."]},
+      {"concept_id": "finality", "depth": "system", "criterion": "Requires verified business effects and canonical finalized ancestry, preserves block identity through reorgs and separates provisional observation from one-time settlement.", "interviewer_criterion": "Tests a status=1 cancellation or orphaned receipt and asks which evidence permits settlement; evaluates the learner's diagnosis rather than the coach's supplied result.", "acceptable_alternatives": ["A different explicitly agreed chain-specific finality policy with its risk stated; not a silent downgrade within this Ethereum baseline."], "misconceptions": ["Receipt status alone proves the recipient was paid.", "A higher finalized height by itself proves this block is its ancestor."]},
+      {"concept_id": "fencing-boundaries", "depth": "system", "criterion": "Uses owner/version checks to reject stale database mutations without claiming they invalidate an exported signature.", "interviewer_criterion": "Challenges a lease-based guarantee with a delayed worker holding raw bytes and distinguishes state-write fencing from external execution authority.", "acceptable_alternatives": ["Monotonic epochs on authoritative writes with safe duplicate transmission of the fixed attempt."], "misconceptions": ["An expired lease makes the signed transaction invalid on-chain."]}
+    ],
+    "candidate_profile": "Role reversal only: the coach plays a fictional backend candidate, not the learner. Initial incomplete answer: 'I would keep the withdrawal pending and retry the RPC. If it still times out, I would use the next nonce; our unique withdrawal row prevents duplicates.' The candidate understands local deduplication but confuses it with external payment safety, and has not considered stale signed bytes or finality. Reveal details only in response to the learner's questions; do not count anything the coach says as learner evidence.",
+    "transfer": {"prompt": "An operator has paused the wallet after repeated timeouts, but a valid old payment may still be circulating. What changes, and what must remain protected?", "changes": ["New normal scheduling and authorizations are paused.", "Previously signed bytes remain executable and the original payment result is unresolved."]}
+  }
+}

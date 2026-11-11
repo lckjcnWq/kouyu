@@ -1,0 +1,114 @@
+{
+  "id": "strategy",
+  "label": "战略融资与股东沟通",
+  "scenes": [
+    {
+      "id": "biz-strategy-01",
+      "label": "讨论新市场进入试验",
+      "context": "模拟企业培训服务团队考虑进入一个新区域，目前做过12次潜在客户访谈，尚未设点，战略组需提出下一步验证。",
+      "roles": {
+        "a": {"label": "市场拓展负责人", "label_en": "Market Expansion Lead", "objective": "用初步证据说明机会，提出有限成本的验证方案", "private_information": ["12次访谈中有5家愿意参加演示，但没有付费承诺"], "constraints": ["不能把访谈兴趣说成订单或承诺当地监管要求已满足"]},
+        "b": {"label": "运营战略负责人", "label_en": "Operations Strategy Lead", "objective": "检验进入条件、服务能力和停止标准", "private_information": ["现有远程讲师最多可支持每月两场新区域试课"], "constraints": ["无权批准设点，涉及当地合规和费用须交专业人员及授权人核实"]}
+      },
+      "stages": ["界定目标客户与问题", "区分兴趣证据和成交假设", "设计有限试课及运营支持", "设定验证指标、停止条件和审批事项"],
+      "complications": ["潜在客户要求当地语言版本", "一名关键访谈对象取消了演示预约"],
+      "targets": [
+        {"expression": "What evidence do we have of demand in this market?", "meaning_zh": "我们有什么证据表明这个市场有需求？", "function": "检验需求依据"},
+        {"expression": "Interest is encouraging, but it isn't a purchase commitment.", "meaning_zh": "有兴趣是好信号，但不是购买承诺。", "function": "校准机会判断"},
+        {"expression": "Let's test the assumptions before setting up a local team.", "meaning_zh": "设立当地团队前，先验证这些假设。", "function": "提出分阶段进入"}
+      ],
+      "success_criteria": {"a": ["说明客户证据、样本局限和未验证假设", "提出试验范围、指标和复查日期"], "b": ["核对运营容量与本地化需求", "列明停止条件及需专业核实或审批的事项"]},
+      "tags": ["新市场", "需求验证", "进入条件"]
+    },
+    {
+      "id": "biz-strategy-02",
+      "label": "权衡合作与自主建设",
+      "context": "模拟培训平台需增加排课功能，可与虚构服务商合作接入，也可用内部团队自建，目标是三个月内完成试点。",
+      "roles": {
+        "a": {"label": "合作拓展经理", "label_en": "Partnership Development Manager", "objective": "说明合作的速度优势与依赖，推动有条件评估", "private_information": ["服务商演示可用，但接口稳定记录尚未提供"], "constraints": ["不能口头约定排他、数据使用权或最终合同条款"]},
+        "b": {"label": "内部能力负责人", "label_en": "Internal Capability Lead", "objective": "解释自建资源与长期维护要求，比较可退出的路径", "private_information": ["可复用内部日历组件，但自建完整排课至少需两名工程师连续八周"], "constraints": ["不能未经主管同意占用人员，数据和合同问题需相应专家复核"]}
+      },
+      "stages": ["明确试点需求和长期能力", "比较上线速度、资源与维护", "核查外部依赖及退出条件", "确定验证任务与决策门槛"],
+      "complications": ["合作方报价只包含基础接口调用量", "内部工程师同时被另一项目预订"],
+      "targets": [
+        {"expression": "What capability do we need to own ourselves?", "meaning_zh": "哪些能力必须由我们自己掌握？", "function": "界定核心能力"},
+        {"expression": "How dependent would we be on the partner?", "meaning_zh": "我们会在多大程度上依赖合作方？", "function": "检验外部依赖"},
+        {"expression": "We should review the exit terms before committing.", "meaning_zh": "承诺前应审查退出安排。", "function": "提出审查要求"}
+      ],
+      "success_criteria": {"a": ["同时说明合作收益和未核实条件", "提出接口、费用和退出安排的核验任务"], "b": ["量化自建投入并说明维护责任", "按共同标准比较方案并列出需授权或专业复核事项"]},
+      "tags": ["合作自建", "能力边界", "外部依赖"]
+    },
+    {
+      "id": "biz-strategy-03",
+      "label": "向投资人介绍业务并争取后续会谈",
+      "context": "模拟一家工具租用预约服务参加早期投资交流，创始人有三分钟向投资机构代表介绍业务，当前有6家付费试点门店。",
+      "roles": {
+        "a": {"label": "创始人", "label_en": "Founder", "objective": "说明客户、问题、解决方式和已验证进展，争取进一步交流", "private_information": ["另有14家演示过但未付费，尚不确定续用情况"], "constraints": ["不能承诺投资回报、虚构订单或披露门店保密资料"]},
+        "b": {"label": "投资机构初审代表", "label_en": "Investment Screening Representative", "objective": "理解业务和证据范围，判断还需哪些材料再安排会谈", "private_information": ["主要关注付费试点是否重复使用，对本地工具行业尚不熟悉"], "constraints": ["只能提出尽调问题和后续材料要求，不能作投资承诺或估值结论"]}
+      },
+      "stages": ["一句话介绍客户与痛点", "说明服务和已验证使用", "澄清付费、演示及留存的区别", "确认后续材料和交流安排"],
+      "complications": ["听众把6家门店理解为长期合同客户", "现场无法展示产品，只能口头举例"],
+      "targets": [
+        {"expression": "We help small rental shops manage reservations in one place.", "meaning_zh": "我们帮助小型租用门店集中管理预约。", "function": "概括业务价值"},
+        {"expression": "Six shops are paying for the pilot; others are still evaluating.", "meaning_zh": "六家门店为试点付费，其余仍在评估。", "function": "界定业务进展"},
+        {"expression": "What would you need to see before a follow-up meeting?", "meaning_zh": "后续会谈前，你希望看到哪些材料？", "function": "争取具体下一步"}
+      ],
+      "success_criteria": {"a": ["用客户任务解释产品而非只堆术语", "区分已验证进展与假设并提出后续请求"], "b": ["复述业务理解并核对付费状态", "提出与证据缺口对应的材料要求而不承诺投资"]},
+      "tags": ["投资人介绍", "业务概括", "进展证据"]
+    },
+    {
+      "id": "biz-strategy-04",
+      "label": "回应商业模式与增长质疑",
+      "context": "模拟订阅式排班服务月度交流中，团队报告试用注册增加，但试用转付费率从20%降至14%，外部观察者提出质疑。",
+      "roles": {
+        "a": {"label": "业务创始人", "label_en": "Business Founder", "objective": "正面回应增长质量问题，区分已知数据和待检验解释", "private_information": ["新渠道带来更多小门店注册，但尚未拆出其付费和留存数据"], "constraints": ["不能用注册数掩盖付费下降或把预计利润说成已实现结果"]},
+        "b": {"label": "投资研究代表", "label_en": "Investment Research Representative", "objective": "核查获客、续用和服务成本口径，提出进一步验证要求", "private_information": ["注意到高接触式人工辅导可能推高每个客户服务成本"], "constraints": ["不能凭单月变化作收益判断、投资建议或估值结论"]}
+      },
+      "stages": ["明确质疑对应的指标", "解释口径与可比期间", "讨论渠道、留存和人工成本假设", "约定分群分析和改进试验"],
+      "complications": ["两个期间的试用天数不同", "听众要求立刻给出尚未测算的获客回收期"],
+      "targets": [
+        {"expression": "More sign-ups don't necessarily mean healthier growth.", "meaning_zh": "注册更多不一定意味着增长更健康。", "function": "检验增长质量"},
+        {"expression": "We need to compare customers by acquisition channel.", "meaning_zh": "我们需要按获客渠道比较客户。", "function": "提出分群分析"},
+        {"expression": "I don't have a verified figure for that yet.", "meaning_zh": "那项数字我还没有核实。", "function": "承认数据缺口"}
+      ],
+      "success_criteria": {"a": ["正面回应转化变化且不以其他指标转移问题", "标明未知项并给出分析负责人和时间"], "b": ["区分增长数量、留存与成本问题", "请求统一口径和验证材料而非要求收益保证"]},
+      "tags": ["商业模式", "增长质量", "分群分析"]
+    },
+    {
+      "id": "biz-strategy-05",
+      "label": "说明拟融资用途与阶段目标",
+      "context": "模拟预约服务团队讨论一份200万元的拟融资用途草案，草案包括产品验证、客户支持和运营缓冲，尚未达成融资。",
+      "roles": {
+        "a": {"label": "融资沟通负责人", "label_en": "Fundraising Communications Lead", "objective": "把拟定用途关联到可观察里程碑，明确假设和审批状态", "private_information": ["草案按12个月估算，但招聘推迟两个月会改变支出节奏"], "constraints": ["不能承诺融资成功、投资回报或将用途草案当正式资金授权"]},
+        "b": {"label": "资金计划审阅人", "label_en": "Funding Plan Reviewer", "objective": "核查里程碑、成本依据和未达目标时的复查机制", "private_information": ["发现客户支持费用未列培训投入，需进一步补估"], "constraints": ["只能提审阅问题，金额、融资条件和专业财务口径需授权团队核实"]}
+      },
+      "stages": ["解释资金用途和估算期间", "关联费用与阶段交付", "检验招聘和需求假设", "说明情景调整、审批及定期复查"],
+      "complications": ["供应服务报价有效期短于融资讨论周期", "审阅人要求区分里程碑与市场结果预测"],
+      "targets": [
+        {"expression": "Each spending category is linked to a specific milestone.", "meaning_zh": "每类支出都对应一个具体里程碑。", "function": "关联用途与目标"},
+        {"expression": "These figures are planning assumptions, not guarantees.", "meaning_zh": "这些数字是计划假设，不是保证。", "function": "限定预测性质"},
+        {"expression": "What would prompt us to revise the spending plan?", "meaning_zh": "什么情况会促使我们调整支出计划？", "function": "明确复查触发点"}
+      ],
+      "success_criteria": {"a": ["说明拟定支出与可核验产出的关系", "标明估算前提、未批状态和需复核项目"], "b": ["追问缺失费用、时点和假设", "要求调整触发点及审批记录而非作投资判断"]},
+      "tags": ["融资用途", "阶段目标", "计划假设"]
+    },
+    {
+      "id": "biz-strategy-06",
+      "label": "向股东或董事汇报经营与待决事项",
+      "context": "模拟季度治理会议材料显示完成4个计划里程碑中的3个，客户支持试点仍待评估，管理层需汇报偏差并提出审议请求。",
+      "roles": {
+        "a": {"label": "管理层汇报人", "label_en": "Management Presenter", "objective": "说明季度事实、未达目标原因及需授权审议的事项", "private_information": ["试点延后主要因培训资源不足，下一阶段方案可在两周后补齐"], "constraints": ["不能把审议意见说成已通过决议，也不能擅自披露保密材料"]},
+        "b": {"label": "董事提问人", "label_en": "Board Questioner", "objective": "核对偏差、责任和管理层请求，确认正式记录的后续动作", "private_information": ["更希望先看到支持容量证据，再讨论扩大试点"], "constraints": ["不能以个人发言代表全体决定，表决和披露要求需治理负责人核实"]}
+      },
+      "stages": ["概括目标与实际差异", "说明已知原因和风险", "区分通报、讨论及待审议请求", "确认补充材料、责任和正式记录"],
+      "complications": ["一名成员引用了上季度旧版材料", "会议要求把尚未讨论完的建议写成已批准"],
+      "targets": [
+        {"expression": "Three milestones are complete; one remains open.", "meaning_zh": "三个里程碑已完成，一个仍未完成。", "function": "报告经营执行状态"},
+        {"expression": "Is this for information, discussion, or approval?", "meaning_zh": "这项是通报、讨论，还是提请批准？", "function": "澄清治理动作"},
+        {"expression": "Let's confirm how the decision will be formally recorded.", "meaning_zh": "我们确认一下如何正式记录这项决定。", "function": "核对决策留痕"}
+      ],
+      "success_criteria": {"a": ["对照目标说明偏差与证据缺口", "明确请求类型、补件责任及尚未获批的状态"], "b": ["核对材料版本并追问影响和恢复计划", "区分个人意见与正式决定并确认记录流程"]},
+      "tags": ["董事汇报", "经营偏差", "治理记录"]
+    }
+  ]
+}

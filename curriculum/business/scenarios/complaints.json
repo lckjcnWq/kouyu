@@ -1,0 +1,114 @@
+{
+  "id": "complaints",
+  "label": "投诉补救与关系修复",
+  "scenes": [
+    {
+      "id": "biz-complaints-01",
+      "label": "激动客户",
+      "context": "模拟投诉电话中，B因当天上午的培训材料未按约到达而情绪激动。A负责接听，目前只知道订单约定上午送达、客户称尚未收到，实际物流状态仍需核实。",
+      "roles": {
+        "a": {"label": "客户投诉专员", "label_en": "Customer Complaints Specialist", "objective": "先承接客户情绪和业务影响，再取得必要事实并安排具体处理，避免争辩。", "private_information": ["你能联系配送值班人，并可立即提供电子材料供客户评估，但不能承诺实物到达时间。"], "constraints": ["不能要求客户先冷静才受理；不能在未核实前把责任推给配送方或承诺赔付。"]},
+        "b": {"label": "培训现场负责人", "label_en": "Training Site Lead", "objective": "让对方理解现场压力，获得能支持课程继续的行动和明确回复时间。", "private_information": ["课程下午1点开始，现场有投影仪但只可打印30份；共有80名学员。"], "constraints": ["不能取消课程或批准额外打印费；不愿重复向多个接线人讲述整件事。"]}
+      },
+      "stages": ["允许B说明不满并回应具体影响", "确认订单与课程关键时间", "询问可行的临时材料形式", "指定单一跟进人和短期回复节点"],
+      "complications": ["B反复打断并要求立刻给到达时间，A需承认未知同时说明正在做什么。", "配送方暂时未接电话，需要先推进不依赖配送回复的替代准备。"],
+      "targets": [
+        {"expression": "I can hear how disruptive this is for your session.", "meaning_zh": "我能听出这给你的课程造成了很大干扰。", "function": "回应具体业务影响"},
+        {"expression": "What is the latest time you can use the materials?", "meaning_zh": "你最晚什么时候需要用上材料？", "function": "确认补救时间窗口"},
+        {"expression": "I'll remain your point of contact while we sort this out.", "meaning_zh": "处理期间我会一直作为你的联系人。", "function": "减少客户重复转述"}
+      ],
+      "success_criteria": {"a": ["回应情绪和影响，不责备或打断客户陈述。", "确认时间与资源限制，给出单一跟进人及下一次回复时间。"], "b": ["说明实际影响、使用期限和现场可用资源。", "提出最需要的处理结果，并确认联系人和更新节点。"]},
+      "tags": ["激动客户", "情绪承接", "单点跟进"]
+    },
+    {
+      "id": "biz-complaints-02",
+      "label": "承认问题与已知事实",
+      "context": "模拟客户反馈会中，供应商的培训邀请写下午2点开始，讲师实际2点25分才加入。A与B共同核对记录，迟到原因及后续影响尚未完全查清，本轮要先准确承认已证实的问题。",
+      "roles": {
+        "a": {"label": "培训服务经理", "label_en": "Training Service Manager", "objective": "直接承认时间差和已知服务偏差，说明未知点并安排事实核实与补救讨论。", "private_information": ["你已核对邀请和会议进入时间，尚未联系到讲师，不能解释迟到原因。"], "constraints": ["不能用如果你觉得不便等条件式道歉回避事实，也不能对未核实损失或责任作保证。"]},
+        "b": {"label": "客户培训联系人", "label_en": "Client Training Contact", "objective": "纠正事件记录，确保员工等待和课程缩短被明确写入后续处理。", "private_information": ["有6人因后续排班在3点离开，错过最后练习；你保留的是汇总到场记录而非个人评价。"], "constraints": ["只能确认自己观察和记录的事实；不能代表所有员工声称全部课程无效。"]}
+      },
+      "stages": ["确认约定时间与实际开始时间", "由A明确承认已证实偏差", "由B补充直接观察到的影响", "分开记录已知、待核实和后续补救动作"],
+      "complications": ["内部初稿写技术故障导致迟到，但尚无证据，需要撤去未经核实的原因。", "B提出所有参与者都没学到东西，双方需区分情绪表达与可核对事实。"],
+      "targets": [
+        {"expression": "We started twenty-five minutes later than agreed.", "meaning_zh": "我们比约定时间晚了25分钟开始。", "function": "直接承认已知偏差"},
+        {"expression": "I'm sorry we kept your team waiting.", "meaning_zh": "抱歉让你们团队等待了。", "function": "对具体影响道歉"},
+        {"expression": "We have confirmed the delay, but not its cause.", "meaning_zh": "我们已确认延迟，但尚未确认原因。", "function": "区分事实与未知原因"}
+      ],
+      "success_criteria": {"a": ["明确承认25分钟延迟并对等待道歉。", "分开陈述已确认事实和未知原因，约定核实及补救讨论。"], "b": ["补充可观察的课程影响。", "核对事件摘要，区分个人观察、汇总记录和不能确认的概括。"]},
+      "tags": ["承认问题", "事实核对", "具体道歉"]
+    },
+    {
+      "id": "biz-complaints-03",
+      "label": "根因未定",
+      "context": "模拟投诉跟进中，B在两天内遇到两次文件上传失败，认为服务不可靠。A负责事件沟通，工程调查正在进行，没有确认故障来自客户端、网络还是平台。",
+      "roles": {
+        "a": {"label": "事件沟通负责人", "label_en": "Incident Communications Lead", "objective": "承认重复失败的影响，说明调查证据和未知点，避免无根据地保证不再发生。", "private_information": ["两次日志都显示连接中断，但这不足以判断中断发生在哪一端；工程需要对比时间和匿名文件大小。"], "constraints": ["不能把原因推给客户网络，也不能承诺永久解决；收集资料限于获准的技术字段。"]},
+        "b": {"label": "客户内容运营主管", "label_en": "Client Content Operations Manager", "objective": "获得可信的调查计划和可用的临时处理方式，避免重复提供已交材料。", "private_information": ["你下周有一批文件要交接，两次失败分别发生在办公室和家中，已有错误时间截图。"], "constraints": ["不能发送文件正文；没有权限安装额外诊断软件。"]}
+      },
+      "stages": ["复述两次事件和业务影响", "说明已收集证据与不能得出的结论", "核对最少补充字段及获准的临时流程", "确认调查负责人、更新节奏和再次出现的记录方式"],
+      "complications": ["B要求立即书面保证不再发生，A需解释当前无法保证并给出可执行承诺。", "工程要求完整文件，B无法提供，双方需寻找匿名样本或元数据替代。"],
+      "targets": [
+        {"expression": "We haven't established the root cause yet.", "meaning_zh": "我们还没有确定根本原因。", "function": "明确调查状态"},
+        {"expression": "That log shows a disconnect, but not where it started.", "meaning_zh": "这条日志显示连接中断，但不能说明中断从哪里开始。", "function": "限定证据可支持的结论"},
+        {"expression": "What I can commit to is a clear update by tomorrow morning.", "meaning_zh": "我能承诺的是明天上午给出清楚的进展更新。", "function": "用可控承诺替代保证"}
+      ],
+      "success_criteria": {"a": ["承认影响并清楚区分证据与根因结论。", "尊重数据限制，提出调查、临时流程和更新时间。"], "b": ["提供不含正文的具体事件信息。", "说明交接期限及不能执行的诊断动作，确认下一步调查安排。"]},
+      "tags": ["根因未定", "事件沟通", "调查边界"]
+    },
+    {
+      "id": "biz-complaints-04",
+      "label": "授权补偿",
+      "context": "模拟服务补救会中，一次培训因供应商排期错误缩短了半小时，事实已核对。A与B讨论可授权的服务补偿，任何超权限退款请求都需另行审批，不涉及法定赔偿判断。",
+      "roles": {
+        "a": {"label": "服务补救主管", "label_en": "Service Recovery Supervisor", "objective": "了解客户最需要恢复的价值，准确说明已获授权的补救选项和额外申请流程。", "private_information": ["你可批准一场45分钟线上补课或1000元模拟人民币服务抵用额；现金退款须由财务主管审批。"], "constraints": ["两种已授权选项不能同时提供；不能称抵用额为现金退款或保证退款申请通过。"]},
+        "b": {"label": "客户学习项目经理", "label_en": "Client Learning Program Manager", "objective": "选择对受影响员工真正有用的补救，并弄清抵用额或退款的限制。", "private_information": ["团队下周可参加补课，之后将转岗；未来半年没有新培训采购计划，抵用额可能用不上。"], "constraints": ["不能代表财务接受账务处理；新增补课须在员工转岗前进行。"]}
+      },
+      "stages": ["确认已知服务缺口及客户补救优先级", "逐项说明授权选项、限制和适用时间", "处理客户偏好或超权限请求", "书面确认所选方案或审批中的事项"],
+      "complications": ["B希望既补课又获得现金退款，需要说明权限并分别处理请求。", "补课讲师只有两个时段可用，需要核实员工能否参加，不能先默认已安排。"],
+      "targets": [
+        {"expression": "I'm authorized to offer one of these two options.", "meaning_zh": "我获准提供这两个选项中的一个。", "function": "说明补救权限和选择范围"},
+        {"expression": "A service credit is not a cash refund.", "meaning_zh": "服务抵用额不是现金退款。", "function": "澄清补偿形式"},
+        {"expression": "Which option would best address the missed training?", "meaning_zh": "哪个选项最能弥补错过的培训？", "function": "围绕受损价值选择补救"}
+      ],
+      "success_criteria": {"a": ["解释两个授权选项及不能叠加的限制。", "根据客户实际需要确认安排或转交审批，不承诺超权限退款。"], "b": ["说明补救的时间和实际用途要求。", "区分抵用额、补课与退款，对所选方案或待批状态明确回应。"]},
+      "tags": ["授权补偿", "服务补救", "权限边界"]
+    },
+    {
+      "id": "biz-complaints-05",
+      "label": "不满解决方案",
+      "context": "模拟投诉二次沟通中，A此前建议用手动导出替代自动周报，B试用后认为仍无法解决周一早班交接问题。正式故障尚未修复，双方需要重新评估方案而非争论是否已提供帮助。",
+      "roles": {
+        "a": {"label": "投诉升级协调员", "label_en": "Complaint Escalation Coordinator", "objective": "承认原方案不足，了解失败条件并提出有负责人和时限的修订方案或升级。", "private_information": ["你能安排工作日的人工导出协助，但周末无人值守；工程可评估提前生成快照，尚未批准。"], "constraints": ["不能把客户不满意归因于不会使用，也不能保证周末专人服务或尚未确认的快照功能。"]},
+        "b": {"label": "早班运营负责人", "label_en": "Morning Shift Operations Lead", "objective": "解释原替代方式为何不可行，争取能覆盖实际交接时间的安排。", "private_information": ["周报必须周一早上7点可用；你周日无法登录公司设备，而周五快照若明确截止时间可临时接受。"], "constraints": ["不能要求员工休息日无偿加班；不得使用个人设备处理业务文件。"]}
+      },
+      "stages": ["请B描述替代方案失败的具体环节", "承认原方案未覆盖的时间或资源条件", "确认最低可接受输出并比较修订选项", "安排升级责任人、待确认事项和再次回复"],
+      "complications": ["A记录显示已提供解决方案，但B认为问题未解决，需要纠正状态描述。", "周五快照缺少周末数据，双方需明确局限并判断是否仍可用于交接。"],
+      "targets": [
+        {"expression": "The workaround didn't cover your Monday handover.", "meaning_zh": "这个替代方式没有覆盖你们周一的交接。", "function": "承认方案与需求不匹配"},
+        {"expression": "What is the minimum information you need by seven?", "meaning_zh": "7点前你至少需要哪些信息？", "function": "澄清最低可接受结果"},
+        {"expression": "I'll keep the complaint open while we review another approach.", "meaning_zh": "评估另一种办法期间，我会让投诉保持开放。", "function": "避免过早标记解决"}
+      ],
+      "success_criteria": {"a": ["准确复述原方案不足，不责备客户。", "核实最低需求，保持开放状态并明确修订方案的待批项。"], "b": ["说明失败环节、时间与设备限制。", "对至少一个修订选项提出可接受条件，并确认仍存在的局限。"]},
+      "tags": ["方案不满", "投诉升级", "重新澄清"]
+    },
+    {
+      "id": "biz-complaints-06",
+      "label": "事后回访",
+      "context": "模拟补救回访安排在重新配送后三个工作日。此前一批培训手册少了20本，供应商已补送，A联系B确认数量、实际使用和流程体验，而不是要求好评。",
+      "roles": {
+        "a": {"label": "关系修复专员", "label_en": "Relationship Recovery Specialist", "objective": "确认补救是否真正完成，了解剩余影响并反馈预防动作，取得适当的事项状态确认。", "private_information": ["仓库已增加双人数量复核，但尚未完成下一批订单验证，不能保证再无差错。"], "constraints": ["不索要积极评价作为处理条件；不能用签收记录代替客户实际核对。"]},
+        "b": {"label": "客户行政协调员", "label_en": "Client Administrative Coordinator", "objective": "报告补送结果和仍未恢复的体验，明确以后联系或订货需要什么改进。", "private_information": ["20本数量齐了，但5本封面轻微折损；不影响使用，你希望下批改善包装而非再补送。"], "constraints": ["不能代替采购承诺后续订单；只愿在工作时间接收必要跟进。"]}
+      },
+      "stages": ["征求简短回访许可并回顾补救动作", "请B核对数量、质量和实际使用", "讨论剩余问题及客户偏好处理方式", "说明已采取的预防动作并确认结束或继续跟进"],
+      "complications": ["配送系统显示签收但B尚未拆箱，需改约核对而非直接结案。", "B提到轻微折损但不想重收货，A需要尊重偏好并记录质量反馈。"],
+      "targets": [
+        {"expression": "Did the replacement fully address what you needed?", "meaning_zh": "补送是否完整满足了你的需要？", "function": "检查补救实际效果"},
+        {"expression": "Is there anything still unresolved from your point of view?", "meaning_zh": "从你的角度看，还有什么没有处理完？", "function": "邀请剩余问题反馈"},
+        {"expression": "We've added a second quantity check, and we'll monitor the next dispatch.", "meaning_zh": "我们增加了第二次数量复核，并会观察下一批发货。", "function": "说明可核对的预防动作"}
+      ],
+      "success_criteria": {"a": ["确认客户实际核对情况而非只引用签收。", "记录剩余影响，说明具体预防动作且不保证永不复发。"], "b": ["分别报告数量、质量和使用情况。", "明确希望如何处理残余问题，并说明后续联系边界。"]},
+      "tags": ["事后回访", "关系修复", "预防跟进"]
+    }
+  ]
+}

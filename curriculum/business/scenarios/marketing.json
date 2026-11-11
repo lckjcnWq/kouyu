@@ -1,0 +1,114 @@
+{
+  "id": "marketing",
+  "label": "市场品牌与公关",
+  "scenes": [
+    {
+      "id": "biz-marketing-01",
+      "label": "代理商需求",
+      "context": "模拟营销项目简报会中，A是一款企业培训工具的市场负责人，B代表创意代理团队。A希望六周后上线一组获客内容，初步交付写为一个落地页和三张宣传图，双方需要把需求讲清再报价。",
+      "roles": {
+        "a": {"label": "客户市场负责人", "label_en": "Client Marketing Lead", "objective": "说明活动目的、受众和审批流程，确认代理商需要哪些素材及合理交付节点。", "private_information": ["内部更重视合适的咨询申请而非总点击量；产品截图要由产品负责人批准，最快下周提供。"], "constraints": ["不能提供未经授权的客户评价；预算上限为40000元模拟人民币，增加交付须另批。"]},
+        "b": {"label": "创意代理项目总监", "label_en": "Creative Agency Project Director", "objective": "把模糊宣传要求转成可执行简报，确认素材依赖、修改轮次和验收方式。", "private_information": ["现有团队可在六周内完成设计和搭建，但不含摄影；若第三周才定文案，上线时间需重新评估。"], "constraints": ["不能保证咨询数量；未确认素材和范围前只可提供带假设的排期。"]}
+      },
+      "stages": ["澄清活动希望促成的用户动作", "核对受众、信息重点和交付物", "确认素材、修改轮次与内部审批人", "整理简报、依赖条件和下一版排期"],
+      "complications": ["A提到希望顺便拍一段品牌视频，B需要将其识别为新增交付。", "产品截图无法按原计划提供，双方需讨论占位图和最终替换的节点。"],
+      "targets": [
+        {"expression": "What action should the audience take after seeing the campaign?", "meaning_zh": "受众看完活动内容后应采取什么行动？", "function": "澄清营销目的"},
+        {"expression": "How many review rounds should we include in the scope?", "meaning_zh": "范围内应包含几轮审核修改？", "function": "明确创意交付边界"},
+        {"expression": "The schedule depends on receiving approved copy by week three.", "meaning_zh": "排期取决于第三周前收到已批准的文案。", "function": "说明代理商交付依赖"}
+      ],
+      "success_criteria": {"a": ["明确目标受众、期望动作和交付物，不只说提升品牌。", "说明预算、素材和审批限制，并确认自身待办。"], "b": ["询问成功标准和至少一项素材依赖。", "区分原范围与新增需求，给出带前提的排期及简报更新方式。"]},
+      "tags": ["代理商简报", "营销需求", "交付范围"]
+    },
+    {
+      "id": "biz-marketing-02",
+      "label": "用户定位",
+      "context": "模拟定位工作坊中，A与B为一款门店检查工具选择首轮宣传受众。公共候选为单店负责人和区域运营主管，团队可做两个小规模信息测试，目前没有证明任一群体一定会购买。",
+      "roles": {
+        "a": {"label": "产品市场经理", "label_en": "Product Marketing Manager", "objective": "比较两类用户的任务和触发需求，选出有证据支持的首轮定位假设。", "private_information": ["现有4次访谈中，区域主管更常提到跨店比较，但样本都来自同一活动，代表性有限。"], "constraints": ["不能把小样本说成普遍结论，也不能仅凭职位给人贴上购买能力标签。"]},
+        "b": {"label": "用户研究员", "label_en": "User Researcher", "objective": "区分实际使用者、影响者和付款批准者，让定位与真实任务而非笼统画像对应。", "private_information": ["两次单店访谈显示店长每天执行检查，但区域主管决定是否统一工具；你希望两端信息分别测试。"], "constraints": ["没有权限直接投放广告或采集个人信息；测试需使用获准的招募渠道。"]}
+      },
+      "stages": ["比较两类角色的工作任务和困难", "区分使用、推荐与采购批准角色", "核对访谈证据及样本局限", "形成两条定位假设和可观察的测试问题"],
+      "complications": ["团队有人提出所有零售从业者都算受众，需要缩小到具体任务和场景。", "一条信息店长更喜欢、另一条区域主管更愿讨论，双方需避免简单合并为同一画像。"],
+      "targets": [
+        {"expression": "Who uses it day to day, and who approves the purchase?", "meaning_zh": "谁日常使用，谁批准购买？", "function": "区分用户与购买角色"},
+        {"expression": "What evidence supports that audience choice?", "meaning_zh": "选择这个受众有哪些证据支持？", "function": "核查定位依据"},
+        {"expression": "Let's treat that as a hypothesis to test, not a settled fact.", "meaning_zh": "我们把它视为待测试假设，而不是确定事实。", "function": "保留定位判断的不确定性"}
+      ],
+      "success_criteria": {"a": ["用具体任务比较两类受众。", "说明证据及局限，提出可测试的定位假设而不宣称已验证。"], "b": ["区分使用者与批准者，并补充访谈观察。", "提出一个测试问题和获准渠道，说明尚不能推断的内容。"]},
+      "tags": ["用户定位", "购买角色", "信息测试"]
+    },
+    {
+      "id": "biz-marketing-03",
+      "label": "联合推广",
+      "context": "模拟联合推广会中，A的培训工具团队和B的运营咨询团队计划举办一场45分钟线上分享，目标报名人数为60人。双方尚未定稿宣传材料，需要约定议题、费用、名单处理和后续联系。",
+      "roles": {
+        "a": {"label": "联合营销经理", "label_en": "Co-marketing Manager", "objective": "明确双方交付和品牌审核，设计与报名许可一致的名单及后续沟通安排。", "private_information": ["你方可承担直播工具和设计，但报名系统当前只支持主办方一封资料邮件，尚未设置双方营销授权。"], "constraints": ["不能默认把报名名单交给伙伴或批准双方无限跟进；宣传中的效果数字须有证据。"]},
+        "b": {"label": "伙伴市场协调人", "label_en": "Partner Marketing Coordinator", "objective": "确认内容露出、讲师投入和获准的线索机会，避免承担未讨论的费用。", "private_information": ["你方可提供讲师与案例框架，但只能承担最多2000元模拟人民币推广费，无法专人逐一电话跟进。"], "constraints": ["客户案例须另获授权；不能先发布带双方标识的海报再补审批。"]}
+      },
+      "stages": ["确认活动受众、议题与报名目标", "分配讲师、设计、平台和推广费用", "核对品牌审核与报名许可内容", "确定发布检查点、获准跟进方式和复盘指标"],
+      "complications": ["B希望获得完整报名名单，A需区分活动协作和额外营销许可。", "讲师临时调整题目，原海报效果承诺不再适用，需要重新审核再发布。"],
+      "targets": [
+        {"expression": "Who will own each deliverable and approve the final materials?", "meaning_zh": "各项交付由谁负责，最终材料由谁批准？", "function": "明确联合推广分工"},
+        {"expression": "Registration doesn't automatically allow both teams to market to attendees.", "meaning_zh": "报名并不自动允许双方团队向参与者营销。", "function": "澄清活动名单使用边界"},
+        {"expression": "Let's agree on the follow-up before we publish the invitation.", "meaning_zh": "发布邀请前，我们先约定后续联系安排。", "function": "提前对齐活动闭环"}
+      ],
+      "success_criteria": {"a": ["明确活动交付、品牌审核和费用分工。", "指出现有报名许可边界，约定获准的后续联系及发布检查点。"], "b": ["说明讲师、预算和跟进资源限制。", "核对品牌与案例授权，接受或提出合适的名单处理方式。"]},
+      "tags": ["联合推广", "品牌审核", "活动许可"]
+    },
+    {
+      "id": "biz-marketing-04",
+      "label": "案例授权",
+      "context": "模拟案例制作沟通中，A希望把B团队的预约流程改进写成一页案例，并在行业线上活动中展示。B曾口头同意分享经验，但尚未批准名称、截图、引语或数据的公开使用，任何案例均不指向真实组织。",
+      "roles": {
+        "a": {"label": "案例内容负责人", "label_en": "Case Study Content Lead", "objective": "逐项确认可使用素材、发布渠道和审批流程，尊重不授权选项并保留准确表述。", "private_information": ["案例可以采用匿名形式；你手中的30%提速数字来自早期估算，尚无最终验证记录。"], "constraints": ["不能把口头聊天视为所有用途授权，也不能使用未经确认的数字或代客户撰写已获批准的引语。"]},
+        "b": {"label": "客户传播联系人", "label_en": "Client Communications Contact", "objective": "控制团队信息如何对外出现，核对事实和授权范围，并明确谁能最终批准。", "private_information": ["你可以协调匿名流程图审批，但组织名称和负责人照片需要更高层批准；你不认可30%这一数字。"], "constraints": ["无权现场批准品牌标识或人物照片；原始截图中的联系人信息必须移除。"]}
+      },
+      "stages": ["列出拟使用的名称、数据、截图和引语", "逐项确认可用、不可用和待审批素材", "澄清渠道、用途及公开前审稿步骤", "约定书面确认方式并暂停未授权内容发布"],
+      "complications": ["设计稿已放入客户标识，B要求撤下直到授权完成。", "活动主持人想把案例再发到公开社交账号，需要重新确认新增用途。"],
+      "targets": [
+        {"expression": "Which details may we use, and in which channels?", "meaning_zh": "哪些细节可以使用，适用于哪些渠道？", "function": "逐项核对授权范围"},
+        {"expression": "We can keep the case anonymous if you prefer.", "meaning_zh": "如果你愿意，我们可以将案例匿名处理。", "function": "提供低披露选项"},
+        {"expression": "Please remove that figure until it has been verified and approved.", "meaning_zh": "该数字经核实并批准前，请先删除。", "function": "阻止未经确认的信息发布"}
+      ],
+      "success_criteria": {"a": ["逐项询问素材与渠道许可，不以笼统同意替代授权。", "移除未核实数字和未授权标识，确认发布前审稿路径。"], "b": ["明确至少一项可协调内容和一项无权批准内容。", "纠正事实或脱敏问题，并说明新增渠道需要重新确认。"]},
+      "tags": ["案例授权", "事实审稿", "用途边界"]
+    },
+    {
+      "id": "biz-marketing-05",
+      "label": "媒体行业访谈",
+      "context": "模拟行业媒体访谈安排20分钟，A作为培训工具供应商发言人，B作为虚构行业刊物采访者。议题是中小团队如何组织新人培训，双方约定可公开引用已确认发言，不涉及真实媒体或客户名称。",
+      "roles": {
+        "a": {"label": "企业发言人", "label_en": "Company Spokesperson", "objective": "给出有用的行业观察及匿名例子，区分自身样本与行业结论，守住未公开信息边界。", "private_information": ["你可谈三次匿名客户访谈观察，但没有行业统计数据；新产品功能尚未获准公开。"], "constraints": ["不能编造市场份额或客户背书；遇到未授权信息应明确无法评论，而非要求事后默认撤回。"]},
+        "b": {"label": "行业采访记者", "label_en": "Industry Reporter", "objective": "取得具体、可核对且适合引用的观察，澄清证据范围和采访对象不愿回应的部分。", "private_information": ["你的稿件需要一个实际工作例子，不需要产品广告；编辑特别要求核实所有百分比来源。"], "constraints": ["不能承诺给A控制整篇稿件或标题的权力；事实核对与全文审批须分开说明。"]}
+      },
+      "stages": ["确认访谈主题和引用安排", "用具体任务讨论行业观察", "追问样本、证据及不能公开的边界", "核对关键事实并说明后续补充渠道"],
+      "complications": ["B问有多少企业已采用同类工具，A没有数据，需要拒绝猜测并限定观察范围。", "B追问未发布功能，A需说明不能评论并转回可公开的培训问题。"],
+      "targets": [
+        {"expression": "That's an observation from a small sample, not an industry statistic.", "meaning_zh": "这是小样本观察，不是行业统计数据。", "function": "限定行业观点证据"},
+        {"expression": "Can you give a concrete example without naming the customer?", "meaning_zh": "你能在不点名客户的情况下给一个具体例子吗？", "function": "获取可用的匿名事实"},
+        {"expression": "I can't comment on unreleased features, but I can discuss the workflow.", "meaning_zh": "我不能评论未发布功能，但可以讨论工作流程。", "function": "守住公开信息边界"}
+      ],
+      "success_criteria": {"a": ["提供一个匿名具体例子，清楚说明样本范围。", "对无数据或未授权问题不猜测，并给出可补充的公开事实渠道。"], "b": ["追问至少一个事实依据或样本来源。", "说明引用及事实核对安排，不把核对等同于由受访方控制全文。"]},
+      "tags": ["媒体访谈", "行业观察", "公开口径"]
+    },
+    {
+      "id": "biz-marketing-06",
+      "label": "对外信息误解口径",
+      "context": "模拟传播纠错会中，一则预约工具公告写减少人工确认，部分读者理解为将取消客服岗位。A负责原公告，B负责客户社群沟通。双方需要核对事实并形成清楚更正，不借此压制正常提问。",
+      "roles": {
+        "a": {"label": "企业传播负责人", "label_en": "Corporate Communications Lead", "objective": "承认原措辞可能引起误解，形成基于已确认功能的更正和统一答疑，不扩展未经授权承诺。", "private_information": ["已确认变化只是自动发送预约确认，异常订单仍需人工处理；你没有获准发布任何客户用工安排信息。"], "constraints": ["不能保证客户不会调整人员，也不能删除合理质疑来制造无人反对的印象。"]},
+        "b": {"label": "客户社群运营员", "label_en": "Customer Community Moderator", "objective": "把读者关切准确带回团队，用通俗语言解释更新并给未答问题设置回复渠道。", "private_information": ["社群里最多的问题是复杂预约是否还能找到真人处理，而不是反对自动提醒本身。"], "constraints": ["只能使用已批准事实；不能公开社群成员身份或替客户管理层回应人员政策。"]}
+      },
+      "stages": ["区分公告原文、读者理解和已确认事实", "确认读者最关心的实际服务问题", "起草简短更正并列出不能回应的部分", "安排发布渠道、审批人和后续问题反馈"],
+      "complications": ["有同事建议写绝不影响任何岗位，A与B需避免无法证明的广泛保证。", "旧公告截图仍在传播，需要用可引用的简短澄清回应而非只修改原页。"],
+      "targets": [
+        {"expression": "Our wording was unclear, and we want to correct that.", "meaning_zh": "我们的措辞不够清楚，我们希望作出更正。", "function": "承担措辞澄清责任"},
+        {"expression": "The update automates confirmations, not all customer support.", "meaning_zh": "本次更新自动处理的是确认通知，不是所有客服工作。", "function": "澄清具体功能范围"},
+        {"expression": "We can't speak for individual customers' staffing decisions.", "meaning_zh": "我们不能代表各客户回应其人员安排决定。", "function": "避免越权回应外部政策"}
+      ],
+      "success_criteria": {"a": ["区分原措辞、误解和已确认事实，并承认表述问题。", "给出准确更正，说明审批与发布渠道，不作人员政策保证。"], "b": ["概括社群最主要的具体关切，不披露成员身份。", "把批准事实改写成通俗答复，并设置未答问题的反馈方式。"]},
+      "tags": ["信息更正", "公关澄清", "口径一致"]
+    }
+  ]
+}

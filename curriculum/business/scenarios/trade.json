@@ -1,0 +1,114 @@
+{
+  "id": "trade",
+  "label": "跨境贸易与国际供应链",
+  "scenes": [
+    {
+      "id": "biz-trade-01",
+      "label": "核对贸易与运输条件",
+      "context": "模拟进口方拟采购300套展台配件，供应草案仅写“运至港口”，双方需明确运输范围、地点和所需书面核查。",
+      "roles": {
+        "a": {"label": "进口协调人", "label_en": "Import Coordinator", "objective": "澄清交接地点、费用项目和文件安排后提交合同审阅", "private_information": ["本地仓只接受工作日预约卸货，需提前两天通知"], "constraints": ["不能凭日常用语认定风险转移或关税责任，须交贸易及合同专业人员确认"]},
+        "b": {"label": "出口销售协调人", "label_en": "Export Sales Coordinator", "objective": "解释报价涵盖范围并取得完整目的地和时间要求", "private_information": ["当前报价只含至出运港的内陆运输，国际段尚未询价"], "constraints": ["无权口头修改贸易条款或保证清关结果，正式文本须授权人核实"]}
+      },
+      "stages": ["明确出发地、目的地和交接点", "逐项核对报价包含的运输服务", "确认装卸、文件和到货通知需求", "列出待专业复核条款并安排书面确认"],
+      "complications": ["草案出现两个不同港口名称", "货代报出的运输费不含目的地附加费"],
+      "targets": [
+        {"expression": "Which exact location does this quote cover?", "meaning_zh": "这份报价具体覆盖到哪个地点？", "function": "明确运输范围"},
+        {"expression": "Please list the charges that are not included.", "meaning_zh": "请列出未包含的费用。", "function": "核查费用边界"},
+        {"expression": "Let's have the trade team verify the written terms.", "meaning_zh": "请贸易团队核实书面条款。", "function": "转交专业核实"}
+      ],
+      "success_criteria": {"a": ["核对明确地点、预约要求和未含费用", "列出风险、责任等需专业审阅事项而不自行定论"], "b": ["说明当前报价范围与尚未取得的报价", "确认修订草案负责人及书面答复时间"]},
+      "tags": ["运输条件", "贸易条款", "费用范围"]
+    },
+    {
+      "id": "biz-trade-02",
+      "label": "协商订单数量与最低订购量",
+      "context": "模拟跨境采购方希望首单订购200个收纳袋，虚构工厂标准最低订购量为500个，双方讨论试单方式。",
+      "roles": {
+        "a": {"label": "试单采购员", "label_en": "Trial Order Buyer", "objective": "在控制首单库存的前提下了解价格和可选规格", "private_information": ["可接受不印标识的现货颜色，总数量最多300个"], "constraints": ["不能虚报后续大单或作保底采购承诺"]},
+        "b": {"label": "工厂业务代表", "label_en": "Factory Sales Representative", "objective": "解释最低量的生产原因，提出能审批的替代方案", "private_information": ["标准灰色有250个余量，定制颜色需满足500个起订"], "constraints": ["小单附加费和低于标准的订单须生产主管书面确认"]}
+      },
+      "stages": ["确认数量、颜色和定制要求", "解释起订量适用条件", "比较现货、加价小单和合并批次", "确认报价待批项及样品核对"],
+      "complications": ["采购方误以为最低量按总数而非每种颜色计算", "库存查询后发现有20个外包装不完整"],
+      "targets": [
+        {"expression": "Is the minimum order quantity per color or in total?", "meaning_zh": "最低订购量是按每种颜色还是按总量？", "function": "澄清起订口径"},
+        {"expression": "Could we start with a smaller order of standard stock?", "meaning_zh": "我们能先少量订购标准现货吗？", "function": "提出试单替代"},
+        {"expression": "We can't commit to a repeat order at this stage.", "meaning_zh": "现阶段我们不能承诺复购订单。", "function": "限定采购承诺"}
+      ],
+      "success_criteria": {"a": ["明确实际数量上限和可放弃的定制项", "核对起订规则及费用而不虚构未来订单"], "b": ["说明现货与定制的起订差异", "确认可售库存、待批费用和书面报价时间"]},
+      "tags": ["订单MOQ", "试单", "定制条件"]
+    },
+    {
+      "id": "biz-trade-03",
+      "label": "跟进生产与出货节点",
+      "context": "模拟600套展示配件订单约定本月20日出厂，今天为12日，采购与工厂需核对生产、检验、包装和订舱节点。",
+      "roles": {
+        "a": {"label": "订单跟进员", "label_en": "Order Follow-up Coordinator", "objective": "获得分节点状态，识别出厂和开船日期是否混用", "private_information": ["活动仓最迟下月8日收货，仍可容忍晚出厂一天但需物流重估"], "constraints": ["不能未经物流确认保证最终到货，也不能要求跳过检验"]},
+        "b": {"label": "工厂生产协调人", "label_en": "Factory Production Coordinator", "objective": "说明实际产量和关键风险，确认可兑现的更新", "private_information": ["已完成420套，剩余件在等待一天后到达的包装内衬"], "constraints": ["不能把生产完成说成已验收，也不能替货代确认船期"]}
+      },
+      "stages": ["按数量核对生产完成状态", "确认检验和包装前置项", "区分出厂、提货与开船日期", "约定风险预警和物流复核"],
+      "complications": ["货代的订舱截单时间提前一天", "包装内衬有一批尺寸需复核"],
+      "targets": [
+        {"expression": "How many units are complete and ready for inspection?", "meaning_zh": "有多少件已完成并可检验？", "function": "核实生产状态"},
+        {"expression": "Does that date refer to factory dispatch or vessel departure?", "meaning_zh": "那个日期是指出厂还是开船？", "function": "澄清出货节点"},
+        {"expression": "Please flag any risk before the booking cutoff.", "meaning_zh": "请在订舱截止前提示任何风险。", "function": "设置提前预警"}
+      ],
+      "success_criteria": {"a": ["分别核对生产、检验和物流日期", "说明最晚使用时间并确认物流重估责任人"], "b": ["区分已完成、待料和待验数量", "提出节点更新与异常预警时间而非保证船期"]},
+      "tags": ["生产出货", "节点跟踪", "船期澄清"]
+    },
+    {
+      "id": "biz-trade-04",
+      "label": "核对报关资料的一致性",
+      "context": "模拟一批250套折叠展示架准备跨境发运，商业发票、装箱单和运输指示上的重量与品名存在差异，需先核查。",
+      "roles": {
+        "a": {"label": "出口单证员", "label_en": "Export Documentation Clerk", "objective": "依据原始记录纠正资料不一致并准备专业审核", "private_information": ["装箱单写的净重来自旧版样品，整批复称记录在仓库"], "constraints": ["不能猜填重量、压低申报金额或自行确定商品归类"]},
+        "b": {"label": "物流资料协调员", "label_en": "Logistics Documentation Coordinator", "objective": "列清缺件与差异，确保经授权核实后再提交", "private_information": ["货代要求明日10点前收到一致版本，尚未开始申报"], "constraints": ["不能保证通关或代报关专业人员认定编码、原产地和监管要求"]}
+      },
+      "stages": ["逐项比对品名、数量和重量", "追查差异对应的原始记录", "确认修订负责人和版本", "交专业人员审核并确认提交截止"],
+      "complications": ["一份附件仍使用旧采购参考号", "被要求填写的商品编码尚未由专业人员确认"],
+      "targets": [
+        {"expression": "The packing list and invoice show different descriptions.", "meaning_zh": "装箱单和发票上的品名描述不同。", "function": "指出资料不一致"},
+        {"expression": "Which source document should we verify this against?", "meaning_zh": "我们应对照哪份原始文件核实？", "function": "追溯数据来源"},
+        {"expression": "The customs broker needs to confirm the classification.", "meaning_zh": "商品归类需要报关专业人员确认。", "function": "明确专业核查边界"}
+      ],
+      "success_criteria": {"a": ["根据原始记录说明差异而非猜填", "标明修订版本及需专业确认的字段"], "b": ["列明缺失项、专业审核人和截止时间", "区分资料齐备与已申报、已通关状态"]},
+      "tags": ["报关资料", "单证一致", "专业审核"]
+    },
+    {
+      "id": "biz-trade-05",
+      "label": "沟通运输延误与到货损伤",
+      "context": "模拟海外仓收到40箱展示材料，比预计晚三天，其中4箱外包装受潮，进口团队与物流服务方需核实影响和处理流程。",
+      "roles": {
+        "a": {"label": "进口运营专员", "label_en": "Import Operations Specialist", "objective": "说明收货事实、保护证据并争取可用的临时安排", "private_information": ["活动两天后开始，未受潮箱可先分拣，但内件状态尚未逐件核查"], "constraints": ["不能擅自认定货损责任、销毁货物或承诺索赔金额"]},
+        "b": {"label": "物流异常协调人", "label_en": "Logistics Exception Coordinator", "objective": "收集运输与损伤证据，指导按流程登记和升级", "private_information": ["可申请次日补送4箱替代货的运输方案，但库存要由发货方确认"], "constraints": ["不能保证保险赔付或确定责任，须由相关承运、保险及授权团队核查"]}
+      },
+      "stages": ["核对计划、实际到仓和受影响箱数", "确认照片、签收备注与隔离", "讨论分拣和临时补送", "登记案件并约定专业核查与更新"],
+      "complications": ["仓库签收时未注明受潮情况", "外箱受潮但首批抽检内件暂未发现损坏"],
+      "targets": [
+        {"expression": "Four cartons arrived with visible moisture damage.", "meaning_zh": "四箱到货时有明显受潮痕迹。", "function": "描述可见损伤"},
+        {"expression": "What evidence is needed to open a case?", "meaning_zh": "登记案件需要哪些证据？", "function": "了解异常处理流程"},
+        {"expression": "Let's keep the affected goods separate while they are assessed.", "meaning_zh": "评估期间把受影响货物单独存放。", "function": "保护证据与货物"}
+      ],
+      "success_criteria": {"a": ["区分外箱状况、已检内件和未知损失", "说明使用时限并确认保留证据和临时安排"], "b": ["列出所需记录与正式核查渠道", "给出案件编号、补送待确认项和下一更新时间"]},
+      "tags": ["运输延误", "货损证据", "异常登记"]
+    },
+    {
+      "id": "biz-trade-06",
+      "label": "核对汇率报价与跨境付款流程",
+      "context": "模拟跨境订单报价为12,000美元，采购预算以人民币编制，付款前双方发现报价有效期、换算假设和银行信息需核对。",
+      "roles": {
+        "a": {"label": "跨境采购协调员", "label_en": "Cross-border Purchasing Coordinator", "objective": "确认结算币种、期限和内部预算复核步骤", "private_information": ["预算表使用一个月前的换算假设，当前银行实际报价尚未取得"], "constraints": ["不能预测汇率、选择对冲产品或在未核验账户上付款，须请财务确认"]},
+        "b": {"label": "出口收款协调员", "label_en": "Export Payment Coordinator", "objective": "核对收款条件和费用说明，把变更交授权人员确认", "private_information": ["新邮件模板误附了另一订单的银行信息，正式账户需经既定渠道复核"], "constraints": ["不能自行改结算币种、建议金融操作或保证跨境到账时间"]}
+      },
+      "stages": ["核对订单金额、币种与报价有效期", "区分预算换算和银行实际报价", "明确手续费待核实项与审批", "通过既定渠道验证收款资料并确认付款后跟踪"],
+      "complications": ["供应方报价在下一个工作日前到期", "中转行费用承担方式未在资料中写清"],
+      "targets": [
+        {"expression": "Which currency is the payment due in?", "meaning_zh": "这笔款应以哪种货币支付？", "function": "核对结算币种"},
+        {"expression": "The budget rate is an assumption, not the bank's final quote.", "meaning_zh": "预算汇率是假设，不是银行最终报价。", "function": "区分换算口径"},
+        {"expression": "Any account change must be verified through our approved process.", "meaning_zh": "任何账户变化都必须按获批流程核验。", "function": "确认付款安全流程"}
+      ],
+      "success_criteria": {"a": ["核对币种、有效期和预算换算来源", "将汇率、费用及支付授权交财务核实并暂停未经核验的账号变更"], "b": ["明确有效收款资料与误附信息的区别", "确认授权复核人、核验渠道和到账查询方式"]},
+      "tags": ["汇率结算", "跨境付款", "账户核验"]
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "id": "demo",
+  "label": "产品介绍与演示",
+  "scenes": [
+    {
+      "id": "biz-demo-01",
+      "label": "一分钟介绍产品",
+      "context": "模拟产品交流会上，A向B介绍一款共享会议室预约工具。B负责一处有8间会议室的办公空间，主持人要求每位介绍者在60秒内讲清用途，再接受一个问题。",
+      "roles": {
+        "a": {"label": "产品介绍专员", "label_en": "Product Specialist", "objective": "在一分钟内说明目标用户、核心用途和一个具体操作，争取有针对性的提问。", "private_information": ["产品可显示空闲时段并避免重复预约，但目前不控制门锁。"], "constraints": ["不能罗列超过三个功能，不得把尚未提供的门禁联动说成已有能力。"]},
+        "b": {"label": "办公空间经理", "label_en": "Workspace Manager", "objective": "听懂工具如何用于现有会议室，确认是否包含自己关心的现场管理能力。", "private_information": ["你最烦恼的是预约后无人使用会议室，希望知道工具是否需要人工处理。"], "constraints": ["只能问一个主要问题；不能代表租户同意使用新系统。"]}
+      },
+      "stages": ["说明产品为谁服务", "用一个预约冲突例子介绍核心用途", "描述一个简单操作而非堆叠功能", "由B提问并核对理解"],
+      "complications": ["主持人提示只剩20秒，A需要优先保留用途和边界。", "B把屏幕上的房间状态理解成实时有人无人，需要区分预约状态与现场占用。"],
+      "targets": [
+        {"expression": "This tool helps shared offices avoid double bookings.", "meaning_zh": "这个工具帮助共享办公空间避免重复预约。", "function": "一句话说明产品用途"},
+        {"expression": "You choose a room, check availability, and book a slot.", "meaning_zh": "你选择房间、查看空闲时间，再预约时段。", "function": "用简单步骤解释操作"},
+        {"expression": "Does that show bookings or actual room occupancy?", "meaning_zh": "这里显示的是预约情况，还是房间实际占用情况？", "function": "核对关键概念"}
+      ],
+      "success_criteria": {"a": ["在规定时间内交代用户、用途和一个操作例子。", "准确回答B的问题，并区分预约信息与现场状态。"], "b": ["围绕自身管理问题提出一个明确问题。", "用自己的话确认产品能做什么和不能推断什么。"]},
+      "tags": ["电梯介绍", "产品定位", "简洁表达"]
+    },
+    {
+      "id": "biz-demo-02",
+      "label": "按需求演示",
+      "context": "模拟演示使用虚构服务工单，A向B展示维修调度工具。双方提前约定只看紧急工单分派和状态追踪两个任务，演示时间15分钟，不涉及真实客户数据。",
+      "roles": {
+        "a": {"label": "解决方案演示员", "label_en": "Solutions Demonstrator", "objective": "围绕两个约定任务展示完整操作，持续核对是否符合B的实际使用方式。", "private_information": ["你准备了默认自动分派流程，但也可切换为人工确认后再派单。"], "constraints": ["不临时扩展为全功能介绍；不能声称示例处理时间就是客户实际节省时间。"]},
+        "b": {"label": "维修调度主管", "label_en": "Service Dispatch Supervisor", "objective": "验证工具是否支持值班人员确认紧急单，并观察状态如何通知调度员。", "private_information": ["你的团队要求夜间紧急单由值班主管确认，不能直接自动分派给技术员。"], "constraints": ["不现场提交真实工单；只有确认流程后才愿安排一线试用。"]}
+      },
+      "stages": ["再次确认两个演示任务", "用一张虚构紧急工单走完分派", "展示状态变更与通知路径", "请B指出流程差异并总结验证结果"],
+      "complications": ["B发现夜间流程多一层确认，A需要调整演示路径。", "通知在演示账号中被折叠，双方需区分界面显示和实际通知规则。"],
+      "targets": [
+        {"expression": "Let's follow one urgent ticket from start to finish.", "meaning_zh": "我们从头到尾跟一遍紧急工单。", "function": "建立任务式演示路径"},
+        {"expression": "At this point, who would approve the assignment?", "meaning_zh": "到这一步时，会由谁批准派单？", "function": "核对业务流程"},
+        {"expression": "Can you show how the dispatcher sees that update?", "meaning_zh": "你能展示调度员如何看到这次更新吗？", "function": "请求验证关键任务"}
+      ],
+      "success_criteria": {"a": ["演示约定的两项任务，并至少一次询问流程是否匹配。", "对流程差异调整展示，明确示例不能证明的效果。"], "b": ["指出一个实际审批或通知要求。", "要求查看关键步骤，并说明哪些已验证、哪些仍待试用。"]},
+      "tags": ["需求式演示", "工单流程", "场景验证"]
+    },
+    {
+      "id": "biz-demo-03",
+      "label": "向非技术人员解释",
+      "context": "模拟产品说明中，A向B解释一套仓储温度告警装置。公开配置为6个传感器、1个网关和一个网页看板，B负责现场班组管理，没有网络配置经验。",
+      "roles": {
+        "a": {"label": "设备产品顾问", "label_en": "Device Product Consultant", "objective": "用日常语言解释数据从采集到告警的路径，让B能判断日常操作责任。", "private_information": ["网关需要联网才能发送远程告警；现场传感器可暂存读数，但不能代替人工安全检查。"], "constraints": ["不使用未解释的技术缩写，不把设备描述成任何情况下都不会漏报。"]},
+        "b": {"label": "仓库班组长", "label_en": "Warehouse Team Leader", "objective": "理解哪些部件需要日常查看、断网时会怎样，以及自己要联系谁。", "private_information": ["你们夜班没有现场IT人员，所以希望异常处理步骤不超过三步。"], "constraints": ["没有权限更改网络设置，也不能停止已有人工巡查。"]}
+      },
+      "stages": ["先确认B已有认识和关注点", "按采集、传送、提醒解释三类部件", "用一次超温示例说明人员动作", "请B复述断网或异常时的处理方式"],
+      "complications": ["B将网关误认为控制制冷机的开关，需要纠正装置作用。", "B问断网后手机是否仍收到提醒，A需说明边界并给出人工升级路径。"],
+      "targets": [
+        {"expression": "Think of the gateway as a messenger for the sensors.", "meaning_zh": "可以把网关理解为传递传感器信息的信使。", "function": "用类比解释部件"},
+        {"expression": "It sends an alert; it doesn't adjust the temperature.", "meaning_zh": "它发送告警，但不会调节温度。", "function": "区分监测与控制"},
+        {"expression": "What would you do first if the connection went down?", "meaning_zh": "如果连接中断，你首先会怎么做？", "function": "检查非技术理解"}
+      ],
+      "success_criteria": {"a": ["不靠缩写解释三类部件和告警路径。", "说明断网限制和人工责任，并邀请B复述。"], "b": ["用自己的话说明装置作用。", "说出异常时第一步及自己无权修改的设置。"]},
+      "tags": ["非技术解释", "设备演示", "类比"]
+    },
+    {
+      "id": "biz-demo-04",
+      "label": "回答功能边界",
+      "context": "模拟人事工具演示中，A向B展示请假申请和审批记录。B希望知道能否同时处理跨地区薪资计算，公开产品介绍仅列出请假、排班和数据导出。",
+      "roles": {
+        "a": {"label": "产品顾问", "label_en": "Product Consultant", "objective": "准确区分现有功能、可配置项和不支持的工作，并确认B的实际目的。", "private_information": ["工具可以导出请假时数，但不计算薪资，也没有已确认的薪资模块发布日期。"], "constraints": ["不把计划中功能当作已承诺功能，不提供薪酬或法规适用判断。"]},
+        "b": {"label": "人事运营专员", "label_en": "People Operations Specialist", "objective": "明确月末哪些任务仍要在原薪资流程中完成，避免因功能误解而重复录入。", "private_information": ["你可以接受导出后交给薪资同事，但不愿每人手工重新输入请假时数。"], "constraints": ["不能替薪资团队确认导出格式；不会提供员工薪资数据做演示。"]}
+      },
+      "stages": ["询问B希望完成的月末任务", "直接回答当前是否支持", "演示相关导出但说明与薪资计算的区别", "记录格式核验和后续确认责任人"],
+      "complications": ["B看到菜单中的费用字段，以为可以自动算薪资，需要解释字段用途。", "B要求写入未来三个月一定上线的承诺，A需说明无权保证。"],
+      "targets": [
+        {"expression": "It tracks leave hours, but it doesn't calculate payroll.", "meaning_zh": "它记录请假时数，但不计算薪资。", "function": "明确功能边界"},
+        {"expression": "Would an export meet the need, or do you need a direct connection?", "meaning_zh": "导出能满足需要，还是你们必须直接对接？", "function": "澄清替代方式是否适用"},
+        {"expression": "I can't commit to a release date for that feature.", "meaning_zh": "我不能承诺那个功能的发布日期。", "function": "避免路线图过度承诺"}
+      ],
+      "success_criteria": {"a": ["明确回答支持和不支持的范围，不回避直接问题。", "演示替代方法并列出需要他人核实的格式要求。"], "b": ["说明真实工作目标和可接受的替代方式。", "确认未支持功能与未来计划的区别，并提出具体核验问题。"]},
+      "tags": ["功能边界", "替代方式", "产品承诺"]
+    },
+    {
+      "id": "biz-demo-05",
+      "label": "比较竞争方案",
+      "context": "模拟选型讨论中，B在比较两种培训预约方案：A提供的标准工具和另一家匿名供应商的定制方案。双方只有公开功能摘要，没有对方内部信息，B希望围绕三个业务标准比较。",
+      "roles": {
+        "a": {"label": "产品方案顾问", "label_en": "Product Solutions Advisor", "objective": "按B的标准解释自身方案的优点和取舍，对未知竞品信息明确待核验。", "private_information": ["标准工具配置快但不能重画预约界面；你们可提供示例配置供B试用。"], "constraints": ["不贬低竞品、不猜测其故障率，不把不同范围的价格直接作结论。"]},
+        "b": {"label": "培训项目采购人", "label_en": "Training Program Buyer", "objective": "比较上线准备、界面灵活度和管理员工作量，形成基于相同范围的问题清单。", "private_information": ["你更看重管理员省时，品牌界面只是次要要求；竞品演示没有覆盖批量改期。"], "constraints": ["不能分享另一供应商的保密报价，不能凭一次演示立即选定供应商。"]}
+      },
+      "stages": ["确认三个比较标准及优先级", "按同一使用任务比较已知能力", "说明自身限制和未知信息", "列出需要双方分别验证的证据"],
+      "complications": ["B提出竞品据说永久免费，需要核实服务范围而非直接反驳。", "一方包含培训服务、另一方未说明，双方需先统一比较口径。"],
+      "targets": [
+        {"expression": "Let's compare the same tasks and service scope.", "meaning_zh": "我们按相同任务和服务范围来比较。", "function": "建立公平比较口径"},
+        {"expression": "Our trade-off is less interface customization.", "meaning_zh": "我们方案的取舍是界面定制较少。", "function": "坦诚说明方案局限"},
+        {"expression": "That point would need to be verified with the other provider.", "meaning_zh": "这一点需要向另一家供应商核实。", "function": "标注未知竞争信息"}
+      ],
+      "success_criteria": {"a": ["按共同标准解释一项优势和一项局限。", "区分有证据的事实与未知信息，不用贬低代替比较。"], "b": ["给出比较标准的优先顺序。", "指出范围差异并提出至少一个双方都需验证的任务。"]},
+      "tags": ["竞争比较", "方案取舍", "证据"]
+    },
+    {
+      "id": "biz-demo-06",
+      "label": "演示故障与未知问题",
+      "context": "模拟线上产品演示安排20分钟，A向B展示报表导出。演示进行到第8分钟时，测试账号出现导出失败提示，其他页面仍能打开，现场尚无确定原因。",
+      "roles": {
+        "a": {"label": "售前演示工程师", "label_en": "Sales Engineer", "objective": "承认故障和未知点，控制排查时间，采用清楚标注的替代展示并安排核实。", "private_information": ["你有前一天录制的测试环境视频可用，但不能据此证明当前导出正常。"], "constraints": ["不能编造故障原因；未经同意不录制B的屏幕或索要真实数据。"]},
+        "b": {"label": "业务评估负责人", "label_en": "Business Evaluation Lead", "objective": "在剩余时间内理解导出流程，获得故障核实计划而非笼统保证。", "private_information": ["你最关心导出字段能否满足月报，今天可以看录像，但要在评估结论里注明未现场验证。"], "constraints": ["会议不能延长；不接受把演示录像当作本次成功测试记录。"]}
+      },
+      "stages": ["说明可观察到的故障而不猜根因", "协商最多两分钟排查和剩余议程", "获同意后使用明确标注的替代材料", "记录未验证问题、核实负责人和反馈时间"],
+      "complications": ["刷新后仍失败，需要停止无限重试并切换计划。", "B询问故障是否影响所有用户，A需说明尚未确认影响范围。"],
+      "targets": [
+        {"expression": "The export failed, and I don't yet know why.", "meaning_zh": "导出失败了，我目前还不知道原因。", "function": "诚实说明故障与未知"},
+        {"expression": "May I use a recording to show the remaining steps?", "meaning_zh": "我可以用录像展示剩余步骤吗？", "function": "征求替代展示许可"},
+        {"expression": "Let's record this as not yet verified.", "meaning_zh": "我们把这一项记录为尚未验证。", "function": "维护验证结论准确性"}
+      ],
+      "success_criteria": {"a": ["分清已见故障、未知原因和未确定范围。", "控制排查时间，标注替代材料并确认后续反馈节点。"], "b": ["提出一个影响评估或关键字段问题。", "确认替代展示的用途和限制，要求明确后续核实安排。"]},
+      "tags": ["演示故障", "未知问题", "诚实沟通"]
+    }
+  ]
+}

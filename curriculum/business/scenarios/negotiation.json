@@ -1,0 +1,114 @@
+{
+  "id": "negotiation",
+  "label": "商务谈判与条件交换",
+  "scenes": [
+    {
+      "id": "biz-negotiation-01",
+      "label": "降价要求",
+      "context": "模拟服务谈判中，A向B提供首年48000元的团队协作工具方案，包含40个账号和四场培训。B要求降价20%，双方尚未确认合同，金额均为模拟人民币。",
+      "roles": {
+        "a": {"label": "商务销售经理", "label_en": "Commercial Sales Manager", "objective": "理解降价理由，解释现有范围并探索有条件的调整，而非直接承诺折扣。", "private_information": ["你可批准最多5%的折扣；若减少两场培训，可另行出具更低范围报价。"], "constraints": ["不能批准20%折扣，也不能在降价后暗中减少服务。"]},
+        "b": {"label": "采购谈判代表", "label_en": "Procurement Negotiator", "objective": "把支出控制在内部可接受范围，同时保住团队确实需要的能力。", "private_information": ["当前可用预算为44000元，四场培训中只有两场为首期必需；20%是起始请求而非硬性底线。"], "constraints": ["不能接受低于40个账号；任何范围变化需清楚列明。"]}
+      },
+      "stages": ["澄清降价请求针对预算还是价值判断", "核对必须保留的范围", "提出折扣权限内或范围调整的选项", "总结条件式方案并确认后续审批"],
+      "complications": ["B拿出一个服务范围更少的匿名低价方案，需要先统一比较范围。", "B要求口头立即承诺20%，A需明确权限并提出可评估替代。"],
+      "targets": [
+        {"expression": "Is the main concern the total budget or the value of the package?", "meaning_zh": "主要顾虑是总预算，还是套餐的价值？", "function": "识别降价背后原因"},
+        {"expression": "We could lower the total if we reduce the training scope.", "meaning_zh": "如果减少培训范围，我们可以降低总额。", "function": "提出透明的条件交换"},
+        {"expression": "That discount is beyond my approval limit.", "meaning_zh": "这个折扣超出了我的审批权限。", "function": "说明谈判权限"}
+      ],
+      "success_criteria": {"a": ["询问降价原因和必要范围。", "提出权限内或待审批的条件式选项，明确不暗减服务。"], "b": ["解释预算限制及必须保留的内容。", "回应至少一个替代选项，并要求记录价格与范围的联动。"]},
+      "tags": ["降价", "条件交换", "权限边界"]
+    },
+    {
+      "id": "biz-negotiation-02",
+      "label": "量换价",
+      "context": "模拟采购谈判中，B计划分批采购办公收纳盒。A的模拟标准单价为每箱120元，双方讨论订单量增加能否换取更低价格，并需区分确定订单与未来预测。",
+      "roles": {
+        "a": {"label": "批发客户经理", "label_en": "Wholesale Account Manager", "objective": "核实可承诺的采购量和交付批次，提出与明确数量对应的阶梯价格。", "private_information": ["单张确认订单达到500箱可报每箱112元；纯年度预测不触发此价格。"], "constraints": ["不能把预测量记作已下单，也无权为未确认数量预留整年库存。"]},
+        "b": {"label": "物资采购主管", "label_en": "Supplies Purchasing Manager", "objective": "争取合理批量价格，同时控制库存压力和超量承诺。", "private_information": ["本期确定需要300箱，后续可能再需300箱；仓库每次只能接收250箱。"], "constraints": ["不能保证未来300箱；可以讨论一张确认订单分两次交付，但需内部同意。"]}
+      },
+      "stages": ["分清确定数量与未来预测", "说明阶梯价格触发条件", "讨论订单承诺和分批交付安排", "复述数量、单价和待确认前提"],
+      "complications": ["B要求用600箱预测量获取折扣但只下300箱，需要澄清风险分配。", "仓库接收窗口缩短，双方需检查分批交付是否仍可执行。"],
+      "targets": [
+        {"expression": "Is that a firm order or a forecast?", "meaning_zh": "这是确定订单，还是预测数量？", "function": "区分数量承诺"},
+        {"expression": "The lower rate applies to confirmed orders of five hundred boxes.", "meaning_zh": "较低单价适用于确认采购500箱的订单。", "function": "说明量价条件"},
+        {"expression": "Could we split delivery while keeping one confirmed order?", "meaning_zh": "可以保留一张确认订单，同时分批交付吗？", "function": "协调承诺与收货能力"}
+      ],
+      "success_criteria": {"a": ["明确区分承诺量和预测量。", "把折扣与数量条件绑定，并核对分批交付及库存限制。"], "b": ["说明确定需求、预测需求和收货上限。", "对可承诺数量给出明确回应，不以预测冒充订单。"]},
+      "tags": ["量价交换", "采购预测", "分批交付"]
+    },
+    {
+      "id": "biz-negotiation-03",
+      "label": "付款周期",
+      "context": "模拟商务条件讨论中，A的服务报价采用发票后30天付款，B的内部标准流程为验收后60天付款。双方需要澄清计时起点和审批，不作融资或法律判断。",
+      "roles": {
+        "a": {"label": "供应商商务代表", "label_en": "Supplier Commercial Representative", "objective": "理解客户付款流程，避免只比较天数，探索可提交审批的付款安排。", "private_information": ["你只能直接确认30天条款；可向主管申请分阶段开票，但需要对应明确交付节点。"], "constraints": ["不能自行批准60天，也不能替财务认定客户信用或融资成本。"]},
+        "b": {"label": "采购流程经理", "label_en": "Procurement Process Manager", "objective": "解释验收与付款流程，争取双方都能执行的安排并减少退票重走流程。", "private_information": ["内部每月只有两次付款批次；完整验收单和采购订单号是入账前提。"], "constraints": ["不能保证发票一收到就能计时，也不能擅自批准预付款。"]}
+      },
+      "stages": ["比较付款天数及各自计时起点", "梳理验收、发票和付款批次", "讨论可审批的分阶段或文件准备安排", "列明未获批条件和双方内部确认人"],
+      "complications": ["双方发现发票日期与入账日期不是同一天，需要明确书面表述。", "B提出预付款可换短账期，但本人无权批准，需避免现场形成承诺。"],
+      "targets": [
+        {"expression": "When does the payment period start in your process?", "meaning_zh": "在你们流程中，付款周期从何时开始计算？", "function": "澄清计时起点"},
+        {"expression": "What documents are needed before an invoice can be processed?", "meaning_zh": "处理发票前需要哪些文件？", "function": "核对付款前置材料"},
+        {"expression": "I can submit that arrangement for approval, but not confirm it today.", "meaning_zh": "我可以提交这个安排申请审批，但今天不能确认。", "function": "区分提案与批准"}
+      ],
+      "success_criteria": {"a": ["核对计时起点及付款所需文件。", "提出一个可审批选项，并明确当前权限及后续确认人。"], "b": ["解释验收、入账和付款批次的区别。", "说明不能代批的安排，并确认需补充的文件或内部核实步骤。"]},
+      "tags": ["付款周期", "开票流程", "商务条件"]
+    },
+    {
+      "id": "biz-negotiation-04",
+      "label": "交付时间",
+      "context": "模拟订单沟通中，B希望在6月15日培训前收到200套演示材料，A常规完整交付日期为6月22日。双方需要讨论分批、范围和加急成本，日期均为训练设定。",
+      "roles": {
+        "a": {"label": "订单交付经理", "label_en": "Order Delivery Manager", "objective": "了解真正时间需求，在不虚假保证的前提下提出分批或规格调整方案。", "private_information": ["120套标准版可在6月12日发出；定制封面的其余材料要到6月22日才能齐备，加急运输需另确认。"], "constraints": ["不能承诺未经物流确认的到货日；定制生产不能随口压缩一周。"]},
+        "b": {"label": "培训活动经理", "label_en": "Training Event Manager", "objective": "确保首场培训可用材料，识别能延后或简化的部分并保留明确到货信息。", "private_information": ["首场实际只有100人，余下材料用于6月28日活动；标准封面可接受，但主管尚未确认。"], "constraints": ["首场不能缺少核心练习册；无权直接批准额外运输费用。"]}
+      },
+      "stages": ["区分发货日、到货日和实际使用日", "核实首批必需数量和规格", "比较分批与规格调整的时间及成本", "确认待批条件和物流核实节点"],
+      "complications": ["B把6月12日发出理解成同日到货，需要纠正。", "活动地址临时变更，原运输估算需重新核实。"],
+      "targets": [
+        {"expression": "How many sets do you need for the first session?", "meaning_zh": "首场培训需要多少套？", "function": "确认真正的时间需求"},
+        {"expression": "We can discuss a partial shipment rather than rush the full order.", "meaning_zh": "我们可以讨论部分先发，而不是加急整单。", "function": "提出分批交付选项"},
+        {"expression": "That's the dispatch date, not a confirmed arrival date.", "meaning_zh": "那是发货日期，不是已确认到货日期。", "function": "澄清时间承诺"}
+      ],
+      "success_criteria": {"a": ["区分发出、到达和使用时间。", "提出匹配首批数量的选项，并标明物流及费用待确认点。"], "b": ["说明首场必需数量和不可削减内容。", "对规格或分批选项给出条件式回应，指出费用审批边界。"]},
+      "tags": ["交付谈判", "分批交付", "时间澄清"]
+    },
+    {
+      "id": "biz-negotiation-05",
+      "label": "谈判僵局",
+      "context": "模拟培训服务谈判已进行两轮，双方反复争论总价，尚未达成一致。公开方案为三个月辅导加四次工作坊，A与B同意用15分钟找出分歧，必要时暂停而非强行成交。",
+      "roles": {
+        "a": {"label": "服务合作经理", "label_en": "Service Partnership Manager", "objective": "停止重复报价，找出双方真正关注的风险并提出可核实的替代安排。", "private_information": ["你的核心顾虑是讲师档期被长期占用；可以讨论先做一次付费工作坊，再决定后续。"], "constraints": ["不能免费锁定三个月档期，也不能暗示一次工作坊保证全部效果。"]},
+        "b": {"label": "人才发展负责人", "label_en": "Learning and Development Lead", "objective": "避免在效果不明时承诺整期服务，同时让双方保留继续评估的可能。", "private_information": ["预算并非唯一问题，主管主要担心内容不适合新任经理；一次小范围试做有机会获批。"], "constraints": ["不能保证后续购买；任何试做都需有具体反馈标准。"]}
+      },
+      "stages": ["中性总结已达成点和未解决点", "各自解释价格背后的风险或需求", "探索缩小承诺、阶段评估或暂停", "确认试做条件或下一次重新讨论的触发点"],
+      "complications": ["一方说这是最后报价，另一方需要确认是否仍可讨论服务安排。", "原定讲师的档期即将释放，双方需说明实际截止而非制造假紧迫。"],
+      "targets": [
+        {"expression": "We seem to be repeating the same positions.", "meaning_zh": "我们似乎一直在重复各自的立场。", "function": "识别并中止僵局循环"},
+        {"expression": "What risk are you trying to avoid with that condition?", "meaning_zh": "你提出这个条件主要想避免什么风险？", "function": "探索立场背后的顾虑"},
+        {"expression": "Could a smaller first step give us enough evidence?", "meaning_zh": "先做一小步能否给我们足够的判断依据？", "function": "提出阶段性替代"}
+      ],
+      "success_criteria": {"a": ["概括分歧且不指责，询问B真正顾虑。", "提出试做或暂停选项，明确资源边界和非保证性质。"], "b": ["说明价格以外的一项风险。", "为试做提出可观察反馈标准，或明确何时再评估。"]},
+      "tags": ["谈判僵局", "利益探索", "阶段承诺"]
+    },
+    {
+      "id": "biz-negotiation-06",
+      "label": "拒绝不利条件保留关系",
+      "context": "模拟合作条件沟通中，B希望A在未来12个月不向同城其他培训机构提供相同工具。A提供的是通用预约产品，双方尚未签署排他安排，本轮仅练习商务澄清和适当转交。",
+      "roles": {
+        "a": {"label": "供应商合作负责人", "label_en": "Supplier Partnership Lead", "objective": "明确拒绝全城排他要求，理解对方担忧并提出不涉及排他的可行支持。", "private_information": ["你可以提供客户自己的培训模板和上线辅导，但公司不接受城市范围的通用产品排他。"], "constraints": ["不能口头承诺限制其他客户；涉及特殊条款的提案须交商务主管及法务审阅。"]},
+        "b": {"label": "机构业务负责人", "label_en": "Training Business Director", "objective": "保护自己设计的课程流程不被直接复制，判断是否需要排他之外的保障。", "private_information": ["你真正担忧的是自制课程模板被展示给同行，而不是别人使用预约工具本身。"], "constraints": ["不能代替公司法律顾问接受条款，也不能要求对方泄露其他客户合作情况。"]}
+      },
+      "stages": ["准确复述要求并询问背后担忧", "明确拒绝不接受的条件而不攻击对方", "讨论模板权限、展示授权等替代方向", "将需要审阅的表述交相应角色并保留联系"],
+      "complications": ["B把拒绝排他理解为会公开其模板，双方需分开讨论两个问题。", "B要求邮件写独家合作，A需拒绝模糊措辞并提交正式审阅。"],
+      "targets": [
+        {"expression": "We can't agree to city-wide exclusivity.", "meaning_zh": "我们不能同意全城范围的排他安排。", "function": "清楚拒绝不利条件"},
+        {"expression": "Is your main concern the use of your own training materials?", "meaning_zh": "你主要担心的是你们自己培训材料的使用吗？", "function": "识别真正需保护的内容"},
+        {"expression": "We'd still like to find a workable way to support you.", "meaning_zh": "我们仍希望找到可行的方式支持你们。", "function": "拒绝条件但保留关系"}
+      ],
+      "success_criteria": {"a": ["明确拒绝全城排他，不使用可能被误解的模糊承诺。", "询问核心担忧，提出可讨论的替代并指出审阅流程。"], "b": ["说明真正担忧与排他要求的关系。", "区分产品使用和自有材料，确认替代方向仍需谁审阅。"]},
+      "tags": ["拒绝条件", "关系维护", "商务边界"]
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "id": "finance",
+  "label": "财务预算与回款",
+  "scenes": [
+    {
+      "id": "biz-finance-01",
+      "label": "说明预算申请与审批依据",
+      "context": "模拟培训部门拟为两个月试点申请18,000元预算，申请包括场地、材料和设备租用，财务正在初审。",
+      "roles": {
+        "a": {"label": "预算申请人", "label_en": "Budget Requester", "objective": "解释支出用途和估算依据，提交符合流程的申请", "private_information": ["设备可借用一半，若获确认可将申请减少3,000元"], "constraints": ["批准前不能对供应方作购买承诺"]},
+        "b": {"label": "财务预算协调员", "label_en": "Budget Coordinator", "objective": "核对费用分类、依据和审批材料，而非代审批人决定", "private_information": ["本轮申请周四中午截止，设备租赁还需部门主管确认"], "constraints": ["只能检查和流转申请，不能口头批准预算或给税务结论"]}
+      },
+      "stages": ["说明试点目标和费用拆分", "核对报价与估算假设", "讨论可选节约方案", "确认补件、审批人和提交期限"],
+      "complications": ["一份场地报价已经过有效期", "申请表将一次性设备费列入月度费用"],
+      "targets": [
+        {"expression": "Could you break down the budget by cost item?", "meaning_zh": "能按费用项目拆分预算吗？", "function": "核查预算构成"},
+        {"expression": "This estimate is based on two months of use.", "meaning_zh": "这个估算基于两个月的使用期。", "function": "说明估算依据"},
+        {"expression": "What approvals do we need before committing?", "meaning_zh": "作出支出承诺前需要哪些审批？", "function": "确认审批流程"}
+      ],
+      "success_criteria": {"a": ["说明各项金额对应的用途及估算期限", "列出节约选项、待确认金额和补件计划"], "b": ["指出分类或凭证缺口", "交代审批权限、补件要求与截止时间"]},
+      "tags": ["预算申请", "费用拆分", "审批流程"]
+    },
+    {
+      "id": "biz-finance-02",
+      "label": "报告超支并申请调整",
+      "context": "模拟培训项目批准预算为30,000元，最新跟踪显示已发生支出22,000元，预计剩余工作还需12,000元。",
+      "roles": {
+        "a": {"label": "项目预算负责人", "label_en": "Project Budget Owner", "objective": "区分实际支出和预计支出，解释偏差并提出调整选项", "private_information": ["新增场地服务预计需4,000元，尚未签订，可缩减一半"], "constraints": ["不能拆分订单绕过审批或默认追加预算已获准"]},
+        "b": {"label": "财务合作伙伴", "label_en": "Finance Business Partner", "objective": "核实超支预测并指导申请、暂停或缩减的流程", "private_information": ["已发生支出中有2,000元预付款，需核对是否又计入剩余估算"], "constraints": ["没有预算授权，不能直接批准追加或认定会计处理"]}
+      },
+      "stages": ["复核批准额、已发生和预测", "核对重复计算及偏差原因", "比较缩减与追加选项", "确定申请人和批准前的支出边界"],
+      "complications": ["供应方新增一项未确认的服务费", "业务方希望先下单再补审批"],
+      "targets": [
+        {"expression": "We're forecasting a four-thousand-yuan overrun.", "meaning_zh": "我们预计会超支四千元。", "function": "报告预测偏差"},
+        {"expression": "Has the deposit been counted twice?", "meaning_zh": "预付款是否重复计算了？", "function": "核对重复金额"},
+        {"expression": "We need approval before any additional commitment.", "meaning_zh": "新增支出承诺前需要审批。", "function": "明确控制流程"}
+      ],
+      "success_criteria": {"a": ["明确区分实际、承诺和预测金额", "提出可缩减项及需审批的调整而非先行采购"], "b": ["追问重复计算和估算依据", "说明确认预测及流转审批的责任和期限"]},
+      "tags": ["预算超支", "预测核对", "追加审批"]
+    },
+    {
+      "id": "biz-finance-03",
+      "label": "澄清业务预测的假设",
+      "context": "模拟培训服务季度计划使用“240名学员、每人1,000元”的收费收入预测，业务和财务需核对假设。",
+      "roles": {
+        "a": {"label": "业务规划员", "label_en": "Business Planner", "objective": "解释报名量和价格假设，明确预测不是保证", "private_information": ["240人包含60名潜在团体学员，尚未收到确认名单"], "constraints": ["不能把意向当成已签订单，也不能将收费预测说成已确认收入"]},
+        "b": {"label": "财务分析员", "label_en": "Financial Analyst", "objective": "区分数量、折扣和收款时间，要求可追踪的情景假设", "private_information": ["以往团体订单常有八折安排，本次是否适用尚未确认"], "constraints": ["不能替业务确定成交或作投资、收益及会计确认结论"]}
+      },
+      "stages": ["说明预测期间和计算基础", "核对已确认与潜在报名", "讨论折扣及收款时间差异", "建立基准和保守情景并约定更新"],
+      "complications": ["一个团体客户可能推迟到下一季度开课", "预测表未单列取消报名假设"],
+      "targets": [
+        {"expression": "What assumptions are behind this forecast?", "meaning_zh": "这个预测背后有哪些假设？", "function": "核查预测基础"},
+        {"expression": "Let's separate confirmed bookings from potential demand.", "meaning_zh": "把已确认报名和潜在需求分开吧。", "function": "区分确定程度"},
+        {"expression": "How would the estimate change in a conservative case?", "meaning_zh": "在保守情景下，估计会怎样变化？", "function": "检验情景敏感性"}
+      ],
+      "success_criteria": {"a": ["说出数量、价格和确认状态的来源", "标明未确认团体需求及下次核实日期"], "b": ["追问折扣、取消和收款时点", "要求分别列示情景且注明需专业复核的口径"]},
+      "tags": ["预测假设", "情景分析", "确认状态"]
+    },
+    {
+      "id": "biz-finance-04",
+      "label": "核对账单与收货差异",
+      "context": "模拟采购订单记录100件桌牌、每件50元，供应账单为5,500元，收货记录为90件，双方需核对差异。",
+      "roles": {
+        "a": {"label": "应付账款专员", "label_en": "Accounts Payable Specialist", "objective": "逐项核对订单、收货和账单，明确争议部分的处理流程", "private_information": ["系统中暂未找到额外500元费用的批准记录"], "constraints": ["不能自行删除账单、判断税费合法性或承诺付款日期"]},
+        "b": {"label": "供应商账务专员", "label_en": "Supplier Billing Specialist", "objective": "提供费用和发货凭证，纠正核实后的账单问题", "private_information": ["余下10件另箱出货，500元标作加急包装但尚需销售提供确认"], "constraints": ["只能申请更正或补件，不能未经授权减免收费"]}
+      },
+      "stages": ["确认订单号和差异金额", "比对收货与分批发货记录", "核查额外收费依据", "约定补件、更正或转交财务复核"],
+      "complications": ["签收单只记录箱数未记录件数", "原采购联系人暂时不在线"],
+      "targets": [
+        {"expression": "The invoice doesn't match the purchase order.", "meaning_zh": "账单与采购订单不一致。", "function": "指出对账差异"},
+        {"expression": "Could you send the supporting documents for this charge?", "meaning_zh": "能提供这项收费的支持凭证吗？", "function": "请求核验材料"},
+        {"expression": "Let's confirm the disputed items before processing payment.", "meaning_zh": "处理付款前先核实争议项目。", "function": "明确核对顺序"}
+      ],
+      "success_criteria": {"a": ["分别说清数量和金额差异", "列明所需凭证并说明按流程转交的事项"], "b": ["区分已能证明和仍待确认的费用", "确认补发凭证或申请更正的负责人和时间"]},
+      "tags": ["账单差异", "对账", "凭证核验"]
+    },
+    {
+      "id": "biz-finance-05",
+      "label": "跟进逾期回款并确认障碍",
+      "context": "模拟服务账单编号R-218金额为26,000元，约定付款日已过10天，应收团队与客户应付团队沟通状态。",
+      "roles": {
+        "a": {"label": "应收账款专员", "label_en": "Accounts Receivable Specialist", "objective": "核实未付原因和可跟踪的下一动作，保持专业关系", "private_information": ["内部可受理分期申请，但需信用负责人审批"], "constraints": ["不能威胁客户、免除费用或保证分期一定批准"]},
+        "b": {"label": "客户应付账款专员", "label_en": "Client Accounts Payable Specialist", "objective": "说明付款阻碍并提供真实的审核进度", "private_information": ["账单缺少采购参考号，已分配预算但不能进入支付批次"], "constraints": ["不能在审核完成前保证到账日或接受未经审批的新付款条件"]}
+      },
+      "stages": ["核对账单与到期日", "询问未付原因", "确认所缺资料和审核动作", "约定更新日期及必要时的升级"],
+      "complications": ["原账单发到了已停用的共享邮箱", "客户希望收到正式对账单后再回复付款计划"],
+      "targets": [
+        {"expression": "Our records show that this invoice is ten days overdue.", "meaning_zh": "我们的记录显示这张账单已逾期十天。", "function": "客观提醒逾期"},
+        {"expression": "Is there anything blocking the payment process?", "meaning_zh": "付款流程有什么阻碍吗？", "function": "了解付款障碍"},
+        {"expression": "When can you confirm the next payment step?", "meaning_zh": "你何时能确认下一步付款动作？", "function": "取得可跟踪回应"}
+      ],
+      "success_criteria": {"a": ["准确引用账单而非施压指责", "确认补件、联系人和下次跟进时间"], "b": ["说明具体流程障碍和已采取动作", "区分审核预计时间与未经确认的到账日"]},
+      "tags": ["逾期回款", "付款障碍", "专业催收"]
+    },
+    {
+      "id": "biz-finance-06",
+      "label": "协调付款安排与授权确认",
+      "context": "模拟采购合同约定本月支付48,000元，客户希望讨论分两次付款，双方账务联系人需核实可申请的安排。",
+      "roles": {
+        "a": {"label": "付款协调人", "label_en": "Payment Coordinator", "objective": "提出有日期和金额的申请并了解获批前须遵循的安排", "private_information": ["可申请本月支付30,000元，其余18,000元下月中旬支付"], "constraints": ["不能单方面更改合同期限或在电话中接受银行账号变更"]},
+        "b": {"label": "收款协调人", "label_en": "Collections Coordinator", "objective": "完整记录申请，说明审批和安全核验步骤", "private_information": ["金额超过20,000元的延期需财务经理书面审批"], "constraints": ["没有修改付款条件或减免费用的授权，不能要求绕过账号核验"]}
+      },
+      "stages": ["确认原付款约定", "提出申请金额和日期", "核对审批材料及处理期间安排", "确认书面回复和支付信息核验"],
+      "complications": ["邮件中出现一份未经核实的新银行账户附件", "预计付款日碰上非工作日"],
+      "targets": [
+        {"expression": "Could we submit a request for two installments?", "meaning_zh": "我们能提交分两次付款的申请吗？", "function": "提出安排申请"},
+        {"expression": "Any revised schedule needs written approval.", "meaning_zh": "任何调整后的付款计划都需要书面批准。", "function": "明确授权要求"},
+        {"expression": "Let's verify the bank details through our usual channel.", "meaning_zh": "我们通过惯常渠道核验银行信息。", "function": "确认安全核验"}
+      ],
+      "success_criteria": {"a": ["用准确金额和日期提出申请而非宣布变更", "确认批准前原约定状态及银行核验渠道"], "b": ["说明审批人、材料和预计答复时间", "区分已获准与待批准安排并标记可疑账号变更"]},
+      "tags": ["付款安排", "书面审批", "账号核验"]
+    }
+  ]
+}

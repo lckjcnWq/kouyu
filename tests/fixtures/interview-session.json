@@ -1,0 +1,66 @@
+{
+  "id": "synthetic-interview-web3-broadcast-timeout",
+  "synthetic": true,
+  "created_at": "2026-11-11T11:00:00+08:00",
+  "domain": "business",
+  "topic": {"id": "int-web3-broadcast-timeout", "label": "广播超时后恢复付款（synthetic 测试）"},
+  "scenario": {"id": "int-web3-broadcast-timeout", "category_id": "hiring", "category_label": "招聘面试与入职"},
+  "duration_minutes": 20,
+  "level": "beginner",
+  "hint_mode": "guided",
+  "roles": {"learner": "Backend candidate", "coach": "Technical interviewer"},
+  "mission": "Synthetic / 虚构自动测试记录，不代表真实学习者表现：说明广播超时的恢复边界。",
+  "targets": [
+    {"expression": "A timeout tells us the result is unknown.", "status": "developing", "support": "keyword_hint", "evidence": "Synthetic learner utterance: A timeout means unknown, not failed."},
+    {"expression": "I would preserve the reservation until ...", "status": "not_observed", "support": "none"}
+  ],
+  "focus_next": ["独立说明不确定结果", "说明状态权威和重试身份"],
+  "next_drill": "Synthetic 迁移任务：换一个超时窗口，独立说明需要保留的证据。",
+  "pronunciation": {"status": "not_observed", "notes": []},
+  "business": {
+    "context": "Synthetic / 虚构面试：约定托管提款服务使用 Ethereum L1；仅用于测试。",
+    "outcome": {"status": "partial", "summary": "Synthetic：说明了不确定性，尚需自主组织完整解释。"},
+    "feedback": [
+      {"dimension": "clarity", "observation": "Synthetic：英语中区分了 unknown 与 failed。", "evidence": "Synthetic learner utterance: A timeout means unknown, not failed.", "suggestion": "独立用两句英语说明不确定性与下一步。"}
+    ]
+  },
+  "interview": {
+    "track": {"id": "web3", "label": "Web3 后端"},
+    "role": "candidate",
+    "depth": "implementation",
+    "pressure": "moderate",
+    "question_ids": ["broadcast-anchor", "broadcast-unknown", "broadcast-retry"],
+    "observations": [
+      {
+        "concept_id": "timeout-semantics",
+        "label": "超时语义",
+        "question_id": "broadcast-anchor",
+        "status": "met",
+        "language_support": "keyword",
+        "technical_support": "none",
+        "evidence": "Synthetic learner utterance: A timeout means unknown, not failed.",
+        "observation": "Synthetic：在约定架构下区分了缺少确认与执行失败；英语用了关键词提示。",
+        "suggestion": "Synthetic：换一个失败窗口，在无语言提示下解释保留义务。"
+      },
+      {
+        "concept_id": "state-authority",
+        "label": "状态权威",
+        "question_id": "broadcast-retry",
+        "status": "partial",
+        "language_support": "none",
+        "technical_support": "probe",
+        "evidence": "Synthetic evidence summary: after a directed recovery question, the learner named the stored attempt but did not identify the commit boundary.",
+        "observation": "Synthetic：定向追问后指出持久化尝试，未独立解释广播前的提交边界。",
+        "suggestion": "Synthetic：独立走一遍提交前后崩溃的恢复路径。"
+      },
+      {
+        "concept_id": "finality",
+        "label": "最终性",
+        "question_id": "broadcast-anchor",
+        "status": "not_observed",
+        "language_support": "none",
+        "technical_support": "none"
+      }
+    ]
+  }
+}

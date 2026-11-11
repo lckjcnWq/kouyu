@@ -1,0 +1,114 @@
+{
+  "id": "presentations",
+  "label": "工作汇报与商务演讲",
+  "scenes": [
+    {
+      "id": "biz-presentations-01",
+      "label": "简洁汇报日常进度",
+      "context": "模拟内容迁移项目开10分钟晨会，计划本周迁移40篇文章，成员需报告昨日进展和今日安排。",
+      "roles": {
+        "a": {"label": "内容专员", "label_en": "Content Specialist", "objective": "区分完成、进行中和阻碍，提出明确支持请求", "private_information": ["已迁移12篇，但其中3篇的图片说明未完成复核"], "constraints": ["不能将未复核内容计为最终完成"]},
+        "b": {"label": "项目协调员", "label_en": "Project Coordinator", "objective": "了解真实进度并安排当天可提供的支持", "private_information": ["审核同事今天只有14点至15点可帮忙"], "constraints": ["不能替审核同事承诺额外时段"]}
+      },
+      "stages": ["用一句话概括状态", "报告完成与剩余数量", "说明当日计划和阻碍", "确认支持请求及下一检查点"],
+      "complications": ["共享看板仍显示旧数量", "一篇已迁移文章被发现链接失效"],
+      "targets": [
+        {"expression": "Here's a quick update on the migration.", "meaning_zh": "我简要汇报一下迁移进展。", "function": "开启进度汇报"},
+        {"expression": "Twelve articles are moved, but three still need review.", "meaning_zh": "十二篇已迁移，但三篇还需复核。", "function": "区分进度状态"},
+        {"expression": "I need help with the final check.", "meaning_zh": "我需要协助做最后检查。", "function": "提出支持请求"}
+      ],
+      "success_criteria": {"a": ["按同一完成口径报出数量和未结项", "说清今日动作及需要谁何时支持"], "b": ["核对看板与口头状态差异", "明确支持安排并复述下一检查点"]},
+      "tags": ["日常汇报", "进度", "完成口径"]
+    },
+    {
+      "id": "biz-presentations-02",
+      "label": "向高管做两分钟短汇报",
+      "context": "模拟服务试点已运行两周，负责人有2分钟向运营高管报告，并申请下一阶段的测试时段。",
+      "roles": {
+        "a": {"label": "试点负责人", "label_en": "Pilot Lead", "objective": "结论先行，交代影响和一个明确决策请求", "private_information": ["试点减少了平均等待时间，但只覆盖工作日上午"], "constraints": ["不能把局部试点结果外推为全年收益保证"]},
+        "b": {"label": "运营高管", "label_en": "Operations Executive", "objective": "快速判断建议依据和风险，明确批准条件", "private_information": ["下周只能提供一个下午的额外测试窗口"], "constraints": ["只能批准测试时段，不能在本次会批准正式扩编"]}
+      },
+      "stages": ["给出核心结论", "用两项事实支撑", "说明局限与建议", "提出决策请求并确认回应"],
+      "complications": ["高管把汇报时间压缩到60秒", "高管要求区分已观察效果与预计效果"],
+      "targets": [
+        {"expression": "The key point is that the pilot is ready for a broader test.", "meaning_zh": "关键是试点已可扩大测试范围。", "function": "结论先行"},
+        {"expression": "The decision I need today is a test slot for next week.", "meaning_zh": "今天需要决定的是下周的测试时段。", "function": "明确决策请求"},
+        {"expression": "What is the main risk if we proceed?", "meaning_zh": "如果推进，主要风险是什么？", "function": "追问关键风险"}
+      ],
+      "success_criteria": {"a": ["在开头交代结论及请求", "区分证据与推测并说出主要局限"], "b": ["追问最影响决策的证据或风险", "说明批准范围、条件和补充信息期限"]},
+      "tags": ["高管汇报", "结论先行", "决策请求"]
+    },
+    {
+      "id": "biz-presentations-03",
+      "label": "解释指标变化与口径",
+      "context": "模拟报名服务月报显示完成率从40%升至48%，团队需在例会上解释变化及下一步分析。",
+      "roles": {
+        "a": {"label": "报告分析员", "label_en": "Reporting Analyst", "objective": "清楚说明变化幅度、比较口径和可能原因", "private_information": ["本月增加老用户邀请渠道，尚未拆分各渠道贡献"], "constraints": ["不能把8个百分点说成8%的相对增长，也不能断言单一原因"]},
+        "b": {"label": "业务听众", "label_en": "Business Stakeholder", "objective": "弄清数字含义并确定需要进一步验证的问题", "private_information": ["准备把汇报摘要发给门店，担心各店误当成自身成绩"], "constraints": ["不能未经核对把总体数字分配到各门店"]}
+      },
+      "stages": ["说明指标定义与期间", "比较变化幅度", "区分已知事实和解释假设", "约定拆分分析及摘要表述"],
+      "complications": ["听众把百分点误听为相对百分比", "发现两个期间的访问来源占比不同"],
+      "targets": [
+        {"expression": "That's an increase of eight percentage points.", "meaning_zh": "这提高了八个百分点。", "function": "准确描述变化"},
+        {"expression": "Are we comparing the same groups?", "meaning_zh": "我们比较的是相同群体吗？", "function": "核查可比性"},
+        {"expression": "We haven't isolated the cause yet.", "meaning_zh": "我们还没有单独确认原因。", "function": "说明因果局限"}
+      ],
+      "success_criteria": {"a": ["准确说出基期、现期和百分点变化", "说明样本结构影响及待做分析"], "b": ["追问指标定义或可比性", "复述可对外转述的结论及不能下的判断"]},
+      "tags": ["指标汇报", "百分点", "口径澄清"]
+    },
+    {
+      "id": "biz-presentations-04",
+      "label": "汇报坏消息与风险应对",
+      "context": "模拟客户培训原定周一开放报名，周四测试发现确认邮件偶发遗漏，项目需向业务赞助人汇报。",
+      "roles": {
+        "a": {"label": "实施负责人", "label_en": "Implementation Lead", "objective": "及时说明问题、影响边界和可选应对", "private_information": ["20次测试中有3次未收到邮件，人工确认流程已验证可用"], "constraints": ["不能保证修复时间，也不能在原因未明时归责个人"]},
+        "b": {"label": "业务赞助人", "label_en": "Business Sponsor", "objective": "了解对报名者的影响并决定临时安排", "private_information": ["宣传可延后24小时，但需今天16点前通知渠道"], "constraints": ["不能批准跳过必要验证，技术修复由技术负责人确认"]}
+      },
+      "stages": ["直接报告坏消息", "交代影响和已知范围", "比较延期与人工兜底", "确认决策人和下次更新"],
+      "complications": ["新增测试又发现一个不同的邮件模板问题", "听众要求给出目前无法证实的修复保证"],
+      "targets": [
+        {"expression": "I need to flag a risk to Monday's launch.", "meaning_zh": "我需要提醒周一上线存在风险。", "function": "主动预警"},
+        {"expression": "Here's what we know so far.", "meaning_zh": "目前我们掌握的情况如下。", "function": "界定已知事实"},
+        {"expression": "I can't confirm the fix time yet, but I'll update you at four.", "meaning_zh": "我还不能确认修复时间，但四点会更新。", "function": "管理不确定性"}
+      ],
+      "success_criteria": {"a": ["用测试事实说明风险且区分未知项", "提出应对选项、所需决定和更新时点"], "b": ["追问用户影响与兜底能力", "明确临时选择和待技术确认的条件"]},
+      "tags": ["坏消息", "风险汇报", "应对方案"]
+    },
+    {
+      "id": "biz-presentations-05",
+      "label": "正式介绍方案并请求评审",
+      "context": "模拟内部服务台拟试行预约制，提案人向评审代表做8分钟方案介绍，材料包含现状、两种选择和四周试点。",
+      "roles": {
+        "a": {"label": "方案主讲人", "label_en": "Proposal Presenter", "objective": "有结构地呈现推荐方案及评审请求", "private_information": ["试点可利用现有表单，但自动提醒需额外配置两天"], "constraints": ["不能把试点批准描述成全公司推广批准"]},
+        "b": {"label": "方案评审人", "label_en": "Proposal Reviewer", "objective": "核查使用者影响、实施成本和停止条件", "private_information": ["两个业务组有临时求助需求，预约不能成为唯一入口"], "constraints": ["只能给出评审建议，最终预算由指定负责人审批"]}
+      },
+      "stages": ["交代问题与方案结构", "比较两种做法", "讲清试点资源及效果衡量", "处理关键疑问并明确评审请求"],
+      "complications": ["评审人在背景部分就要求先听推荐结论", "听众询问是否会取消临时求助入口"],
+      "targets": [
+        {"expression": "I'll cover the problem, the options, and our recommendation.", "meaning_zh": "我会介绍问题、选项和我们的建议。", "function": "呈现演讲结构"},
+        {"expression": "Our recommendation is a four-week pilot.", "meaning_zh": "我们建议做四周试点。", "function": "提出正式推荐"},
+        {"expression": "What would trigger a pause in the pilot?", "meaning_zh": "什么情况会触发试点暂停？", "function": "检验停止条件"}
+      ],
+      "success_criteria": {"a": ["按问题、选项、建议连贯介绍", "明确资源、试点边界和所求评审意见"], "b": ["针对用户影响和退出条件提问", "区分自己的建议权限与最终审批流程"]},
+      "tags": ["方案演讲", "结构表达", "评审"]
+    },
+    {
+      "id": "biz-presentations-06",
+      "label": "应对演讲后的追问",
+      "context": "模拟培训项目汇报结束后进入5分钟问答，幻灯片只列了总体出席率和平均满意度。",
+      "roles": {
+        "a": {"label": "汇报主讲人", "label_en": "Lead Presenter", "objective": "听清问题，回答能确认的部分并安排未知项跟进", "private_information": ["分部门数据尚未核对，匿名意见可以当天整理"], "constraints": ["不能即兴编造数字或披露匿名反馈者身份"]},
+        "b": {"label": "业务提问人", "label_en": "Business Questioner", "objective": "澄清数据能否支撑下一轮培训选择", "private_information": ["自己部门夜班员工参与少，担心总体平均掩盖差异"], "constraints": ["不能要求公开个人出席或匿名问卷身份"]}
+      },
+      "stages": ["完整听取并复述问题", "区分已有答案与待核实部分", "回应追问并确认关注点", "记录补充材料和答复时间"],
+      "complications": ["一个问题同时包含覆盖率、成本和满意度", "提问人把暂未分析误解为没有收集数据"],
+      "targets": [
+        {"expression": "Are you asking about attendance or satisfaction?", "meaning_zh": "你问的是出席率还是满意度？", "function": "澄清追问"},
+        {"expression": "I don't have that breakdown with me.", "meaning_zh": "我手头没有那项细分数据。", "function": "坦诚说明信息缺口"},
+        {"expression": "I'll verify the figures and follow up tomorrow.", "meaning_zh": "我会核实数字，明天补充答复。", "function": "承诺核实跟进"}
+      ],
+      "success_criteria": {"a": ["复述并拆分复合问题", "不编造未知答案并确认跟进内容与期限"], "b": ["说清问题背后的决策用途", "核对已回答和仍待补充的部分"]},
+      "tags": ["问答", "追问", "未知问题处理"]
+    }
+  ]
+}

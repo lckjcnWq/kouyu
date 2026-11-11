@@ -1,0 +1,114 @@
+{
+  "id": "technical",
+  "label": "产品研发与技术协作",
+  "scenes": [
+    {
+      "id": "biz-technical-01",
+      "label": "把用户反馈转成可核查问题",
+      "context": "模拟预约应用收到5条“确认按钮不好用”的反馈，产品与支持团队需整理问题交给研发验证。",
+      "roles": {
+        "a": {"label": "产品经理", "label_en": "Product Manager", "objective": "区分用户原话、操作事实和解决方案猜测", "private_information": ["新版改过按钮位置，但尚无证据表明这是故障原因"], "constraints": ["不能仅凭描述宣布原因或承诺修复日期"]},
+        "b": {"label": "支持专员", "label_en": "Support Specialist", "objective": "提供匿名操作证据并澄清用户实际受阻环节", "private_information": ["其中3条来自小屏设备，另2条是在网络中断后提交"], "constraints": ["未经授权不能转发完整录屏或用户账号资料"]}
+      },
+      "stages": ["复述用户想完成的任务", "核查设备、步骤和出现频率", "拆分可能不同的问题", "确定脱敏证据和验证责任人"],
+      "complications": ["录屏没有拍到按钮点击前的状态", "一条反馈实际来自仍未更新的旧版本"],
+      "targets": [
+        {"expression": "What was the user trying to do?", "meaning_zh": "用户当时想完成什么操作？", "function": "还原使用目标"},
+        {"expression": "Can we reproduce this on the same device?", "meaning_zh": "能在同类设备上复现吗？", "function": "安排问题验证"},
+        {"expression": "Let's separate the feedback from our assumptions.", "meaning_zh": "把用户反馈和我们的假设分开吧。", "function": "区分事实与推测"}
+      ],
+      "success_criteria": {"a": ["明确问题表现而非直接指定修复方案", "列出待验证假设和验证负责人"], "b": ["按版本、设备和步骤提供匿名信息", "说明证据缺口并确认安全补充方式"]},
+      "tags": ["用户反馈", "问题复现", "事实澄清"]
+    },
+    {
+      "id": "biz-technical-02",
+      "label": "讨论技术可行性与验证范围",
+      "context": "模拟外勤记录工具希望增加离线填写和恢复联网后同步，业务方希望四周后在一个站点试用。",
+      "roles": {
+        "a": {"label": "产品负责人", "label_en": "Product Owner", "objective": "说明真实场景并与研发定义最小可行试验", "private_information": ["外勤只需离线保存文字和数量，照片可稍后上传"], "constraints": ["不能要求设备保存不必要的个人敏感资料"]},
+        "b": {"label": "技术负责人", "label_en": "Technical Lead", "objective": "解释可行部分、未知风险和探索验证计划", "private_information": ["本地保存已有组件，但多人修改同一记录的冲突策略未验证"], "constraints": ["完成验证前不能给出完整上线工期保证"]}
+      },
+      "stages": ["澄清离线使用任务", "拆分已有能力和未知点", "讨论数据冲突与安全边界", "约定技术探索产物和决策时间"],
+      "complications": ["现场设备存储空间较小", "业务方补充同一记录可能由两人先后编辑"],
+      "targets": [
+        {"expression": "Which parts need to work offline?", "meaning_zh": "哪些部分必须离线可用？", "function": "细化需求"},
+        {"expression": "We need a short technical investigation first.", "meaning_zh": "我们需要先做一次简短的技术验证。", "function": "提出可行性验证"},
+        {"expression": "What happens if two people edit the same record?", "meaning_zh": "两个人修改同一条记录时会怎样？", "function": "识别边界情况"}
+      ],
+      "success_criteria": {"a": ["区分离线必需项和可延后内容", "确认试用范围及可接受的冲突处理体验"], "b": ["用非术语语言解释未知风险", "提出验证时间、输出和估算更新点"]},
+      "tags": ["技术可行性", "离线同步", "探索验证"]
+    },
+    {
+      "id": "biz-technical-03",
+      "label": "在有限容量下排序需求",
+      "context": "模拟服务门户下一迭代只能做两项工作，候选为搜索改进、管理员导出和登录错误修复。",
+      "roles": {
+        "a": {"label": "需求优先级负责人", "label_en": "Product Prioritization Lead", "objective": "按用户影响和证据排序而非按请求音量排序", "private_information": ["导出需求只来自两个管理员，搜索问题影响更多新用户"], "constraints": ["不能在未评估影响时自动压过已确认的重要故障"]},
+        "b": {"label": "工程计划负责人", "label_en": "Engineering Planning Lead", "objective": "说明工作量、风险和容量，支持可执行排序", "private_information": ["登录错误在旧设备上阻断操作，已有临时规避办法"], "constraints": ["本迭代最多投入8人日，不能暗中挤占维护时间"]}
+      },
+      "stages": ["核对每项用户影响", "补充工作量和临时办法", "按共同标准排序", "记录延期项及重排条件"],
+      "complications": ["销售临时要求将导出标成紧急", "搜索改进估算从3人日升到6人日"],
+      "targets": [
+        {"expression": "How many users does this affect?", "meaning_zh": "这会影响多少用户？", "function": "核查影响范围"},
+        {"expression": "What are we deferring if we prioritize this?", "meaning_zh": "如果优先做这项，哪项要后移？", "function": "显式说明代价"},
+        {"expression": "Let's rank these using the same criteria.", "meaning_zh": "我们用同一套标准给这些需求排序。", "function": "统一优先级标准"}
+      ],
+      "success_criteria": {"a": ["用影响证据解释排序而非职位压力", "说明延期项及触发重排的变化"], "b": ["公开估算与容量限制", "说明故障规避办法及其不能覆盖的用户"]},
+      "tags": ["需求优先级", "容量", "用户影响"]
+    },
+    {
+      "id": "biz-technical-04",
+      "label": "解释技术取舍对业务的影响",
+      "context": "模拟库存仪表盘需要显示门店数量，团队在实时查询与每15分钟更新的缓存之间做选择。",
+      "roles": {
+        "a": {"label": "系统设计师", "label_en": "Systems Designer", "objective": "以延迟、稳定性和维护成本解释方案差异", "private_information": ["实时查询在高峰测试中响应超过5秒，缓存方案约1秒"], "constraints": ["不能把测试结果保证为所有生产时段的表现"]},
+        "b": {"label": "运营产品经理", "label_en": "Operations Product Manager", "objective": "确认数据新鲜度是否满足任务并定义提示和例外", "private_information": ["日常盘点可接受15分钟延迟，但紧急调拨需核对最新数量"], "constraints": ["不能让用户把延迟数据当成已锁定的可用库存"]}
+      },
+      "stages": ["明确用户如何使用数量", "比较速度、新鲜度和成本", "设计更新时间提示及核对路径", "确认选择和后续监测"],
+      "complications": ["缓存更新时间偶尔比计划晚5分钟", "业务方希望加入手动刷新但未估算负载"],
+      "targets": [
+        {"expression": "The trade-off is speed versus freshness.", "meaning_zh": "这里的取舍是速度与数据新鲜度。", "function": "解释技术权衡"},
+        {"expression": "How much delay can users tolerate?", "meaning_zh": "用户能接受多长延迟？", "function": "确认业务容忍度"},
+        {"expression": "We should show when the data was last updated.", "meaning_zh": "我们应该显示数据的最近更新时间。", "function": "提出透明提示"}
+      ],
+      "success_criteria": {"a": ["把技术差异转换为用户可理解的影响", "说明测试局限和异常监测办法"], "b": ["区分日常与紧急场景的数据要求", "确认界面提示及紧急核对路径"]},
+      "tags": ["技术取舍", "缓存", "数据时效"]
+    },
+    {
+      "id": "biz-technical-05",
+      "label": "在发布前提出暂缓建议",
+      "context": "模拟报表服务计划今晚更新，发布检查发现部分权限测试未完成，发布协调人与质量负责人需决定下一步。",
+      "roles": {
+        "a": {"label": "质量负责人", "label_en": "Quality Lead", "objective": "清楚说明未满足的发布条件并提出复查标准", "private_information": ["8个权限组合中有2个未测试，涉及跨门店查看限制"], "constraints": ["不能把未测试说成已发生数据泄露，也不能代发布负责人批准上线"]},
+        "b": {"label": "发布协调人", "label_en": "Release Coordinator", "objective": "评估暂缓影响，协调有权限的人做发布决定", "private_information": ["通知窗口可移至明晚，但需今天18点前通知支持团队"], "constraints": ["不能为赶时间省略权限验证，最终决定由当班发布负责人作出"]}
+      },
+      "stages": ["列出未满足的检查项", "说明风险与影响的不确定性", "比较暂缓和缩小发布范围", "确认决策人、补测与通知安排"],
+      "complications": ["有人建议以旧测试结果代替本次验证", "备用测试人员临时无法参加"],
+      "targets": [
+        {"expression": "I recommend holding the release until these checks pass.", "meaning_zh": "我建议等这些检查通过后再发布。", "function": "提出暂缓建议"},
+        {"expression": "Which release criteria are still unmet?", "meaning_zh": "还有哪些发布条件未满足？", "function": "核查发布门槛"},
+        {"expression": "Who needs to approve the revised release plan?", "meaning_zh": "调整后的发布计划需要谁批准？", "function": "确认决策权限"}
+      ],
+      "success_criteria": {"a": ["指出具体缺项且不夸大已知事实", "给出补测范围和可复查的通过条件"], "b": ["明确可选窗口与通知影响", "落实最终决策人、补测责任和发布时间更新"]},
+      "tags": ["发布暂缓", "质量门槛", "发布决策"]
+    },
+    {
+      "id": "biz-technical-06",
+      "label": "上线异常中的协作修复",
+      "context": "模拟工单服务更新后出现提交失败，监测显示错误率从1%升至9%，值班团队已开启事件沟通。",
+      "roles": {
+        "a": {"label": "值班工程师", "label_en": "On-call Engineer", "objective": "报告已知影响并协调止损、验证和技术更新", "private_information": ["回退包已准备，但还需确认新旧数据格式兼容"], "constraints": ["未获事件负责人确认不能擅自执行高影响回退"]},
+        "b": {"label": "事件协调人", "label_en": "Incident Coordinator", "objective": "协调责任分工并向支持团队传递准确状态", "private_information": ["支持收到的投诉集中在附件较大的提交，尚未全部核实"], "constraints": ["不能宣布根因或恢复完成，须依据验证结果更新"]}
+      },
+      "stages": ["确认影响范围与事件时间", "区分观察、假设和待核查项", "分配止损与验证动作", "约定状态更新和恢复判据"],
+      "complications": ["错误率下降但仍有一类请求失败", "外部听众要求立刻承诺完全恢复时间"],
+      "targets": [
+        {"expression": "The issue appears to affect submissions with large attachments.", "meaning_zh": "问题似乎影响带大附件的提交。", "function": "谨慎说明影响"},
+        {"expression": "Let's stabilize the service before investigating further.", "meaning_zh": "先稳定服务，再深入排查。", "function": "确定处置优先级"},
+        {"expression": "What evidence will confirm that service is restored?", "meaning_zh": "什么证据能确认服务已恢复？", "function": "定义恢复验证"}
+      ],
+      "success_criteria": {"a": ["区分技术观察与根因假设", "说明操作风险、所需授权和验证结果"], "b": ["确认处置负责人及更新频率", "依据监测和实际测试表述恢复状态而非保证"]},
+      "tags": ["上线异常", "事件协作", "恢复验证"]
+    }
+  ]
+}

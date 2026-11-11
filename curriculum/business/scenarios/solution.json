@@ -1,0 +1,114 @@
+{
+  "id": "solution",
+  "label": "解决方案与价值论证",
+  "scenes": [
+    {
+      "id": "biz-solution-01",
+      "label": "需求方案",
+      "context": "模拟方案讨论中，一家有4个分部的维修服务商希望统一客户报修入口并保留当地派工。A提交首期方案草稿，B负责运营评估，双方用30分钟检查方案是否覆盖已确认需求。",
+      "roles": {
+        "a": {"label": "解决方案顾问", "label_en": "Solutions Consultant", "objective": "把每个方案模块对应到具体需求，确认范围缺口和需要客户配合的任务。", "private_information": ["草稿保留各分部独立派工，但统一了工单编号；历史数据整理尚未计入首期。"], "constraints": ["不能把未纳入的工作说成默认包含；接口工作需另行技术评估。"]},
+        "b": {"label": "服务运营经理", "label_en": "Service Operations Manager", "objective": "核实统一入口不会取消分部自主派工，并让遗漏的日常任务进入讨论。", "private_information": ["两个分部需要电话代录报修，不能只依赖客户自助填表。"], "constraints": ["不能承诺所有分部统一人员配置；历史数据是否迁移需征求档案负责人意见。"]}
+      },
+      "stages": ["重述统一入口与分部派工两项目标", "逐项解释需求对应的模块和人员动作", "用一笔电话报修检验覆盖情况", "确认首期范围、缺口和后续评估负责人"],
+      "complications": ["B发现方案图只画了在线入口，需要补充电话代录路径。", "管理层临时询问历史五年工单迁移，双方需单独界定新增范围。"],
+      "targets": [
+        {"expression": "This part addresses your need for a single intake point.", "meaning_zh": "这一部分对应你们统一报修入口的需求。", "function": "连接需求与方案"},
+        {"expression": "How would a phone request enter this process?", "meaning_zh": "电话报修会如何进入这个流程？", "function": "用实际任务检查覆盖"},
+        {"expression": "Let's separate the initial scope from the additional work.", "meaning_zh": "我们把首期范围和新增工作分开。", "function": "澄清方案边界"}
+      ],
+      "success_criteria": {"a": ["将至少两个方案部分对应到已确认需求。", "说明未包含工作，记录缺口和评估责任人。"], "b": ["用一个实际业务任务检验方案。", "说明必须保留的流程，并区分自己可确认与需他人确认的范围。"]},
+      "tags": ["需求映射", "方案范围", "业务流程"]
+    },
+    {
+      "id": "biz-solution-02",
+      "label": "预期收益",
+      "context": "模拟价值讨论使用训练数字：某运营团队每周制作40份状态汇总，当前每份平均用时15分钟。A提出自动汇总方案，B希望先核实节省时间的计算方式，不讨论投资建议。",
+      "roles": {
+        "a": {"label": "业务价值顾问", "label_en": "Business Value Consultant", "objective": "用透明计算解释潜在时间节省，明确输入假设、保留工作和验证方法。", "private_information": ["测试样本中整理可缩短到每份5分钟，但人工复核仍需要，结果未经该团队实测。"], "constraints": ["不能把样本结果保证为客户收益，也不能把节省工时等同于裁员或现金回报。"]},
+        "b": {"label": "运营分析主管", "label_en": "Operations Analysis Manager", "objective": "检查计算是否遗漏复核时间，确定哪些潜在收益可以通过试点验证。", "private_information": ["40份中有10份格式特殊，可能仍需原有操作；你愿意提供匿名计时记录。"], "constraints": ["不能确认人员成本节约；只能就时间和工作量提出验证意见。"]}
+      },
+      "stages": ["核对当前工作量和平均用时口径", "展示带假设的前后用时计算", "加入复核和特殊格式的影响", "商定试点样本、计时方式和结果呈现"],
+      "complications": ["B指出当前15分钟已含复核，而测试5分钟不含，需要统一口径。", "业务量下个月可能下降，双方需把单位收益与总量收益分开。"],
+      "targets": [
+        {"expression": "This estimate assumes the format stays consistent.", "meaning_zh": "这个估算假设格式保持一致。", "function": "公开收益假设"},
+        {"expression": "Does that include the time needed for review?", "meaning_zh": "这是否包含复核所需时间？", "function": "核对计算口径"},
+        {"expression": "Let's test the time saving before treating it as a result.", "meaning_zh": "先验证节省时间，再把它作为结果。", "function": "区分预期与已证实收益"}
+      ],
+      "success_criteria": {"a": ["解释收益计算的输入、假设和剩余人工工作。", "接受口径修正，并提出不保证结果的验证办法。"], "b": ["指出至少一个影响估算的条件。", "要求一致的计时口径，并确认可提供的验证证据。"]},
+      "tags": ["预期收益", "时间估算", "假设验证"]
+    },
+    {
+      "id": "biz-solution-03",
+      "label": "假设与限制",
+      "context": "模拟方案评审中，A提出在6周内部署门店补货看板。公开方案依赖门店数据和每周一次业务确认，B负责协调8家门店，双方需要把前提条件写清。",
+      "roles": {
+        "a": {"label": "交付方案负责人", "label_en": "Delivery Solution Lead", "objective": "说明排期依赖哪些输入与参与，区分可控任务、客户依赖和已知限制。", "private_information": ["6周排期以第二周前收到统一商品编码为前提，当前方案不含门店网络改造。"], "constraints": ["不能保证客户输入延误时仍按原日期完成，也不能替技术团队批准额外网络工作。"]},
+        "b": {"label": "门店项目协调人", "label_en": "Store Project Coordinator", "objective": "核对门店能否满足前提，提前暴露不确定依赖并协商处理方式。", "private_information": ["两家门店仍使用旧编码，最快第三周才能完成映射；区域主管只能隔周参会。"], "constraints": ["不能抽调门店员工全职投入；编码变更需要商品负责人确认。"]}
+      },
+      "stages": ["按输入、人员和环境列出前提", "逐项询问B的准备状态", "解释未满足前提对范围或时间的影响", "记录待确认条件、负责人和重估节点"],
+      "complications": ["B发现周会安排与区域主管时间冲突，需要替代确认机制。", "试点门店网络不稳定，需要区分现有方案和额外环境整改。"],
+      "targets": [
+        {"expression": "The timeline depends on receiving a clean item list by week two.", "meaning_zh": "排期取决于第二周前收到整理好的商品清单。", "function": "明确进度前提"},
+        {"expression": "Which of these conditions can you confirm today?", "meaning_zh": "这些条件中，哪些今天可以确认？", "function": "核验客户依赖"},
+        {"expression": "If that input is late, we'll need to review the schedule.", "meaning_zh": "如果这项输入延迟，我们需要重新评估排期。", "function": "说明条件变化的影响"}
+      ],
+      "success_criteria": {"a": ["说明至少两项前提和一项范围限制。", "用条件式表达影响，并为未确认依赖指定核实动作。"], "b": ["如实指出至少一项不能按时满足的前提。", "提出替代安排，并说明需要哪一角色参与确认。"]},
+      "tags": ["前提条件", "项目限制", "依赖管理"]
+    },
+    {
+      "id": "biz-solution-04",
+      "label": "比较实施路径",
+      "context": "模拟实施选择会中，A为一家有6个服务点的企业提供两条路径：先在1个点试行4周，或6个点同时准备后统一上线。B需要理解路径的资源、学习机会和切换风险。",
+      "roles": {
+        "a": {"label": "实施顾问", "label_en": "Implementation Consultant", "objective": "公平比较两条路径的取舍，基于客户资源提出条件明确的建议。", "private_information": ["统一上线需要每个点各指定一名联络人；先试点可以复用培训材料，但不能证明其他点完全相同。"], "constraints": ["不能只因自己排期方便就推荐路径；额外服务费用需另行报价。"]},
+        "b": {"label": "区域服务总协调人", "label_en": "Regional Service Coordinator", "objective": "选出团队可执行的路径，并明确选择成立所需的人员和检查点。", "private_information": ["目前只有两个点能安排联络人；管理层希望同一天对外宣布新流程，但未要求同一天切换。"], "constraints": ["不能增加临时人员预算；涉及各点排班需分别确认。"]}
+      },
+      "stages": ["确认客户最重视的时间和资源限制", "按相同维度比较两条路径", "区分对外宣布与实际切换安排", "提出附带前提的选择和阶段检查点"],
+      "complications": ["B把先试点理解为其他点要完全等待，需要说明可并行的准备工作。", "一个服务点进入旺季，双方需重新检查统一切换的可行性。"],
+      "targets": [
+        {"expression": "A pilot gives us room to learn before a wider rollout.", "meaning_zh": "试点让我们能在扩大上线前先积累经验。", "function": "解释分阶段路径"},
+        {"expression": "What extra coordination would a single launch require?", "meaning_zh": "一次统一上线需要增加哪些协调工作？", "function": "比较资源要求"},
+        {"expression": "My recommendation depends on having a contact at each site.", "meaning_zh": "我的建议以每个地点都有联络人为前提。", "function": "给出有条件的建议"}
+      ],
+      "success_criteria": {"a": ["用至少两个相同维度比较路径，不只强调速度。", "说明推荐的条件和检查点，不保证试点覆盖所有差异。"], "b": ["说明可用人员及真正的时间要求。", "对推荐提出资源或切换问题，并确认选择前仍需核实的内容。"]},
+      "tags": ["实施路径", "试点", "方案取舍"]
+    },
+    {
+      "id": "biz-solution-05",
+      "label": "解释改变现状价值",
+      "context": "模拟流程改进讨论中，B所在的10人采购团队长期通过邮件审批小额申请。A提出统一申请入口，B认为当前方式虽然繁琐但还能用，双方需要讨论是否值得改变而非默认必须购买。",
+      "roles": {
+        "a": {"label": "流程改进顾问", "label_en": "Process Improvement Advisor", "objective": "将维持现状与改变流程的工作代价都摆出来，确认何种价值值得做小范围试验。", "private_information": ["新入口能集中记录，但第一周需要每人约30分钟学习，不能消除所有审批等待。"], "constraints": ["不能用未经证实的损失吓唬客户；必须承认不改变也可能是合理选择。"]},
+        "b": {"label": "采购团队负责人", "label_en": "Purchasing Team Lead", "objective": "判断改变是否解决真正麻烦，同时保护团队免于为小收益承担过大切换负担。", "private_information": ["最烦人的不是审批慢，而是休假交接时找不到完整邮件链；团队本月正忙于盘点。"], "constraints": ["本月不能全员切换；不会仅凭产品功能表推动新流程。"]}
+      },
+      "stages": ["让B描述保留现状的好处和麻烦", "讨论改变能解决及不能解决的部分", "把培训和切换成本纳入比较", "设定值得尝试的条件或明确暂不改变"],
+      "complications": ["B认为所谓效率提升只是把工作转给申请人，需比较各角色工作量。", "盘点任务临时延长，双方需要讨论推迟或缩小试验。"],
+      "targets": [
+        {"expression": "What works well about the current approach?", "meaning_zh": "当前做法有哪些好用的地方？", "function": "承认现状价值"},
+        {"expression": "The benefit would be easier handovers, not faster approvals.", "meaning_zh": "收益会是交接更容易，而不是审批更快。", "function": "纠正价值论证方向"},
+        {"expression": "What improvement would make the change worthwhile?", "meaning_zh": "达到什么改进程度，这次改变才值得？", "function": "确认改变门槛"}
+      ],
+      "success_criteria": {"a": ["询问现状的好处与代价，避免单方面贬低旧方式。", "说明改变负担，并提出小试验或暂缓的判断条件。"], "b": ["解释真正需要改善的任务。", "说明切换限制，并给出值得试验或不改变的理由。"]},
+      "tags": ["改变现状", "切换成本", "价值判断"]
+    },
+    {
+      "id": "biz-solution-06",
+      "label": "验证关键问题解决",
+      "context": "模拟方案验证会中，A与B回顾为期两周的样品借用管理试点。已知共有20笔虚构借用记录，其中18笔按流程归还，2笔仍待核对。目标是验证能否看清借用责任人，不以是否成交作为结论。",
+      "roles": {
+        "a": {"label": "试点方案负责人", "label_en": "Pilot Solutions Lead", "objective": "对照最初问题检查证据，区分正常样本与例外，提出尚需补充的验证。", "private_information": ["两笔待核对记录都来自临时访客借用，当前字段没有强制记录内部担保人。"], "constraints": ["不能用18笔成功掩盖例外，也不能宣布所有借用场景都已解决。"]},
+        "b": {"label": "样品室主管", "label_en": "Sample Room Supervisor", "objective": "判断普通员工和临时访客两类借用是否都能追责，给出有依据的试点评价。", "private_information": ["临时访客借用每月大约占四分之一；对你而言它不是可以忽略的小概率情况。"], "constraints": ["只能确认已检查的样本；没有权限批准全面部署。"]}
+      },
+      "stages": ["重述要解决的责任追踪问题", "按普通与例外记录核查证据", "讨论未解决场景的实际重要性", "确认已验证结论、剩余缺口和下一轮测试"],
+      "complications": ["团队成员建议只展示18笔正常记录，双方需坚持保留完整范围。", "B提出周末借用尚未覆盖，需要决定是否加入补充样本。"],
+      "targets": [
+        {"expression": "Does this evidence show that the original problem is resolved?", "meaning_zh": "这些证据能说明最初的问题已解决吗？", "function": "回到问题验证"},
+        {"expression": "The result holds for staff loans, but visitors remain untested.", "meaning_zh": "这一结果适用于员工借用，但访客场景仍未验证。", "function": "限定验证结论"},
+        {"expression": "What would we need to test before expanding?", "meaning_zh": "扩大使用前还需要测试什么？", "function": "确定补充验证"}
+      ],
+      "success_criteria": {"a": ["将结果对照最初问题，并单独呈现未解决样本。", "限定结论范围，给出下一轮测试任务及反馈方式。"], "b": ["解释例外场景的重要性。", "基于证据区分已解决和未解决问题，不把试点评价等同于采购批准。"]},
+      "tags": ["方案验证", "试点复盘", "成功证据"]
+    }
+  ]
+}

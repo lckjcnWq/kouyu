@@ -1,0 +1,114 @@
+{
+  "id": "meetings",
+  "label": "会议组织与主持",
+  "scenes": [
+    {
+      "id": "biz-meetings-01",
+      "label": "协调会议时间与时区",
+      "context": "模拟设计团队需安排30分钟评审，参会者分处UTC+8与UTC-5，周四前须发出邀请。",
+      "roles": {
+        "a": {"label": "会议协调员", "label_en": "Meeting Coordinator", "objective": "找到双方可参加的时段并明确日期与时区", "private_information": ["UTC+8周三20点后已有另一场会议"], "constraints": ["不能替其他参会者承诺出席"]},
+        "b": {"label": "异地设计师", "label_en": "Remote Designer", "objective": "保留必要休息并确保关键评审意见被听到", "private_information": ["UTC-5周四7点可参加，但只能待20分钟"], "constraints": ["不能连续两天参加清晨会议"]}
+      },
+      "stages": ["确认双方本地时区", "比较两个候选时段", "处理出席时长限制", "复述邀请时间与参会方式"],
+      "complications": ["新增同事只能参加后半段", "日历显示的日期与口头日期不一致"],
+      "targets": [
+        {"expression": "What time zone are you in?", "meaning_zh": "你在哪个时区？", "function": "确认时区"},
+        {"expression": "Would Thursday at 7 a.m. your time work?", "meaning_zh": "你那边周四早上七点方便吗？", "function": "提出时段"},
+        {"expression": "Let's put both time zones in the invite.", "meaning_zh": "邀请里写上两个时区吧。", "function": "消除时间歧义"}
+      ],
+      "success_criteria": {"a": ["报出含日期和时区的候选时间", "复述出席时长并确认邀请责任人"], "b": ["说明不可用时段并给出替代", "核对本地日期及关键议题安排"]},
+      "tags": ["时区", "排期", "远程会议"]
+    },
+    {
+      "id": "biz-meetings-02",
+      "label": "对齐议程与会议目标",
+      "context": "模拟服务团队拟开45分钟流程会，邀请草稿列有退款、排班和工具更新三个议题。",
+      "roles": {
+        "a": {"label": "会议发起人", "label_en": "Meeting Organizer", "objective": "把议程缩成有产出的讨论并分配时间", "private_information": ["退款负责人当天只能参加前15分钟"], "constraints": ["会议不能延长，也不能现场批准新工具采购"]},
+        "b": {"label": "运营代表", "label_en": "Operations Representative", "objective": "确保排班问题得到决定而非仅通报", "private_information": ["下周排班若周五未定，两名同事将重复值班"], "constraints": ["只能代表运营确认排班，不能决定退款规则"]}
+      },
+      "stages": ["区分通报与决策议题", "说明各议题预期产出", "调整顺序与时长", "确认预读材料和负责人"],
+      "complications": ["有人临时加入第四个议题", "退款数据尚未整理完，只能提供概要"],
+      "targets": [
+        {"expression": "What do we need to decide today?", "meaning_zh": "今天需要做出什么决定？", "function": "明确目标"},
+        {"expression": "Could we move this item to the top?", "meaning_zh": "能把这个议题放到最前吗？", "function": "调整顺序"},
+        {"expression": "Let's handle the update by email.", "meaning_zh": "这项通报通过邮件处理吧。", "function": "精简议程"}
+      ],
+      "success_criteria": {"a": ["为每个保留议题说出产出与时长", "明确哪些内容转为异步及由谁发送"], "b": ["解释排班议题的时间压力", "核对决策所需人员与材料是否齐备"]},
+      "tags": ["议程", "会议目标", "预读"]
+    },
+    {
+      "id": "biz-meetings-03",
+      "label": "开场说明目标与讨论规则",
+      "context": "模拟包装试点首次评审有8人参加，会议25分钟，屏幕将展示两个包装版本。",
+      "roles": {
+        "a": {"label": "会议主持人", "label_en": "Meeting Chair", "objective": "清楚开场，让与会者理解目标和发言方式", "private_information": ["决策人会晚到8分钟，开头只能收集意见"], "constraints": ["不能将初步偏好宣布为最终批准"]},
+        "b": {"label": "首次参会者", "label_en": "First-time Participant", "objective": "弄清评价标准和自身职责后有效参与", "private_information": ["只看过版本一，尚未收到版本二的材料"], "constraints": ["没有成本审批权限，只能提供使用反馈"]}
+      },
+      "stages": ["介绍人员与会议目的", "说明产出和时间安排", "核查材料可见性", "确认发言及记录规则"],
+      "complications": ["共享屏幕上的版本号与议程不符", "参会者误以为本次会直接批准量产"],
+      "targets": [
+        {"expression": "The aim today is to compare the two options.", "meaning_zh": "今天的目标是比较两个方案。", "function": "说明会议目的"},
+        {"expression": "Before we start, can everyone see the slides?", "meaning_zh": "开始前，大家都能看到幻灯片吗？", "function": "核查准备情况"},
+        {"expression": "Could you clarify what you need from me?", "meaning_zh": "能说明希望我提供什么吗？", "function": "确认参与职责"}
+      ],
+      "success_criteria": {"a": ["说明本次能决定和不能决定的事项", "交代流程并邀请确认理解"], "b": ["指出材料缺口并请求补齐", "复述评价任务和反馈方式"]},
+      "tags": ["会议开场", "参与规则", "目标对齐"]
+    },
+    {
+      "id": "biz-meetings-04",
+      "label": "邀请不同成员发言",
+      "context": "模拟仓库流程评审进行到第10分钟，已有两人多次发言，一线代表尚未表达意见。",
+      "roles": {
+        "a": {"label": "讨论主持人", "label_en": "Discussion Facilitator", "objective": "让一线经验进入讨论且不打断现有协作", "private_information": ["只剩12分钟，至少还需听取两个岗位意见"], "constraints": ["不能点名要求披露个人差错或强迫发言"]},
+        "b": {"label": "一线代表", "label_en": "Frontline Representative", "objective": "用具体操作问题补充讨论并提出试验建议", "private_information": ["夜班扫描失败需手抄编号，每次多花4分钟"], "constraints": ["只能描述匿名案例，不能代表全部夜班员工"]}
+      },
+      "stages": ["概括已有观点", "开放邀请未发言者", "追问操作实例", "确认后续验证方式"],
+      "complications": ["另一位成员在邀请后立即插话", "一线代表希望先用文字发出关键数据"],
+      "targets": [
+        {"expression": "We haven't heard from the night shift yet.", "meaning_zh": "我们还没听到夜班的意见。", "function": "引入不同视角"},
+        {"expression": "Would you like to add anything?", "meaning_zh": "你愿意补充什么吗？", "function": "邀请发言"},
+        {"expression": "Could I give a quick example?", "meaning_zh": "我能举个简短例子吗？", "function": "争取发言空间"}
+      ],
+      "success_criteria": {"a": ["给出可选择的口头或文字参与方式", "复述一线意见并为其他岗位留出时间"], "b": ["区分个人观察与普遍结论", "用实例说明影响并建议验证步骤"]},
+      "tags": ["邀请发言", "会议参与", "倾听"]
+    },
+    {
+      "id": "biz-meetings-05",
+      "label": "礼貌拉回跑题讨论",
+      "context": "模拟预约流程会原定确认表单字段，讨论却转向办公室搬迁，距离结束还剩10分钟。",
+      "roles": {
+        "a": {"label": "议题主持人", "label_en": "Agenda Facilitator", "objective": "保留有用信息并把讨论拉回字段决策", "private_information": ["开发今天17点前需要字段清单才能排期"], "constraints": ["不能替行政团队答复搬迁安排"]},
+        "b": {"label": "客户支持代表", "label_en": "Support Representative", "objective": "让搬迁引发的地址问题进入表单设计", "private_information": ["上周有6次预约寄到了旧地址"], "constraints": ["无权决定搬迁日期，不能提供客户姓名"]}
+      },
+      "stages": ["承认偏题内容的价值", "辨别与当前决策的关联", "记录另行跟进事项", "回到字段选择与截止时间"],
+      "complications": ["对方认为地址问题不能另议", "记录员把待讨论项误写成已决定项"],
+      "targets": [
+        {"expression": "How does that affect today's decision?", "meaning_zh": "这会怎样影响今天的决定？", "function": "检查议题关联"},
+        {"expression": "Let's put that on the follow-up list.", "meaning_zh": "把这件事放到后续跟进清单吧。", "function": "保留另议事项"},
+        {"expression": "Can we return to the form fields?", "meaning_zh": "我们能回到表单字段吗？", "function": "拉回当前议题"}
+      ],
+      "success_criteria": {"a": ["说明拉回议题的时间原因", "区分当前关联问题与另议事项并指定跟进人"], "b": ["用匿名事实解释地址与字段的关联", "确认本会处理范围及后续入口"]},
+      "tags": ["控场", "议题聚焦", "待办记录"]
+    },
+    {
+      "id": "biz-meetings-06",
+      "label": "收尾确认决策与行动项",
+      "context": "模拟试用活动会剩5分钟，讨论过邀请名单、邮件文案和试用指标，尚未统一记录。",
+      "roles": {
+        "a": {"label": "会议负责人", "label_en": "Meeting Lead", "objective": "区分已定与待定事项，确认责任人和交付时间", "private_information": ["记录草稿把试用人数写成80，但口头提案是60"], "constraints": ["未经确认不能把草稿作为批准结果发布"]},
+        "b": {"label": "行动项负责人", "label_en": "Action Owner", "objective": "接下可执行任务并指出前置条件", "private_information": ["可周四完成文案，但需周三中午前拿到名单"], "constraints": ["不能承诺邮件系统配置由自己完成"]}
+      },
+      "stages": ["复述已做决定", "标记未决事项", "逐项核对负责人和依赖", "约定纪要及检查时间"],
+      "complications": ["一名负责人已提前离会", "成员对人数上限有不同记忆"],
+      "targets": [
+        {"expression": "Let me recap what we've agreed.", "meaning_zh": "我来回顾一下已达成的共识。", "function": "总结决策"},
+        {"expression": "Who owns this, and when is it due?", "meaning_zh": "这项由谁负责，何时完成？", "function": "落实行动项"},
+        {"expression": "I can do that once the list is confirmed.", "meaning_zh": "名单确认后我就能处理。", "function": "说明承诺条件"}
+      ],
+      "success_criteria": {"a": ["纠正记录差异并保留未确认状态", "为每项行动确认责任、期限和检查点"], "b": ["说出自己承诺的交付物和依赖", "对不属于自己的任务请求另定负责人"]},
+      "tags": ["会议收尾", "行动项", "决策记录"]
+    }
+  ]
+}

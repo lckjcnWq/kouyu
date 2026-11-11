@@ -1,0 +1,114 @@
+{
+  "id": "pricing",
+  "label": "报价与费用说明",
+  "scenes": [
+    {
+      "id": "biz-pricing-01",
+      "label": "报价构成",
+      "context": "模拟报价说明会中，A向B解释一份仓库盘点工具报价：年度软件服务费24000元、首次配置6000元、两场培训2000元，均为模拟人民币金额。税费和差旅是否包含需在本次沟通中逐项确认。",
+      "roles": {
+        "a": {"label": "报价顾问", "label_en": "Quotation Advisor", "objective": "按项目说明数量、费用和交付内容，让B能复述首年报价口径。", "private_information": ["这三项合计32000元且已含税；培训为线上形式，不含任何现场差旅。"], "constraints": ["不能把可另购的现场服务说成已包含；不能在说明中自行减免费用。"]},
+        "b": {"label": "采购专员", "label_en": "Purchasing Specialist", "objective": "弄清首年总额和各行对应服务，为内部比较形成准确摘要。", "private_information": ["内部审批表需要分别填软件、实施和培训费用，主管误以为24000元就是首年全部支出。"], "constraints": ["不能批准采购，只能核实报价；不接受只有总额而没有范围的说明。"]}
+      },
+      "stages": ["确认报价币种、服务期间和版本", "逐行解释费用与对应交付", "核对税费、差旅和合计口径", "由B复述首年总额并列出待补书面信息"],
+      "complications": ["B把两场培训理解成两天现场培训，需要区分场次和形式。", "内部表格自动把含税金额再次加税，需要及时澄清记录口径。"],
+      "targets": [
+        {"expression": "Let me break the quote down by line item.", "meaning_zh": "我按报价明细逐项说明。", "function": "解释报价结构"},
+        {"expression": "The first-year total is thirty-two thousand yuan, including tax.", "meaning_zh": "首年总额为32000元，已含税。", "function": "确认总额与税费口径"},
+        {"expression": "What exactly is included in the setup fee?", "meaning_zh": "配置费具体包含哪些内容？", "function": "追问费用对应范围"}
+      ],
+      "success_criteria": {"a": ["解释三项费用的交付内容，并核对32000元合计。", "明确含税、线上培训和未包含差旅，不作未经授权的减免。"], "b": ["就一项费用的范围提出具体问题。", "准确复述首年总额及一个不包含项目，并请求相应书面明细。"]},
+      "tags": ["报价明细", "费用范围", "模拟金额"]
+    },
+    {
+      "id": "biz-pricing-02",
+      "label": "不同套餐",
+      "context": "模拟选购咨询中，一款团队排程工具有基础版和协作版，均按每个账号每月计费并按年购买。公开模拟单价分别为60元和90元，B计划为15人团队选择套餐。",
+      "roles": {
+        "a": {"label": "套餐顾问", "label_en": "Plan Advisor", "objective": "围绕B的实际任务解释套餐差别，说明计费周期而不默认推荐贵套餐。", "private_information": ["基础版包含排程和导出，协作版增加跨组审批；同一个团队当前不能混搭套餐。"], "constraints": ["不能把按月展示的单价说成可以逐月付款；不能承诺尚不支持的混搭。"]},
+        "b": {"label": "团队行政主管", "label_en": "Team Administration Manager", "objective": "确认15人所需能力与年度费用，避免为不必要功能升级。", "private_information": ["只有3名组长需要审批，但团队尚未决定是否启用跨组审批流程。"], "constraints": ["年度支出超过15000元模拟人民币需额外审批；不能当场调整流程来迁就套餐。"]}
+      },
+      "stages": ["询问关键任务和账号人数", "按功能说明两种套餐差别", "计算年度费用并解释统一套餐规则", "总结当前适用选择及升级触发条件"],
+      "complications": ["B希望12人基础版加3人协作版，需要说明当前计费限制。", "B把页面月单价当作月付方案，需要重述按年购买的含义。"],
+      "targets": [
+        {"expression": "Which features would your team use regularly?", "meaning_zh": "你们团队会经常使用哪些功能？", "function": "按实际使用选择套餐"},
+        {"expression": "The price is shown per month, but billing is annual.", "meaning_zh": "价格按月展示，但按年计费。", "function": "澄清价格周期"},
+        {"expression": "You only need the higher plan if cross-team approval is required.", "meaning_zh": "只有需要跨组审批时，才需要更高套餐。", "function": "说明升级条件"}
+      ],
+      "success_criteria": {"a": ["用功能需求解释套餐差别，不单纯推动高价版本。", "说明年度费用、付款周期及不能混搭的规则。"], "b": ["区分常用功能和未确定需求。", "核对年度支出及审批门槛，说明选择前还需确认什么。"]},
+      "tags": ["套餐比较", "计费周期", "功能匹配"]
+    },
+    {
+      "id": "biz-pricing-03",
+      "label": "一次性持续费用",
+      "context": "模拟预算沟通使用一份预约系统费用表：首次数据配置8000元，年度服务18000元，可选短信按实际发送条数计费。B希望分别编列启动预算和第二年的运营预算，所有金额均为模拟人民币。",
+      "roles": {
+        "a": {"label": "商务报价专员", "label_en": "Commercial Quotation Specialist", "objective": "清楚区分一次性、持续和按使用量变化的费用，说明新增工作如何处理。", "private_information": ["原范围内的首次配置不重复收取；若以后新增独立业务单位，配置需重新评估，短信每条0.08元。"], "constraints": ["不能保证以后年度永不调价；短信金额只能按B提供的用量作估算。"]},
+        "b": {"label": "预算协调员", "label_en": "Budget Coordinator", "objective": "做出可追溯的首年与后续年度费用摘要，并识别用量变化风险。", "private_information": ["预计每月发送5000条短信，但旺季可能翻倍；第二年可能增加一个业务单位。"], "constraints": ["不能把用量预测当成采购承诺，也不能代替财务确认会计分类。"]}
+      },
+      "stages": ["按费用发生频次分类", "核对首年和第二年共同包含的项目", "用一个月用量估算短信并标注假设", "讨论新增单位和后续价格确认节点"],
+      "complications": ["B误以为一次配置就包含此后所有新增单位，需要澄清范围。", "旺季用量预测上升，双方需另列用量情景而非给固定总价。"],
+      "targets": [
+        {"expression": "The setup fee is one-off for the agreed scope.", "meaning_zh": "配置费在约定范围内为一次性费用。", "function": "说明一次性费用边界"},
+        {"expression": "The subscription renews annually, while messages are usage-based.", "meaning_zh": "订阅按年续费，短信则按使用量收费。", "function": "区分持续与用量费用"},
+        {"expression": "Could you separate fixed charges from variable charges?", "meaning_zh": "你能把固定费用和浮动费用分开吗？", "function": "请求适合预算的分类"}
+      ],
+      "success_criteria": {"a": ["区分三种费用，并说明一次性费用适用范围。", "基于明确用量计算示例，标明不确定的未来价格和新增工作。"], "b": ["复述首年与后续年度的费用差别。", "提供用量假设并询问业务扩大时的计费方式。"]},
+      "tags": ["一次性费用", "持续费用", "用量计费"]
+    },
+    {
+      "id": "biz-pricing-04",
+      "label": "隐藏费用疑问",
+      "context": "模拟报价核对中，B收到一份文件协作工具的年度报价，想确认数据导出、支持和额外存储是否另收费。A负责解释费用表，双方尚未签约，也没有出现已证实的漏收费。",
+      "roles": {
+        "a": {"label": "费用说明顾问", "label_en": "Billing Advisor", "objective": "逐项回应额外费用疑问，公开触发条件和审批方式，不用笼统保证代替明细。", "private_information": ["标准导出和工作日邮件支持包含在内；超过200GB需选购存储包，周末专人值守单独报价。"], "constraints": ["不能说所有服务永久全包；额外服务必须书面确认后才能开通收费。"]},
+        "b": {"label": "办公室采购负责人", "label_en": "Office Procurement Lead", "objective": "弄清哪些操作会产生额外支出，并要求可核对的书面说明。", "private_information": ["你们已有约180GB资料，预计每月新增10GB；此前另一项目曾出现未预计的支持费。"], "constraints": ["不能批准自动加购；需要在内部审批前保留完整费用明细。"]}
+      },
+      "stages": ["请B列出担心的额外收费情景", "逐项说明包含与另购服务", "核对用量门槛、通知及授权流程", "确认书面补充和未决费用项"],
+      "complications": ["B要求一句话保证绝无额外费用，A需用明确范围回答。", "附件中的存储上限与邮件摘要不一致，需要暂停该项确认并核实版本。"],
+      "targets": [
+        {"expression": "Under what circumstances would we pay more?", "meaning_zh": "在什么情况下我们需要额外付费？", "function": "询问费用触发条件"},
+        {"expression": "Standard exports are included; extra storage is not.", "meaning_zh": "标准导出已包含，额外存储不包含。", "function": "明确包含与不包含"},
+        {"expression": "No add-on will be activated without written approval.", "meaning_zh": "未经书面批准，不会开通任何附加服务。", "function": "说明额外支出授权流程"}
+      ],
+      "success_criteria": {"a": ["按具体情景说明费用触发门槛和包含范围。", "对不一致版本标记待核实，并说明加购审批及书面更新安排。"], "b": ["提出至少两个具体额外收费情景。", "说明自身用量和授权边界，要求可核对的费用记录。"]},
+      "tags": ["额外费用", "透明报价", "费用授权"]
+    },
+    {
+      "id": "biz-pricing-05",
+      "label": "报价调整",
+      "context": "模拟范围变更后，会议预约服务从20个账号扩大到30个，并增加一场培训。旧报价为每账号每年600元和两场培训合计2000元；新报价草稿总额21000元，均为模拟人民币。",
+      "roles": {
+        "a": {"label": "商务客户经理", "label_en": "Commercial Account Manager", "objective": "解释新旧报价变化来源，核对新增范围是否真实获确认并提供可比较版本。", "private_information": ["账号增加使费用增加6000元，第三场培训增加1000元；原单价和服务期间均未变化。"], "constraints": ["不能用新增范围掩盖单价变化；未经B确认不能把草稿视作正式订单。"]},
+        "b": {"label": "项目采购协调员", "label_en": "Project Purchasing Coordinator", "objective": "辨别金额上升来自数量还是涨价，纠正未经内部批准的新增项目。", "private_information": ["30个账号已获项目组确认，但第三场培训只是一个部门提出的备选要求。"], "constraints": ["不能批准可选培训；需拿到修订对照才能重新提交审批。"]}
+      },
+      "stages": ["对齐旧版与新版报价编号和日期", "按数量、单价和服务变化解释差额", "核对新增内容的确认状态", "确定保留项目、修订总额和旧版处理方式"],
+      "complications": ["B内部流转的仍是20账号旧版，需要标明版本关系避免并行审批。", "第三场培训被误列为必选项，需要重新标记并修改总额。"],
+      "targets": [
+        {"expression": "The unit price is unchanged; the quantity has increased.", "meaning_zh": "单价没有变化，增加的是数量。", "function": "解释金额变化来源"},
+        {"expression": "Was the extra training confirmed or only requested?", "meaning_zh": "额外培训已经确认，还是只是提出过需求？", "function": "核对新增范围状态"},
+        {"expression": "Please show the changes against the previous version.", "meaning_zh": "请对照上一版列出变更。", "function": "要求版本对照"}
+      ],
+      "success_criteria": {"a": ["用数量、单价和服务解释新旧差额。", "核实新增项授权状态，确认修订版和旧版替代关系。"], "b": ["区分已确认和仅提出的新增范围。", "要求可追溯的差额说明，并复述应保留的报价项目。"]},
+      "tags": ["报价变更", "版本管理", "范围调整"]
+    },
+    {
+      "id": "biz-pricing-06",
+      "label": "估算与正式报价",
+      "context": "模拟项目初谈中，B希望为一套内部资料库准备预算。A曾在邮件给出5万至7万元的粗略费用区间，但数据量、迁移格式和培训人数尚未核实；所有金额仅用于模拟沟通。",
+      "roles": {
+        "a": {"label": "项目商务顾问", "label_en": "Project Commercial Advisor", "objective": "解释估算用途与不确定范围，列出出具正式报价所需信息和确认流程。", "private_information": ["粗估基于不超过5000份文档和标准格式迁移；若资料扫描识别较多，需重新评估。"], "constraints": ["无权把区间上限确认为固定包干价，也不能在未核实范围前提供保证价格。"]},
+        "b": {"label": "内部项目发起人", "label_en": "Internal Project Sponsor", "objective": "获得可用于预算讨论的清楚标注，并安排正式报价所需的信息收集。", "private_information": ["主管打算把7万元写成审批上限，但实际文档可能有12000份，尚未盘点。"], "constraints": ["不能对外提供原始保密文档；只能分享汇总数量和脱敏格式样例。"]}
+      },
+      "stages": ["确认邮件区间是初步估算而非报价承诺", "说明原始假设和可能改变范围的因素", "约定可安全提供的数量与样例", "确认正式报价步骤、所需时间和预算标注"],
+      "complications": ["B已在内部幻灯片写成固定7万元，需要商量如何及时纠正。", "文档盘点晚于预算会，双方需提供带假设的区间说明而非伪造定价。"],
+      "targets": [
+        {"expression": "That was a planning estimate, not a fixed quotation.", "meaning_zh": "那是规划估算，不是固定正式报价。", "function": "区分估算与承诺"},
+        {"expression": "We need the document count and format before pricing the migration.", "meaning_zh": "给迁移定价前，我们需要知道文档数量和格式。", "function": "说明正式报价前提"},
+        {"expression": "Please label the range as subject to scope confirmation.", "meaning_zh": "请将这个区间标注为有待范围确认。", "function": "防止内部误用估算"}
+      ],
+      "success_criteria": {"a": ["说明估算的原始假设和至少一个不确定因素。", "明确正式报价所需资料、流程及当前不能保证的内容。"], "b": ["指出内部可能误用区间的地方并确认更正措辞。", "约定提供脱敏资料的方法，区分预算参考与已确认支出。"]},
+      "tags": ["初步估算", "正式报价", "范围确认"]
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "id": "management",
+  "label": "团队管理与绩效反馈",
+  "scenes": [
+    {
+      "id": "biz-management-01",
+      "label": "委派任务并明确完成标准",
+      "context": "模拟运营主管将月度客户反馈摘要交给团队成员，周五需提交给三个业务组，要求控制在两页以内。",
+      "roles": {
+        "a": {"label": "委派主管", "label_en": "Delegating Manager", "objective": "说明任务价值、完成标准和可自主决定的范围", "private_information": ["最重视前三类问题及下一步建议，图表样式可由成员决定"], "constraints": ["不能委派自己无权批准的客户补偿决定"]},
+        "b": {"label": "任务负责人", "label_en": "Task Owner", "objective": "确认成果要求、可用资料和反馈检查点", "private_information": ["原始反馈中有15条分类不清，预计需要半天核对"], "constraints": ["不能在报告中展示客户可识别信息或擅自改变统计定义"]}
+      },
+      "stages": ["解释摘要用途与受众", "明确内容和完成标准", "确认自主权与资料缺口", "安排初稿检查和最终提交"],
+      "complications": ["一个业务组要求额外的逐条明细", "中途发现部分反馈属于上月"],
+      "targets": [
+        {"expression": "You can choose the format, but these points must be covered.", "meaning_zh": "格式可由你选，但必须包含这些要点。", "function": "界定自主权"},
+        {"expression": "What would a complete version include?", "meaning_zh": "完整版本应包括哪些内容？", "function": "确认完成标准"},
+        {"expression": "Let's review the outline before you write the full report.", "meaning_zh": "写完整报告前，我们先看提纲。", "function": "设置检查点"}
+      ],
+      "success_criteria": {"a": ["说清成果标准与成员可自主决定的事项", "确认资料支持及初稿反馈时点"], "b": ["复述交付物和统计口径", "提出核对需求并确认超范围请求的处理人"]},
+      "tags": ["委派", "完成标准", "授权边界"]
+    },
+    {
+      "id": "biz-management-02",
+      "label": "在一对一中讨论状态与支持",
+      "context": "模拟团队每两周进行25分钟一对一，员工本月同时承担排期维护和新流程试点，主管邀请其先确定议题。",
+      "roles": {
+        "a": {"label": "团队主管", "label_en": "Team Supervisor", "objective": "理解员工状态、阻碍和发展需求，形成少量具体跟进", "private_information": ["下月可安排一次跨组旁听，但需要提前两周申请"], "constraints": ["不能强迫员工披露私人原因或承诺未获批的调岗"]},
+        "b": {"label": "团队成员", "label_en": "Team Member", "objective": "提出真实工作困难和希望获得的支持", "private_information": ["频繁的即时消息打断分析工作，希望每天留一段不被打扰的时间"], "constraints": ["不能单方面停止响应紧急问题，需要约定例外渠道"]}
+      },
+      "stages": ["由员工提出优先议题", "用工作实例了解阻碍", "讨论支持和成长选项", "确认双方行动与下次回看"],
+      "complications": ["谈话逐渐变成逐项汇报任务", "主管临时只剩10分钟，需要筛选最重要议题"],
+      "targets": [
+        {"expression": "What would be most useful to discuss today?", "meaning_zh": "今天讨论什么对你最有帮助？", "function": "邀请员工设定议题"},
+        {"expression": "I'm finding it hard to get uninterrupted work time.", "meaning_zh": "我很难获得不被打断的工作时间。", "function": "表达工作阻碍"},
+        {"expression": "What is one change we can try before our next check-in?", "meaning_zh": "下次沟通前，我们可以试行哪一项调整？", "function": "推动小步改善"}
+      ],
+      "success_criteria": {"a": ["倾听并复述员工优先议题", "确认一项支持动作及检查时间而非包办解决"], "b": ["用具体工作影响说明需求", "提出可试行安排并约定紧急响应例外"]},
+      "tags": ["一对一", "工作支持", "倾听"]
+    },
+    {
+      "id": "biz-management-03",
+      "label": "给予具体正向反馈",
+      "context": "模拟客户培训刚结束，协调员提前整理问答并帮助讲师按时收尾，主管准备在短谈中给予反馈。",
+      "roles": {
+        "a": {"label": "反馈主管", "label_en": "Feedback Manager", "objective": "指出具体行为及影响，鼓励可复用做法而非空泛夸奖", "private_information": ["观察到协调员在开场前按主题合并了12个重复问题"], "constraints": ["不能以一次表现承诺奖金、晋升或代表全体客户评价"]},
+        "b": {"label": "培训协调员", "label_en": "Training Coordinator", "objective": "理解被认可的具体做法，说明协作贡献并讨论复用", "private_information": ["问题分类模板来自同事，自己补充了现场优先级标记"], "constraints": ["不能把他人贡献据为己有，也不能保证所有活动都同样顺利"]}
+      },
+      "stages": ["点明观察到的具体情境", "描述行为和可见影响", "询问做法及团队贡献", "讨论如何复用并分享经验"],
+      "complications": ["员工把表扬误解为未来都要额外承担活动", "其他同事在场，员工更希望私下讨论细节"],
+      "targets": [
+        {"expression": "The way you grouped the questions kept the session focused.", "meaning_zh": "你对问题的归类让培训更聚焦。", "function": "反馈具体影响"},
+        {"expression": "What helped you make that work?", "meaning_zh": "是什么帮助你把这件事做好？", "function": "探索有效做法"},
+        {"expression": "I'd also like to recognize the team's contribution.", "meaning_zh": "我也想肯定团队的贡献。", "function": "分享功劳"}
+      ],
+      "success_criteria": {"a": ["将赞赏落到可观察行为和影响", "询问复用条件而非暗中追加职责"], "b": ["说明自身与同事各自贡献", "提出分享做法的方式并澄清后续投入"]},
+      "tags": ["正向反馈", "具体认可", "经验复用"]
+    },
+    {
+      "id": "biz-management-04",
+      "label": "提出改进意见并协商支持",
+      "context": "模拟团队要求周报周四16点前更新，过去三周有两次延后，主管与负责成员安排一次工作反馈谈话。",
+      "roles": {
+        "a": {"label": "直属经理", "label_en": "Direct Manager", "objective": "说明行为和下游影响，听取解释并建立改进约定", "private_information": ["延后导致审核同事两次无法在周五晨会前准备"], "constraints": ["不能使用人格标签或把本次沟通直接等同于处分，正式程序需人事确认"]},
+        "b": {"label": "报告负责人", "label_en": "Report Owner", "objective": "说明可核实的阻碍，承担自身行动并争取必要支持", "private_information": ["数据组周四15点才发输入，自己尚未主动协商更早提供"], "constraints": ["不能将责任全部转给他人或虚报完成时间"]}
+      },
+      "stages": ["引用具体记录与影响", "询问原因和成员看法", "区分依赖问题与自身可改行动", "约定新流程、支持和复查"],
+      "complications": ["员工认为其中一次已提前通知但主管未看到", "下周输入时间仍无法提前"],
+      "targets": [
+        {"expression": "I've noticed two updates came in after the agreed time.", "meaning_zh": "我注意到两次更新晚于约定时间。", "function": "描述具体差距"},
+        {"expression": "Can you help me understand what got in the way?", "meaning_zh": "能帮我了解是什么造成阻碍吗？", "function": "询问原因"},
+        {"expression": "Let's agree on an earlier warning if the deadline is at risk.", "meaning_zh": "如果期限有风险，我们约定更早预警。", "function": "形成改进行动"}
+      ],
+      "success_criteria": {"a": ["核对争议记录并说明实际工作影响", "确认具体改进、支持和复查标准"], "b": ["提供输入时间事实并承认未主动协调的部分", "提出可执行的预警和阶段交付安排"]},
+      "tags": ["改进反馈", "事实沟通", "预警机制"]
+    },
+    {
+      "id": "biz-management-05",
+      "label": "调解团队成员间的协作冲突",
+      "context": "模拟两名同事因共享看板上的任务被直接改期发生争执，主管先与其中一人谈话，之后再听取另一方意见。",
+      "roles": {
+        "a": {"label": "调解主管", "label_en": "Mediating Manager", "objective": "区分事实和解读，提出公平的核实与协作规则", "private_information": ["看板记录显示改期已发生，但记录本身无法说明是否事先通知"], "constraints": ["只听一方不能判责，涉及正式投诉应转交规定渠道"]},
+        "b": {"label": "提出冲突的成员", "label_en": "Concerned Team Member", "objective": "表达影响和协作需求，不攻击同事动机", "private_information": ["曾错过一条群消息，尚不确定改期通知是否在其中"], "constraints": ["不能冒充对方立场或要求主管未核实就惩处同事"]}
+      },
+      "stages": ["描述具体事件和工作影响", "区分亲历事实与推测", "确认还需核实的另一方信息", "提出临时改期规则和后续沟通"],
+      "complications": ["成员希望主管立即站队", "讨论中出现可能涉及正式投诉的行为描述"],
+      "targets": [
+        {"expression": "Let's separate what happened from what we assumed.", "meaning_zh": "把发生的事实和我们的推测分开。", "function": "去除动机推断"},
+        {"expression": "I need advance notice when my deadlines change.", "meaning_zh": "我的截止日期变化时，我需要提前收到通知。", "function": "表达协作需求"},
+        {"expression": "I'll hear the other perspective before deciding next steps.", "meaning_zh": "我会先听另一方意见，再决定后续步骤。", "function": "保持程序公平"}
+      ],
+      "success_criteria": {"a": ["中性复述事实、影响和待核实项", "说明听取另一方及必要时转正式渠道的步骤"], "b": ["用行为和影响表达不满而非给同事贴标签", "承认信息缺口并提出可执行协作规则"]},
+      "tags": ["冲突调解", "中性倾听", "协作规则"]
+    },
+    {
+      "id": "biz-management-06",
+      "label": "讨论晋升与发展证据",
+      "context": "模拟运营成员希望半年后申请高级岗位，与主管讨论岗位标准、当前证据和发展任务，尚未进入正式评审。",
+      "roles": {
+        "a": {"label": "发展主管", "label_en": "Development Manager", "objective": "解释标准与流程，提供能积累相关证据的机会", "private_information": ["成员执行稳定，但跨组协调的独立案例还不足"], "constraints": ["不能保证晋升、空缺或薪酬调整，正式条件由人事和评审确认"]},
+        "b": {"label": "发展申请人", "label_en": "Development Candidate", "objective": "了解具体差距并争取边界清楚的发展任务", "private_information": ["有一次跨组协调案例未写入记录，希望先获得反馈"], "constraints": ["不能以无授权承担管理职责来换取晋升承诺"]}
+      },
+      "stages": ["明确目标岗位和标准来源", "核对现有案例与差距", "设计有限的发展任务", "约定辅导、证据记录及正式咨询路径"],
+      "complications": ["岗位标准正在修订，生效时间未确认", "建议的发展任务与现有工作容量冲突"],
+      "targets": [
+        {"expression": "What evidence would show that I'm ready for the next level?", "meaning_zh": "什么证据能表明我已具备下一级能力？", "function": "澄清发展标准"},
+        {"expression": "Let's choose a stretch assignment with clear support.", "meaning_zh": "我们选一项有明确支持的发展任务。", "function": "设计成长机会"},
+        {"expression": "This is a development plan, not a promotion guarantee.", "meaning_zh": "这是发展计划，不是晋升保证。", "function": "管理晋升预期"}
+      ],
+      "success_criteria": {"a": ["区分能力发展与正式晋升决定", "提出任务范围、辅导人和证据检查点"], "b": ["用具体案例询问差距而非只问结果", "确认任务容量、支持和评审流程核实方式"]},
+      "tags": ["晋升发展", "能力证据", "预期管理"]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "synthetic-business-negotiation",
+  "created_at": "2026-11-11T10:00:00+08:00",
+  "domain": "business",
+  "topic": {"id": "biz-negotiation-01", "label": "回应降价要求", "emoji": "🤝"},
+  "scenario": {"id": "biz-negotiation-01", "category_id": "negotiation", "category_label": "商务谈判与条件交换"},
+  "duration_minutes": 20,
+  "level": "intermediate",
+  "hint_mode": "guided",
+  "roles": {"learner": "Account manager", "coach": "Procurement manager"},
+  "mission": "虚构测试场景：澄清预算、说明授权并确认下一步。",
+  "targets": [
+    {"expression": "Could you clarify that?", "status": "needs_review", "support": "keyword_hint", "evidence": "Synthetic test utterance; not a real learner record."},
+    {"expression": "I would need approval for that.", "status": "mastered", "support": "independent", "evidence": "Synthetic: I would need approval for that."},
+    {"expression": "When should we follow up?", "status": "not_observed", "support": "none"}
+  ],
+  "repairs": [{"learner": "I need ask my manager.", "natural": "I need to check with my manager.", "reason_zh": "虚构测试例句：动词结构与自然表达。"}],
+  "focus_next": ["确认回复日期", "询问可交换条件"],
+  "next_drill": "虚构测试任务：换到交付条件，用两句话说明审批边界和回复时间。",
+  "pronunciation": {"status": "not_observed", "notes": []},
+  "business": {
+    "industry": {"id": "software", "label": "软件、互联网与 AI 服务"},
+    "context": "仅用于自动测试与本地验收的虚构场景，不代表真实客户或学习者表现。",
+    "constraints": ["任何额外折扣须审批；不承诺未发布功能。"],
+    "outcome": {"status": "deferred", "summary": "虚构测试：双方确认审批路径，需后续回复。"},
+    "criteria": [
+      {"criterion": "说明授权范围", "status": "met", "evidence": "Synthetic: I would need approval for that."},
+      {"criterion": "确认回复日期", "status": "not_observed"}
+    ],
+    "feedback": [
+      {"dimension": "boundaries", "observation": "虚构测试：未直接承诺超出权限的条件。", "evidence": "Synthetic: I would need approval for that.", "suggestion": "补充审批人和回复时间。"},
+      {"dimension": "interaction", "observation": "虚构测试：在关键词帮助下请求澄清。", "evidence": "Synthetic: Could you clarify that?", "suggestion": "换一个异议，自主追问具体预算范围。"}
+    ],
+    "next_action": "虚构测试：重新练习审批路径和日期确认。"
+  }
+}

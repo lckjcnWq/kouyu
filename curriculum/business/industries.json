@@ -1,0 +1,182 @@
+[
+  {
+    "id": "software", "label": "软件、互联网与 AI 服务",
+    "scope": "为产品演示、企业采购、交付和续约补充 SaaS、集成、部署及 AI 能力边界。",
+    "terms": [
+      {"en": "subscription", "zh": "订阅"}, {"en": "seat", "zh": "用户席位"},
+      {"en": "integration", "zh": "系统集成"}, {"en": "deployment", "zh": "部署"},
+      {"en": "uptime", "zh": "可用时间"}, {"en": "service-level agreement", "zh": "服务等级协议"},
+      {"en": "data retention", "zh": "数据保留"}, {"en": "access control", "zh": "访问控制"},
+      {"en": "usage limit", "zh": "用量限制"}, {"en": "human review", "zh": "人工审核"}
+    ],
+    "constraints": ["区分已发布功能、路线图与未经承诺的需求。", "部署方式、数据处理地区和访问权限需要确认。", "AI 输出可能出错，不把准确率、合规或安全作为无依据保证。"],
+    "metrics": ["活跃席位数", "响应时间及统计口径", "试用任务完成率"],
+    "questions": ["Which systems does this need to integrate with?", "Who needs access, and at what permission level?", "What would make the pilot successful?"],
+    "safety": "不请求真实密钥、账号或客户数据；使用虚构配置。服务等级及 AI 效果均作为模拟条款，不伪装成已验证承诺。"
+  },
+  {
+    "id": "manufacturing", "label": "制造业与工业设备",
+    "scope": "补充设备销售、技术澄清、样品检验、生产与售后维护的业务语境。",
+    "terms": [
+      {"en": "specification", "zh": "规格"}, {"en": "tolerance", "zh": "公差"},
+      {"en": "production capacity", "zh": "产能"}, {"en": "lead time", "zh": "交付周期"},
+      {"en": "defect rate", "zh": "不良率"}, {"en": "sample inspection", "zh": "样品检验"},
+      {"en": "tooling", "zh": "工装模具"}, {"en": "preventive maintenance", "zh": "预防性维护"},
+      {"en": "spare part", "zh": "备件"}, {"en": "acceptance test", "zh": "验收测试"}
+    ],
+    "constraints": ["确认图纸版本、单位及公差，不能只凭口头近似值生产。", "产能与交期受排产、原料和验收影响。", "安全操作或维修方案需要有资质人员确认。"],
+    "metrics": ["可承诺周产量", "按时交付率", "抽检不良率及样本量"],
+    "questions": ["Which drawing revision should we work from?", "What tolerance is required for this dimension?", "Who will sign off on the acceptance test?"],
+    "safety": "仅练习规格确认、停机沟通和专业升级，不提供危险设备操作或绕过安全措施的指导。"
+  },
+  {
+    "id": "international-trade", "label": "外贸与进出口",
+    "scope": "补充询盘、订单、国际交付、单证和付款沟通；与贸易场景配合使用。",
+    "terms": [
+      {"en": "purchase order", "zh": "采购订单"}, {"en": "minimum order quantity", "zh": "最低起订量"},
+      {"en": "pro forma invoice", "zh": "形式发票"}, {"en": "commercial invoice", "zh": "商业发票"},
+      {"en": "packing list", "zh": "装箱单"}, {"en": "bill of lading", "zh": "提单"},
+      {"en": "customs clearance", "zh": "清关"}, {"en": "country of origin", "zh": "原产国"},
+      {"en": "freight forwarder", "zh": "货运代理"}, {"en": "payment term", "zh": "付款条件"}
+    ],
+    "constraints": ["贸易条款需明确版本、指定地点及双方责任，不能只说三个字母缩写。", "报关所需文件依产品和目的地变化，交专业人员核实。", "付款变更必须按已验证流程确认，不以陌生邮件为依据。"],
+    "metrics": ["起订量", "生产与运输交期", "单证差错及修订时间"],
+    "questions": ["Which delivery term and named place are we using?", "Could you confirm the documents your broker needs?", "What is the agreed payment schedule?"],
+    "safety": "不作关税、制裁或法定义务的确定性判断；不练规避监管或伪造单证，使用虚构订单。"
+  },
+  {
+    "id": "retail", "label": "电商、零售与消费品",
+    "scope": "补充品牌与零售商合作、商品计划、库存、促销及售后沟通。",
+    "terms": [
+      {"en": "SKU", "zh": "库存单位"}, {"en": "assortment", "zh": "商品组合"},
+      {"en": "sell-through rate", "zh": "售罄率"}, {"en": "replenishment", "zh": "补货"},
+      {"en": "stockout", "zh": "缺货"}, {"en": "return rate", "zh": "退货率"},
+      {"en": "markdown", "zh": "降价处理"}, {"en": "promotion window", "zh": "促销时段"},
+      {"en": "gross margin", "zh": "毛利率"}, {"en": "fulfillment", "zh": "订单履约"}
+    ],
+    "constraints": ["促销前确认库存、价格生效范围和起止时间。", "区分销售增长与毛利变化，不能只用销售额证明效果。", "退换货承诺依公开政策及授权处理。"],
+    "metrics": ["SKU 可售库存", "售罄率及周期", "促销毛利与退货率"],
+    "questions": ["Which SKUs should we prioritize for replenishment?", "How will the promotion affect the margin?", "What is driving the increase in returns?"],
+    "safety": "不得编造顾客评价、产品功效或库存事实；不使用真实订单或消费者个人信息。"
+  },
+  {
+    "id": "consulting", "label": "咨询与专业服务",
+    "scope": "补充服务销售、业务诊断、项目范围、成果评审和费用讨论。",
+    "terms": [
+      {"en": "statement of work", "zh": "工作说明书"}, {"en": "deliverable", "zh": "交付成果"},
+      {"en": "workstream", "zh": "工作流或子项目"}, {"en": "discovery workshop", "zh": "需求诊断工作坊"},
+      {"en": "stakeholder interview", "zh": "利益相关方访谈"}, {"en": "scope exclusion", "zh": "范围排除项"},
+      {"en": "retainer", "zh": "常年服务费"}, {"en": "billable hour", "zh": "计费工时"},
+      {"en": "change request", "zh": "变更申请"}, {"en": "sign-off", "zh": "正式确认"}
+    ],
+    "constraints": ["诊断结论区分事实、假设与仍需收集的证据。", "交付成果、客户配合义务和范围排除项需明示。", "范围变更先讨论时间费用影响，再确认授权。"],
+    "metrics": ["交付里程碑", "已使用与预计工时", "建议采纳及执行进展"],
+    "questions": ["What decision will this deliverable support?", "Which assumptions still need to be tested?", "Is this request covered by the statement of work?"],
+    "safety": "不得泄露其他客户项目；不把模拟诊断当成对真实企业的确定结论，不保证咨询收益。"
+  },
+  {
+    "id": "financial-services", "label": "金融与财务服务",
+    "scope": "补充企业资金、报表、服务费用、风险解释和合规确认的表达。",
+    "terms": [
+      {"en": "cash flow", "zh": "现金流"}, {"en": "liquidity", "zh": "流动性"},
+      {"en": "exposure", "zh": "风险敞口"}, {"en": "reconciliation", "zh": "对账"},
+      {"en": "forecast", "zh": "预测"}, {"en": "variance", "zh": "差异"},
+      {"en": "audit trail", "zh": "审计轨迹"}, {"en": "due diligence", "zh": "尽职调查"},
+      {"en": "fee disclosure", "zh": "费用披露"}, {"en": "approval threshold", "zh": "审批金额门槛"}
+    ],
+    "constraints": ["所有数字标明币种、期间和估算依据。", "预测不等于保证，不用历史表现承诺未来回报。", "客户适当性与法定披露需由有资质人员确认。"],
+    "metrics": ["期末现金余额", "预测偏差及假设", "费用总额与计费基数"],
+    "questions": ["Which assumptions drive this forecast?", "What risks should the client understand?", "Who needs to approve this exception?"],
+    "safety": "只做语言训练，不提供个性化投资、税务或法律建议；不得要求真实账号、身份材料或转账。"
+  },
+  {
+    "id": "healthcare", "label": "医疗、医药与器械",
+    "scope": "补充机构采购、产品信息、培训、售后和监管问题升级的沟通。",
+    "terms": [
+      {"en": "intended use", "zh": "预期用途"}, {"en": "clinical evidence", "zh": "临床证据"},
+      {"en": "regulatory clearance", "zh": "监管许可"}, {"en": "traceability", "zh": "可追溯性"},
+      {"en": "adverse event", "zh": "不良事件"}, {"en": "maintenance schedule", "zh": "维护计划"},
+      {"en": "procurement committee", "zh": "采购委员会"}, {"en": "training requirement", "zh": "培训要求"},
+      {"en": "lot number", "zh": "批号"}, {"en": "cold chain", "zh": "冷链"}
+    ],
+    "constraints": ["产品介绍限于明确给定的模拟适用范围和证据。", "地区许可、临床声明和不良事件处理转专业团队确认。", "培训和维护不替代临床判断或持证操作。"],
+    "metrics": ["培训完成情况", "设备维护响应时间", "批次追踪及文件完整性"],
+    "questions": ["What is the approved intended use in this market?", "Which evidence does the committee need to review?", "Who should handle this safety report?"],
+    "safety": "不提供诊断或治疗建议，不编造临床效果和监管许可，不使用患者身份或真实病历。"
+  },
+  {
+    "id": "logistics", "label": "物流与运输",
+    "scope": "补充仓储、运力、配送、追踪、异常和索赔材料沟通。",
+    "terms": [
+      {"en": "consignment", "zh": "托运货物"}, {"en": "transit time", "zh": "运输时长"},
+      {"en": "estimated time of arrival", "zh": "预计到达时间"}, {"en": "proof of delivery", "zh": "签收证明"},
+      {"en": "warehouse slot", "zh": "仓储库位或预约时段"}, {"en": "handling fee", "zh": "操作费"},
+      {"en": "carrier", "zh": "承运商"}, {"en": "last-mile delivery", "zh": "末端配送"},
+      {"en": "damage claim", "zh": "货损索赔"}, {"en": "tracking update", "zh": "追踪更新"}
+    ],
+    "constraints": ["区分预计到达时间与保证时效。", "异常报告只说已确认节点，不能猜测货物位置。", "索赔责任和金额依条款及证据交专业处理。"],
+    "metrics": ["按时提货与妥投率", "货物异常更新时间", "运输时长区间"],
+    "questions": ["What is the latest confirmed tracking event?", "Is there an alternative route or carrier?", "Which documents are needed for the claim?"],
+    "safety": "不编造追踪记录、签收证明或索赔文件；不暴露收件人地址和联系方式。"
+  },
+  {
+    "id": "construction", "label": "建筑、工程与房地产",
+    "scope": "补充工程方案、现场协调、变更、进度和验收沟通。",
+    "terms": [
+      {"en": "site inspection", "zh": "现场检查"}, {"en": "request for information", "zh": "信息澄清申请"},
+      {"en": "change order", "zh": "工程变更单"}, {"en": "critical path", "zh": "关键路径"},
+      {"en": "subcontractor", "zh": "分包商"}, {"en": "punch list", "zh": "竣工待整改清单"},
+      {"en": "handover", "zh": "交接"}, {"en": "permit", "zh": "许可"},
+      {"en": "contingency", "zh": "预备费用或余量"}, {"en": "defect rectification", "zh": "缺陷整改"}
+    ],
+    "constraints": ["图纸和变更明确版本及授权，口头讨论不等于施工批准。", "进度依赖许可、现场条件和上下游工序。", "安全或结构问题停止猜测并交有资质人员确认。"],
+    "metrics": ["里程碑偏差", "变更预算影响", "待整改项及关闭日期"],
+    "questions": ["Which approved drawing applies to this area?", "How does this change affect the critical path?", "Who is authorized to approve the change order?"],
+    "safety": "仅练习业务沟通，不给结构安全、现场危险作业或房地产法律方面的确定建议。"
+  },
+  {
+    "id": "energy", "label": "能源、环保与可持续业务",
+    "scope": "补充节能项目、能源服务、环境指标和可持续方案的沟通。",
+    "terms": [
+      {"en": "baseline", "zh": "基准线"}, {"en": "energy efficiency", "zh": "能源效率"},
+      {"en": "emissions factor", "zh": "排放因子"}, {"en": "payback period", "zh": "回收期"},
+      {"en": "measurement boundary", "zh": "测量边界"}, {"en": "renewable capacity", "zh": "可再生能源装机容量"},
+      {"en": "verification", "zh": "核验"}, {"en": "load profile", "zh": "负荷曲线"},
+      {"en": "operating assumption", "zh": "运行假设"}, {"en": "environmental claim", "zh": "环境声明"}
+    ],
+    "constraints": ["说明基准年、计量边界和数据来源。", "节能与收益预测依实际工况，不作无依据保底。", "碳或环境声明需要核验，不能用宣传代替证据。"],
+    "metrics": ["能耗及单位", "基准调整后的节约量", "投资回收期及假设"],
+    "questions": ["What baseline are we comparing against?", "How will the savings be measured and verified?", "Which assumptions could change the payback period?"],
+    "safety": "不提供危险能源操作指导，不编造认证、排放核验或环保效果；技术结论交专业团队。"
+  },
+  {
+    "id": "education", "label": "教育与培训服务",
+    "scope": "补充企业培训需求、课程方案、采购、实施和效果回顾。",
+    "terms": [
+      {"en": "learning objective", "zh": "学习目标"}, {"en": "needs analysis", "zh": "需求分析"},
+      {"en": "cohort", "zh": "学习班组"}, {"en": "assessment rubric", "zh": "评估量规"},
+      {"en": "completion rate", "zh": "完成率"}, {"en": "learning transfer", "zh": "学习迁移"},
+      {"en": "facilitator", "zh": "培训引导师"}, {"en": "delivery format", "zh": "授课形式"},
+      {"en": "pilot session", "zh": "试点课程"}, {"en": "accessibility requirement", "zh": "无障碍需求"}
+    ],
+    "constraints": ["先定义可观察目标，不把满意度等同于能力提升。", "课程安排受参与人水平、时间及无障碍需求影响。", "学习记录和评估结果按授权最小化使用。"],
+    "metrics": ["出席与完成率", "按量规观察的表现", "课后工作迁移证据"],
+    "questions": ["What should participants be able to do afterward?", "How will we assess progress fairly?", "What support do learners need to participate?"],
+    "safety": "不保证学习结果或伪造评估，使用匿名学习者，不收集无关个人资料。"
+  },
+  {
+    "id": "hospitality", "label": "旅游、酒店与会展",
+    "scope": "补充企业会议、团队接待、会展组织和供应商协调的 B2B 沟通。",
+    "terms": [
+      {"en": "room block", "zh": "团队预留客房"}, {"en": "venue capacity", "zh": "场地容量"},
+      {"en": "run of show", "zh": "活动执行流程"}, {"en": "banquet setup", "zh": "宴会布置"},
+      {"en": "dietary requirement", "zh": "饮食需求"}, {"en": "cancellation window", "zh": "取消期限"},
+      {"en": "attrition clause", "zh": "预订量不足条款"}, {"en": "contingency plan", "zh": "应急预案"},
+      {"en": "delegate", "zh": "参会代表"}, {"en": "accessibility", "zh": "无障碍设施与安排"}
+    ],
+    "constraints": ["确认人数、日期、房型和场地配置后再报价。", "取消或减量费用按条款及授权解释。", "饮食与无障碍安排需供应方确认，不能猜测安全性。"],
+    "metrics": ["确认人数与容量", "每位参会人成本", "执行节点及供应商确认情况"],
+    "questions": ["What is the final headcount deadline?", "Which accessibility arrangements should we confirm?", "What is the backup plan if the venue becomes unavailable?"],
+    "safety": "不对过敏安全或场地许可作无依据保证；使用虚构旅客和活动信息。"
+  }
+]

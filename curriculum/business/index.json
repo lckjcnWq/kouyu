@@ -1,0 +1,2837 @@
+{
+  "version": 1,
+  "content_status": "defined",
+  "learner_validated": false,
+  "categories": [
+    {
+      "id": "social",
+      "label": "商务社交与初次接触",
+      "count": 6
+    },
+    {
+      "id": "prospecting",
+      "label": "客户开发与销售线索",
+      "count": 6
+    },
+    {
+      "id": "discovery",
+      "label": "需求挖掘与业务访谈",
+      "count": 6
+    },
+    {
+      "id": "demo",
+      "label": "产品介绍与演示",
+      "count": 6
+    },
+    {
+      "id": "solution",
+      "label": "解决方案与价值论证",
+      "count": 6
+    },
+    {
+      "id": "pricing",
+      "label": "报价与费用说明",
+      "count": 6
+    },
+    {
+      "id": "negotiation",
+      "label": "商务谈判与条件交换",
+      "count": 6
+    },
+    {
+      "id": "contracts",
+      "label": "合同条款与合规沟通",
+      "count": 6
+    },
+    {
+      "id": "onboarding",
+      "label": "客户引导与使用培训",
+      "count": 6
+    },
+    {
+      "id": "success",
+      "label": "客户成功与续约增长",
+      "count": 6
+    },
+    {
+      "id": "support",
+      "label": "客服与技术支持",
+      "count": 6
+    },
+    {
+      "id": "complaints",
+      "label": "投诉补救与关系修复",
+      "count": 6
+    },
+    {
+      "id": "partnerships",
+      "label": "渠道伙伴与联合业务",
+      "count": 6
+    },
+    {
+      "id": "marketing",
+      "label": "市场品牌与公关",
+      "count": 6
+    },
+    {
+      "id": "meetings",
+      "label": "会议组织与主持",
+      "count": 6
+    },
+    {
+      "id": "decisions",
+      "label": "观点表达与共同决策",
+      "count": 6
+    },
+    {
+      "id": "collaboration",
+      "label": "跨部门与远程协作",
+      "count": 6
+    },
+    {
+      "id": "presentations",
+      "label": "工作汇报与商务演讲",
+      "count": 6
+    },
+    {
+      "id": "planning",
+      "label": "项目启动与计划制定",
+      "count": 6
+    },
+    {
+      "id": "delivery",
+      "label": "项目执行变更与交付",
+      "count": 6
+    },
+    {
+      "id": "technical",
+      "label": "产品研发与技术协作",
+      "count": 6
+    },
+    {
+      "id": "procurement",
+      "label": "采购与供应商管理",
+      "count": 6
+    },
+    {
+      "id": "finance",
+      "label": "财务预算与回款",
+      "count": 6
+    },
+    {
+      "id": "hiring",
+      "label": "招聘面试与入职",
+      "count": 6
+    },
+    {
+      "id": "management",
+      "label": "团队管理与绩效反馈",
+      "count": 6
+    },
+    {
+      "id": "workplace",
+      "label": "劳动关系与组织变更",
+      "count": 6
+    },
+    {
+      "id": "strategy",
+      "label": "战略融资与股东沟通",
+      "count": 6
+    },
+    {
+      "id": "trade",
+      "label": "跨境贸易与国际供应链",
+      "count": 6
+    }
+  ],
+  "scenes": [
+    {
+      "id": "biz-social-01",
+      "label": "商务自我介绍",
+      "category_id": "social",
+      "category_label": "商务社交与初次接触",
+      "roles": [
+        "培训顾问",
+        "运营主管"
+      ],
+      "tags": [
+        "自我介绍",
+        "初次见面",
+        "networking"
+      ],
+      "path": "scenarios/social.json"
+    },
+    {
+      "id": "biz-social-02",
+      "label": "介绍公司业务",
+      "category_id": "social",
+      "category_label": "商务社交与初次接触",
+      "roles": [
+        "业务代表",
+        "经销商负责人"
+      ],
+      "tags": [
+        "公司介绍",
+        "业务范围",
+        "非技术表达"
+      ],
+      "path": "scenarios/social.json"
+    },
+    {
+      "id": "biz-social-03",
+      "label": "展会破冰",
+      "category_id": "social",
+      "category_label": "商务社交与初次接触",
+      "roles": [
+        "展位代表",
+        "参展采购访客"
+      ],
+      "tags": [
+        "展会",
+        "破冰",
+        "联系许可"
+      ],
+      "path": "scenarios/social.json"
+    },
+    {
+      "id": "biz-social-04",
+      "label": "商务午餐交流",
+      "category_id": "social",
+      "category_label": "商务社交与初次接触",
+      "roles": [
+        "客户关系负责人",
+        "项目协调人"
+      ],
+      "tags": [
+        "商务午餐",
+        "礼貌表达",
+        "关系建立"
+      ],
+      "path": "scenarios/social.json"
+    },
+    {
+      "id": "biz-social-05",
+      "label": "接待来访客户",
+      "category_id": "social",
+      "category_label": "商务社交与初次接触",
+      "roles": [
+        "来访接待协调员",
+        "到访客户代表"
+      ],
+      "tags": [
+        "客户接待",
+        "议程确认",
+        "现场协调"
+      ],
+      "path": "scenarios/social.json"
+    },
+    {
+      "id": "biz-social-06",
+      "label": "结束交谈并约后续联系",
+      "category_id": "social",
+      "category_label": "商务社交与初次接触",
+      "roles": [
+        "商务拓展专员",
+        "门店运营负责人"
+      ],
+      "tags": [
+        "结束交谈",
+        "后续联系",
+        "商务礼仪"
+      ],
+      "path": "scenarios/social.json"
+    },
+    {
+      "id": "biz-prospecting-01",
+      "label": "首次电话联系",
+      "category_id": "prospecting",
+      "category_label": "客户开发与销售线索",
+      "roles": [
+        "销售开发专员",
+        "服务网点主管"
+      ],
+      "tags": [
+        "首次电话",
+        "许可式沟通",
+        "线索判断"
+      ],
+      "path": "scenarios/prospecting.json"
+    },
+    {
+      "id": "biz-prospecting-02",
+      "label": "跟进活动线索",
+      "category_id": "prospecting",
+      "category_label": "客户开发与销售线索",
+      "roles": [
+        "活动线索跟进专员",
+        "零售区域分析员"
+      ],
+      "tags": [
+        "活动线索",
+        "资料跟进",
+        "意向识别"
+      ],
+      "path": "scenarios/prospecting.json"
+    },
+    {
+      "id": "biz-prospecting-03",
+      "label": "确认客户适配",
+      "category_id": "prospecting",
+      "category_label": "客户开发与销售线索",
+      "roles": [
+        "客户适配顾问",
+        "工作室负责人"
+      ],
+      "tags": [
+        "客户适配",
+        "资格确认",
+        "诚实销售"
+      ],
+      "path": "scenarios/prospecting.json"
+    },
+    {
+      "id": "biz-prospecting-04",
+      "label": "联系决策人",
+      "category_id": "prospecting",
+      "category_label": "客户开发与销售线索",
+      "roles": [
+        "业务拓展经理",
+        "行政协调员"
+      ],
+      "tags": [
+        "决策角色",
+        "内部引荐",
+        "联系人管理"
+      ],
+      "path": "scenarios/prospecting.json"
+    },
+    {
+      "id": "biz-prospecting-05",
+      "label": "重新激活沉默客户",
+      "category_id": "prospecting",
+      "category_label": "客户开发与销售线索",
+      "roles": [
+        "客户经理",
+        "财务流程负责人"
+      ],
+      "tags": [
+        "沉默线索",
+        "重新联系",
+        "优先级变化"
+      ],
+      "path": "scenarios/prospecting.json"
+    },
+    {
+      "id": "biz-prospecting-06",
+      "label": "争取正式沟通机会",
+      "category_id": "prospecting",
+      "category_label": "客户开发与销售线索",
+      "roles": [
+        "销售顾问",
+        "连锁运营协调人"
+      ],
+      "tags": [
+        "预约会议",
+        "议程设计",
+        "下一步"
+      ],
+      "path": "scenarios/prospecting.json"
+    },
+    {
+      "id": "biz-discovery-01",
+      "label": "当前工作流程",
+      "category_id": "discovery",
+      "category_label": "需求挖掘与业务访谈",
+      "roles": [
+        "业务分析师",
+        "校区运营协调员"
+      ],
+      "tags": [
+        "流程访谈",
+        "交接",
+        "as-is"
+      ],
+      "path": "scenarios/discovery.json"
+    },
+    {
+      "id": "biz-discovery-02",
+      "label": "追问核心痛点",
+      "category_id": "discovery",
+      "category_label": "需求挖掘与业务访谈",
+      "roles": [
+        "需求顾问",
+        "配送运营负责人"
+      ],
+      "tags": [
+        "痛点追问",
+        "业务影响",
+        "证据"
+      ],
+      "path": "scenarios/discovery.json"
+    },
+    {
+      "id": "biz-discovery-03",
+      "label": "必要与可选需求",
+      "category_id": "discovery",
+      "category_label": "需求挖掘与业务访谈",
+      "roles": [
+        "方案分析师",
+        "外勤业务主管"
+      ],
+      "tags": [
+        "需求优先级",
+        "首期范围",
+        "must-have"
+      ],
+      "path": "scenarios/discovery.json"
+    },
+    {
+      "id": "biz-discovery-04",
+      "label": "预算与采购时间",
+      "category_id": "discovery",
+      "category_label": "需求挖掘与业务访谈",
+      "roles": [
+        "客户顾问",
+        "培训运营经理"
+      ],
+      "tags": [
+        "预算访谈",
+        "采购时间",
+        "审批状态"
+      ],
+      "path": "scenarios/discovery.json"
+    },
+    {
+      "id": "biz-discovery-05",
+      "label": "决策流程参与人",
+      "category_id": "discovery",
+      "category_label": "需求挖掘与业务访谈",
+      "roles": [
+        "企业销售顾问",
+        "采购项目协调人"
+      ],
+      "tags": [
+        "决策流程",
+        "利益相关方",
+        "评估顺序"
+      ],
+      "path": "scenarios/discovery.json"
+    },
+    {
+      "id": "biz-discovery-06",
+      "label": "复述澄清需求",
+      "category_id": "discovery",
+      "category_label": "需求挖掘与业务访谈",
+      "roles": [
+        "需求记录员",
+        "内容团队负责人"
+      ],
+      "tags": [
+        "需求复述",
+        "澄清",
+        "会议总结"
+      ],
+      "path": "scenarios/discovery.json"
+    },
+    {
+      "id": "biz-demo-01",
+      "label": "一分钟介绍产品",
+      "category_id": "demo",
+      "category_label": "产品介绍与演示",
+      "roles": [
+        "产品介绍专员",
+        "办公空间经理"
+      ],
+      "tags": [
+        "电梯介绍",
+        "产品定位",
+        "简洁表达"
+      ],
+      "path": "scenarios/demo.json"
+    },
+    {
+      "id": "biz-demo-02",
+      "label": "按需求演示",
+      "category_id": "demo",
+      "category_label": "产品介绍与演示",
+      "roles": [
+        "解决方案演示员",
+        "维修调度主管"
+      ],
+      "tags": [
+        "需求式演示",
+        "工单流程",
+        "场景验证"
+      ],
+      "path": "scenarios/demo.json"
+    },
+    {
+      "id": "biz-demo-03",
+      "label": "向非技术人员解释",
+      "category_id": "demo",
+      "category_label": "产品介绍与演示",
+      "roles": [
+        "设备产品顾问",
+        "仓库班组长"
+      ],
+      "tags": [
+        "非技术解释",
+        "设备演示",
+        "类比"
+      ],
+      "path": "scenarios/demo.json"
+    },
+    {
+      "id": "biz-demo-04",
+      "label": "回答功能边界",
+      "category_id": "demo",
+      "category_label": "产品介绍与演示",
+      "roles": [
+        "产品顾问",
+        "人事运营专员"
+      ],
+      "tags": [
+        "功能边界",
+        "替代方式",
+        "产品承诺"
+      ],
+      "path": "scenarios/demo.json"
+    },
+    {
+      "id": "biz-demo-05",
+      "label": "比较竞争方案",
+      "category_id": "demo",
+      "category_label": "产品介绍与演示",
+      "roles": [
+        "产品方案顾问",
+        "培训项目采购人"
+      ],
+      "tags": [
+        "竞争比较",
+        "方案取舍",
+        "证据"
+      ],
+      "path": "scenarios/demo.json"
+    },
+    {
+      "id": "biz-demo-06",
+      "label": "演示故障与未知问题",
+      "category_id": "demo",
+      "category_label": "产品介绍与演示",
+      "roles": [
+        "售前演示工程师",
+        "业务评估负责人"
+      ],
+      "tags": [
+        "演示故障",
+        "未知问题",
+        "诚实沟通"
+      ],
+      "path": "scenarios/demo.json"
+    },
+    {
+      "id": "biz-solution-01",
+      "label": "需求方案",
+      "category_id": "solution",
+      "category_label": "解决方案与价值论证",
+      "roles": [
+        "解决方案顾问",
+        "服务运营经理"
+      ],
+      "tags": [
+        "需求映射",
+        "方案范围",
+        "业务流程"
+      ],
+      "path": "scenarios/solution.json"
+    },
+    {
+      "id": "biz-solution-02",
+      "label": "预期收益",
+      "category_id": "solution",
+      "category_label": "解决方案与价值论证",
+      "roles": [
+        "业务价值顾问",
+        "运营分析主管"
+      ],
+      "tags": [
+        "预期收益",
+        "时间估算",
+        "假设验证"
+      ],
+      "path": "scenarios/solution.json"
+    },
+    {
+      "id": "biz-solution-03",
+      "label": "假设与限制",
+      "category_id": "solution",
+      "category_label": "解决方案与价值论证",
+      "roles": [
+        "交付方案负责人",
+        "门店项目协调人"
+      ],
+      "tags": [
+        "前提条件",
+        "项目限制",
+        "依赖管理"
+      ],
+      "path": "scenarios/solution.json"
+    },
+    {
+      "id": "biz-solution-04",
+      "label": "比较实施路径",
+      "category_id": "solution",
+      "category_label": "解决方案与价值论证",
+      "roles": [
+        "实施顾问",
+        "区域服务总协调人"
+      ],
+      "tags": [
+        "实施路径",
+        "试点",
+        "方案取舍"
+      ],
+      "path": "scenarios/solution.json"
+    },
+    {
+      "id": "biz-solution-05",
+      "label": "解释改变现状价值",
+      "category_id": "solution",
+      "category_label": "解决方案与价值论证",
+      "roles": [
+        "流程改进顾问",
+        "采购团队负责人"
+      ],
+      "tags": [
+        "改变现状",
+        "切换成本",
+        "价值判断"
+      ],
+      "path": "scenarios/solution.json"
+    },
+    {
+      "id": "biz-solution-06",
+      "label": "验证关键问题解决",
+      "category_id": "solution",
+      "category_label": "解决方案与价值论证",
+      "roles": [
+        "试点方案负责人",
+        "样品室主管"
+      ],
+      "tags": [
+        "方案验证",
+        "试点复盘",
+        "成功证据"
+      ],
+      "path": "scenarios/solution.json"
+    },
+    {
+      "id": "biz-pricing-01",
+      "label": "报价构成",
+      "category_id": "pricing",
+      "category_label": "报价与费用说明",
+      "roles": [
+        "报价顾问",
+        "采购专员"
+      ],
+      "tags": [
+        "报价明细",
+        "费用范围",
+        "模拟金额"
+      ],
+      "path": "scenarios/pricing.json"
+    },
+    {
+      "id": "biz-pricing-02",
+      "label": "不同套餐",
+      "category_id": "pricing",
+      "category_label": "报价与费用说明",
+      "roles": [
+        "套餐顾问",
+        "团队行政主管"
+      ],
+      "tags": [
+        "套餐比较",
+        "计费周期",
+        "功能匹配"
+      ],
+      "path": "scenarios/pricing.json"
+    },
+    {
+      "id": "biz-pricing-03",
+      "label": "一次性持续费用",
+      "category_id": "pricing",
+      "category_label": "报价与费用说明",
+      "roles": [
+        "商务报价专员",
+        "预算协调员"
+      ],
+      "tags": [
+        "一次性费用",
+        "持续费用",
+        "用量计费"
+      ],
+      "path": "scenarios/pricing.json"
+    },
+    {
+      "id": "biz-pricing-04",
+      "label": "隐藏费用疑问",
+      "category_id": "pricing",
+      "category_label": "报价与费用说明",
+      "roles": [
+        "费用说明顾问",
+        "办公室采购负责人"
+      ],
+      "tags": [
+        "额外费用",
+        "透明报价",
+        "费用授权"
+      ],
+      "path": "scenarios/pricing.json"
+    },
+    {
+      "id": "biz-pricing-05",
+      "label": "报价调整",
+      "category_id": "pricing",
+      "category_label": "报价与费用说明",
+      "roles": [
+        "商务客户经理",
+        "项目采购协调员"
+      ],
+      "tags": [
+        "报价变更",
+        "版本管理",
+        "范围调整"
+      ],
+      "path": "scenarios/pricing.json"
+    },
+    {
+      "id": "biz-pricing-06",
+      "label": "估算与正式报价",
+      "category_id": "pricing",
+      "category_label": "报价与费用说明",
+      "roles": [
+        "项目商务顾问",
+        "内部项目发起人"
+      ],
+      "tags": [
+        "初步估算",
+        "正式报价",
+        "范围确认"
+      ],
+      "path": "scenarios/pricing.json"
+    },
+    {
+      "id": "biz-negotiation-01",
+      "label": "降价要求",
+      "category_id": "negotiation",
+      "category_label": "商务谈判与条件交换",
+      "roles": [
+        "商务销售经理",
+        "采购谈判代表"
+      ],
+      "tags": [
+        "降价",
+        "条件交换",
+        "权限边界"
+      ],
+      "path": "scenarios/negotiation.json"
+    },
+    {
+      "id": "biz-negotiation-02",
+      "label": "量换价",
+      "category_id": "negotiation",
+      "category_label": "商务谈判与条件交换",
+      "roles": [
+        "批发客户经理",
+        "物资采购主管"
+      ],
+      "tags": [
+        "量价交换",
+        "采购预测",
+        "分批交付"
+      ],
+      "path": "scenarios/negotiation.json"
+    },
+    {
+      "id": "biz-negotiation-03",
+      "label": "付款周期",
+      "category_id": "negotiation",
+      "category_label": "商务谈判与条件交换",
+      "roles": [
+        "供应商商务代表",
+        "采购流程经理"
+      ],
+      "tags": [
+        "付款周期",
+        "开票流程",
+        "商务条件"
+      ],
+      "path": "scenarios/negotiation.json"
+    },
+    {
+      "id": "biz-negotiation-04",
+      "label": "交付时间",
+      "category_id": "negotiation",
+      "category_label": "商务谈判与条件交换",
+      "roles": [
+        "订单交付经理",
+        "培训活动经理"
+      ],
+      "tags": [
+        "交付谈判",
+        "分批交付",
+        "时间澄清"
+      ],
+      "path": "scenarios/negotiation.json"
+    },
+    {
+      "id": "biz-negotiation-05",
+      "label": "谈判僵局",
+      "category_id": "negotiation",
+      "category_label": "商务谈判与条件交换",
+      "roles": [
+        "服务合作经理",
+        "人才发展负责人"
+      ],
+      "tags": [
+        "谈判僵局",
+        "利益探索",
+        "阶段承诺"
+      ],
+      "path": "scenarios/negotiation.json"
+    },
+    {
+      "id": "biz-negotiation-06",
+      "label": "拒绝不利条件保留关系",
+      "category_id": "negotiation",
+      "category_label": "商务谈判与条件交换",
+      "roles": [
+        "供应商合作负责人",
+        "机构业务负责人"
+      ],
+      "tags": [
+        "拒绝条件",
+        "关系维护",
+        "商务边界"
+      ],
+      "path": "scenarios/negotiation.json"
+    },
+    {
+      "id": "biz-contracts-01",
+      "label": "合同范围",
+      "category_id": "contracts",
+      "category_label": "合同条款与合规沟通",
+      "roles": [
+        "供应商合同协调员",
+        "客户项目协调员"
+      ],
+      "tags": [
+        "合同范围",
+        "文档核对",
+        "非法律判断"
+      ],
+      "path": "scenarios/contracts.json"
+    },
+    {
+      "id": "biz-contracts-02",
+      "label": "验收标准",
+      "category_id": "contracts",
+      "category_label": "合同条款与合规沟通",
+      "roles": [
+        "交付协调员",
+        "客户验收协调员"
+      ],
+      "tags": [
+        "验收澄清",
+        "测试证据",
+        "授权签收"
+      ],
+      "path": "scenarios/contracts.json"
+    },
+    {
+      "id": "biz-contracts-03",
+      "label": "续约终止",
+      "category_id": "contracts",
+      "category_label": "合同条款与合规沟通",
+      "roles": [
+        "续约合同协调员",
+        "客户供应商管理员"
+      ],
+      "tags": [
+        "续约流程",
+        "通知澄清",
+        "权限"
+      ],
+      "path": "scenarios/contracts.json"
+    },
+    {
+      "id": "biz-contracts-04",
+      "label": "保密数据使用",
+      "category_id": "contracts",
+      "category_label": "合同条款与合规沟通",
+      "roles": [
+        "供应商数据协调员",
+        "客户数据管理员"
+      ],
+      "tags": [
+        "保密沟通",
+        "数据用途",
+        "最小范围"
+      ],
+      "path": "scenarios/contracts.json"
+    },
+    {
+      "id": "biz-contracts-05",
+      "label": "签约承诺权限",
+      "category_id": "contracts",
+      "category_label": "合同条款与合规沟通",
+      "roles": [
+        "供应商项目联系人",
+        "客户项目联系人"
+      ],
+      "tags": [
+        "签约权限",
+        "承诺边界",
+        "审批沟通"
+      ],
+      "path": "scenarios/contracts.json"
+    },
+    {
+      "id": "biz-contracts-06",
+      "label": "争议转交法务",
+      "category_id": "contracts",
+      "category_label": "合同条款与合规沟通",
+      "roles": [
+        "供应商商务协调员",
+        "客户项目负责人"
+      ],
+      "tags": [
+        "争议升级",
+        "法务转交",
+        "事实摘要"
+      ],
+      "path": "scenarios/contracts.json"
+    },
+    {
+      "id": "biz-onboarding-01",
+      "label": "客户启动",
+      "category_id": "onboarding",
+      "category_label": "客户引导与使用培训",
+      "roles": [
+        "客户引导经理",
+        "客户项目负责人"
+      ],
+      "tags": [
+        "客户启动",
+        "责任分工",
+        "行动清单"
+      ],
+      "path": "scenarios/onboarding.json"
+    },
+    {
+      "id": "biz-onboarding-02",
+      "label": "上线准备",
+      "category_id": "onboarding",
+      "category_label": "客户引导与使用培训",
+      "roles": [
+        "上线准备专员",
+        "客户上线协调员"
+      ],
+      "tags": [
+        "上线准备",
+        "就绪检查",
+        "go-live"
+      ],
+      "path": "scenarios/onboarding.json"
+    },
+    {
+      "id": "biz-onboarding-03",
+      "label": "操作流程",
+      "category_id": "onboarding",
+      "category_label": "客户引导与使用培训",
+      "roles": [
+        "使用指导专员",
+        "物资申请员工"
+      ],
+      "tags": [
+        "操作指导",
+        "提交申请",
+        "状态确认"
+      ],
+      "path": "scenarios/onboarding.json"
+    },
+    {
+      "id": "biz-onboarding-04",
+      "label": "使用培训",
+      "category_id": "onboarding",
+      "category_label": "客户引导与使用培训",
+      "roles": [
+        "客户培训师",
+        "客户超级用户"
+      ],
+      "tags": [
+        "使用培训",
+        "动手练习",
+        "混合熟练度"
+      ],
+      "path": "scenarios/onboarding.json"
+    },
+    {
+      "id": "biz-onboarding-05",
+      "label": "检查理解",
+      "category_id": "onboarding",
+      "category_label": "客户引导与使用培训",
+      "roles": [
+        "培训辅导员",
+        "前台新用户"
+      ],
+      "tags": [
+        "理解检查",
+        "teach-back",
+        "反馈复练"
+      ],
+      "path": "scenarios/onboarding.json"
+    },
+    {
+      "id": "biz-onboarding-06",
+      "label": "上线支持",
+      "category_id": "onboarding",
+      "category_label": "客户引导与使用培训",
+      "roles": [
+        "上线支持协调员",
+        "现场上线负责人"
+      ],
+      "tags": [
+        "上线支持",
+        "问题分级",
+        "支持交接"
+      ],
+      "path": "scenarios/onboarding.json"
+    },
+    {
+      "id": "biz-success-01",
+      "label": "使用跟进",
+      "category_id": "success",
+      "category_label": "客户成功与续约增长",
+      "roles": [
+        "客户成功专员",
+        "客户知识库管理员"
+      ],
+      "tags": [
+        "使用跟进",
+        "用户反馈",
+        "采用情况"
+      ],
+      "path": "scenarios/success.json"
+    },
+    {
+      "id": "biz-success-02",
+      "label": "低使用率",
+      "category_id": "success",
+      "category_label": "客户成功与续约增长",
+      "roles": [
+        "客户采用顾问",
+        "团队流程负责人"
+      ],
+      "tags": [
+        "低使用率",
+        "采用障碍",
+        "改进试验"
+      ],
+      "path": "scenarios/success.json"
+    },
+    {
+      "id": "biz-success-03",
+      "label": "阶段价值回顾",
+      "category_id": "success",
+      "category_label": "客户成功与续约增长",
+      "roles": [
+        "客户价值经理",
+        "场地运营负责人"
+      ],
+      "tags": [
+        "价值回顾",
+        "季度复盘",
+        "证据边界"
+      ],
+      "path": "scenarios/success.json"
+    },
+    {
+      "id": "biz-success-04",
+      "label": "流失风险",
+      "category_id": "success",
+      "category_label": "客户成功与续约增长",
+      "roles": [
+        "客户关系经理",
+        "采购流程主管"
+      ],
+      "tags": [
+        "流失风险",
+        "关系修复",
+        "恢复计划"
+      ],
+      "path": "scenarios/success.json"
+    },
+    {
+      "id": "biz-success-05",
+      "label": "续约",
+      "category_id": "success",
+      "category_label": "客户成功与续约增长",
+      "roles": [
+        "续约经理",
+        "客户系统负责人"
+      ],
+      "tags": [
+        "续约",
+        "需求更新",
+        "采购准备"
+      ],
+      "path": "scenarios/success.json"
+    },
+    {
+      "id": "biz-success-06",
+      "label": "扩容升级",
+      "category_id": "success",
+      "category_label": "客户成功与续约增长",
+      "roles": [
+        "客户增长顾问",
+        "客户平台管理员"
+      ],
+      "tags": [
+        "扩容",
+        "升级",
+        "需求验证"
+      ],
+      "path": "scenarios/success.json"
+    },
+    {
+      "id": "biz-support-01",
+      "label": "澄清问题",
+      "category_id": "support",
+      "category_label": "客服与技术支持",
+      "roles": [
+        "一线支持专员",
+        "资料平台用户"
+      ],
+      "tags": [
+        "问题澄清",
+        "影响范围",
+        "一线支持"
+      ],
+      "path": "scenarios/support.json"
+    },
+    {
+      "id": "biz-support-02",
+      "label": "描述复现",
+      "category_id": "support",
+      "category_label": "客服与技术支持",
+      "roles": [
+        "技术支持工程师",
+        "订单运营专员"
+      ],
+      "tags": [
+        "复现步骤",
+        "预期与实际",
+        "故障记录"
+      ],
+      "path": "scenarios/support.json"
+    },
+    {
+      "id": "biz-support-03",
+      "label": "已知限制",
+      "category_id": "support",
+      "category_label": "客服与技术支持",
+      "roles": [
+        "产品支持顾问",
+        "内部培训协调员"
+      ],
+      "tags": [
+        "产品限制",
+        "文件上传",
+        "替代方式"
+      ],
+      "path": "scenarios/support.json"
+    },
+    {
+      "id": "biz-support-04",
+      "label": "临时替代",
+      "category_id": "support",
+      "category_label": "客服与技术支持",
+      "roles": [
+        "支持事件协调员",
+        "课程运营管理员"
+      ],
+      "tags": [
+        "临时替代",
+        "业务连续性",
+        "恢复核对"
+      ],
+      "path": "scenarios/support.json"
+    },
+    {
+      "id": "biz-support-05",
+      "label": "处理进展",
+      "category_id": "support",
+      "category_label": "客服与技术支持",
+      "roles": [
+        "支持进度负责人",
+        "仓库值班经理"
+      ],
+      "tags": [
+        "工单进展",
+        "不确定性",
+        "状态更新"
+      ],
+      "path": "scenarios/support.json"
+    },
+    {
+      "id": "biz-support-06",
+      "label": "关闭支持事项",
+      "category_id": "support",
+      "category_label": "客服与技术支持",
+      "roles": [
+        "支持结案专员",
+        "业务报表负责人"
+      ],
+      "tags": [
+        "支持结案",
+        "客户验证",
+        "剩余事项"
+      ],
+      "path": "scenarios/support.json"
+    },
+    {
+      "id": "biz-complaints-01",
+      "label": "激动客户",
+      "category_id": "complaints",
+      "category_label": "投诉补救与关系修复",
+      "roles": [
+        "客户投诉专员",
+        "培训现场负责人"
+      ],
+      "tags": [
+        "激动客户",
+        "情绪承接",
+        "单点跟进"
+      ],
+      "path": "scenarios/complaints.json"
+    },
+    {
+      "id": "biz-complaints-02",
+      "label": "承认问题与已知事实",
+      "category_id": "complaints",
+      "category_label": "投诉补救与关系修复",
+      "roles": [
+        "培训服务经理",
+        "客户培训联系人"
+      ],
+      "tags": [
+        "承认问题",
+        "事实核对",
+        "具体道歉"
+      ],
+      "path": "scenarios/complaints.json"
+    },
+    {
+      "id": "biz-complaints-03",
+      "label": "根因未定",
+      "category_id": "complaints",
+      "category_label": "投诉补救与关系修复",
+      "roles": [
+        "事件沟通负责人",
+        "客户内容运营主管"
+      ],
+      "tags": [
+        "根因未定",
+        "事件沟通",
+        "调查边界"
+      ],
+      "path": "scenarios/complaints.json"
+    },
+    {
+      "id": "biz-complaints-04",
+      "label": "授权补偿",
+      "category_id": "complaints",
+      "category_label": "投诉补救与关系修复",
+      "roles": [
+        "服务补救主管",
+        "客户学习项目经理"
+      ],
+      "tags": [
+        "授权补偿",
+        "服务补救",
+        "权限边界"
+      ],
+      "path": "scenarios/complaints.json"
+    },
+    {
+      "id": "biz-complaints-05",
+      "label": "不满解决方案",
+      "category_id": "complaints",
+      "category_label": "投诉补救与关系修复",
+      "roles": [
+        "投诉升级协调员",
+        "早班运营负责人"
+      ],
+      "tags": [
+        "方案不满",
+        "投诉升级",
+        "重新澄清"
+      ],
+      "path": "scenarios/complaints.json"
+    },
+    {
+      "id": "biz-complaints-06",
+      "label": "事后回访",
+      "category_id": "complaints",
+      "category_label": "投诉补救与关系修复",
+      "roles": [
+        "关系修复专员",
+        "客户行政协调员"
+      ],
+      "tags": [
+        "事后回访",
+        "关系修复",
+        "预防跟进"
+      ],
+      "path": "scenarios/complaints.json"
+    },
+    {
+      "id": "biz-partnerships-01",
+      "label": "合作伙伴接洽",
+      "category_id": "partnerships",
+      "category_label": "渠道伙伴与联合业务",
+      "roles": [
+        "渠道拓展经理",
+        "咨询团队业务负责人"
+      ],
+      "tags": [
+        "伙伴接洽",
+        "能力互补",
+        "探索合作"
+      ],
+      "path": "scenarios/partnerships.json"
+    },
+    {
+      "id": "biz-partnerships-02",
+      "label": "合作模式",
+      "category_id": "partnerships",
+      "category_label": "渠道伙伴与联合业务",
+      "roles": [
+        "伙伴项目经理",
+        "区域服务伙伴负责人"
+      ],
+      "tags": [
+        "合作模式",
+        "介绍与转售",
+        "责任分工"
+      ],
+      "path": "scenarios/partnerships.json"
+    },
+    {
+      "id": "biz-partnerships-03",
+      "label": "分成佣金",
+      "category_id": "partnerships",
+      "category_label": "渠道伙伴与联合业务",
+      "roles": [
+        "渠道商务专员",
+        "线索介绍伙伴"
+      ],
+      "tags": [
+        "佣金口径",
+        "结算节点",
+        "模拟计算"
+      ],
+      "path": "scenarios/partnerships.json"
+    },
+    {
+      "id": "biz-partnerships-04",
+      "label": "联合售前",
+      "category_id": "partnerships",
+      "category_label": "渠道伙伴与联合业务",
+      "roles": [
+        "供应商售前顾问",
+        "伙伴业务顾问"
+      ],
+      "tags": [
+        "联合售前",
+        "问答转接",
+        "口径一致"
+      ],
+      "path": "scenarios/partnerships.json"
+    },
+    {
+      "id": "biz-partnerships-05",
+      "label": "线索归属渠道冲突",
+      "category_id": "partnerships",
+      "category_label": "渠道伙伴与联合业务",
+      "roles": [
+        "渠道协调经理",
+        "渠道客户负责人"
+      ],
+      "tags": [
+        "线索归属",
+        "渠道冲突",
+        "证据核对"
+      ],
+      "path": "scenarios/partnerships.json"
+    },
+    {
+      "id": "biz-partnerships-06",
+      "label": "合作表现调整",
+      "category_id": "partnerships",
+      "category_label": "渠道伙伴与联合业务",
+      "roles": [
+        "伙伴成功经理",
+        "伙伴业务运营负责人"
+      ],
+      "tags": [
+        "伙伴回顾",
+        "线索质量",
+        "双向改进"
+      ],
+      "path": "scenarios/partnerships.json"
+    },
+    {
+      "id": "biz-marketing-01",
+      "label": "代理商需求",
+      "category_id": "marketing",
+      "category_label": "市场品牌与公关",
+      "roles": [
+        "客户市场负责人",
+        "创意代理项目总监"
+      ],
+      "tags": [
+        "代理商简报",
+        "营销需求",
+        "交付范围"
+      ],
+      "path": "scenarios/marketing.json"
+    },
+    {
+      "id": "biz-marketing-02",
+      "label": "用户定位",
+      "category_id": "marketing",
+      "category_label": "市场品牌与公关",
+      "roles": [
+        "产品市场经理",
+        "用户研究员"
+      ],
+      "tags": [
+        "用户定位",
+        "购买角色",
+        "信息测试"
+      ],
+      "path": "scenarios/marketing.json"
+    },
+    {
+      "id": "biz-marketing-03",
+      "label": "联合推广",
+      "category_id": "marketing",
+      "category_label": "市场品牌与公关",
+      "roles": [
+        "联合营销经理",
+        "伙伴市场协调人"
+      ],
+      "tags": [
+        "联合推广",
+        "品牌审核",
+        "活动许可"
+      ],
+      "path": "scenarios/marketing.json"
+    },
+    {
+      "id": "biz-marketing-04",
+      "label": "案例授权",
+      "category_id": "marketing",
+      "category_label": "市场品牌与公关",
+      "roles": [
+        "案例内容负责人",
+        "客户传播联系人"
+      ],
+      "tags": [
+        "案例授权",
+        "事实审稿",
+        "用途边界"
+      ],
+      "path": "scenarios/marketing.json"
+    },
+    {
+      "id": "biz-marketing-05",
+      "label": "媒体行业访谈",
+      "category_id": "marketing",
+      "category_label": "市场品牌与公关",
+      "roles": [
+        "企业发言人",
+        "行业采访记者"
+      ],
+      "tags": [
+        "媒体访谈",
+        "行业观察",
+        "公开口径"
+      ],
+      "path": "scenarios/marketing.json"
+    },
+    {
+      "id": "biz-marketing-06",
+      "label": "对外信息误解口径",
+      "category_id": "marketing",
+      "category_label": "市场品牌与公关",
+      "roles": [
+        "企业传播负责人",
+        "客户社群运营员"
+      ],
+      "tags": [
+        "信息更正",
+        "公关澄清",
+        "口径一致"
+      ],
+      "path": "scenarios/marketing.json"
+    },
+    {
+      "id": "biz-meetings-01",
+      "label": "协调会议时间与时区",
+      "category_id": "meetings",
+      "category_label": "会议组织与主持",
+      "roles": [
+        "会议协调员",
+        "异地设计师"
+      ],
+      "tags": [
+        "时区",
+        "排期",
+        "远程会议"
+      ],
+      "path": "scenarios/meetings.json"
+    },
+    {
+      "id": "biz-meetings-02",
+      "label": "对齐议程与会议目标",
+      "category_id": "meetings",
+      "category_label": "会议组织与主持",
+      "roles": [
+        "会议发起人",
+        "运营代表"
+      ],
+      "tags": [
+        "议程",
+        "会议目标",
+        "预读"
+      ],
+      "path": "scenarios/meetings.json"
+    },
+    {
+      "id": "biz-meetings-03",
+      "label": "开场说明目标与讨论规则",
+      "category_id": "meetings",
+      "category_label": "会议组织与主持",
+      "roles": [
+        "会议主持人",
+        "首次参会者"
+      ],
+      "tags": [
+        "会议开场",
+        "参与规则",
+        "目标对齐"
+      ],
+      "path": "scenarios/meetings.json"
+    },
+    {
+      "id": "biz-meetings-04",
+      "label": "邀请不同成员发言",
+      "category_id": "meetings",
+      "category_label": "会议组织与主持",
+      "roles": [
+        "讨论主持人",
+        "一线代表"
+      ],
+      "tags": [
+        "邀请发言",
+        "会议参与",
+        "倾听"
+      ],
+      "path": "scenarios/meetings.json"
+    },
+    {
+      "id": "biz-meetings-05",
+      "label": "礼貌拉回跑题讨论",
+      "category_id": "meetings",
+      "category_label": "会议组织与主持",
+      "roles": [
+        "议题主持人",
+        "客户支持代表"
+      ],
+      "tags": [
+        "控场",
+        "议题聚焦",
+        "待办记录"
+      ],
+      "path": "scenarios/meetings.json"
+    },
+    {
+      "id": "biz-meetings-06",
+      "label": "收尾确认决策与行动项",
+      "category_id": "meetings",
+      "category_label": "会议组织与主持",
+      "roles": [
+        "会议负责人",
+        "行动项负责人"
+      ],
+      "tags": [
+        "会议收尾",
+        "行动项",
+        "决策记录"
+      ],
+      "path": "scenarios/meetings.json"
+    },
+    {
+      "id": "biz-decisions-01",
+      "label": "澄清含糊的工作要求",
+      "category_id": "decisions",
+      "category_label": "观点表达与共同决策",
+      "roles": [
+        "需求提出人",
+        "执行负责人"
+      ],
+      "tags": [
+        "澄清",
+        "指标定义",
+        "预期管理"
+      ],
+      "path": "scenarios/decisions.json"
+    },
+    {
+      "id": "biz-decisions-02",
+      "label": "提出可验证的改进建议",
+      "category_id": "decisions",
+      "category_label": "观点表达与共同决策",
+      "roles": [
+        "改进提议人",
+        "支持主管"
+      ],
+      "tags": [
+        "建议",
+        "小步试验",
+        "效果评估"
+      ],
+      "path": "scenarios/decisions.json"
+    },
+    {
+      "id": "biz-decisions-03",
+      "label": "礼貌反对不稳妥的安排",
+      "category_id": "decisions",
+      "category_label": "观点表达与共同决策",
+      "roles": [
+        "上线倡议人",
+        "门店运营代表"
+      ],
+      "tags": [
+        "礼貌反对",
+        "替代方案",
+        "上线讨论"
+      ],
+      "path": "scenarios/decisions.json"
+    },
+    {
+      "id": "biz-decisions-04",
+      "label": "为观点补充依据并承认局限",
+      "category_id": "decisions",
+      "category_label": "观点表达与共同决策",
+      "roles": [
+        "数据分析员",
+        "业务负责人"
+      ],
+      "tags": [
+        "证据",
+        "不确定性",
+        "数据讨论"
+      ],
+      "path": "scenarios/decisions.json"
+    },
+    {
+      "id": "biz-decisions-05",
+      "label": "比较方案与接受取舍",
+      "category_id": "decisions",
+      "category_label": "观点表达与共同决策",
+      "roles": [
+        "项目负责人",
+        "运营分析主管"
+      ],
+      "tags": [
+        "方案取舍",
+        "决策标准",
+        "过渡方案"
+      ],
+      "path": "scenarios/decisions.json"
+    },
+    {
+      "id": "biz-decisions-06",
+      "label": "在分歧中建立有限共识",
+      "category_id": "decisions",
+      "category_label": "观点表达与共同决策",
+      "roles": [
+        "集中服务负责人",
+        "区域服务负责人"
+      ],
+      "tags": [
+        "分歧",
+        "共识",
+        "可逆决策"
+      ],
+      "path": "scenarios/decisions.json"
+    },
+    {
+      "id": "biz-collaboration-01",
+      "label": "接任务时确认预期",
+      "category_id": "collaboration",
+      "category_label": "跨部门与远程协作",
+      "roles": [
+        "任务接收人",
+        "任务提出人"
+      ],
+      "tags": [
+        "接任务",
+        "预期确认",
+        "交付范围"
+      ],
+      "path": "scenarios/collaboration.json"
+    },
+    {
+      "id": "biz-collaboration-02",
+      "label": "明确分工与责任边界",
+      "category_id": "collaboration",
+      "category_label": "跨部门与远程协作",
+      "roles": [
+        "市场协调人",
+        "客户成功协调人"
+      ],
+      "tags": [
+        "职责边界",
+        "跨部门",
+        "任务交接"
+      ],
+      "path": "scenarios/collaboration.json"
+    },
+    {
+      "id": "biz-collaboration-03",
+      "label": "处理跨团队前置依赖",
+      "category_id": "collaboration",
+      "category_label": "跨部门与远程协作",
+      "roles": [
+        "内容迁移负责人",
+        "平台协调人"
+      ],
+      "tags": [
+        "跨团队依赖",
+        "阻塞",
+        "替代方案"
+      ],
+      "path": "scenarios/collaboration.json"
+    },
+    {
+      "id": "biz-collaboration-04",
+      "label": "催办时核实阻碍与新承诺",
+      "category_id": "collaboration",
+      "category_label": "跨部门与远程协作",
+      "roles": [
+        "发布协调人",
+        "设计负责人"
+      ],
+      "tags": [
+        "催办",
+        "进度沟通",
+        "分批交付"
+      ],
+      "path": "scenarios/collaboration.json"
+    },
+    {
+      "id": "biz-collaboration-05",
+      "label": "跨时区异步交接",
+      "category_id": "collaboration",
+      "category_label": "跨部门与远程协作",
+      "roles": [
+        "交班专员",
+        "接班专员"
+      ],
+      "tags": [
+        "异步交接",
+        "时区",
+        "共享记录"
+      ],
+      "path": "scenarios/collaboration.json"
+    },
+    {
+      "id": "biz-collaboration-06",
+      "label": "协商临时优先级变化",
+      "category_id": "collaboration",
+      "category_label": "跨部门与远程协作",
+      "roles": [
+        "分析员",
+        "销售协调人"
+      ],
+      "tags": [
+        "优先级",
+        "资源冲突",
+        "预期管理"
+      ],
+      "path": "scenarios/collaboration.json"
+    },
+    {
+      "id": "biz-presentations-01",
+      "label": "简洁汇报日常进度",
+      "category_id": "presentations",
+      "category_label": "工作汇报与商务演讲",
+      "roles": [
+        "内容专员",
+        "项目协调员"
+      ],
+      "tags": [
+        "日常汇报",
+        "进度",
+        "完成口径"
+      ],
+      "path": "scenarios/presentations.json"
+    },
+    {
+      "id": "biz-presentations-02",
+      "label": "向高管做两分钟短汇报",
+      "category_id": "presentations",
+      "category_label": "工作汇报与商务演讲",
+      "roles": [
+        "试点负责人",
+        "运营高管"
+      ],
+      "tags": [
+        "高管汇报",
+        "结论先行",
+        "决策请求"
+      ],
+      "path": "scenarios/presentations.json"
+    },
+    {
+      "id": "biz-presentations-03",
+      "label": "解释指标变化与口径",
+      "category_id": "presentations",
+      "category_label": "工作汇报与商务演讲",
+      "roles": [
+        "报告分析员",
+        "业务听众"
+      ],
+      "tags": [
+        "指标汇报",
+        "百分点",
+        "口径澄清"
+      ],
+      "path": "scenarios/presentations.json"
+    },
+    {
+      "id": "biz-presentations-04",
+      "label": "汇报坏消息与风险应对",
+      "category_id": "presentations",
+      "category_label": "工作汇报与商务演讲",
+      "roles": [
+        "实施负责人",
+        "业务赞助人"
+      ],
+      "tags": [
+        "坏消息",
+        "风险汇报",
+        "应对方案"
+      ],
+      "path": "scenarios/presentations.json"
+    },
+    {
+      "id": "biz-presentations-05",
+      "label": "正式介绍方案并请求评审",
+      "category_id": "presentations",
+      "category_label": "工作汇报与商务演讲",
+      "roles": [
+        "方案主讲人",
+        "方案评审人"
+      ],
+      "tags": [
+        "方案演讲",
+        "结构表达",
+        "评审"
+      ],
+      "path": "scenarios/presentations.json"
+    },
+    {
+      "id": "biz-presentations-06",
+      "label": "应对演讲后的追问",
+      "category_id": "presentations",
+      "category_label": "工作汇报与商务演讲",
+      "roles": [
+        "汇报主讲人",
+        "业务提问人"
+      ],
+      "tags": [
+        "问答",
+        "追问",
+        "未知问题处理"
+      ],
+      "path": "scenarios/presentations.json"
+    },
+    {
+      "id": "biz-planning-01",
+      "label": "启动会对齐目的与角色",
+      "category_id": "planning",
+      "category_label": "项目启动与计划制定",
+      "roles": [
+        "项目经理",
+        "库区代表"
+      ],
+      "tags": [
+        "项目启动",
+        "角色对齐",
+        "试点"
+      ],
+      "path": "scenarios/planning.json"
+    },
+    {
+      "id": "biz-planning-02",
+      "label": "界定范围与成功标准",
+      "category_id": "planning",
+      "category_label": "项目启动与计划制定",
+      "roles": [
+        "业务需求负责人",
+        "实施计划员"
+      ],
+      "tags": [
+        "范围",
+        "成功标准",
+        "验收定义"
+      ],
+      "path": "scenarios/planning.json"
+    },
+    {
+      "id": "biz-planning-03",
+      "label": "制定里程碑与检查点",
+      "category_id": "planning",
+      "category_label": "项目启动与计划制定",
+      "roles": [
+        "进度计划员",
+        "培训负责人"
+      ],
+      "tags": [
+        "里程碑",
+        "倒排计划",
+        "缓冲"
+      ],
+      "path": "scenarios/planning.json"
+    },
+    {
+      "id": "biz-planning-04",
+      "label": "申请人员与资源投入",
+      "category_id": "planning",
+      "category_label": "项目启动与计划制定",
+      "roles": [
+        "试点项目负责人",
+        "资源部门主管"
+      ],
+      "tags": [
+        "人员资源",
+        "工时",
+        "容量规划"
+      ],
+      "path": "scenarios/planning.json"
+    },
+    {
+      "id": "biz-planning-05",
+      "label": "识别前置依赖与风险",
+      "category_id": "planning",
+      "category_label": "项目启动与计划制定",
+      "roles": [
+        "迁移计划负责人",
+        "设施协调员"
+      ],
+      "tags": [
+        "依赖风险",
+        "预案",
+        "风险责任"
+      ],
+      "path": "scenarios/planning.json"
+    },
+    {
+      "id": "biz-planning-06",
+      "label": "约定沟通与升级机制",
+      "category_id": "planning",
+      "category_label": "项目启动与计划制定",
+      "roles": [
+        "项目沟通负责人",
+        "工作组负责人"
+      ],
+      "tags": [
+        "沟通机制",
+        "升级路径",
+        "决策留痕"
+      ],
+      "path": "scenarios/planning.json"
+    },
+    {
+      "id": "biz-delivery-01",
+      "label": "协商延期与恢复计划",
+      "category_id": "delivery",
+      "category_label": "项目执行变更与交付",
+      "roles": [
+        "交付负责人",
+        "内部客户负责人"
+      ],
+      "tags": [
+        "延期",
+        "恢复计划",
+        "分批交付"
+      ],
+      "path": "scenarios/delivery.json"
+    },
+    {
+      "id": "biz-delivery-02",
+      "label": "评估新增需求的影响",
+      "category_id": "delivery",
+      "category_label": "项目执行变更与交付",
+      "roles": [
+        "业务请求人",
+        "交付变更协调人"
+      ],
+      "tags": [
+        "新增需求",
+        "变更评估",
+        "版本规划"
+      ],
+      "path": "scenarios/delivery.json"
+    },
+    {
+      "id": "biz-delivery-03",
+      "label": "识别累积的范围蔓延",
+      "category_id": "delivery",
+      "category_label": "项目执行变更与交付",
+      "roles": [
+        "手册交付负责人",
+        "业务审阅人"
+      ],
+      "tags": [
+        "范围蔓延",
+        "基线",
+        "工作量取舍"
+      ],
+      "path": "scenarios/delivery.json"
+    },
+    {
+      "id": "biz-delivery-04",
+      "label": "升级跨团队阻塞",
+      "category_id": "delivery",
+      "category_label": "项目执行变更与交付",
+      "roles": [
+        "受阻工作组负责人",
+        "项目赞助人"
+      ],
+      "tags": [
+        "阻塞升级",
+        "事实沟通",
+        "权限流程"
+      ],
+      "path": "scenarios/delivery.json"
+    },
+    {
+      "id": "biz-delivery-05",
+      "label": "处理验收中的问题与分歧",
+      "category_id": "delivery",
+      "category_label": "项目执行变更与交付",
+      "roles": [
+        "交付代表",
+        "验收测试人"
+      ],
+      "tags": [
+        "验收",
+        "缺陷复现",
+        "标准核对"
+      ],
+      "path": "scenarios/delivery.json"
+    },
+    {
+      "id": "biz-delivery-06",
+      "label": "交付后复盘并落实改进",
+      "category_id": "delivery",
+      "category_label": "项目执行变更与交付",
+      "roles": [
+        "复盘主持人",
+        "门店实施代表"
+      ],
+      "tags": [
+        "交付复盘",
+        "持续改进",
+        "行动闭环"
+      ],
+      "path": "scenarios/delivery.json"
+    },
+    {
+      "id": "biz-technical-01",
+      "label": "把用户反馈转成可核查问题",
+      "category_id": "technical",
+      "category_label": "产品研发与技术协作",
+      "roles": [
+        "产品经理",
+        "支持专员"
+      ],
+      "tags": [
+        "用户反馈",
+        "问题复现",
+        "事实澄清"
+      ],
+      "path": "scenarios/technical.json"
+    },
+    {
+      "id": "biz-technical-02",
+      "label": "讨论技术可行性与验证范围",
+      "category_id": "technical",
+      "category_label": "产品研发与技术协作",
+      "roles": [
+        "产品负责人",
+        "技术负责人"
+      ],
+      "tags": [
+        "技术可行性",
+        "离线同步",
+        "探索验证"
+      ],
+      "path": "scenarios/technical.json"
+    },
+    {
+      "id": "biz-technical-03",
+      "label": "在有限容量下排序需求",
+      "category_id": "technical",
+      "category_label": "产品研发与技术协作",
+      "roles": [
+        "需求优先级负责人",
+        "工程计划负责人"
+      ],
+      "tags": [
+        "需求优先级",
+        "容量",
+        "用户影响"
+      ],
+      "path": "scenarios/technical.json"
+    },
+    {
+      "id": "biz-technical-04",
+      "label": "解释技术取舍对业务的影响",
+      "category_id": "technical",
+      "category_label": "产品研发与技术协作",
+      "roles": [
+        "系统设计师",
+        "运营产品经理"
+      ],
+      "tags": [
+        "技术取舍",
+        "缓存",
+        "数据时效"
+      ],
+      "path": "scenarios/technical.json"
+    },
+    {
+      "id": "biz-technical-05",
+      "label": "在发布前提出暂缓建议",
+      "category_id": "technical",
+      "category_label": "产品研发与技术协作",
+      "roles": [
+        "质量负责人",
+        "发布协调人"
+      ],
+      "tags": [
+        "发布暂缓",
+        "质量门槛",
+        "发布决策"
+      ],
+      "path": "scenarios/technical.json"
+    },
+    {
+      "id": "biz-technical-06",
+      "label": "上线异常中的协作修复",
+      "category_id": "technical",
+      "category_label": "产品研发与技术协作",
+      "roles": [
+        "值班工程师",
+        "事件协调人"
+      ],
+      "tags": [
+        "上线异常",
+        "事件协作",
+        "恢复验证"
+      ],
+      "path": "scenarios/technical.json"
+    },
+    {
+      "id": "biz-procurement-01",
+      "label": "询价并核对报价口径",
+      "category_id": "procurement",
+      "category_label": "采购与供应商管理",
+      "roles": [
+        "采购专员",
+        "供应商销售代表"
+      ],
+      "tags": [
+        "询价",
+        "规格",
+        "报价口径"
+      ],
+      "path": "scenarios/procurement.json"
+    },
+    {
+      "id": "biz-procurement-02",
+      "label": "评估供应商交付能力",
+      "category_id": "procurement",
+      "category_label": "采购与供应商管理",
+      "roles": [
+        "供应商评估员",
+        "供应商运营经理"
+      ],
+      "tags": [
+        "能力评估",
+        "产能",
+        "供应商核验"
+      ],
+      "path": "scenarios/procurement.json"
+    },
+    {
+      "id": "biz-procurement-03",
+      "label": "比较采购方案与总投入",
+      "category_id": "procurement",
+      "category_label": "采购与供应商管理",
+      "roles": [
+        "采购方案负责人",
+        "使用部门负责人"
+      ],
+      "tags": [
+        "采购方案",
+        "总投入",
+        "方案比较"
+      ],
+      "path": "scenarios/procurement.json"
+    },
+    {
+      "id": "biz-procurement-04",
+      "label": "约定样品试用与评估",
+      "category_id": "procurement",
+      "category_label": "采购与供应商管理",
+      "roles": [
+        "试用协调员",
+        "供应商技术代表"
+      ],
+      "tags": [
+        "样品试用",
+        "评估标准",
+        "试用边界"
+      ],
+      "path": "scenarios/procurement.json"
+    },
+    {
+      "id": "biz-procurement-05",
+      "label": "沟通到货质量问题",
+      "category_id": "procurement",
+      "category_label": "采购与供应商管理",
+      "roles": [
+        "采购质量协调员",
+        "供应商售后负责人"
+      ],
+      "tags": [
+        "质量问题",
+        "批次追溯",
+        "补救安排"
+      ],
+      "path": "scenarios/procurement.json"
+    },
+    {
+      "id": "biz-procurement-06",
+      "label": "进行供应商绩效回顾",
+      "category_id": "procurement",
+      "category_label": "采购与供应商管理",
+      "roles": [
+        "供应商管理专员",
+        "供应商客户经理"
+      ],
+      "tags": [
+        "供应商绩效",
+        "记录核对",
+        "持续改进"
+      ],
+      "path": "scenarios/procurement.json"
+    },
+    {
+      "id": "biz-finance-01",
+      "label": "说明预算申请与审批依据",
+      "category_id": "finance",
+      "category_label": "财务预算与回款",
+      "roles": [
+        "预算申请人",
+        "财务预算协调员"
+      ],
+      "tags": [
+        "预算申请",
+        "费用拆分",
+        "审批流程"
+      ],
+      "path": "scenarios/finance.json"
+    },
+    {
+      "id": "biz-finance-02",
+      "label": "报告超支并申请调整",
+      "category_id": "finance",
+      "category_label": "财务预算与回款",
+      "roles": [
+        "项目预算负责人",
+        "财务合作伙伴"
+      ],
+      "tags": [
+        "预算超支",
+        "预测核对",
+        "追加审批"
+      ],
+      "path": "scenarios/finance.json"
+    },
+    {
+      "id": "biz-finance-03",
+      "label": "澄清业务预测的假设",
+      "category_id": "finance",
+      "category_label": "财务预算与回款",
+      "roles": [
+        "业务规划员",
+        "财务分析员"
+      ],
+      "tags": [
+        "预测假设",
+        "情景分析",
+        "确认状态"
+      ],
+      "path": "scenarios/finance.json"
+    },
+    {
+      "id": "biz-finance-04",
+      "label": "核对账单与收货差异",
+      "category_id": "finance",
+      "category_label": "财务预算与回款",
+      "roles": [
+        "应付账款专员",
+        "供应商账务专员"
+      ],
+      "tags": [
+        "账单差异",
+        "对账",
+        "凭证核验"
+      ],
+      "path": "scenarios/finance.json"
+    },
+    {
+      "id": "biz-finance-05",
+      "label": "跟进逾期回款并确认障碍",
+      "category_id": "finance",
+      "category_label": "财务预算与回款",
+      "roles": [
+        "应收账款专员",
+        "客户应付账款专员"
+      ],
+      "tags": [
+        "逾期回款",
+        "付款障碍",
+        "专业催收"
+      ],
+      "path": "scenarios/finance.json"
+    },
+    {
+      "id": "biz-finance-06",
+      "label": "协调付款安排与授权确认",
+      "category_id": "finance",
+      "category_label": "财务预算与回款",
+      "roles": [
+        "付款协调人",
+        "收款协调人"
+      ],
+      "tags": [
+        "付款安排",
+        "书面审批",
+        "账号核验"
+      ],
+      "path": "scenarios/finance.json"
+    },
+    {
+      "id": "biz-hiring-01",
+      "label": "介绍与岗位相关的经历",
+      "category_id": "hiring",
+      "category_label": "招聘面试与入职",
+      "roles": [
+        "求职者",
+        "招聘面试官"
+      ],
+      "tags": [
+        "经历介绍",
+        "岗位匹配",
+        "贡献说明"
+      ],
+      "path": "scenarios/hiring.json"
+    },
+    {
+      "id": "biz-hiring-02",
+      "label": "用具体事件回答行为面试",
+      "category_id": "hiring",
+      "category_label": "招聘面试与入职",
+      "roles": [
+        "项目助理候选人",
+        "行为面试官"
+      ],
+      "tags": [
+        "行为面试",
+        "具体事例",
+        "反思"
+      ],
+      "path": "scenarios/hiring.json"
+    },
+    {
+      "id": "biz-hiring-03",
+      "label": "应对面试官对成绩的追问",
+      "category_id": "hiring",
+      "category_label": "招聘面试与入职",
+      "roles": [
+        "复面候选人",
+        "用人部门面试官"
+      ],
+      "tags": [
+        "面试追问",
+        "成绩核实",
+        "保密边界"
+      ],
+      "path": "scenarios/hiring.json"
+    },
+    {
+      "id": "biz-hiring-04",
+      "label": "澄清薪酬与录用条件",
+      "category_id": "hiring",
+      "category_label": "招聘面试与入职",
+      "roles": [
+        "候选人",
+        "招聘协调员"
+      ],
+      "tags": [
+        "薪酬沟通",
+        "录用条件",
+        "书面确认"
+      ],
+      "path": "scenarios/hiring.json"
+    },
+    {
+      "id": "biz-hiring-05",
+      "label": "入职介绍与求助渠道",
+      "category_id": "hiring",
+      "category_label": "招聘面试与入职",
+      "roles": [
+        "新入职员工",
+        "入职伙伴"
+      ],
+      "tags": [
+        "入职",
+        "求助渠道",
+        "工具培训"
+      ],
+      "path": "scenarios/hiring.json"
+    },
+    {
+      "id": "biz-hiring-06",
+      "label": "对齐试用阶段目标与表现反馈",
+      "category_id": "hiring",
+      "category_label": "招聘面试与入职",
+      "roles": [
+        "直属主管",
+        "新员工"
+      ],
+      "tags": [
+        "试用目标",
+        "阶段反馈",
+        "支持计划"
+      ],
+      "path": "scenarios/hiring.json"
+    },
+    {
+      "id": "biz-management-01",
+      "label": "委派任务并明确完成标准",
+      "category_id": "management",
+      "category_label": "团队管理与绩效反馈",
+      "roles": [
+        "委派主管",
+        "任务负责人"
+      ],
+      "tags": [
+        "委派",
+        "完成标准",
+        "授权边界"
+      ],
+      "path": "scenarios/management.json"
+    },
+    {
+      "id": "biz-management-02",
+      "label": "在一对一中讨论状态与支持",
+      "category_id": "management",
+      "category_label": "团队管理与绩效反馈",
+      "roles": [
+        "团队主管",
+        "团队成员"
+      ],
+      "tags": [
+        "一对一",
+        "工作支持",
+        "倾听"
+      ],
+      "path": "scenarios/management.json"
+    },
+    {
+      "id": "biz-management-03",
+      "label": "给予具体正向反馈",
+      "category_id": "management",
+      "category_label": "团队管理与绩效反馈",
+      "roles": [
+        "反馈主管",
+        "培训协调员"
+      ],
+      "tags": [
+        "正向反馈",
+        "具体认可",
+        "经验复用"
+      ],
+      "path": "scenarios/management.json"
+    },
+    {
+      "id": "biz-management-04",
+      "label": "提出改进意见并协商支持",
+      "category_id": "management",
+      "category_label": "团队管理与绩效反馈",
+      "roles": [
+        "直属经理",
+        "报告负责人"
+      ],
+      "tags": [
+        "改进反馈",
+        "事实沟通",
+        "预警机制"
+      ],
+      "path": "scenarios/management.json"
+    },
+    {
+      "id": "biz-management-05",
+      "label": "调解团队成员间的协作冲突",
+      "category_id": "management",
+      "category_label": "团队管理与绩效反馈",
+      "roles": [
+        "调解主管",
+        "提出冲突的成员"
+      ],
+      "tags": [
+        "冲突调解",
+        "中性倾听",
+        "协作规则"
+      ],
+      "path": "scenarios/management.json"
+    },
+    {
+      "id": "biz-management-06",
+      "label": "讨论晋升与发展证据",
+      "category_id": "management",
+      "category_label": "团队管理与绩效反馈",
+      "roles": [
+        "发展主管",
+        "发展申请人"
+      ],
+      "tags": [
+        "晋升发展",
+        "能力证据",
+        "预期管理"
+      ],
+      "path": "scenarios/management.json"
+    },
+    {
+      "id": "biz-workplace-01",
+      "label": "协调工作与休假安排",
+      "category_id": "workplace",
+      "category_label": "劳动关系与组织变更",
+      "roles": [
+        "休假申请人",
+        "排班主管"
+      ],
+      "tags": [
+        "休假安排",
+        "工作覆盖",
+        "政策核实"
+      ],
+      "path": "scenarios/workplace.json"
+    },
+    {
+      "id": "biz-workplace-02",
+      "label": "讨论工作负荷与支持方案",
+      "category_id": "workplace",
+      "category_label": "劳动关系与组织变更",
+      "roles": [
+        "提出支持需求的员工",
+        "运营主管"
+      ],
+      "tags": [
+        "工作负荷",
+        "支持申请",
+        "优先级调整"
+      ],
+      "path": "scenarios/workplace.json"
+    },
+    {
+      "id": "biz-workplace-03",
+      "label": "安排离职交接与事项确认",
+      "category_id": "workplace",
+      "category_label": "劳动关系与组织变更",
+      "roles": [
+        "离职员工",
+        "交接主管"
+      ],
+      "tags": [
+        "离职交接",
+        "资料权限",
+        "过渡责任"
+      ],
+      "path": "scenarios/workplace.json"
+    },
+    {
+      "id": "biz-workplace-04",
+      "label": "在离职访谈中反馈经历",
+      "category_id": "workplace",
+      "category_label": "劳动关系与组织变更",
+      "roles": [
+        "离职访谈专员",
+        "受访离职员工"
+      ],
+      "tags": [
+        "离职访谈",
+        "反馈边界",
+        "正式渠道"
+      ],
+      "path": "scenarios/workplace.json"
+    },
+    {
+      "id": "biz-workplace-05",
+      "label": "沟通已确认的组织调整",
+      "category_id": "workplace",
+      "category_label": "劳动关系与组织变更",
+      "roles": [
+        "变更沟通主管",
+        "受影响团队成员"
+      ],
+      "tags": [
+        "组织调整",
+        "过渡安排",
+        "未知事项"
+      ],
+      "path": "scenarios/workplace.json"
+    },
+    {
+      "id": "biz-workplace-06",
+      "label": "回应员工对政策变化的疑问",
+      "category_id": "workplace",
+      "category_label": "劳动关系与组织变更",
+      "roles": [
+        "人事服务专员",
+        "咨询员工"
+      ],
+      "tags": [
+        "员工疑问",
+        "政策版本",
+        "人事服务"
+      ],
+      "path": "scenarios/workplace.json"
+    },
+    {
+      "id": "biz-strategy-01",
+      "label": "讨论新市场进入试验",
+      "category_id": "strategy",
+      "category_label": "战略融资与股东沟通",
+      "roles": [
+        "市场拓展负责人",
+        "运营战略负责人"
+      ],
+      "tags": [
+        "新市场",
+        "需求验证",
+        "进入条件"
+      ],
+      "path": "scenarios/strategy.json"
+    },
+    {
+      "id": "biz-strategy-02",
+      "label": "权衡合作与自主建设",
+      "category_id": "strategy",
+      "category_label": "战略融资与股东沟通",
+      "roles": [
+        "合作拓展经理",
+        "内部能力负责人"
+      ],
+      "tags": [
+        "合作自建",
+        "能力边界",
+        "外部依赖"
+      ],
+      "path": "scenarios/strategy.json"
+    },
+    {
+      "id": "biz-strategy-03",
+      "label": "向投资人介绍业务并争取后续会谈",
+      "category_id": "strategy",
+      "category_label": "战略融资与股东沟通",
+      "roles": [
+        "创始人",
+        "投资机构初审代表"
+      ],
+      "tags": [
+        "投资人介绍",
+        "业务概括",
+        "进展证据"
+      ],
+      "path": "scenarios/strategy.json"
+    },
+    {
+      "id": "biz-strategy-04",
+      "label": "回应商业模式与增长质疑",
+      "category_id": "strategy",
+      "category_label": "战略融资与股东沟通",
+      "roles": [
+        "业务创始人",
+        "投资研究代表"
+      ],
+      "tags": [
+        "商业模式",
+        "增长质量",
+        "分群分析"
+      ],
+      "path": "scenarios/strategy.json"
+    },
+    {
+      "id": "biz-strategy-05",
+      "label": "说明拟融资用途与阶段目标",
+      "category_id": "strategy",
+      "category_label": "战略融资与股东沟通",
+      "roles": [
+        "融资沟通负责人",
+        "资金计划审阅人"
+      ],
+      "tags": [
+        "融资用途",
+        "阶段目标",
+        "计划假设"
+      ],
+      "path": "scenarios/strategy.json"
+    },
+    {
+      "id": "biz-strategy-06",
+      "label": "向股东或董事汇报经营与待决事项",
+      "category_id": "strategy",
+      "category_label": "战略融资与股东沟通",
+      "roles": [
+        "管理层汇报人",
+        "董事提问人"
+      ],
+      "tags": [
+        "董事汇报",
+        "经营偏差",
+        "治理记录"
+      ],
+      "path": "scenarios/strategy.json"
+    },
+    {
+      "id": "biz-trade-01",
+      "label": "核对贸易与运输条件",
+      "category_id": "trade",
+      "category_label": "跨境贸易与国际供应链",
+      "roles": [
+        "进口协调人",
+        "出口销售协调人"
+      ],
+      "tags": [
+        "运输条件",
+        "贸易条款",
+        "费用范围"
+      ],
+      "path": "scenarios/trade.json"
+    },
+    {
+      "id": "biz-trade-02",
+      "label": "协商订单数量与最低订购量",
+      "category_id": "trade",
+      "category_label": "跨境贸易与国际供应链",
+      "roles": [
+        "试单采购员",
+        "工厂业务代表"
+      ],
+      "tags": [
+        "订单MOQ",
+        "试单",
+        "定制条件"
+      ],
+      "path": "scenarios/trade.json"
+    },
+    {
+      "id": "biz-trade-03",
+      "label": "跟进生产与出货节点",
+      "category_id": "trade",
+      "category_label": "跨境贸易与国际供应链",
+      "roles": [
+        "订单跟进员",
+        "工厂生产协调人"
+      ],
+      "tags": [
+        "生产出货",
+        "节点跟踪",
+        "船期澄清"
+      ],
+      "path": "scenarios/trade.json"
+    },
+    {
+      "id": "biz-trade-04",
+      "label": "核对报关资料的一致性",
+      "category_id": "trade",
+      "category_label": "跨境贸易与国际供应链",
+      "roles": [
+        "出口单证员",
+        "物流资料协调员"
+      ],
+      "tags": [
+        "报关资料",
+        "单证一致",
+        "专业审核"
+      ],
+      "path": "scenarios/trade.json"
+    },
+    {
+      "id": "biz-trade-05",
+      "label": "沟通运输延误与到货损伤",
+      "category_id": "trade",
+      "category_label": "跨境贸易与国际供应链",
+      "roles": [
+        "进口运营专员",
+        "物流异常协调人"
+      ],
+      "tags": [
+        "运输延误",
+        "货损证据",
+        "异常登记"
+      ],
+      "path": "scenarios/trade.json"
+    },
+    {
+      "id": "biz-trade-06",
+      "label": "核对汇率报价与跨境付款流程",
+      "category_id": "trade",
+      "category_label": "跨境贸易与国际供应链",
+      "roles": [
+        "跨境采购协调员",
+        "出口收款协调员"
+      ],
+      "tags": [
+        "汇率结算",
+        "跨境付款",
+        "账户核验"
+      ],
+      "path": "scenarios/trade.json"
+    }
+  ]
+}

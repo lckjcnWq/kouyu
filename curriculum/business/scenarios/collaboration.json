@@ -1,0 +1,114 @@
+{
+  "id": "collaboration",
+  "label": "跨部门与远程协作",
+  "scenes": [
+    {
+      "id": "biz-collaboration-01",
+      "label": "接任务时确认预期",
+      "context": "模拟市场团队周一向分析团队提出“周三给客户画像”的请求，用于周五的活动策划会。",
+      "roles": {
+        "a": {"label": "任务接收人", "label_en": "Task Assignee", "objective": "在接单前确认用途、交付物和优先级", "private_information": ["周二已有固定报表任务，只能做一页初版"], "constraints": ["不能自行暂停其他团队已确认的任务"]},
+        "b": {"label": "任务提出人", "label_en": "Task Requester", "objective": "说明业务需要并取得能用于策划的成果", "private_information": ["策划只需地区和使用频次，不需要收入预测"], "constraints": ["只能使用汇总数据，不能索取可识别用户资料"]}
+      },
+      "stages": ["询问使用场景和受众", "核对字段与交付形式", "讨论工作量及优先级", "复述交付约定和反馈点"],
+      "complications": ["现有数据缺少一个地区的记录", "请求邮件中的周三未写具体时间"],
+      "targets": [
+        {"expression": "What will this be used for?", "meaning_zh": "这份材料会用来做什么？", "function": "确认用途"},
+        {"expression": "What does a useful first version look like?", "meaning_zh": "有用的初版需要是什么样？", "function": "澄清交付标准"},
+        {"expression": "Let me confirm the scope before I commit.", "meaning_zh": "我先确认范围再承诺。", "function": "审慎接任务"}
+      ],
+      "success_criteria": {"a": ["确认受众、字段、形式和具体时间", "说明资源限制并提出可交付初版"], "b": ["区分必需与可选内容", "确认数据缺口的标注方法与反馈时间"]},
+      "tags": ["接任务", "预期确认", "交付范围"]
+    },
+    {
+      "id": "biz-collaboration-02",
+      "label": "明确分工与责任边界",
+      "context": "模拟展会项目涉及市场和客户成功团队，周五要发出邀请，名单、文案和答疑工作尚未分清。",
+      "roles": {
+        "a": {"label": "市场协调人", "label_en": "Marketing Coordinator", "objective": "明确邀请链路中的主责和审核接口", "private_information": ["文案已完成，但没有客户联系许可的核对记录"], "constraints": ["不能代客户成功确认联系许可或承诺客户答复"]},
+        "b": {"label": "客户成功协调人", "label_en": "Customer Success Coordinator", "objective": "承担合理客户核对工作并避免重复执行", "private_information": ["可核对40名现有联系人，无法核对新增外部名单"], "constraints": ["无权批准使用来源不明的联系人信息"]}
+      },
+      "stages": ["拆分邀请工作步骤", "指定主责与审核人", "划清不能代办的事项", "确认交接物和例外处理"],
+      "complications": ["两边都以为对方会发送邮件", "临时新增20个外部联系人但缺少来源记录"],
+      "targets": [
+        {"expression": "Who is responsible for the final send?", "meaning_zh": "最终发送由谁负责？", "function": "确认主责"},
+        {"expression": "We can review the list, but we can't approve it.", "meaning_zh": "我们能审核名单，但不能批准使用。", "function": "说明权限边界"},
+        {"expression": "Let's make the handoff explicit.", "meaning_zh": "我们把交接安排说清楚。", "function": "明确协作接口"}
+      ],
+      "success_criteria": {"a": ["按步骤确认执行者和审核者", "对未获授权的事项指定确认路径"], "b": ["说明可承担的名单范围与限制", "复述交接文件、接收人和完成标记"]},
+      "tags": ["职责边界", "跨部门", "任务交接"]
+    },
+    {
+      "id": "biz-collaboration-03",
+      "label": "处理跨团队前置依赖",
+      "context": "模拟帮助中心迁移计划周四验证，内容团队需先拿到平台团队的测试入口和账号说明。",
+      "roles": {
+        "a": {"label": "内容迁移负责人", "label_en": "Content Migration Lead", "objective": "说明依赖影响并争取可用的验证安排", "private_information": ["若周三中午拿到入口，仍可先验证最重要的10篇文章"], "constraints": ["不能在未经验证时宣布全部内容迁移完成"]},
+        "b": {"label": "平台协调人", "label_en": "Platform Coordinator", "objective": "提供可靠状态和可行替代，不隐瞒平台限制", "private_information": ["入口已能浏览，但账号邀请功能还需修复一天"], "constraints": ["不能共享正式环境凭据或绕过访问审批"]}
+      },
+      "stages": ["说明依赖项和受影响任务", "核实可交付部分与剩余工作", "讨论部分验证方案", "确认更新节奏及升级门槛"],
+      "complications": ["测试地址更换导致旧链接失效", "验证人员只在周三下午有空"],
+      "targets": [
+        {"expression": "Our testing depends on access to the new site.", "meaning_zh": "我们的测试依赖新站点的访问权限。", "function": "说明依赖"},
+        {"expression": "Is there a partial version we can use?", "meaning_zh": "有可以先用的部分版本吗？", "function": "探索替代路径"},
+        {"expression": "When should we escalate if this is still blocked?", "meaning_zh": "如果还被阻塞，我们何时升级处理？", "function": "设置升级条件"}
+      ],
+      "success_criteria": {"a": ["解释依赖对具体任务和时间的影响", "提出部分验证范围与最晚确认点"], "b": ["区分可用能力与未完成能力", "给出合规访问办法、负责人和下次更新时间"]},
+      "tags": ["跨团队依赖", "阻塞", "替代方案"]
+    },
+    {
+      "id": "biz-collaboration-04",
+      "label": "催办时核实阻碍与新承诺",
+      "context": "模拟月度简报周四发布，设计稿原定周二交付，周三上午协调人仍未收到文件。",
+      "roles": {
+        "a": {"label": "发布协调人", "label_en": "Publishing Coordinator", "objective": "不指责地了解状态并拿到可执行的补救时间", "private_information": ["若今天15点前拿到文字版，可先安排内容审阅"], "constraints": ["不能擅自延长审核人的工作时间"]},
+        "b": {"label": "设计负责人", "label_en": "Design Lead", "objective": "解释实际阻碍并承诺能完成的部分交付", "private_information": ["正文布局已完成，封面还缺一张经授权的图片"], "constraints": ["不能使用来源不明图片，也不能保证一次通过审核"]}
+      },
+      "stages": ["引用原约定并询问状态", "核实剩余工作和阻碍", "商定分批交付或替代", "明确新时间及异常通知"],
+      "complications": ["原邮件附件实际上未成功上传", "审核人临时把可用时间提前到今天中午"],
+      "targets": [
+        {"expression": "I'm following up on the draft due yesterday.", "meaning_zh": "我想跟进昨天应交的初稿。", "function": "礼貌催办"},
+        {"expression": "Is anything preventing you from finishing it?", "meaning_zh": "有什么事情阻碍你完成吗？", "function": "了解阻碍"},
+        {"expression": "What can you realistically send by noon?", "meaning_zh": "中午前你实际能交付什么？", "function": "协商可靠承诺"}
+      ],
+      "success_criteria": {"a": ["客观引用约定并说明下游影响", "确认新交付内容、时间和异常通知方式"], "b": ["说明已完成和未完成部分", "提出可信的补救安排并明确依赖"]},
+      "tags": ["催办", "进度沟通", "分批交付"]
+    },
+    {
+      "id": "biz-collaboration-05",
+      "label": "跨时区异步交接",
+      "context": "模拟双地服务团队以UTC+8和UTC-5轮值，今天需要交接3个未结工单，交接窗口只有15分钟。",
+      "roles": {
+        "a": {"label": "交班专员", "label_en": "Outgoing Specialist", "objective": "让接班者知道状态、下一步和何时升级", "private_information": ["其中一单已获口头允许补寄，但确认记录尚未收到"], "constraints": ["不能把口头信息写成已批准或传递完整客户敏感资料"]},
+        "b": {"label": "接班专员", "label_en": "Incoming Specialist", "objective": "核实关键缺口并接下可操作的后续任务", "private_information": ["前30分钟只能处理紧急工单，之后才可跟进普通单"], "constraints": ["无法查看交班者个人邮箱，必须使用共享工单记录"]}
+      },
+      "stages": ["逐单说明状态和最后动作", "确认时区及截止时间", "核查共享记录与待确认事项", "复述优先顺序和升级入口"],
+      "complications": ["共享记录中有一条链接无访问权限", "客户在交接时补充了新的照片"],
+      "targets": [
+        {"expression": "Here is what is still pending.", "meaning_zh": "这些是仍待处理的事项。", "function": "说明交接状态"},
+        {"expression": "Is that deadline in your time zone or mine?", "meaning_zh": "那个截止时间是按你的时区还是我的？", "function": "确认时间口径"},
+        {"expression": "I'll take it from here and update the shared log.", "meaning_zh": "接下来我来跟进，并更新共享记录。", "function": "确认接手"}
+      ],
+      "success_criteria": {"a": ["提供每单下一动作、责任和带时区期限", "标明未证实信息并提供共享入口"], "b": ["复述处理顺序并指出权限缺口", "确认接手范围及无法解决时的升级对象"]},
+      "tags": ["异步交接", "时区", "共享记录"]
+    },
+    {
+      "id": "biz-collaboration-06",
+      "label": "协商临时优先级变化",
+      "context": "模拟运营分析员正在准备周五库存报告，周四销售团队又提出当天交付促销数据的请求。",
+      "roles": {
+        "a": {"label": "分析员", "label_en": "Operations Analyst", "objective": "公开任务冲突，让有权限的人决定取舍", "private_information": ["两项完整任务共需8小时，今天仅剩4小时"], "constraints": ["不能默默取消原任务或自行承诺加班"]},
+        "b": {"label": "销售协调人", "label_en": "Sales Coordinator", "objective": "获取促销决策必需的数据并支持合理排序", "private_information": ["负责人只需三个核心指标，完整分区表可以下周交"], "constraints": ["无权调整库存报告期限，需与运营主管确认"]}
+      },
+      "stages": ["澄清新请求真实用途", "列出任务冲突和影响", "协商最小可用交付", "确认审批人及通知原任务方"],
+      "complications": ["原报告负责人暂时无法联系", "促销数据源有半小时延迟"],
+      "targets": [
+        {"expression": "If I take this on, the inventory report will move back.", "meaning_zh": "如果接这项任务，库存报告就会推迟。", "function": "说明优先级代价"},
+        {"expression": "Which part do you need today?", "meaning_zh": "你今天必须拿到哪一部分？", "function": "缩小紧急需求"},
+        {"expression": "Who can approve the change in priorities?", "meaning_zh": "谁能批准优先级调整？", "function": "确认决策权限"}
+      ],
+      "success_criteria": {"a": ["具体说明任务容量与受影响交付", "提出有限承诺并明确待批准事项"], "b": ["拆分当日必需和可延后内容", "确认审批路径并协助通知原任务方"]},
+      "tags": ["优先级", "资源冲突", "预期管理"]
+    }
+  ]
+}

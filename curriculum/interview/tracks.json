@@ -1,0 +1,8 @@
+[
+  {"id":"architecture","label":"架构与业务全景 / Architecture","description":"Explain lifecycle, state authority, completion semantics and explicit architectural trade-offs in simulated trading systems."},
+  {"id":"trading","label":"交易与账本 / Trading","description":"Reason about order races, reservations and idempotent settlement under stated custodial spot assumptions."},
+  {"id":"risk","label":"衍生品与风险 / Risk","description":"Distinguish margin boundaries, risk valuation, liquidation authority and price quality in fictional linear perpetual systems."},
+  {"id":"liquidity","label":"行情与流动性 / Liquidity","description":"Explain order-book recovery, enforceable swap constraints and RFQ execution without treating quotes as guarantees."},
+  {"id":"web3","label":"链上后端与信任边界 / Web3","description":"Practice unknown transaction outcomes, bounded signature authority and reorganization-aware indexing on an explicit EVM baseline."},
+  {"id":"go","label":"Go 与可靠工程 / Go","description":"Explain mutable-state ownership, reliable effects and deterministic recovery separately from language fluency or performance claims."}
+]

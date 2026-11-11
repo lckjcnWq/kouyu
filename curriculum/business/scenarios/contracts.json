@@ -1,0 +1,114 @@
+{
+  "id": "contracts",
+  "label": "合同条款与合规沟通",
+  "scenes": [
+    {
+      "id": "biz-contracts-01",
+      "label": "合同范围",
+      "context": "模拟签约前核对中，A与B查看一份设备培训服务草稿。正文写三场培训，附件写两场线上培训及一场现场答疑，双方需要核对交付内容和文档一致性，不判断条款法律效力。",
+      "roles": {
+        "a": {"label": "供应商合同协调员", "label_en": "Supplier Contract Coordinator", "objective": "逐项核对服务形式、人数和交付物，整理冲突表述供授权人员修订。", "private_information": ["已批准方案只含两场90分钟线上培训和一场60分钟远程答疑，没有现场差旅预算。"], "constraints": ["不能直接确认现场服务已包含，也不能自行解释哪个文档具有法律优先效力。"]},
+        "b": {"label": "客户项目协调员", "label_en": "Client Project Coordinator", "objective": "澄清业务方预期，避免把现场和远程混为一谈，并确认修订由谁处理。", "private_information": ["业务团队希望第三场在仓库进行，但你尚未向供应商正式提出过现场要求。"], "constraints": ["无权签署范围变更；不能把内部期望描述成双方已经达成的约定。"]}
+      },
+      "stages": ["对照正文、附件和已确认方案", "逐项说明双方理解的场次与形式", "列出不一致和新增要求", "将修订清单转交授权商务及合同审阅人员"],
+      "complications": ["附件中出现现场一词，但版本日期早于批准方案，需要标记而非当场认定效力。", "B又提出培训录像，双方需确认它是否属于新增交付物。"],
+      "targets": [
+        {"expression": "The main document and the attachment describe different formats.", "meaning_zh": "正文与附件对服务形式的描述不同。", "function": "指出文档不一致"},
+        {"expression": "Was the on-site session agreed, or is it a new request?", "meaning_zh": "现场场次已经约定，还是一项新要求？", "function": "区分已确认范围与新增需求"},
+        {"expression": "Let's send these points to the authorized reviewers.", "meaning_zh": "我们把这些问题交给有权限的审阅人员。", "function": "升级处理范围文本"}
+      ],
+      "success_criteria": {"a": ["点出至少一处具体文本冲突，说明已批准业务范围。", "记录新增项并指定修订渠道，不对法律效力下结论。"], "b": ["区分内部期望和双方已确认内容。", "确认需核对的交付物，并说明谁有权确认变更。"]},
+      "tags": ["合同范围", "文档核对", "非法律判断"]
+    },
+    {
+      "id": "biz-contracts-02",
+      "label": "验收标准",
+      "context": "模拟项目草稿写交付后由客户满意验收，A与B需要把业务验证步骤描述得更清楚。项目是一个使用虚构记录的培训预约页面，本轮只整理测试和签收问题，正式条款由授权人员审阅。",
+      "roles": {
+        "a": {"label": "交付协调员", "label_en": "Delivery Coordinator", "objective": "提出可观察的测试任务、证据和问题记录方式，避免凭模糊满意度理解验收。", "private_information": ["你已准备预约、取消和导出三项测试；跨浏览器测试范围尚未与技术团队确认。"], "constraints": ["不能自行认定客户沉默等于验收，也不能承诺所有设备均兼容。"]},
+        "b": {"label": "客户验收协调员", "label_en": "Client Acceptance Coordinator", "objective": "明确谁执行测试、谁签收以及未通过项目如何记录。", "private_information": ["实际使用者有5名管理员，但只有部门负责人能签署业务验收；其中两人只使用平板。"], "constraints": ["不能代表负责人签字，也不能独自决定合同中验收期限或责任后果。"]}
+      },
+      "stages": ["识别满意验收中的模糊点", "用具体任务和测试数据定义业务检查", "确认测试人员、设备范围及证据形式", "列出待审阅的签收流程与问题处理说明"],
+      "complications": ["B提出平板使用场景，而当前测试表只有电脑端，需要补充范围核实。", "双方对小问题是否阻止签收理解不同，需要记录分歧并交授权人员确认。"],
+      "targets": [
+        {"expression": "What observable result would count as a pass?", "meaning_zh": "出现什么可观察结果才算通过？", "function": "把标准具体化"},
+        {"expression": "Who runs the tests, and who is authorized to sign off?", "meaning_zh": "谁执行测试，谁有权签收？", "function": "区分测试与签收角色"},
+        {"expression": "Let's document the open issues rather than assume acceptance.", "meaning_zh": "我们记录未决问题，不要假定已经验收。", "function": "保留准确验收状态"}
+      ],
+      "success_criteria": {"a": ["提出至少两个可观察测试任务及证据形式。", "标出设备与问题处理的待确认点，不自行判定验收成立。"], "b": ["说明实际使用设备和测试人员。", "区分测试参与与授权签收，并确认未通过项如何提交审阅。"]},
+      "tags": ["验收澄清", "测试证据", "授权签收"]
+    },
+    {
+      "id": "biz-contracts-03",
+      "label": "续约终止",
+      "context": "模拟年度服务核对会中，服务期将在12月31日结束，草稿含续约和提前通知表述。A与B只确认业务时间表、通知渠道和待审阅问题，不判断终止权或条款效力。",
+      "roles": {
+        "a": {"label": "续约合同协调员", "label_en": "Renewal Contract Coordinator", "objective": "确认双方对服务到期、通知和续约步骤的理解，发现歧义后交正式审阅。", "private_information": ["你手中的附件写到期前30天通知，销售摘要却写到期前一个月，尚未核对是否同一版本。"], "constraints": ["不能口头保证随时终止或费用退还；不自行解释歧义的法律结果。"]},
+        "b": {"label": "客户供应商管理员", "label_en": "Client Vendor Administrator", "objective": "整理内部提醒和决定节点，明确不续约时应该由谁通过什么渠道发送通知。", "private_information": ["你们预计11月中旬才完成使用评估；共用采购邮箱更换了管理员，需要确认可用联系渠道。"], "constraints": ["没有权限发送终止通知或确认续约；必须由授权负责人作出决定。"]}
+      },
+      "stages": ["核对当前服务结束日期和文档版本", "澄清通知时间表与接收渠道", "讨论内部评估能否及时完成", "将不一致表述和未决续约步骤交授权角色"],
+      "complications": ["B以为不登录系统就算不续约，需要回到通知流程确认。", "原通知邮箱将停用，双方需由授权人员确认替代渠道。"],
+      "targets": [
+        {"expression": "What notice process does the draft describe?", "meaning_zh": "草稿写明了怎样的通知流程？", "function": "核对通知步骤"},
+        {"expression": "We need to distinguish the service end date from the decision deadline.", "meaning_zh": "我们需要区分服务结束日期和作出决定的截止时间。", "function": "澄清不同时间节点"},
+        {"expression": "Please have the authorized team confirm the wording and channel.", "meaning_zh": "请有权限的团队确认措辞和渠道。", "function": "转交正式审阅"}
+      ],
+      "success_criteria": {"a": ["区分服务到期、内部决策和通知节点。", "指出版本差异并交授权人员核实，不作终止或退款保证。"], "b": ["说明内部评估时间和通知权限。", "提出有效通知渠道的核验要求，并确认由谁决定续约。"]},
+      "tags": ["续约流程", "通知澄清", "权限"]
+    },
+    {
+      "id": "biz-contracts-04",
+      "label": "保密数据使用",
+      "context": "模拟试点准备中，A希望用B提供的20条脱敏服务记录配置分类规则。双方需要确认数据用途、访问人员和保留安排；所有样例均为训练数据，不讨论特定法律是否允许处理。",
+      "roles": {
+        "a": {"label": "供应商数据协调员", "label_en": "Supplier Data Coordinator", "objective": "说清最小数据需求，记录用途、访问和删除问题，并在批准前不接收额外资料。", "private_information": ["试点只需问题类型、日期和处理结果，不需要姓名、电话号码或完整邮件。"], "constraints": ["不能自行同意把数据用于宣传或其他训练；处理安排须经双方指定审阅人员批准。"]},
+        "b": {"label": "客户数据管理员", "label_en": "Client Data Steward", "objective": "确认试点所需字段和使用边界，避免过量共享并获取可核对的处理说明。", "private_information": ["你发现原样例中的备注仍含联系人姓名，需重新制作后才可提交。"], "constraints": ["未完成内部检查不能发数据；不能代表客户授权二次使用。"]}
+      },
+      "stages": ["明确试点任务和最少字段", "核对脱敏状态与传输渠道", "询问访问人员、保存期限和结束后处理", "整理二次使用禁限及待批准事项"],
+      "complications": ["技术同事要求完整原始邮件便于调试，需要重新论证必要性而非直接接收。", "市场同事想把截图加入案例，双方需另行处理授权，不能沿用试点许可。"],
+      "targets": [
+        {"expression": "Which fields are actually needed for the pilot?", "meaning_zh": "试点实际需要哪些字段？", "function": "确认最小数据范围"},
+        {"expression": "Who will have access, and for how long?", "meaning_zh": "哪些人可以访问，访问多久？", "function": "澄清访问和保留安排"},
+        {"expression": "Permission for this pilot doesn't cover other uses.", "meaning_zh": "本次试点许可不涵盖其他用途。", "function": "区分用途授权"}
+      ],
+      "success_criteria": {"a": ["说明必需字段和不需要的信息。", "把访问、保留及二次使用问题交指定角色确认，不在未批准时接收额外数据。"], "b": ["指出样例的待处理信息并暂停发送。", "询问访问或保留安排，明确试点之外用途须另行授权。"]},
+      "tags": ["保密沟通", "数据用途", "最小范围"]
+    },
+    {
+      "id": "biz-contracts-05",
+      "label": "签约承诺权限",
+      "context": "模拟签约前会议中，A与B已对服务人数形成一致意见，但客户希望当天得到上线日期和全天支持承诺。两人都是项目联系人，不是合同签署人，本轮需要澄清谁能批准什么。",
+      "roles": {
+        "a": {"label": "供应商项目联系人", "label_en": "Supplier Project Contact", "objective": "区分业务讨论、待审批承诺和正式签署，安排正确批准流程。", "private_information": ["你能确认标准工作日支持；全天值守和固定上线日期需分别由支持主管与交付主管批准。"], "constraints": ["不能代签、不能写已批准来迎合客户，也不能把聊天记录称作正式审批。"]},
+        "b": {"label": "客户项目联系人", "label_en": "Client Project Contact", "objective": "取得可提交内部审批的状态清单，明确哪些条件未获确认及谁负责推动。", "private_information": ["你的部门经理只有在上线日期明确后才愿提交签约；真正签署人是采购授权代表。"], "constraints": ["无权对外承诺签署日期，不能以自己的邮件替代采购签批。"]}
+      },
+      "stages": ["列出已一致、待审批和待签署事项", "说明各承诺对应的批准角色", "约定如何取得书面批准和更新版本", "确认双方内部动作及对外状态措辞"],
+      "complications": ["B准备发出合同已落实的内部通报，需要改为部分条件待批准。", "A的主管不在岗，双方需确认替代审批人而非默认授权转移。"],
+      "targets": [
+        {"expression": "I can confirm the standard support hours, but not round-the-clock cover.", "meaning_zh": "我可以确认标准支持时段，但不能确认全天值守。", "function": "限定本人承诺权限"},
+        {"expression": "Who has authority to approve that commitment?", "meaning_zh": "谁有权批准这项承诺？", "function": "确认授权角色"},
+        {"expression": "Let's describe this as pending approval, not finalized.", "meaning_zh": "我们把它表述为待批准，而不是已经落实。", "function": "准确表达承诺状态"}
+      ],
+      "success_criteria": {"a": ["分开说明可确认与需他人批准的条件。", "指定审批路径，并用准确状态替代越权承诺。"], "b": ["区分自己的协调职责和正式签署权限。", "确认待批准条件、跟进人及内部汇报措辞。"]},
+      "tags": ["签约权限", "承诺边界", "审批沟通"]
+    },
+    {
+      "id": "biz-contracts-06",
+      "label": "争议转交法务",
+      "context": "模拟项目出现范围争议：B认为报表定制属于原服务，A认为需要额外评估。双方持有一份合同草稿和两封需求邮件，需要整理事实并交授权商务及法务处理，不判断违约、赔偿或条款效力。",
+      "roles": {
+        "a": {"label": "供应商商务协调员", "label_en": "Supplier Commercial Coordinator", "objective": "记录分歧和文档依据，避免争辩法律结论，商定升级期间不受争议的工作。", "private_information": ["你找到一封只写讨论定制可能性的邮件，但尚未核对附件，不能认定完整事实。"], "constraints": ["不能承认或否认法律责任，也不能未经批准停止全部服务。"]},
+        "b": {"label": "客户项目负责人", "label_en": "Client Project Lead", "objective": "准确陈述业务理解和紧迫需求，提交材料并请求正式回复时间。", "private_information": ["你的管理汇报在下周三，需要数据导出即可临时完成，不一定必须先完成定制报表。"], "constraints": ["不能代表法务定性违约，不能同意放弃任何条款或权利。"]}
+      },
+      "stages": ["各自陈述理解并引用具体文档位置", "把已知事实、分歧和缺失材料分开", "确认升级负责人和提交材料", "约定不受争议工作的临时安排及进度回复"],
+      "complications": ["B要求A立即承认违约，需要礼貌拒绝法律定性并转交。", "一封关键邮件附件缺失，双方需请求补齐而非依据片段断言。"],
+      "targets": [
+        {"expression": "We have different understandings of the agreed scope.", "meaning_zh": "我们对已约定范围的理解不同。", "function": "中性表述争议"},
+        {"expression": "I'm not authorized to make a legal determination.", "meaning_zh": "我没有权限作法律判断。", "function": "明确法律判断边界"},
+        {"expression": "Let's send a factual summary and the relevant documents for review.", "meaning_zh": "我们提交事实摘要和相关文件供审阅。", "function": "有序升级争议"}
+      ],
+      "success_criteria": {"a": ["区分事实、分歧和缺失证据，不作责任定性。", "确认升级材料、负责人和不受争议工作的安排。"], "b": ["陈述具体业务理解并提供文档线索。", "说明实际期限和可用临时方案，要求正式回复节点而非现场法律结论。"]},
+      "tags": ["争议升级", "法务转交", "事实摘要"]
+    }
+  ]
+}

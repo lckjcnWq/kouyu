@@ -1,0 +1,114 @@
+{
+  "id": "procurement",
+  "label": "采购与供应商管理",
+  "scenes": [
+    {
+      "id": "biz-procurement-01",
+      "label": "询价并核对报价口径",
+      "context": "模拟培训中心需采购80副有线耳机，要求四周内到货，采购专员向虚构供应方询价。",
+      "roles": {
+        "a": {"label": "采购专员", "label_en": "Procurement Specialist", "objective": "拿到规格一致、费用拆分清楚且有有效期的报价", "private_information": ["可以先收60副，其余20副晚一周到也可用于后续班次"], "constraints": ["不能在比价与审批前承诺下单"]},
+        "b": {"label": "供应商销售代表", "label_en": "Supplier Sales Representative", "objective": "澄清规格和交付条件，提供可履行的报价", "private_information": ["现货有60副，追加20副需三周备货"], "constraints": ["只能确认产品和运费报价，税费口径需财务书面核实"]}
+      },
+      "stages": ["确认数量和连接规格", "询问单价与费用构成", "核对交期及分批条件", "确认报价有效期和后续审批"],
+      "complications": ["报价未注明是否含运输费", "供应方推荐价格较低但接口不同的型号"],
+      "targets": [
+        {"expression": "Could you quote for eighty units with these specifications?", "meaning_zh": "能按这些规格报八十件的价格吗？", "function": "发起询价"},
+        {"expression": "Does the price include delivery?", "meaning_zh": "这个价格包含配送吗？", "function": "核查费用范围"},
+        {"expression": "How long is the quote valid?", "meaning_zh": "报价有效期多久？", "function": "确认报价期限"}
+      ],
+      "success_criteria": {"a": ["核对规格、数量、交期和费用项", "明确报价不等于采购承诺及下一审批步骤"], "b": ["说明现货与追加批次区别", "列出已确认费用和需书面核实项目"]},
+      "tags": ["询价", "规格", "报价口径"]
+    },
+    {
+      "id": "biz-procurement-02",
+      "label": "评估供应商交付能力",
+      "context": "模拟展陈团队评估一家虚构加工厂，拟连续三个月每月采购300个展示架，需了解产能和质量追溯。",
+      "roles": {
+        "a": {"label": "供应商评估员", "label_en": "Supplier Assessor", "objective": "通过证据核实产能、异常处理和外包环节", "private_information": ["首月可接受分两批，但后续月份必须按周计划供货"], "constraints": ["不能将参观印象当作正式资质认证结论"]},
+        "b": {"label": "供应商运营经理", "label_en": "Supplier Operations Manager", "objective": "如实介绍稳定产能和备援能力，争取试单机会", "private_information": ["常规月产能250个，超出部分需已备案合作车间处理"], "constraints": ["不能把合作车间说成自有工厂或保证零缺陷"]}
+      },
+      "stages": ["核对月度需求与稳定产能", "询问外包和追溯方式", "审查匿名交付记录", "确定试单及补充核验事项"],
+      "complications": ["展示的最高产量来自一次加班生产", "一份检测记录缺少批次编号"],
+      "targets": [
+        {"expression": "What is your normal monthly capacity?", "meaning_zh": "你们常规月产能是多少？", "function": "核查稳定能力"},
+        {"expression": "Which steps are handled by subcontractors?", "meaning_zh": "哪些环节由分包方处理？", "function": "识别外包环节"},
+        {"expression": "Could you show us a recent delivery record?", "meaning_zh": "能提供近期交付记录吗？", "function": "请求能力证据"}
+      ],
+      "success_criteria": {"a": ["区分峰值与稳定产能并核实证据", "列明试单通过条件和待核查项目"], "b": ["披露产能与外包边界", "说明批次追溯、异常响应和证据提供方式"]},
+      "tags": ["能力评估", "产能", "供应商核验"]
+    },
+    {
+      "id": "biz-procurement-03",
+      "label": "比较采购方案与总投入",
+      "context": "模拟内部服务站需配置40台标签机，方案甲单价低但培训另计，方案乙含培训且交期多一周。",
+      "roles": {
+        "a": {"label": "采购方案负责人", "label_en": "Sourcing Lead", "objective": "让使用方按完整费用和交付风险比较方案", "private_information": ["甲方案的耗材最低订购量尚未核实，可能增加库存"], "constraints": ["只能形成推荐，采购决定须按授权流程审批"]},
+        "b": {"label": "使用部门负责人", "label_en": "Department User Lead", "objective": "确保设备能按计划被员工使用而非只按最低价选择", "private_information": ["首周只需20台，可安排分组培训"], "constraints": ["无权口头追加长期耗材采购承诺"]}
+      },
+      "stages": ["确认使用时间和数量", "比较设备、培训和耗材投入", "讨论分批配置与风险", "形成含待核实项的推荐"],
+      "complications": ["报价中的培训仅含线上一小时", "一方报价未注明币种和适用期限"],
+      "targets": [
+        {"expression": "Let's compare the total cost, not just the unit price.", "meaning_zh": "我们比较总投入，不只看单价。", "function": "统一比较口径"},
+        {"expression": "What is included in the training package?", "meaning_zh": "培训服务具体包含什么？", "function": "核查服务内容"},
+        {"expression": "Our recommendation is subject to these checks.", "meaning_zh": "我们的推荐以完成这些核查为前提。", "function": "说明推荐条件"}
+      ],
+      "success_criteria": {"a": ["列出可比费用项和未确认条件", "说明推荐理由、风险及审批步骤"], "b": ["明确实际启用顺序和培训要求", "核对方案是否满足使用而非仅满足到货"]},
+      "tags": ["采购方案", "总投入", "方案比较"]
+    },
+    {
+      "id": "biz-procurement-04",
+      "label": "约定样品试用与评估",
+      "context": "模拟仓库拟试用一种周转箱，供应方可提供10个样品，正式订单尚未批准，试用期为两周。",
+      "roles": {
+        "a": {"label": "试用协调员", "label_en": "Trial Coordinator", "objective": "把试用方法、判定标准和样品处理方式说明白", "private_information": ["最需要验证的是满载后能否单人按现行规范搬运"], "constraints": ["不能安排超出既定安全操作范围的测试或暗示试用必然成交"]},
+        "b": {"label": "供应商技术代表", "label_en": "Supplier Technical Representative", "objective": "确认样品适用条件并获得结构化反馈", "private_information": ["样品有两种把手设计，可各提供5个便于比较"], "constraints": ["样品免费范围不含破坏性测试，额外试验需另行确认"]}
+      },
+      "stages": ["说明使用场景和安全边界", "约定样本分组与记录方式", "核对费用、归还和异常流程", "确认评估日期与反馈负责人"],
+      "complications": ["仓库希望延长试用但另一客户已预约样品", "两种设计外观相近，容易混淆记录"],
+      "targets": [
+        {"expression": "What should we test during the trial?", "meaning_zh": "试用期间应该测试哪些方面？", "function": "确定试用项目"},
+        {"expression": "Let's label the two versions clearly.", "meaning_zh": "把两个版本清楚标记出来吧。", "function": "保证可比较记录"},
+        {"expression": "Does the trial include return shipping?", "meaning_zh": "试用安排包括退回运费吗？", "function": "确认试用费用"}
+      ],
+      "success_criteria": {"a": ["提出安全、可观察的试用标准", "确认记录、反馈和样品归还安排"], "b": ["说明样品差异和适用限制", "核对费用边界及异常时的联系步骤"]},
+      "tags": ["样品试用", "评估标准", "试用边界"]
+    },
+    {
+      "id": "biz-procurement-05",
+      "label": "沟通到货质量问题",
+      "context": "模拟服务中心收到200个文件盒，抽检发现18个卡扣闭合不良，采购与供应方需商定核查和补救。",
+      "roles": {
+        "a": {"label": "采购质量协调员", "label_en": "Procurement Quality Coordinator", "objective": "提供批次证据、隔离受影响货物并争取可用补救", "private_information": ["下周活动至少需160个合格盒，未抽检部分尚未确认"], "constraints": ["不能直接推断整批不合格或擅自处置争议货物"]},
+        "b": {"label": "供应商售后负责人", "label_en": "Supplier After-sales Lead", "objective": "核对缺陷和批次，安排授权范围内的替换核查", "private_information": ["仓库有40个可先行补发，但全批换货需质量主管审批"], "constraints": ["不能未核验即承认全部责任或承诺全部赔付"]}
+      },
+      "stages": ["说明数量、批次和现象", "核对照片及抽检方法", "安排隔离、补检和临时补货", "确认正式处理与跟进期限"],
+      "complications": ["部分外箱批次标签模糊", "供应方提出寄回样品但活动临近"],
+      "targets": [
+        {"expression": "We found a defect in eighteen of the units checked.", "meaning_zh": "已检查的货物中有十八件存在缺陷。", "function": "准确报告质量事实"},
+        {"expression": "Could you confirm the affected batch?", "meaning_zh": "能确认受影响的批次吗？", "function": "核实追溯范围"},
+        {"expression": "What temporary replacement can you arrange?", "meaning_zh": "你们能安排什么临时替换？", "function": "协商补救"}
+      ],
+      "success_criteria": {"a": ["区分已抽检结果与未知批次状态", "明确使用期限和可接受的临时方案"], "b": ["请求足够证据并说明核验步骤", "确认补发范围、审批事项和下一回复时间"]},
+      "tags": ["质量问题", "批次追溯", "补救安排"]
+    },
+    {
+      "id": "biz-procurement-06",
+      "label": "进行供应商绩效回顾",
+      "context": "模拟季度供应商回顾显示12次到货中有3次晚于确认日期，双方需要核对记录并制定下季度改进。",
+      "roles": {
+        "a": {"label": "供应商管理专员", "label_en": "Supplier Performance Specialist", "objective": "用统一口径讨论表现并落实可验证改进", "private_information": ["其中一次订单曾由内部临时变更地址，记录尚未备注"], "constraints": ["不能单方面宣布罚款或依据未核实数据取消合作"]},
+        "b": {"label": "供应商客户经理", "label_en": "Supplier Account Manager", "objective": "澄清记录差异并提出可履行的交付改善", "private_information": ["另两次延期发生在周一集中出库，周五预排可降低风险"], "constraints": ["不能保证所有运输准点，只能承诺出库控制与异常通知"]}
+      },
+      "stages": ["核对准时交付定义和订单记录", "区分双方可控原因", "选定改进行动与指标", "约定下次回顾及持续异常的升级"],
+      "complications": ["双方对签收时间与到仓时间使用不同口径", "下季度预计订单量增加一倍"],
+      "targets": [
+        {"expression": "Let's reconcile the delivery records first.", "meaning_zh": "我们先核对交付记录。", "function": "对齐绩效事实"},
+        {"expression": "Which delays were within your control?", "meaning_zh": "哪些延误属于你们可控的部分？", "function": "明确改进责任"},
+        {"expression": "How will we track the improvement next quarter?", "meaning_zh": "下季度怎样跟踪改进效果？", "function": "约定绩效验证"}
+      ],
+      "success_criteria": {"a": ["纠正内部记录缺漏并统一指标口径", "提出改进检查点而非直接作处罚判断"], "b": ["承认可控问题并解释非可控因素", "给出行动负责人、通知时限和衡量方式"]},
+      "tags": ["供应商绩效", "记录核对", "持续改进"]
+    }
+  ]
+}

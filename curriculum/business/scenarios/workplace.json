@@ -1,0 +1,114 @@
+{
+  "id": "workplace",
+  "label": "劳动关系与组织变更",
+  "scenes": [
+    {
+      "id": "biz-workplace-01",
+      "label": "协调工作与休假安排",
+      "context": "模拟服务团队下周有一次系统演练，员工希望同周休假两天，主管需了解交接安排并核对审批流程。",
+      "roles": {
+        "a": {"label": "休假申请人", "label_en": "Leave Applicant", "objective": "清楚提出日期和交接方案，了解申请状态与确认时间", "private_information": ["周四的安排不能调整，周五可协商半天工作"], "constraints": ["无需披露私人细节，但不能把未批准申请当成已确认休假"]},
+        "b": {"label": "排班主管", "label_en": "Scheduling Manager", "objective": "协调必要工作覆盖，并按政策转交或完成审批", "private_information": ["另一名同事可接演练记录，但需要周三前拿到模板"], "constraints": ["不能凭口头印象判断假期资格或承诺政策例外，疑问须请人事确认"]}
+      },
+      "stages": ["说明休假日期和灵活空间", "核对受影响任务与替补", "确认申请和政策查询渠道", "约定审批答复及交接检查点"],
+      "complications": ["排班表显示演练日期与邮件不同", "系统里的可用假期余额尚未更新"],
+      "targets": [
+        {"expression": "I'd like to request leave for Thursday and Friday.", "meaning_zh": "我想申请周四和周五休假。", "function": "提出休假申请"},
+        {"expression": "What handover would keep the work covered?", "meaning_zh": "怎样交接能保证工作有人接手？", "function": "协调工作覆盖"},
+        {"expression": "Let's confirm the policy with HR before finalizing this.", "meaning_zh": "最终确定前，先向人事核实政策。", "function": "核实政策流程"}
+      ],
+      "success_criteria": {"a": ["明确日期、可协商部分和交接内容", "确认申请仍待哪些步骤及何时得到回复"], "b": ["核对实际工作覆盖而非追问无关私事", "标明待人事核实事项、审批人和交接时间"]},
+      "tags": ["休假安排", "工作覆盖", "政策核实"]
+    },
+    {
+      "id": "biz-workplace-02",
+      "label": "讨论工作负荷与支持方案",
+      "context": "模拟运营成员同时维护日报、处理工单和培训新人，本周连续三天未能在计划工时内完成工作，申请与主管沟通。",
+      "roles": {
+        "a": {"label": "提出支持需求的员工", "label_en": "Employee Seeking Support", "objective": "用任务和工时说明负荷，提出优先级与支持需求", "private_information": ["培训新人每天占2小时，但任务表仍按原容量分派"], "constraints": ["不能自行省略必要检查，也不需要提供健康诊断来证明工作量"]},
+        "b": {"label": "运营主管", "label_en": "Operations Manager", "objective": "核实容量并调整可控工作，说明进一步支持渠道", "private_information": ["另一组下周可接日报两天，但长期调整需部门负责人批准"], "constraints": ["不能要求无条件加班、作医疗判断或保证所有支持请求都会获批"]}
+      },
+      "stages": ["列出任务量与实际工时", "区分紧急、可延后和可转交任务", "讨论临时支持及审批需求", "约定试行安排和复查日期"],
+      "complications": ["新工单量临时增长三成", "被建议转交的同事实际尚未接受培训"],
+      "targets": [
+        {"expression": "My current workload exceeds the time available.", "meaning_zh": "我目前的工作量超过了可用时间。", "function": "表达容量问题"},
+        {"expression": "Which tasks can we pause or reassign?", "meaning_zh": "哪些任务可以暂停或重新分配？", "function": "协商减负"},
+        {"expression": "Let's review the workload again after a week.", "meaning_zh": "一周后我们再检查工作负荷。", "function": "安排支持复查"}
+      ],
+      "success_criteria": {"a": ["用任务、频次和工时说明负荷而非只说忙", "提出具体支持并确认不能牺牲的检查项"], "b": ["复述容量差距并提出可控调整", "明确转交前培训、待审批资源及复查时间"]},
+      "tags": ["工作负荷", "支持申请", "优先级调整"]
+    },
+    {
+      "id": "biz-workplace-03",
+      "label": "安排离职交接与事项确认",
+      "context": "模拟员工已提交离职申请，拟定最后工作日为本月28日，员工与主管需整理未结事项、设备和资料交接。",
+      "roles": {
+        "a": {"label": "离职员工", "label_en": "Departing Employee", "objective": "如实说明未结工作和资料位置，形成可执行交接清单", "private_information": ["一个供应商请求仍待回复，只有自己知道历史邮件所在文件夹"], "constraints": ["不能共享个人密码、带走内部资料或承诺人事尚未确认的结算事项"]},
+        "b": {"label": "交接主管", "label_en": "Handover Manager", "objective": "指定接手人并核查关键工作与资产流程", "private_information": ["接手同事下周二到岗，之前由自己临时代管紧急事项"], "constraints": ["不能自行决定通知期、最终薪资或其他权利义务，相关问题转人事核实"]}
+      },
+      "stages": ["核对拟定时间和待人事确认项", "梳理未结工作及风险", "安排共享资料与接手演示", "确认资产清单、责任人和完成标记"],
+      "complications": ["接手人到岗时间推迟一天", "一份共享文件只有离职员工有访问权限"],
+      "targets": [
+        {"expression": "Here are the open items and their current status.", "meaning_zh": "这是未结事项及当前状态。", "function": "说明待交接工作"},
+        {"expression": "Who will take ownership before the new person starts?", "meaning_zh": "新人到岗前由谁接手负责？", "function": "确认过渡责任"},
+        {"expression": "HR will need to confirm the final arrangements.", "meaning_zh": "最终安排需要人事确认。", "function": "区分交接与人事程序"}
+      ],
+      "success_criteria": {"a": ["列明未结事项、资料入口和下一动作", "提出安全的权限移交方式并标明未确认安排"], "b": ["为每项工作指定主责与过渡人", "确认演示、资产流程及需人事答复的问题"]},
+      "tags": ["离职交接", "资料权限", "过渡责任"]
+    },
+    {
+      "id": "biz-workplace-04",
+      "label": "在离职访谈中反馈经历",
+      "context": "模拟人事安排30分钟自愿离职访谈，目的是收集工作体验与流程建议，不代替正式投诉或其他处理程序。",
+      "roles": {
+        "a": {"label": "离职访谈专员", "label_en": "Exit Interview Specialist", "objective": "解释记录用途及保密边界，中性倾听并说明必要转交流程", "private_information": ["一般建议将按主题汇总，需处理的具体事项应另获适当授权后转交"], "constraints": ["不能承诺绝对保密或裁定投诉真伪，正式问题应按规定渠道处理"]},
+        "b": {"label": "受访离职员工", "label_en": "Departing Interviewee", "objective": "表达可核实的体验、改善建议和希望如何处理记录", "private_information": ["主要困扰是任务优先级频繁变化，愿意匿名分享两个例子"], "constraints": ["可以跳过不愿回答的问题，不能推测同事动机或披露无关个人资料"]}
+      },
+      "stages": ["说明参与自愿性与记录边界", "询问具体工作体验", "区分一般建议和需正式跟进事项", "核对摘要、转交意愿及后续入口"],
+      "complications": ["员工要求保证任何内容都不会转交", "一个例子包含可能需要正式受理的行为描述"],
+      "targets": [
+        {"expression": "How will my feedback be recorded and shared?", "meaning_zh": "我的反馈会如何记录和分享？", "function": "确认记录用途"},
+        {"expression": "You can skip any question you don't want to answer.", "meaning_zh": "不想回答的问题可以跳过。", "function": "说明参与选择"},
+        {"expression": "Would you like information about the formal reporting process?", "meaning_zh": "你想了解正式反映问题的流程吗？", "function": "提供正式渠道"}
+      ],
+      "success_criteria": {"a": ["开场解释用途及保密限制而非作绝对保证", "中性复述事实并说明正式转交选项"], "b": ["用具体工作事件说明体验", "明确可记录、可分享范围及是否需要渠道信息"]},
+      "tags": ["离职访谈", "反馈边界", "正式渠道"]
+    },
+    {
+      "id": "biz-workplace-05",
+      "label": "沟通已确认的组织调整",
+      "context": "模拟支持部门已发布通知，三个小组将在下月合为一个排班池，现阶段只确认汇报联系人和试运行日期。",
+      "roles": {
+        "a": {"label": "变更沟通主管", "label_en": "Change Communications Manager", "objective": "说明已确认变化、过渡安排和未决问题的答复机制", "private_information": ["试运行首周可保留原联系人协助分流，需收集团队疑问后落实"], "constraints": ["不能保证岗位、薪酬或长期安排不变，未定事项须请人事及决策人确认"]},
+        "b": {"label": "受影响团队成员", "label_en": "Affected Team Member", "objective": "了解日常协作将如何改变并提出关键操作疑问", "private_information": ["手上有两个跨月客户事项，担心合组后无人认领"], "constraints": ["不能以传言替代通知，也不能向其他员工传播未确认的人事信息"]}
+      },
+      "stages": ["区分通知中的已定与未定事项", "说明近期工作入口和过渡期", "收集对现有任务的影响", "确认问题清单、责任人和更新时间"],
+      "complications": ["群聊流传与正式通知不同的组织图", "新汇报联系人尚未获得原小组看板权限"],
+      "targets": [
+        {"expression": "Here is what has been confirmed so far.", "meaning_zh": "以下是目前已确认的事项。", "function": "界定确定信息"},
+        {"expression": "How will ongoing work be handled during the transition?", "meaning_zh": "过渡期间现有工作如何处理？", "function": "询问衔接安排"},
+        {"expression": "That point is still under review, and we'll confirm the owner.", "meaning_zh": "那一点仍在评估，我们会确认答复负责人。", "function": "回应未决问题"}
+      ],
+      "success_criteria": {"a": ["清楚区分事实、暂行安排和未知事项", "给出过渡联系人及未决问题回复机制"], "b": ["具体说明跨月任务的衔接风险", "核对正式信息来源和下一次更新时间"]},
+      "tags": ["组织调整", "过渡安排", "未知事项"]
+    },
+    {
+      "id": "biz-workplace-06",
+      "label": "回应员工对政策变化的疑问",
+      "context": "模拟团队更新远程办公申请流程，通知要求从下月起使用新表单，但未解释既有安排是否需要重新申请。",
+      "roles": {
+        "a": {"label": "人事服务专员", "label_en": "HR Services Specialist", "objective": "确认员工问题、查找有效政策并给出可追踪的答复步骤", "private_information": ["知识库的旧版问答尚未下架，已请求政策负责人确认过渡条款"], "constraints": ["不能凭旧文档判定资格、作劳动法律结论或披露其他员工安排"]},
+        "b": {"label": "咨询员工", "label_en": "Employee Making an Inquiry", "objective": "弄清既有安排如何过渡、所需材料及等待期间联系谁", "private_information": ["已有一份主管确认到下季度的安排，希望避免重复提交个人资料"], "constraints": ["不能将同事的情况当成自身批准依据，也不能以未答复视作自动批准"]}
+      },
+      "stages": ["复述具体问题与现有文件", "核查政策版本和适用范围", "标明需政策负责人确认的事项", "确认答复工单、期限及紧急联系人"],
+      "complications": ["员工收到的链接指向旧表单", "主管与知识库对是否重提申请说法不同"],
+      "targets": [
+        {"expression": "Does this change apply to existing arrangements?", "meaning_zh": "这次变化适用于既有安排吗？", "function": "询问适用范围"},
+        {"expression": "I don't want to give you an unverified answer.", "meaning_zh": "我不想给你未经核实的答复。", "function": "说明核实必要性"},
+        {"expression": "I'll log the question and confirm the response date.", "meaning_zh": "我会登记这个问题并确认答复日期。", "function": "建立跟进记录"}
+      ],
+      "success_criteria": {"a": ["核对文件版本并明确尚不能确定的内容", "提供查询编号、责任人和预计答复时点"], "b": ["说明自身现有文件及具体疑问而非索取他人资料", "确认等待期间的咨询入口和下一跟进时间"]},
+      "tags": ["员工疑问", "政策版本", "人事服务"]
+    }
+  ]
+}

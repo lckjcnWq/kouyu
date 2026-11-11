@@ -1,0 +1,114 @@
+{
+  "id": "decisions",
+  "label": "观点表达与共同决策",
+  "scenes": [
+    {
+      "id": "biz-decisions-01",
+      "label": "澄清含糊的工作要求",
+      "context": "模拟会员服务项目收到“下月让服务更快”的要求，两名负责人需把它转成可执行任务。",
+      "roles": {
+        "a": {"label": "需求提出人", "label_en": "Request Owner", "objective": "解释业务痛点并与执行方界定目标", "private_information": ["最在意周末首次回复慢，而非最终解决时间"], "constraints": ["尚未获得增员预算，不能承诺扩编"]},
+        "b": {"label": "执行负责人", "label_en": "Delivery Lead", "objective": "澄清指标、范围和期限后再估算工作量", "private_information": ["现有报表只统计工作日，需两天补周末数据"], "constraints": ["没有基线数据前不能承诺缩短多少时间"]}
+      },
+      "stages": ["指出表述中的歧义", "举例区分回复与解决", "确认适用人群和时间段", "约定补数后确认目标"],
+      "complications": ["另一份邮件使用了不同指标名称", "发起人希望当天就报出改善比例"],
+      "targets": [
+        {"expression": "What do you mean by faster service?", "meaning_zh": "你说的服务更快具体指什么？", "function": "澄清概念"},
+        {"expression": "Are we talking about the first reply or the final resolution?", "meaning_zh": "我们说的是首次回复还是最终解决？", "function": "区分指标"},
+        {"expression": "Let me check that I've understood correctly.", "meaning_zh": "我确认一下是否理解正确。", "function": "复述核对"}
+      ],
+      "success_criteria": {"a": ["给出痛点实例并明确优先指标", "说明目标中哪些内容仍待数据验证"], "b": ["用具体选项澄清含糊要求", "复述范围、基线缺口和下一步期限"]},
+      "tags": ["澄清", "指标定义", "预期管理"]
+    },
+    {
+      "id": "biz-decisions-02",
+      "label": "提出可验证的改进建议",
+      "context": "模拟售后团队每周收到约120封重复咨询，正在讨论是否调整帮助页面。",
+      "roles": {
+        "a": {"label": "改进提议人", "label_en": "Improvement Proposer", "objective": "提出一个小范围试验并说明如何判断效果", "private_information": ["抽查的30封邮件中有12封询问退件包装"], "constraints": ["每周最多投入4小时，不能承诺整站改版"]},
+        "b": {"label": "支持主管", "label_en": "Support Supervisor", "objective": "检验建议的收益与维护成本后决定是否试行", "private_information": ["团队上次更新说明后未维护，出现过期信息"], "constraints": ["只能批准两周试验，长期资源需另行申请"]}
+      },
+      "stages": ["说明观察到的问题", "提出有限范围建议", "讨论成本与维护责任", "约定试验指标和回顾日期"],
+      "complications": ["网站团队本周只能改文字不能加图片", "咨询量因促销突然增加，不能直接比较总量"],
+      "targets": [
+        {"expression": "I'd suggest starting with one page.", "meaning_zh": "我建议先从一个页面开始。", "function": "提出建议"},
+        {"expression": "What would a small pilot look like?", "meaning_zh": "小范围试点可以怎么做？", "function": "缩小试验范围"},
+        {"expression": "How will we know if it's working?", "meaning_zh": "我们怎么判断它是否有效？", "function": "定义验证方法"}
+      ],
+      "success_criteria": {"a": ["用抽样事实说明建议来源并承认样本局限", "提出试验范围、指标和维护责任"], "b": ["询问执行成本及失效风险", "明确试验批准边界和复查时间"]},
+      "tags": ["建议", "小步试验", "效果评估"]
+    },
+    {
+      "id": "biz-decisions-03",
+      "label": "礼貌反对不稳妥的安排",
+      "context": "模拟预约平台计划周五切换新流程，两个团队需讨论是否一次覆盖全部门店。",
+      "roles": {
+        "a": {"label": "上线倡议人", "label_en": "Launch Advocate", "objective": "推动及时上线，同时理解反对意见并找可行替代", "private_information": ["宣传已预留周五档期，最迟周三能免费改期"], "constraints": ["不能要求门店跳过培训或测试"]},
+        "b": {"label": "门店运营代表", "label_en": "Store Operations Representative", "objective": "明确表达顾虑并提出分批切换方案", "private_information": ["四家门店中有两家尚未完成预约演练"], "constraints": ["无权单方面取消上线，只能建议调整"]}
+      },
+      "stages": ["确认共同目标", "说明不同意见及具体影响", "比较全量与分批方式", "确定补充检查和决策时间"],
+      "complications": ["有人把反对意见解读为不支持项目", "一家具备条件的门店临时减少值班人员"],
+      "targets": [
+        {"expression": "I see the benefit, but I have a concern.", "meaning_zh": "我理解好处，但有个顾虑。", "function": "礼貌提出异议"},
+        {"expression": "Could we roll it out in stages instead?", "meaning_zh": "我们能改为分阶段推出吗？", "function": "提出替代"},
+        {"expression": "What would make you comfortable moving ahead?", "meaning_zh": "满足什么条件你会放心推进？", "function": "探索推进条件"}
+      ],
+      "success_criteria": {"a": ["准确复述对方顾虑而非质疑动机", "说明时间约束并询问最低推进条件"], "b": ["用具体准备缺口支撑反对意见", "给出可执行替代及复查要求"]},
+      "tags": ["礼貌反对", "替代方案", "上线讨论"]
+    },
+    {
+      "id": "biz-decisions-04",
+      "label": "为观点补充依据并承认局限",
+      "context": "模拟培训服务团队比较两种报名页面，本周试用记录共有200次访问，需讨论是否更换默认页面。",
+      "roles": {
+        "a": {"label": "数据分析员", "label_en": "Data Analyst", "objective": "解释观察数据能支持什么以及不能支持什么", "private_information": ["新版访问多来自老用户，样本并非随机分配"], "constraints": ["不能把相关变化说成已证实的因果效果"]},
+        "b": {"label": "业务负责人", "label_en": "Business Lead", "objective": "检验论据质量，选择下一轮验证而非凭印象决定", "private_information": ["销售收到3次关于新版字段难懂的反馈"], "constraints": ["不能依据少量个案直接否定整版设计"]}
+      },
+      "stages": ["提出初步判断", "追问数据来源与样本", "补充相反证据", "确定更公平的比较方法"],
+      "complications": ["两版页面记录转化的口径不同", "团队要求在新增数据前先给一个暂行建议"],
+      "targets": [
+        {"expression": "What evidence is that based on?", "meaning_zh": "这个判断基于什么证据？", "function": "追问依据"},
+        {"expression": "The sample may not be representative.", "meaning_zh": "样本可能不具有代表性。", "function": "说明局限"},
+        {"expression": "This suggests a trend, not a firm conclusion.", "meaning_zh": "这提示了一种趋势，还不是确定结论。", "function": "校准结论强度"}
+      ],
+      "success_criteria": {"a": ["交代样本来源和比较口径", "区分观察结果、解释和待验证假设"], "b": ["询问数据限制并提供反向实例", "提出可检验的下一步而非要求确定性保证"]},
+      "tags": ["证据", "不确定性", "数据讨论"]
+    },
+    {
+      "id": "biz-decisions-05",
+      "label": "比较方案与接受取舍",
+      "context": "模拟培训中心需选报名工具：方案甲两周可用但报表简单，方案乙四周可用且支持自定义报表。",
+      "roles": {
+        "a": {"label": "项目负责人", "label_en": "Project Lead", "objective": "围绕上线时间比较方案并说明牺牲项", "private_information": ["首场活动可手动做报表，但最多处理80人"], "constraints": ["不能延后已公开的首场活动日期"]},
+        "b": {"label": "运营分析主管", "label_en": "Operations Analytics Lead", "objective": "保护必要报表能力，评估过渡办法是否可持续", "private_information": ["下月预计只有60人，但再下月可能增至200人"], "constraints": ["不能长期安排员工额外手工录入"]}
+      },
+      "stages": ["列出共同决策标准", "比较时间与功能差异", "讨论过渡方案和退出条件", "记录选择理由及保留风险"],
+      "complications": ["方案甲新增一次性数据导出费，金额待核实", "活动负责人要求加入一个可稍后补充的字段"],
+      "targets": [
+        {"expression": "What are we willing to trade off?", "meaning_zh": "我们愿意接受哪方面的取舍？", "function": "明确取舍"},
+        {"expression": "Option A gets us there sooner, but with fewer features.", "meaning_zh": "甲方案能更早上线，但功能更少。", "function": "比较利弊"},
+        {"expression": "Could we use this as a temporary solution?", "meaning_zh": "能先把它作为过渡方案吗？", "function": "探索折中"}
+      ],
+      "success_criteria": {"a": ["按共同标准比较两方案而非只表态", "说清过渡方案容量与退出时间"], "b": ["量化报表需求和人工限制", "确认可接受的牺牲项及重新评估条件"]},
+      "tags": ["方案取舍", "决策标准", "过渡方案"]
+    },
+    {
+      "id": "biz-decisions-06",
+      "label": "在分歧中建立有限共识",
+      "context": "模拟客服试点中，一方希望集中处理工单，另一方希望按门店分流，本周需要决定下一轮测试办法。",
+      "roles": {
+        "a": {"label": "集中服务负责人", "label_en": "Central Support Lead", "objective": "推动统一处理，同时承认本地知识的价值", "private_information": ["集中组已有统一模板，但不熟悉两家门店的特殊流程"], "constraints": ["不能要求门店立即交出全部处理权限"]},
+        "b": {"label": "区域服务负责人", "label_en": "Regional Support Lead", "objective": "保留必要本地响应并寻求可比较的试验", "private_information": ["愿意先转移常规查询，但担心特殊投诉失去负责人"], "constraints": ["不能拒绝所有统一标准或替总部做最终组织决定"]}
+      },
+      "stages": ["分别概括担忧与共同目标", "识别能先同意的工单类型", "划分例外及责任边界", "设置试验、复盘和未决事项"],
+      "complications": ["双方对“特殊投诉”的定义不一致", "有人要求把暂行共识写成永久组织方案"],
+      "targets": [
+        {"expression": "We agree on the goal, but not the approach.", "meaning_zh": "我们认同目标，但对方法有分歧。", "function": "定位分歧"},
+        {"expression": "What can we agree to test first?", "meaning_zh": "我们能先同意测试哪一部分？", "function": "寻找有限共识"},
+        {"expression": "Let's record what is still unresolved.", "meaning_zh": "把仍未解决的事项记录下来。", "function": "保留未决问题"}
+      ],
+      "success_criteria": {"a": ["准确复述对方顾虑并承认合理部分", "提出明确可逆的试验及评估指标"], "b": ["区分底线与可协商范围", "确认暂行责任、例外入口和复盘日期"]},
+      "tags": ["分歧", "共识", "可逆决策"]
+    }
+  ]
+}

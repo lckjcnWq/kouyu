@@ -1,0 +1,114 @@
+{
+  "id": "prospecting",
+  "label": "客户开发与销售线索",
+  "scenes": [
+    {
+      "id": "biz-prospecting-01",
+      "label": "首次电话联系",
+      "context": "模拟首次业务电话中，A向一家有3个维修网点的服务商介绍预约提醒工具。B接听公司公开业务电话，双方此前没有联系，电话不代表对方同意接收营销资料。",
+      "roles": {
+        "a": {"label": "销售开发专员", "label_en": "Sales Development Representative", "objective": "在获得短暂通话许可后说明来意，判断预约提醒是否与对方职责相关。", "private_information": ["你掌握的信息仅来自公开网点介绍，不知道对方使用何种预约系统。"], "constraints": ["不能假称已有联系或已有客户推荐；对方拒绝后应结束推介。"]},
+        "b": {"label": "服务网点主管", "label_en": "Service Center Supervisor", "objective": "辨别来电目的，在不影响接待的前提下决定继续、转接或拒绝。", "private_information": ["你今天只能通话1分钟；网点确有预约爽约，但你不负责系统采购。"], "constraints": ["不提供个人手机或客户信息；不能替采购同事同意会议。"]}
+      },
+      "stages": ["报明身份和公司业务性质", "征求一分钟通话许可", "说明与网点相关的联系原因并提问", "根据职责和意愿确认下一步或结束"],
+      "complications": ["B以为这是关于已有预约的客服电话，需要立即澄清。", "前台有客人到达，B要求20秒内讲完或另约时间。"],
+      "targets": [
+        {"expression": "Have I caught you at a bad time?", "meaning_zh": "现在联系你方便吗？", "function": "征求通话许可"},
+        {"expression": "I'm calling about appointment reminders for service centers.", "meaning_zh": "我来电是想谈服务网点的预约提醒。", "function": "透明说明来意"},
+        {"expression": "Are you the right person to ask about this?", "meaning_zh": "这件事适合向你了解吗？", "function": "确认职责适配"}
+      ],
+      "success_criteria": {"a": ["说明首次联系性质并获得继续通话许可。", "提出一个与预约流程相关的问题，尊重B的拒绝或转接边界。"], "b": ["说明可用时间和职责范围。", "明确选择继续、建议官方渠道或拒绝，不作越权承诺。"]},
+      "tags": ["首次电话", "许可式沟通", "线索判断"]
+    },
+    {
+      "id": "biz-prospecting-02",
+      "label": "跟进活动线索",
+      "context": "模拟线上研讨会主题为门店损耗管理。B在活动表单中同意接收一封相关资料邮件，A是主办方的业务联系人，现通过一次简短通话确认资料方向。",
+      "roles": {
+        "a": {"label": "活动线索跟进专员", "label_en": "Event Follow-up Specialist", "objective": "连接到活动中的具体话题，确认对方需要的资料及是否愿意继续交流。", "private_information": ["表单只记录了B参加活动和资料许可，没有记录采购意向。"], "constraints": ["不得把报名当成购买兴趣；超出原许可的联系需重新征得同意。"]},
+        "b": {"label": "零售区域分析员", "label_en": "Retail Area Analyst", "objective": "获取与门店盘点有关的材料，并阻止无关产品推介占用时间。", "private_information": ["你代表团队收集流程改进资料，对演讲里的盘点清单感兴趣，但目前没有软件项目。"], "constraints": ["不能承诺预算，不向外部分享具体损耗数据。"]}
+      },
+      "stages": ["说明活动来源和已有联系许可", "询问最有用的活动话题", "区分资料需求与采购项目", "约定发送内容及后续联系边界"],
+      "complications": ["B记不清活动名称，需要用议题而非假设熟悉关系来唤起记忆。", "B所需清单尚未发布，需要给出真实可交付时间而非发送无关材料。"],
+      "targets": [
+        {"expression": "You asked for the stock-check checklist after the session.", "meaning_zh": "你在活动后申请了盘点清单。", "function": "说明具体跟进来源"},
+        {"expression": "Which part of the session was most relevant to your work?", "meaning_zh": "活动中哪一部分与你的工作最相关？", "function": "发现真实兴趣点"},
+        {"expression": "Would you like the resource only, with no further follow-up?", "meaning_zh": "你是否只想收到资料，不需要进一步跟进？", "function": "确认联系边界"}
+      ],
+      "success_criteria": {"a": ["准确说明线索来源，不把参会等同于采购意向。", "确认资料主题、发送时间和是否允许后续联系。"], "b": ["指出所需资料与用途。", "区分学习需求和采购计划，并明确后续联系偏好。"]},
+      "tags": ["活动线索", "资料跟进", "意向识别"]
+    },
+    {
+      "id": "biz-prospecting-03",
+      "label": "确认客户适配",
+      "context": "模拟询盘中，B经营一家6人设计工作室，想了解团队任务管理服务。A提供的标准方案面向10人以上团队，双方安排了10分钟适配沟通。",
+      "roles": {
+        "a": {"label": "客户适配顾问", "label_en": "Qualification Consultant", "objective": "核对团队规模和主要用途，判断标准方案是否合适并诚实给出下一步。", "private_information": ["标准方案最低按10个账号计费；你可提供免费流程模板，但没有6账号套餐。"], "constraints": ["不能隐藏最低账号数，也不能为了留住线索虚构小团队版本。"]},
+        "b": {"label": "工作室负责人", "label_en": "Studio Owner", "objective": "确认工具是否适合小团队，并理解规模门槛和替代选择。", "private_information": ["未来半年最多增加2人；真正问题是任务交接，不需要复杂的管理报表。"], "constraints": ["不愿为用不到的账号长期付费；本次不提供员工个人资料。"]}
+      },
+      "stages": ["确认使用人数与近期变化", "询问最重要的工作问题", "说明方案门槛并检查适配差距", "决定继续评估、暂缓或转向轻量资源"],
+      "complications": ["B问能否多人共用一个账号，需解释使用边界而非回避费用。", "B说其他供应商愿意立刻演示，需要说明适配检查为何有用。"],
+      "targets": [
+        {"expression": "How many people would need their own account?", "meaning_zh": "有多少人需要独立账号？", "function": "核对实际使用规模"},
+        {"expression": "Our standard plan starts at ten users.", "meaning_zh": "我们的标准套餐从10个用户起。", "function": "透明说明适配门槛"},
+        {"expression": "This may be more than your team needs right now.", "meaning_zh": "这目前可能超出你们团队的需要。", "function": "坦诚判断适配差距"}
+      ],
+      "success_criteria": {"a": ["询问人数和核心用途，明确标准方案门槛。", "说明适配或不适配的理由，并提供不施压的下一步。"], "b": ["区分当前规模、未来规模与实际需求。", "就费用门槛或账号使用提出澄清，并表达继续评估的条件。"]},
+      "tags": ["客户适配", "资格确认", "诚实销售"]
+    },
+    {
+      "id": "biz-prospecting-04",
+      "label": "联系决策人",
+      "context": "模拟商务沟通中，A已向B介绍过设备维护排程工具。B是工厂行政协调员，双方现通过电话确认谁能参与下一步评估，尚未安排正式会议。",
+      "roles": {
+        "a": {"label": "业务拓展经理", "label_en": "Business Development Manager", "objective": "理解评估职责分工，获得合规的介绍方式并保留B作为协调联系人。", "private_information": ["你只需要先找到维护流程负责人，不要求直接见最高管理层。"], "constraints": ["不能绕过B私自索取个人联系方式，也不能暗示其已支持采购。"]},
+        "b": {"label": "行政协调员", "label_en": "Administrative Coordinator", "objective": "把相关信息送到合适的职责人，同时避免让团队收到未经筛选的会议邀请。", "private_information": ["维护主管判断实际需求，财务经理审核支出；你可以转发摘要但不能代约两人。"], "constraints": ["不向外部提供个人电话；介绍前需要收到用途清楚的一页摘要。"]}
+      },
+      "stages": ["感谢协调并澄清下一步目的", "询问谁使用、谁评估、谁批准", "商量转发摘要或获准介绍的方式", "确认材料内容、责任人和回复节点"],
+      "complications": ["A原以为行政部门决定采购，需根据B说明修正联系人路线。", "维护主管本周不在岗，双方需要确定不催促个人的替代时间。"],
+      "targets": [
+        {"expression": "Who would assess this from an operational point of view?", "meaning_zh": "谁会从实际运营角度评估这件事？", "function": "定位评估角色"},
+        {"expression": "Would you be comfortable forwarding a short summary?", "meaning_zh": "你方便转发一份简短摘要吗？", "function": "请求获准介绍"},
+        {"expression": "Please keep me copied in so I can coordinate.", "meaning_zh": "请抄送我，方便我协调。", "function": "保留协调联系"}
+      ],
+      "success_criteria": {"a": ["区分使用、评估与审批角色。", "征求B同意的介绍方式，并确认需要的材料而非索要私人联系方式。"], "b": ["说明职责分工和自己的权限。", "给出可执行的内部转发方式及合理回复时间。"]},
+      "tags": ["决策角色", "内部引荐", "联系人管理"]
+    },
+    {
+      "id": "biz-prospecting-05",
+      "label": "重新激活沉默客户",
+      "context": "模拟销售跟进中，A与B两个月前讨论过报销流程工具，B当时允许后续联系。项目之后没有进展，A现在约到一次5分钟通话，目的是更新状态而不是假定需求仍在。",
+      "roles": {
+        "a": {"label": "客户经理", "label_en": "Account Executive", "objective": "无责备地了解优先级是否变化，确认继续、暂停或关闭跟进。", "private_information": ["你们新增加了凭证批量导入，但不清楚这是否解决B原来的问题。"], "constraints": ["不能用虚假截止日期制造紧迫感；若对方撤回联系许可，应停止跟进。"]},
+        "b": {"label": "财务流程负责人", "label_en": "Finance Process Lead", "objective": "说明项目现状，判断新信息是否值得处理，并控制未来联系频率。", "private_information": ["内部系统升级推迟了外部工具评估，最快六周后才能重启；你希望只在那时收到一次提醒。"], "constraints": ["不能承诺项目一定重启，也不能透露内部升级供应商细节。"]}
+      },
+      "stages": ["简要回顾此前话题且不责备未回复", "询问当前优先级及变化", "核对一项新信息是否相关", "确认暂停期限、重新联系许可或关闭跟进"],
+      "complications": ["B已把日常工作交给新同事，需要先确认是否允许转发摘要。", "新功能与B当前障碍无关，A需要接受不继续演示。"],
+      "targets": [
+        {"expression": "Is this still something your team is considering?", "meaning_zh": "你们团队还在考虑这件事吗？", "function": "重新确认需求状态"},
+        {"expression": "Our priorities have shifted since we last spoke.", "meaning_zh": "上次沟通后，我们的优先事项变了。", "function": "说明沉默背后的变化"},
+        {"expression": "Shall I pause follow-up until that date?", "meaning_zh": "我是否先暂停跟进，到那天再联系？", "function": "商定尊重边界的跟进"}
+      ],
+      "success_criteria": {"a": ["用中性提问更新状态，不将沉默解读为同意或拒绝。", "确认继续、暂停或关闭的决定，以及下一次联系是否获准。"], "b": ["说明当前障碍或优先级变化。", "明确是否需要新信息，并给出联系时间或停止联系的要求。"]},
+      "tags": ["沉默线索", "重新联系", "优先级变化"]
+    },
+    {
+      "id": "biz-prospecting-06",
+      "label": "争取正式沟通机会",
+      "context": "模拟初步交流后，B表示想减少每周人工排班时间。A希望邀请B参加一次正式需求沟通，但B尚未同意。双方目前只知道团队有4家门店，没有核实具体流程。",
+      "roles": {
+        "a": {"label": "销售顾问", "label_en": "Sales Consultant", "objective": "提出时间受控、议题清楚的沟通邀请，让B能判断参会是否值得。", "private_information": ["你可以安排20分钟需求讨论，不必演示产品；周三上午和周五下午可选。"], "constraints": ["不得把邀请描述成已确认会议；不承诺一次会议即可解决排班问题。"]},
+        "b": {"label": "连锁运营协调人", "label_en": "Multi-site Operations Coordinator", "objective": "确认会议产出、参会要求和时间成本，再决定接受还是要求先发资料。", "private_information": ["你愿意投入20分钟，但不想先做长表单，也不想带店长参加推销会。"], "constraints": ["不能要求门店员工参会；排班原始数据不能外发。"]}
+      },
+      "stages": ["用已知业务问题解释约谈原因", "说明时长、议程和预期产出", "处理参会人和准备材料疑问", "确认时区、时段和邀请接受方式"],
+      "complications": ["B以为需要准备完整排班表，双方需缩减到可匿名描述的信息。", "B与A的日历默认时区不同，需要核对会议时间。"],
+      "targets": [
+        {"expression": "Could we set aside twenty minutes to map out the process?", "meaning_zh": "我们能安排20分钟梳理一下流程吗？", "function": "提出有边界的会议请求"},
+        {"expression": "What would we leave the meeting with?", "meaning_zh": "这次会议结束时会有什么产出？", "function": "确认会议价值"},
+        {"expression": "No detailed data is needed for the first call.", "meaning_zh": "首次通话不需要准备详细数据。", "function": "降低准备负担"}
+      ],
+      "success_criteria": {"a": ["给出明确时长、议程与可实现的会议产出。", "核对准备要求、时区及是否接受邀请，不把意向当确认。"], "b": ["询问会议产出或准备工作。", "明确接受、改期或暂缓，并说明自己的数据和参会限制。"]},
+      "tags": ["预约会议", "议程设计", "下一步"]
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "id": "discovery",
+  "label": "需求挖掘与业务访谈",
+  "scenes": [
+    {
+      "id": "biz-discovery-01",
+      "label": "当前工作流程",
+      "context": "模拟需求访谈中，A为一家有两个校区的培训机构梳理课程物资申请。B负责日常协调，双方用25分钟了解从教师提出申请到物资签收的现有流程，尚未讨论采购方案。",
+      "roles": {
+        "a": {"label": "业务分析师", "label_en": "Business Analyst", "objective": "按时间顺序还原流程，标出交接、工具和例外情况，形成可由B确认的流程摘要。", "private_information": ["你准备了通用流程表，但不确定审批发生在库存检查之前还是之后。"], "constraints": ["不能把自己的流程模板当作客户事实，也不在访谈中直接指定解决方案。"]},
+        "b": {"label": "校区运营协调员", "label_en": "Campus Operations Coordinator", "objective": "准确解释实际工作，包括非标准步骤，并纠正A的错误假设。", "private_information": ["紧急补货通常先电话确认库存再补申请，周五才统一补齐记录。"], "constraints": ["不披露教师或学员个人信息；只能解释运营步骤，不能替财务确认审批规则。"]}
+      },
+      "stages": ["选一笔普通申请作为例子", "依次追问触发、处理、审批和签收", "确认每次交接由谁完成及用什么记录", "补问紧急情况并复述流程"],
+      "complications": ["B描述的流程与A手中旧流程图顺序不同，需要区分实际做法和旧文档。", "另一个校区使用不同表格，需要标记差异而非强行合并。"],
+      "targets": [
+        {"expression": "Could you walk me through a typical request?", "meaning_zh": "你能带我走一遍常见申请的处理过程吗？", "function": "邀请按顺序描述流程"},
+        {"expression": "What happens after the stock check?", "meaning_zh": "库存检查后会发生什么？", "function": "追问相邻步骤"},
+        {"expression": "Is that the usual process or an exception?", "meaning_zh": "这是常规流程，还是例外情况？", "function": "区分常态与例外"}
+      ],
+      "success_criteria": {"a": ["询问至少三个连续步骤及一个责任交接。", "区分实际流程、旧文档和例外，并请B确认摘要。"], "b": ["用一笔具体申请说明时间顺序和记录方式。", "补充一个例外，纠正A的一处假设或明确待核实事项。"]},
+      "tags": ["流程访谈", "交接", "as-is"]
+    },
+    {
+      "id": "biz-discovery-02",
+      "label": "追问核心痛点",
+      "context": "模拟业务访谈中，B所在的配送团队每天汇总各线路状态，B说当前报告制作太慢。A需要在20分钟内进一步了解问题，不预设一定需要新系统。",
+      "roles": {
+        "a": {"label": "需求顾问", "label_en": "Discovery Consultant", "objective": "把笼统的慢拆成具体事件、发生频率和业务影响，找出B最想改变的一点。", "private_information": ["你们既提供流程咨询也提供报表工具，需要先判断延迟源头。"], "constraints": ["不诱导客户夸大损失，不把相关现象直接说成根因。"]},
+        "b": {"label": "配送运营负责人", "label_en": "Delivery Operations Lead", "objective": "解释真正影响工作的延迟，并防止讨论只围绕报表美观展开。", "private_information": ["报告排版只花10分钟，真正拖延来自三个站点在不同时间补交数据；上周有两次错过调车窗口。"], "constraints": ["可以分享近一周的汇总，不公开司机姓名；不能保证这些情况代表全年。"]}
+      },
+      "stages": ["请B描述最近一次具体延迟", "拆分等待与实际处理时间", "追问频率和受影响的业务动作", "比较多个问题并确认优先痛点"],
+      "complications": ["B最初提出换一种报表模板，需要回到实际影响而非直接接受方案。", "双方发现节假日数据不同，需要限制结论适用范围。"],
+      "targets": [
+        {"expression": "Can you give me a recent example?", "meaning_zh": "你能举一个最近的例子吗？", "function": "把笼统抱怨具体化"},
+        {"expression": "Where does most of the waiting happen?", "meaning_zh": "大部分等待发生在哪个环节？", "function": "定位时间瓶颈"},
+        {"expression": "What does that delay prevent your team from doing?", "meaning_zh": "这种延迟妨碍团队完成什么工作？", "function": "追问业务影响"}
+      ],
+      "success_criteria": {"a": ["取得一个近期例子并区分处理时间与等待时间。", "询问频率和业务影响，将优先痛点复述为待确认结论。"], "b": ["提供具体时间或事件而非只说效率低。", "解释实际影响及数据适用范围，区分症状与可能原因。"]},
+      "tags": ["痛点追问", "业务影响", "证据"]
+    },
+    {
+      "id": "biz-discovery-03",
+      "label": "必要与可选需求",
+      "context": "模拟选型访谈中，B为一支18人的外勤团队整理移动工单需求，初稿有12项功能。A与B需要在30分钟内把需求分成首期必要、后续可选和待确认三类。",
+      "roles": {
+        "a": {"label": "方案分析师", "label_en": "Solution Analyst", "objective": "通过真实使用场景核实需求优先级，记录每项必要功能的理由和验证方式。", "private_information": ["首期若同时包含复杂自定义报表，准备工作会明显增加，但你还没有最终工时评估。"], "constraints": ["不能单方面删除客户需求，也不能在访谈中承诺实现日期。"]},
+        "b": {"label": "外勤业务主管", "label_en": "Field Service Manager", "objective": "确保首期保留影响现场工作的能力，同时识别可延期的管理偏好。", "private_information": ["离线记录是偏远现场的刚需；主管喜欢彩色看板，但团队可以暂用导出表。"], "constraints": ["不能代表安全负责人确认访问控制要求；至少要保留现场记录不丢失的验证。"]}
+      },
+      "stages": ["选出直接影响工作完成的需求", "用缺少该功能会怎样来检验必要性", "为可选需求讨论替代方式", "逐项确认分类、理由和待核实责任人"],
+      "complications": ["高层临时提出品牌主题色要求，需要讨论是否影响首期任务。", "B发现离线照片上传与离线文字记录不是同一能力，需要拆开需求。"],
+      "targets": [
+        {"expression": "Is this essential for launch or just useful to have?", "meaning_zh": "这是上线必需，还是有了更好？", "function": "区分必要和可选"},
+        {"expression": "What would happen if we left this out of phase one?", "meaning_zh": "如果首期不做这一项，会有什么影响？", "function": "检验优先级依据"},
+        {"expression": "Could an export work as a temporary alternative?", "meaning_zh": "导出功能可以作为临时替代吗？", "function": "探讨可接受替代"}
+      ],
+      "success_criteria": {"a": ["至少用一个实际任务检验必要需求。", "记录必要、可选与待确认项，并说明未经评估不能承诺的部分。"], "b": ["解释一个必要需求的业务原因。", "对可选项提出可接受替代，并指出不能代确认的要求。"]},
+      "tags": ["需求优先级", "首期范围", "must-have"]
+    },
+    {
+      "id": "biz-discovery-04",
+      "label": "预算与采购时间",
+      "context": "模拟采购前访谈中，B代表一个30人培训团队评估课程排期工具。A需要理解资金审批和计划时间，双方尚无报价，当前日期设定为9月2日。",
+      "roles": {
+        "a": {"label": "客户顾问", "label_en": "Account Consultant", "objective": "礼貌区分预算设想、已批准额度和采购时间节点，明确还需确认的条件。", "private_information": ["你预计需在需求确认后预留两周准备方案，但不能凭人数直接确定费用。"], "constraints": ["不要求B披露无关财务信息，不把预计预算当成已批准资金。"]},
+        "b": {"label": "培训运营经理", "label_en": "Training Operations Manager", "objective": "提供可分享的预算范围和内部节奏，同时避免让供应商误以为已获批准。", "private_information": ["内部申请区间为每年3万至4万元模拟人民币，尚待10月预算会；希望11月试用但可调整。"], "constraints": ["不能批准支出，也不能承诺预算会结果或固定上线日期。"]}
+      },
+      "stages": ["解释询问预算与时间的用途", "区分目标范围和审批状态", "倒推评估、审批、试用与上线节点", "确认可提供信息和下一次更新日期"],
+      "complications": ["B把试用时间称作采购时间，需要进一步区分几个节点。", "内部预算会可能延后一周，双方需要给出条件式时间计划。"],
+      "targets": [
+        {"expression": "Is that an approved budget or a planning range?", "meaning_zh": "这是已批准的预算，还是规划中的范围？", "function": "核对预算状态"},
+        {"expression": "When would you need a decision, rather than a full rollout?", "meaning_zh": "你们需要何时作出决定，而不是全面上线？", "function": "区分决策与实施时间"},
+        {"expression": "What needs to happen before funding can be confirmed?", "meaning_zh": "在资金确认前还需要完成什么？", "function": "了解审批依赖"}
+      ],
+      "success_criteria": {"a": ["用尊重边界的提问核实预算范围及审批状态。", "区分至少两个采购节点，并复述时间计划的前提。"], "b": ["明确哪些数字为计划、哪些尚未获批。", "解释关键审批依赖，并给出可更新信息的节点。"]},
+      "tags": ["预算访谈", "采购时间", "审批状态"]
+    },
+    {
+      "id": "biz-discovery-05",
+      "label": "决策流程参与人",
+      "context": "模拟选型会议中，B作为采购项目协调人组织仓库扫描工具评估。A需要了解一线试用、信息安全审查和费用审批分别如何参与，双方不涉及真实人员姓名。",
+      "roles": {
+        "a": {"label": "企业销售顾问", "label_en": "Enterprise Sales Consultant", "objective": "建立职责清楚的评估流程图，避免遗漏需要参与但不负责签约的角色。", "private_information": ["你能分别安排现场流程讨论和技术答疑，但需要先知道各环节问题。"], "constraints": ["不绕过协调人施压，不要求对方提供私人联系人。"]},
+        "b": {"label": "采购项目协调人", "label_en": "Procurement Project Coordinator", "objective": "说明内部评估顺序和角色分工，使外部资料能被送到正确环节。", "private_information": ["仓库主管先组织试用，信息安全团队再审数据处理，最后由部门预算负责人审核支出。"], "constraints": ["不能承诺各环节通过；正式联系信息安全团队前须完成内部登记。"]}
+      },
+      "stages": ["区分使用者、评估者和支出批准者", "确认各角色需要什么信息", "梳理评估顺序和前置要求", "商定由谁引入下一角色及待补材料"],
+      "complications": ["安全团队本月集中受理申请，必须提前登记才能进入排期。", "仓库主管要求试用后再讨论费用，A需调整原先会议顺序。"],
+      "targets": [
+        {"expression": "Who needs to be involved before this moves forward?", "meaning_zh": "这件事推进前需要哪些人参与？", "function": "识别参与角色"},
+        {"expression": "Does the security review come before or after the pilot?", "meaning_zh": "安全审查在试用之前还是之后？", "function": "核对评估顺序"},
+        {"expression": "What information does each group need from us?", "meaning_zh": "各小组分别需要我们提供什么信息？", "function": "匹配材料与职责"}
+      ],
+      "success_criteria": {"a": ["区分至少三个不同职责角色，不只追问谁签字。", "复述评估顺序并确认获准的引荐方式。"], "b": ["说明角色分工、顺序和一个前置要求。", "明确自己不能保证的审批结果，并指定下一步材料接收渠道。"]},
+      "tags": ["决策流程", "利益相关方", "评估顺序"]
+    },
+    {
+      "id": "biz-discovery-06",
+      "label": "复述澄清需求",
+      "context": "模拟需求访谈接近结束，双方已讨论一支12人内容团队的资料检索工具。公共记录有三条原话：搜索要快、外部人员不能随便看、月底前想有结果。A和B需把这些模糊表述转成可确认的需求摘要。",
+      "roles": {
+        "a": {"label": "需求记录员", "label_en": "Requirements Analyst", "objective": "复述而不添加假设，把模糊词转成例子、范围与待确认问题。", "private_information": ["你的草稿把月底有结果写成正式上线，但还没有向B核实。"], "constraints": ["不能把未确认推断写成客户已同意要求，不代替技术团队承诺指标。"]},
+        "b": {"label": "内容团队负责人", "label_en": "Content Team Lead", "objective": "纠正摘要中的偏差，明确首期目标、访问边界和月底所需产出。", "private_information": ["你说的月底有结果是完成选型；外部编辑应只看被分配的资料，不是完全禁止外部账号。"], "constraints": ["不能独自确定搜索性能指标；访问方案还需内部管理员确认。"]}
+      },
+      "stages": ["按主题复述已理解内容", "请B纠正或补充", "澄清模糊时间、访问范围和速度要求", "区分已确认、假设和待核实项并指定负责人"],
+      "complications": ["会后摘要里出现所有外部账号禁用的表述，需要当场纠正。", "B提到偶尔查不到旧文件，双方需判断这是新需求还是速度问题的补充。"],
+      "targets": [
+        {"expression": "Let me check that I've understood you correctly.", "meaning_zh": "我确认一下自己是否理解正确。", "function": "开启复述确认"},
+        {"expression": "By the end of the month, do you mean selection or launch?", "meaning_zh": "你说的月底前，是指完成选型还是上线？", "function": "澄清时间含义"},
+        {"expression": "I'll mark that as unconfirmed rather than agreed.", "meaning_zh": "我会把这一项标为待确认，而不是已同意。", "function": "区分结论与假设"}
+      ],
+      "success_criteria": {"a": ["复述三条需求并主动邀请纠正。", "澄清至少两个模糊词，将待确认项与已确认内容分开记录。"], "b": ["纠正摘要中的一个具体偏差。", "明确时间节点和访问需求，指出还需谁确认的内容。"]},
+      "tags": ["需求复述", "澄清", "会议总结"]
+    }
+  ]
+}

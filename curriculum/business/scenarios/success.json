@@ -1,0 +1,114 @@
+{
+  "id": "success",
+  "label": "客户成功与续约增长",
+  "scenes": [
+    {
+      "id": "biz-success-01",
+      "label": "使用跟进",
+      "context": "模拟知识库上线两周后，A与B进行15分钟使用回访。团队有20个账号，公共汇总显示16人已登录，但登录记录不能直接说明员工是否找到所需资料。",
+      "roles": {
+        "a": {"label": "客户成功专员", "label_en": "Customer Success Specialist", "objective": "了解实际使用任务与阻碍，把登录情况转化为有依据的后续支持行动。", "private_information": ["你可安排一次20分钟管理员辅导，目前不知道未登录者是否仍在岗。"], "constraints": ["不把未登录等同于抗拒使用；不能查看或要求员工私人聊天记录。"]},
+        "b": {"label": "客户知识库管理员", "label_en": "Client Knowledge Base Administrator", "objective": "反馈团队具体使用体验，选择最有帮助的支持而不增加无效培训。", "private_information": ["四名未登录者中两人轮休；常用人员的主要困难是搜索词与文章标题不一致。"], "constraints": ["不能强制所有员工额外参训；内容标题调整需与各组审核人协商。"]}
+      },
+      "stages": ["核对回访目标与汇总数据口径", "询问最近一次查找资料的经历", "区分账号问题、使用习惯和内容问题", "商定一项支持行动及再次检查时间"],
+      "complications": ["B发现统计把培训测试登录也算在内，需要修正解读。", "团队临时进入忙季，原定全员辅导需改为管理员小范围支持。"],
+      "targets": [
+        {"expression": "What have people actually used it for so far?", "meaning_zh": "到目前为止，大家实际用它做了什么？", "function": "了解真实使用任务"},
+        {"expression": "A login doesn't necessarily mean the task was completed.", "meaning_zh": "登录不一定代表任务已完成。", "function": "避免误读使用数据"},
+        {"expression": "Which one change would make the biggest difference this week?", "meaning_zh": "本周哪一项改变最能带来帮助？", "function": "聚焦可执行支持"}
+      ],
+      "success_criteria": {"a": ["结合数据询问一个实际任务，不凭登录数下结论。", "区分问题类型，与B确认一项行动及回访时间。"], "b": ["提供一个具体使用例子并解释未登录者背景。", "明确可投入资源，选择支持方式并说明需谁配合。"]},
+      "tags": ["使用跟进", "用户反馈", "采用情况"]
+    },
+    {
+      "id": "biz-success-02",
+      "label": "低使用率",
+      "context": "模拟客户健康沟通中，一套团队计划工具有40个账号，近四周只有9个账号每周活跃。A与B需要了解低使用原因并决定是否做一个两周改进试验，而不是把使用率当作员工表现评价。",
+      "roles": {
+        "a": {"label": "客户采用顾问", "label_en": "Customer Adoption Advisor", "objective": "以中性问题识别低采用的原因，和B共同选择小范围验证动作。", "private_information": ["你看到大量计划仍停在草稿，但不知道团队是否已在其他工具协作。"], "constraints": ["不指责客户投入不足，不建议为了数字而制造无意义登录。"]},
+        "b": {"label": "团队流程负责人", "label_en": "Team Process Owner", "objective": "解释团队为何未切换，评估是否值得继续试验或缩小使用范围。", "private_information": ["主管仍要求提交旧表格，员工不想双重录入；若主管同意，可让一个8人小组只用新工具。"], "constraints": ["不能自行取消全公司的旧报表；本月无法安排全员重新培训。"]}
+      },
+      "stages": ["确认活跃定义与业务使用周期", "探问重复工作、培训和主管要求", "选择一个小组及一项高频任务试验", "明确衡量任务完成而非单纯登录的指标"],
+      "complications": ["部分员工每月才执行一次相关任务，需要重新界定适合的活跃周期。", "试验组主管担心失去旧报表，双方需先确认可接受的汇总输出。"],
+      "targets": [
+        {"expression": "What makes it difficult to use this in the normal workflow?", "meaning_zh": "把它用进日常流程的困难是什么？", "function": "无责备地探问采用障碍"},
+        {"expression": "Are people entering the same information twice?", "meaning_zh": "大家是否在重复录入同样的信息？", "function": "识别双重流程"},
+        {"expression": "Let's measure completed tasks, not just logins.", "meaning_zh": "我们衡量完成的任务，而不只是登录次数。", "function": "定义有意义的改进指标"}
+      ],
+      "success_criteria": {"a": ["核对使用率口径并探问至少两类可能原因。", "提出小范围试验，确认与业务任务有关的指标。"], "b": ["说明旧流程或组织要求造成的阻碍。", "提出能试验的团队与任务，并明确需要谁批准。"]},
+      "tags": ["低使用率", "采用障碍", "改进试验"]
+    },
+    {
+      "id": "biz-success-03",
+      "label": "阶段价值回顾",
+      "context": "模拟季度回顾中，预约工具已在3个培训场地使用三个月。双方可查看训练汇总：线上预约占比从40%变为70%，仍有电话预约。A与B要判断变化是否带来实际工作改善。",
+      "roles": {
+        "a": {"label": "客户价值经理", "label_en": "Customer Value Manager", "objective": "将使用变化与原定目标对应，核对证据及其他影响因素，形成平衡回顾。", "private_information": ["你没有取得人工处理时长数据，不能证明工作量下降了同样比例。"], "constraints": ["不把线上占比变化自动归因于产品，也不能忽略未达成目标。"]},
+        "b": {"label": "场地运营负责人", "label_en": "Venue Operations Lead", "objective": "说明哪些工作确有改善、哪些仍有困难，为下一阶段提出优先事项。", "private_information": ["团队同时简化了申请规则；电话量减少，但改期仍需人工协调，一处场地改善不明显。"], "constraints": ["不能公开个别员工效率数据，也不能凭汇总确认所有场地收益相同。"]}
+      },
+      "stages": ["回顾原先希望改善的业务问题", "对照数据和一线反馈讨论变化", "识别其他因素与未解决问题", "形成已见价值、证据缺口和下一阶段目标"],
+      "complications": ["一份汇报把占比增加30个百分点写成处理时间减少30%，需要纠正。", "某场地同期缩短营业时间，双方需限制跨场地直接比较。"],
+      "targets": [
+        {"expression": "Which original goal does this change support?", "meaning_zh": "这个变化支持了最初的哪项目标？", "function": "连接数据与业务目标"},
+        {"expression": "What else changed during the same period?", "meaning_zh": "同期还有什么发生了变化？", "function": "核查其他影响因素"},
+        {"expression": "We can show higher online use, but not yet lower processing time.", "meaning_zh": "我们能证明线上使用增加，但还不能证明处理时间下降。", "function": "限定价值证据"}
+      ],
+      "success_criteria": {"a": ["将指标对应原始目标，并区分事实与推断。", "同时总结已见价值、未解决问题和需要补的证据。"], "b": ["提供具体工作改善及一个未改善点。", "指出同期变化或数据局限，并确定下一阶段优先任务。"]},
+      "tags": ["价值回顾", "季度复盘", "证据边界"]
+    },
+    {
+      "id": "biz-success-04",
+      "label": "流失风险",
+      "context": "模拟客户风险沟通中，B表示下季度可能停用采购申请工具。服务仍有三个月，A获得一次20分钟了解情况的机会，双方尚未进入正式终止流程。",
+      "roles": {
+        "a": {"label": "客户关系经理", "label_en": "Customer Relationship Manager", "objective": "理解停用的真实原因，区分可修复体验与组织变化，提供不施压的恢复计划或交接支持。", "private_information": ["近期有两次支持响应偏慢，你可安排一次专项问题梳理，但无权承诺新功能。"], "constraints": ["不能用取消障碍挽留客户，也不能将风险沟通当成正式终止通知。"]},
+        "b": {"label": "采购流程主管", "label_en": "Purchasing Process Manager", "objective": "说明不满和内部变化，判断改进是否足以继续评估，同时了解有序退出的沟通路径。", "private_information": ["新主管偏向统一现有平台；你最不满的是支持回复反复，没有明确负责人，价格并非核心。"], "constraints": ["没有最终停用决定权；不能保证只要解决支持问题就一定续用。"]}
+      },
+      "stages": ["确认这是风险讨论还是已作正式决定", "邀请B解释具体事件和组织变化", "区分能改善的问题与不可控制条件", "约定负责人、检查点及需要时的退出协调渠道"],
+      "complications": ["A提出折扣后B表示与价格无关，需要回到真正原因。", "新主管要求统一平台的方向尚未定稿，双方需保留不确定状态。"],
+      "targets": [
+        {"expression": "Has a decision been made, or are you still weighing the options?", "meaning_zh": "已经作出决定，还是仍在权衡选项？", "function": "确认流失风险状态"},
+        {"expression": "What would need to improve for this to remain an option?", "meaning_zh": "哪些方面需要改善，才会继续考虑这个方案？", "function": "探问可修复条件"},
+        {"expression": "We can agree on a review point without assuming a renewal.", "meaning_zh": "我们可以约定检查节点，但不假定会续约。", "function": "建立不施压恢复计划"}
+      ],
+      "success_criteria": {"a": ["确认风险与正式决定的区别，追问具体原因。", "提出有负责人和检查点的改进或交接动作，不保证挽留结果。"], "b": ["区分体验问题和组织方向。", "明确改善条件及自己的决定权限，不作无法保证的续用承诺。"]},
+      "tags": ["流失风险", "关系修复", "恢复计划"]
+    },
+    {
+      "id": "biz-success-05",
+      "label": "续约",
+      "context": "模拟年度续约沟通距服务到期还有60天。B所在团队当前使用25个账号，A与B要确认下一期人数、服务范围和内部评估节奏，任何正式续约条款仍须授权人员确认。",
+      "roles": {
+        "a": {"label": "续约经理", "label_en": "Renewal Manager", "objective": "先了解下一期需求和现有体验，再给出准确的续约准备清单。", "private_information": ["现行套餐可按20个或25个账号报价；你需要在需求确认后五个工作日准备正式续约材料。"], "constraints": ["不能把未回复视为同意续约，也不能未经审批承诺永久保价。"]},
+        "b": {"label": "客户系统负责人", "label_en": "Client System Owner", "objective": "评估保留多少账号，确认待解决问题和材料时间，供采购决定。", "private_information": ["五名临时员工将离开，实际可能只需20个账号；尚有一项导出问题希望先明确处理计划。"], "constraints": ["不能代表采购签署续约；账号缩减需先确认资料交接。"]}
+      },
+      "stages": ["核对到期时间与续约评估安排", "回顾价值和未解决问题", "确认下一期人数及服务需求", "安排报价、内部审核和未决事项检查节点"],
+      "complications": ["B希望减少账号但保留离职员工资料，需要明确交接和权限处理流程。", "采购审核周期延长，双方需调整材料准备日期而非默认服务会自动延续。"],
+      "targets": [
+        {"expression": "What will your team need in the next service period?", "meaning_zh": "下一服务期你们团队需要什么？", "function": "重新确认续约需求"},
+        {"expression": "Which open issue needs a plan before you can decide?", "meaning_zh": "作决定前，哪项未解决问题需要先有计划？", "function": "识别续约前置条件"},
+        {"expression": "When does procurement need the renewal documents?", "meaning_zh": "采购部门何时需要续约材料？", "function": "倒排续约流程"}
+      ],
+      "success_criteria": {"a": ["询问下一期需求而非只催签字。", "确认人数、未决问题及材料节点，明确未获正式批准状态。"], "b": ["说明账号变化和资料交接需求。", "提出决定前需解决或计划的事项，并说明采购审核路径。"]},
+      "tags": ["续约", "需求更新", "采购准备"]
+    },
+    {
+      "id": "biz-success-06",
+      "label": "扩容升级",
+      "context": "模拟客户增长讨论中，B现有15个项目协作账号，另一支12人团队表达加入兴趣。A与B要比较增加账号和升级功能的区别，暂未形成扩容订单。",
+      "roles": {
+        "a": {"label": "客户增长顾问", "label_en": "Customer Growth Advisor", "objective": "核实新增团队的任务和权限需要，避免把扩人数等同于必须升级套餐。", "private_information": ["现有套餐可直接增账号；只有需要跨团队审批时才需升级，且可先开5个限期测试账号。"], "constraints": ["不得擅自开通收费账号，不把试用当作已批准采购。"]},
+        "b": {"label": "客户平台管理员", "label_en": "Client Platform Administrator", "objective": "判断新团队是否适合共用平台，并确认费用、权限及试用退出安排。", "private_information": ["新团队只有4人需要日常编辑，其余人主要查看，是否需要跨团队审批还没决定。"], "constraints": ["不能批准12个付费账号或套餐升级；两团队资料默认不能互相公开。"]}
+      },
+      "stages": ["确认新增团队的编辑、查看和协作任务", "区分账号增加、权限配置和功能升级", "讨论小规模测试及评估指标", "确认费用审批、试用期限和不扩容时的处理"],
+      "complications": ["新团队负责人要求立即复制全部现有资料，需要先核对访问范围。", "B误以为试用结束会自动转付费，双方需确认明确授权步骤。"],
+      "targets": [
+        {"expression": "Do you need more users, more features, or both?", "meaning_zh": "你们需要增加用户、增加功能，还是两者都要？", "function": "区分扩容类型"},
+        {"expression": "Adding users doesn't necessarily require a plan upgrade.", "meaning_zh": "增加用户不一定需要升级套餐。", "function": "避免不必要升级"},
+        {"expression": "What would the pilot need to prove before you approve expansion?", "meaning_zh": "批准扩容前，试用需要证明什么？", "function": "设定扩容验证条件"}
+      ],
+      "success_criteria": {"a": ["按任务核实新增使用者，而不是按表达兴趣的人数报价。", "说明升级触发条件，确认测试与付费授权相分离。"], "b": ["区分编辑、查看需求和资料访问边界。", "提出测试目标并确认费用审批与试用结束安排。"]},
+      "tags": ["扩容", "升级", "需求验证"]
+    }
+  ]
+}

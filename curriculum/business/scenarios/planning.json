@@ -1,0 +1,114 @@
+{
+  "id": "planning",
+  "label": "项目启动与计划制定",
+  "scenes": [
+    {
+      "id": "biz-planning-01",
+      "label": "启动会对齐目的与角色",
+      "context": "模拟仓储团队启动六周的库存标签试点，涉及两个库区，首次启动会需明确项目目的和参与方式。",
+      "roles": {
+        "a": {"label": "项目经理", "label_en": "Project Manager", "objective": "把试点目的、角色和首周任务讲清并收集疑问", "private_information": ["赞助人希望先验证盘点速度，暂不追求全库覆盖"], "constraints": ["不能把试点授权扩大成正式设备采购批准"]},
+        "b": {"label": "库区代表", "label_en": "Warehouse Representative", "objective": "理解试点价值，确认一线参与要求可执行", "private_information": ["本库区周三盘点，只有周一和周二能安排访谈"], "constraints": ["不能代表另一库区承诺人手或改变安全操作流程"]}
+      },
+      "stages": ["介绍试点问题与预期价值", "确认参与角色和权限", "核对首周活动安排", "记录疑问并复述启动行动"],
+      "complications": ["有人把试点理解为立即替换全部标签", "另一库区代表缺席，需要异步确认"],
+      "targets": [
+        {"expression": "This pilot is meant to test one specific improvement.", "meaning_zh": "这次试点是要验证一项具体改进。", "function": "说明项目目的"},
+        {"expression": "What role will each team play?", "meaning_zh": "各团队分别承担什么角色？", "function": "核对参与分工"},
+        {"expression": "What needs to happen in the first week?", "meaning_zh": "第一周需要完成哪些事？", "function": "明确启动行动"}
+      ],
+      "success_criteria": {"a": ["区分试点验证与正式推广", "确认首周任务、责任和待补答问题"], "b": ["复述本岗位参与要求", "说明排班限制并提出可用时段"]},
+      "tags": ["项目启动", "角色对齐", "试点"]
+    },
+    {
+      "id": "biz-planning-02",
+      "label": "界定范围与成功标准",
+      "context": "模拟内部知识库一期计划四周完成，初始需求包括搜索、文章迁移和阅读统计，需签定工作范围。",
+      "roles": {
+        "a": {"label": "业务需求负责人", "label_en": "Business Requirements Owner", "objective": "保住核心使用价值并定义可观察的成功标准", "private_information": ["最急的是新员工能找到20篇常用指引，统计可后置"], "constraints": ["不能代使用团队接受仍无法访问的内容"]},
+        "b": {"label": "实施计划员", "label_en": "Implementation Planner", "objective": "澄清包含项和排除项，形成可估算的一期范围", "private_information": ["现有工具能搜索标题，但全文搜索需另做验证"], "constraints": ["验证前不能承诺全文搜索，也不能增加未获批准预算"]}
+      },
+      "stages": ["辨认必需与后续需求", "列明范围内外事项", "将成功描述转为测试动作", "确认评审人和变更入口"],
+      "complications": ["利益相关方临时提出手机离线访问", "双方对“可搜索”理解不同"],
+      "targets": [
+        {"expression": "Is that included in the first release?", "meaning_zh": "那项包含在第一版里吗？", "function": "核查范围"},
+        {"expression": "How will we measure success?", "meaning_zh": "我们如何衡量成功？", "function": "定义成功标准"},
+        {"expression": "Let's list what is out of scope.", "meaning_zh": "我们列出不在范围内的事项吧。", "function": "明确排除项"}
+      ],
+      "success_criteria": {"a": ["说出核心用户任务及通过条件", "明确可后置需求而非笼统要求全部保留"], "b": ["区分已具备能力与待验证能力", "复述范围、验收动作和变更流程"]},
+      "tags": ["范围", "成功标准", "验收定义"]
+    },
+    {
+      "id": "biz-planning-03",
+      "label": "制定里程碑与检查点",
+      "context": "模拟六周培训系统试点需在第六周开展首场培训，项目组正安排设计、配置、测试和讲师演练。",
+      "roles": {
+        "a": {"label": "进度计划员", "label_en": "Schedule Planner", "objective": "将最终日期拆成有产出的里程碑并留出验证时间", "private_information": ["配置通常需8个工作日，不能压成3天"], "constraints": ["不能把尚未确认的讲师空档写成固定承诺"]},
+        "b": {"label": "培训负责人", "label_en": "Training Lead", "objective": "确保讲师有足够演练时间并及时确认材料", "private_information": ["主讲师第五周出差，第四周周四可演练"], "constraints": ["培训日期已对内部发布，调整需赞助人确认"]}
+      },
+      "stages": ["从首场培训日期倒排", "为每阶段定义完成产出", "核对依赖与人员可用性", "设置缓冲和进度检查点"],
+      "complications": ["材料审阅人第四周请假两天", "配置估算新增一天账号验证工作"],
+      "targets": [
+        {"expression": "Let's work backward from the training date.", "meaning_zh": "我们从培训日期往前倒排。", "function": "倒排计划"},
+        {"expression": "What must be finished before the rehearsal?", "meaning_zh": "演练前必须完成什么？", "function": "识别前置条件"},
+        {"expression": "We need some buffer between testing and launch.", "meaning_zh": "测试和上线之间需要一些缓冲。", "function": "安排缓冲"}
+      ],
+      "success_criteria": {"a": ["为关键里程碑给出日期和完成产物", "标明估算、依赖与缓冲而非只列日期"], "b": ["说明讲师实际可用时间", "核对演练前材料和系统应达到的状态"]},
+      "tags": ["里程碑", "倒排计划", "缓冲"]
+    },
+    {
+      "id": "biz-planning-04",
+      "label": "申请人员与资源投入",
+      "context": "模拟门店预约试点计划下月启动，项目需一名分析员和两名店员参与两周准备，部门正协调投入。",
+      "roles": {
+        "a": {"label": "试点项目负责人", "label_en": "Pilot Project Lead", "objective": "按任务说明所需技能、工时和缺员后果", "private_information": ["分析工作最少需12小时，若无自动统计可先人工抽样"], "constraints": ["无权直接调动其他部门人员或承诺加班费"]},
+        "b": {"label": "资源部门主管", "label_en": "Resource Manager", "objective": "评估请求并提供不影响日常运营的投入方式", "private_information": ["分析员下周可分三天各投入4小时，店员需避开周末高峰"], "constraints": ["只能调配本部门工时，跨部门投入需各主管批准"]}
+      },
+      "stages": ["拆解需要支持的任务", "核对技能与工时", "比较专职和分时安排", "记录投入承诺与资源缺口"],
+      "complications": ["候选分析员临时承担另一项月报", "试点门店请求增加一次现场培训"],
+      "targets": [
+        {"expression": "We need twelve hours of analysis support.", "meaning_zh": "我们需要十二小时的分析支持。", "function": "量化资源请求"},
+        {"expression": "Could the time be split across three days?", "meaning_zh": "这些工时能分在三天里吗？", "function": "协商投入方式"},
+        {"expression": "What should we reduce if the resource isn't available?", "meaning_zh": "如果资源不到位，应该缩减什么？", "function": "讨论资源取舍"}
+      ],
+      "success_criteria": {"a": ["将人力请求关联到任务与最低工时", "说明缺口影响并提出缩减选项"], "b": ["给出具体可用时段和授权边界", "确认投入人选、工时及冲突时的复核方式"]},
+      "tags": ["人员资源", "工时", "容量规划"]
+    },
+    {
+      "id": "biz-planning-05",
+      "label": "识别前置依赖与风险",
+      "context": "模拟区域服务站迁移项目距演练三周，需要网络开通、设备到货和账号准备三项前置工作。",
+      "roles": {
+        "a": {"label": "迁移计划负责人", "label_en": "Migration Planning Lead", "objective": "把依赖、风险和备用安排写成可跟踪事项", "private_information": ["旧站点可多保留两天，但需本周申请"], "constraints": ["不能保证外部开通日期，也不能省略访问验证"]},
+        "b": {"label": "设施协调员", "label_en": "Facilities Coordinator", "objective": "提供设施准备的真实状态并确认风险责任", "private_information": ["网络安装预约已提交，但未收到供应方确认"], "constraints": ["只能跟进和申请升级，无权代供应方确认完工"]}
+      },
+      "stages": ["梳理演练所需前置项", "区分已确认事项与假设", "评估影响并指定风险负责人", "设置触发点及备用安排"],
+      "complications": ["设备到货日期改为一个三天区间", "旧站点延期申请需额外主管批准"],
+      "targets": [
+        {"expression": "Which dependencies are still unconfirmed?", "meaning_zh": "哪些前置依赖还没确认？", "function": "核查依赖状态"},
+        {"expression": "Let's assign an owner to each risk.", "meaning_zh": "我们为每项风险指定负责人。", "function": "落实风险责任"},
+        {"expression": "What is our fallback if the connection is late?", "meaning_zh": "如果网络晚开通，我们的备用办法是什么？", "function": "制定应对预案"}
+      ],
+      "success_criteria": {"a": ["区分依赖、风险和已发生问题", "为关键风险提出触发点、负责人和备用动作"], "b": ["明确预约与确认的不同状态", "给出核实时限及无法确认时的升级路径"]},
+      "tags": ["依赖风险", "预案", "风险责任"]
+    },
+    {
+      "id": "biz-planning-06",
+      "label": "约定沟通与升级机制",
+      "context": "模拟跨部门订单试点有12名成员、三个工作组，周期八周，项目开始前需规定状态更新和问题升级方式。",
+      "roles": {
+        "a": {"label": "项目沟通负责人", "label_en": "Project Communications Lead", "objective": "建立轻量、清晰且可追踪的沟通机制", "private_information": ["赞助人周二和周四可处理升级事项，其余时间回复较慢"], "constraints": ["不能把群聊中的未确认信息当正式决策记录"]},
+        "b": {"label": "工作组负责人", "label_en": "Workstream Lead", "objective": "确保紧急问题能被响应，同时避免过度汇报", "private_information": ["小组每天上午都在一线，下午才方便集中更新"], "constraints": ["不能承诺全天即时响应或在公开群发送敏感明细"]}
+      },
+      "stages": ["确认例行状态内容和频率", "定义紧急与普通问题", "指定主联系人及备用人", "演练一次升级和回写记录"],
+      "complications": ["主联系人下周有两天不在线", "一个问题同时影响两个工作组，没人认领"],
+      "targets": [
+        {"expression": "Where should we record decisions?", "meaning_zh": "决定应该记录在哪里？", "function": "统一记录渠道"},
+        {"expression": "What would trigger an escalation?", "meaning_zh": "什么情况会触发升级处理？", "function": "定义升级门槛"},
+        {"expression": "Who is the backup contact?", "meaning_zh": "备用联系人是谁？", "function": "确认替补机制"}
+      ],
+      "success_criteria": {"a": ["说明常规更新格式、时间和记录位置", "定义升级阈值、响应预期和回写责任"], "b": ["提出可执行的汇报时段与信息边界", "通过示例复述主备联系人和升级步骤"]},
+      "tags": ["沟通机制", "升级路径", "决策留痕"]
+    }
+  ]
+}

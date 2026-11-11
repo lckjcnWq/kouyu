@@ -1,0 +1,114 @@
+{
+  "id": "delivery",
+  "label": "项目执行变更与交付",
+  "scenes": [
+    {
+      "id": "biz-delivery-01",
+      "label": "协商延期与恢复计划",
+      "context": "模拟预约报表项目原定周五交测试版，周三发现一个数据接口返回不完整，需向内部客户沟通。",
+      "roles": {
+        "a": {"label": "交付负责人", "label_en": "Delivery Manager", "objective": "尽早说明延期影响并给出有依据的恢复选项", "private_information": ["概览页可按时提供，分店明细需额外两个工作日"], "constraints": ["不能把暂定修复日期承诺为已确认日期"]},
+        "b": {"label": "内部客户负责人", "label_en": "Internal Client Lead", "objective": "保护周一例会所需信息并了解剩余交付安排", "private_information": ["例会只需概览数据，分店负责人周三才讨论明细"], "constraints": ["无权免除数据验证，也不能代其他部门接受全部延期"]}
+      },
+      "stages": ["说明偏差和影响范围", "核实客户真正需要的时间点", "比较分批与整体延期", "确认恢复计划和状态更新时间"],
+      "complications": ["接口维护方只提供估计恢复区间", "客户发现计划表仍显示全部按期交付"],
+      "targets": [
+        {"expression": "The detailed report is at risk of slipping by two days.", "meaning_zh": "明细报表有延期两天的风险。", "function": "提示延期风险"},
+        {"expression": "Could we deliver the summary first?", "meaning_zh": "能先交概览部分吗？", "function": "提出分批交付"},
+        {"expression": "What will you do to get the plan back on track?", "meaning_zh": "你们会怎样让计划恢复正常？", "function": "追问恢复措施"}
+      ],
+      "success_criteria": {"a": ["区分确定影响与时间估计", "提出恢复选项并确认各部分交付及检查点"], "b": ["说明真实使用时间和最低需要", "核对剩余风险并要求更新计划记录"]},
+      "tags": ["延期", "恢复计划", "分批交付"]
+    },
+    {
+      "id": "biz-delivery-02",
+      "label": "评估新增需求的影响",
+      "context": "模拟员工培训报名工具进入最后一周测试，业务方希望增加短信提醒，原范围只有邮件通知。",
+      "roles": {
+        "a": {"label": "业务请求人", "label_en": "Business Requester", "objective": "说明短信需求的使用价值并选择合适版本安排", "private_information": ["真正需要短信的是一个30人的外勤组，下月才开课"], "constraints": ["不能直接批准新增费用或要求跳过联系授权核查"]},
+        "b": {"label": "交付变更协调人", "label_en": "Change Coordinator", "objective": "澄清需求并评估范围、成本和测试影响", "private_information": ["短信接入需至少三天验证，人工邮件提醒可按原计划使用"], "constraints": ["没有审批不能改变基线或承诺新增费用"]}
+      },
+      "stages": ["澄清新增功能与使用日期", "评估技术、费用和验证影响", "比较本期替换与后续版本", "记录变更请求及审批人"],
+      "complications": ["请求方以为短信属于原邮件通知范围", "供应接口的费用说明尚未拿到"],
+      "targets": [
+        {"expression": "Is this a new requirement or a clarification?", "meaning_zh": "这是新增需求，还是对原需求的澄清？", "function": "识别变更性质"},
+        {"expression": "We need to assess the impact before committing.", "meaning_zh": "承诺前需要评估影响。", "function": "设置评估前提"},
+        {"expression": "Could this go into the next release?", "meaning_zh": "这项能放到下一版吗？", "function": "协商版本安排"}
+      ],
+      "success_criteria": {"a": ["说清目标人群、用途和最晚需要日期", "按影响评估选择方案并确认审批步骤"], "b": ["解释与基线的差异及未知成本", "记录估算、测试影响和待批准项"]},
+      "tags": ["新增需求", "变更评估", "版本规划"]
+    },
+    {
+      "id": "biz-delivery-03",
+      "label": "识别累积的范围蔓延",
+      "context": "模拟操作手册项目原定完成10页核心流程，过去两周陆续加入5项“小修改”，交稿还剩三天。",
+      "roles": {
+        "a": {"label": "手册交付负责人", "label_en": "Documentation Delivery Lead", "objective": "展示累积工作量并推动显式取舍", "private_information": ["新增截图和双语术语合计需一天半，已有两项未开始"], "constraints": ["不能未经确认删掉已承诺的核心流程"]},
+        "b": {"label": "业务审阅人", "label_en": "Business Reviewer", "objective": "保护一线真正需要的内容并整理新增要求", "private_information": ["五项修改中只有安全提示和退件步骤是本次培训必需"], "constraints": ["不能单独批准延期，必须向项目赞助人提交影响"]}
+      },
+      "stages": ["回看原基线与新增清单", "汇总累积工时和风险", "区分本期必需与可后置", "记录取舍并更新基线"],
+      "complications": ["不同审阅人分别发来同一段的冲突修改", "有人把暂缓需求误认为被永久取消"],
+      "targets": [
+        {"expression": "Each change is small, but together they add up.", "meaning_zh": "每项改动都小，但合起来工作量不小。", "function": "说明累积影响"},
+        {"expression": "Which items are essential for this handover?", "meaning_zh": "哪些内容是这次交接必需的？", "function": "筛选必要范围"},
+        {"expression": "Let's update the baseline after the decision.", "meaning_zh": "决定后更新基线吧。", "function": "固化范围调整"}
+      ],
+      "success_criteria": {"a": ["用清单和工时展示蔓延而非笼统抱怨", "提出替换或后置方案并保留原承诺边界"], "b": ["排序必需项并合并冲突意见", "区分暂缓与取消并提交需审批的变化"]},
+      "tags": ["范围蔓延", "基线", "工作量取舍"]
+    },
+    {
+      "id": "biz-delivery-04",
+      "label": "升级跨团队阻塞",
+      "context": "模拟门店终端试点周二进行联测，访问许可已等待两个工作日，工作组准备向项目赞助人升级。",
+      "roles": {
+        "a": {"label": "受阻工作组负责人", "label_en": "Blocked Workstream Lead", "objective": "用事实说明已尝试的办法和所需协调决定", "private_information": ["可先用脱敏样例测界面，但无法验证实际账号流程"], "constraints": ["不能绕过访问审批或将延迟归咎于未核实的个人"]},
+        "b": {"label": "项目赞助人", "label_en": "Project Sponsor", "objective": "识别真正阻碍并协调有权限的负责人处理", "private_information": ["审批人的替补可以处理，但请求必须附测试账号清单"], "constraints": ["不能直接授予系统访问权限，只能推动流程"]}
+      },
+      "stages": ["陈述阻塞与时间影响", "交代已采取动作和证据", "提出所需协调与临时办法", "确认负责人、期限和回报方式"],
+      "complications": ["审批系统显示材料不全但未说明缺什么", "原审批人当天请假"],
+      "targets": [
+        {"expression": "I'm escalating because the testing window is at risk.", "meaning_zh": "我升级这个问题，是因为测试窗口可能受影响。", "function": "说明升级理由"},
+        {"expression": "Here are the steps we've already tried.", "meaning_zh": "这是我们已经尝试的步骤。", "function": "提供处理记录"},
+        {"expression": "We need an owner and a response time.", "meaning_zh": "我们需要明确负责人和回复时间。", "function": "提出协调请求"}
+      ],
+      "success_criteria": {"a": ["说明阻塞、业务影响及已有尝试", "提出具体请求并界定临时测试局限"], "b": ["核实所缺材料和权限责任人", "给出协调动作、响应时限和未解时的下一步"]},
+      "tags": ["阻塞升级", "事实沟通", "权限流程"]
+    },
+    {
+      "id": "biz-delivery-05",
+      "label": "处理验收中的问题与分歧",
+      "context": "模拟库存页面进入验收，标准要求能导出当前筛选结果，业务测试发现导出文件包含全部记录。",
+      "roles": {
+        "a": {"label": "交付代表", "label_en": "Delivery Representative", "objective": "复现问题、核对标准并协商修复复测安排", "private_information": ["当前开发说明只写了导出按钮，尚未核对签定的筛选要求"], "constraints": ["不能未经确认把缺陷定成额外收费变更"]},
+        "b": {"label": "验收测试人", "label_en": "Acceptance Tester", "objective": "用可复现证据说明不符合项并保护验收标准", "private_information": ["已记录筛选条件和两份导出文件，可提供匿名样本"], "constraints": ["只能确认自己测试的功能，不能代表全部用户签收"]}
+      },
+      "stages": ["对照约定的验收标准", "演示复现步骤与期望结果", "确定缺陷分类和影响", "安排修复、复测及验收记录"],
+      "complications": ["双方使用了不同版本的测试环境", "交付方提出先签收后修复，但未给具体日期"],
+      "targets": [
+        {"expression": "Could you walk me through the steps to reproduce it?", "meaning_zh": "能带我过一遍复现步骤吗？", "function": "核实问题"},
+        {"expression": "This doesn't match the agreed acceptance criteria.", "meaning_zh": "这与约定的验收标准不符。", "function": "指出不符合项"},
+        {"expression": "Let's agree on the fix and the retest date.", "meaning_zh": "我们确认修复内容和复测日期吧。", "function": "落实关闭计划"}
+      ],
+      "success_criteria": {"a": ["核对环境和签定标准再归类问题", "提出修复责任、时间及复测条件"], "b": ["提供可重复的步骤、期望与实际结果", "区分已通过项和未关闭项并记录验收状态"]},
+      "tags": ["验收", "缺陷复现", "标准核对"]
+    },
+    {
+      "id": "biz-delivery-06",
+      "label": "交付后复盘并落实改进",
+      "context": "模拟六周排班工具试点已结束，项目按调整后的日期交付，但两次返工影响了门店培训，团队开30分钟复盘。",
+      "roles": {
+        "a": {"label": "复盘主持人", "label_en": "Retrospective Facilitator", "objective": "区分事实与解释，把经验转为有负责人的改进动作", "private_information": ["变更记录显示两次返工都发生在口头确认之后"], "constraints": ["不能以复盘代替个人绩效处分或预设责任人"]},
+        "b": {"label": "门店实施代表", "label_en": "Store Implementation Representative", "objective": "表达一线影响并提出下次可实行的预防办法", "private_information": ["门店试用时发现问题，但不清楚应向哪个群反馈"], "constraints": ["只能描述亲历事实，不能推断其他成员动机"]}
+      },
+      "stages": ["回顾时间线和结果", "讨论有效做法与返工原因假设", "选择一到两项改进", "指定负责人和检查日期"],
+      "complications": ["讨论开始指责某位未到场同事", "提出的改进过多，无法全部在下一项目执行"],
+      "targets": [
+        {"expression": "Let's focus on what happened, not who to blame.", "meaning_zh": "我们关注发生了什么，而不是责怪谁。", "function": "建立复盘边界"},
+        {"expression": "What should we do differently next time?", "meaning_zh": "下次我们应该怎样做得不同？", "function": "提炼改进"},
+        {"expression": "Who will check whether this change helps?", "meaning_zh": "谁来检查这项改进是否有效？", "function": "落实改进验证"}
+      ],
+      "success_criteria": {"a": ["用时间线区分事实和待验证解释", "将改进缩成可执行动作并指定检查人"], "b": ["描述返工对具体工作的影响", "提出预防动作和可观察的改善信号"]},
+      "tags": ["交付复盘", "持续改进", "行动闭环"]
+    }
+  ]
+}

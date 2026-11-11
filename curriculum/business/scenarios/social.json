@@ -1,0 +1,114 @@
+{
+  "id": "social",
+  "label": "商务社交与初次接触",
+  "scenes": [
+    {
+      "id": "biz-social-01",
+      "label": "商务自我介绍",
+      "context": "模拟商务交流会有12名参与者，主持人安排两人一组交流3分钟。A负责企业培训服务，B负责一家设备供应商的运营，双方首次见面。",
+      "roles": {
+        "a": {"label": "培训顾问", "label_en": "Training Consultant", "objective": "用简短介绍说明自己的工作，并找出与对方业务的一个联系点。", "private_information": ["你最近主要为新任主管设计跨部门沟通训练，希望了解运营团队的真实场景。"], "constraints": ["不能把初次见面变成完整推销，也不能承诺定制课程的价格。"]},
+        "b": {"label": "运营主管", "label_en": "Operations Manager", "objective": "让对方理解自己的职责，并判断是否值得在会后继续交流。", "private_information": ["你下个月将带领一个新团队，但尚未决定是否采购外部培训。"], "constraints": ["不透露内部员工姓名或绩效情况；本轮只有3分钟。"]}
+      },
+      "stages": ["互报姓名和当前职责", "各用一句话解释服务对象或日常工作", "围绕一个共同话题追问", "总结联系点并礼貌收尾"],
+      "complications": ["主持人宣布本轮还剩45秒，需要压缩介绍。", "B把A理解成个人求职教练，双方需要纠正业务范围。"],
+      "targets": [
+        {"expression": "I work with new managers on team communication.", "meaning_zh": "我帮助新任主管改善团队沟通。", "function": "简明说明职责"},
+        {"expression": "What does your role involve day to day?", "meaning_zh": "你日常主要负责哪些工作？", "function": "邀请对方介绍"},
+        {"expression": "It sounds like we both work across teams.", "meaning_zh": "听起来我们的工作都涉及跨团队协作。", "function": "建立共同联系"}
+      ],
+      "success_criteria": {"a": ["说明工作内容和服务对象，不只报职位。", "根据B的回答提出一个相关问题，并纠正可能的误解。"], "b": ["用具体工作解释自己的职责。", "回应共同话题，并说明是否希望继续交流。"]},
+      "tags": ["自我介绍", "初次见面", "networking"]
+    },
+    {
+      "id": "biz-social-02",
+      "label": "介绍公司业务",
+      "context": "模拟供应商交流日中，A代表一家为小型制造商提供库存管理工具的公司，B代表一家有两处仓库的零件经销商。双方在茶歇区有5分钟交流。",
+      "roles": {
+        "a": {"label": "业务代表", "label_en": "Business Representative", "objective": "用非技术语言讲清公司服务谁、解决什么问题，并确认介绍是否相关。", "private_information": ["你们目前最成熟的服务是出入库记录和库存提醒，不提供运输安排。"], "constraints": ["不夸大产品范围，不用未经授权的客户名称作案例。"]},
+        "b": {"label": "经销商负责人", "label_en": "Distribution Manager", "objective": "弄清对方提供的是管理工具还是仓储外包，判断与自身业务的关系。", "private_information": ["你更关心两处仓库的数据是否能统一查看，目前没有替换仓库人员的计划。"], "constraints": ["不能在交流日批准软件采购，不披露库存金额。"]}
+      },
+      "stages": ["确认双方业务类型", "介绍典型客户与主要服务", "用一个具体使用场景解释价值", "澄清不提供的服务并确认相关性"],
+      "complications": ["B把库存管理理解成代管仓库，需要区分工具与外包。", "现场较嘈杂，B要求A用一句话重新说明核心业务。"],
+      "targets": [
+        {"expression": "We help small manufacturers keep track of stock.", "meaning_zh": "我们帮助小型制造商跟踪库存。", "function": "说明公司定位"},
+        {"expression": "Do you provide software or run the warehouse?", "meaning_zh": "你们提供软件，还是负责运营仓库？", "function": "区分服务模式"},
+        {"expression": "Would a shared view of both sites be useful?", "meaning_zh": "如果能统一查看两个地点的数据，会有帮助吗？", "function": "验证业务相关性"}
+      ],
+      "success_criteria": {"a": ["说明目标客户、核心服务和一个具体用途。", "明确区分工具服务与仓库外包。"], "b": ["用问题确认服务模式。", "指出自身一个相关需求或不适配点。"]},
+      "tags": ["公司介绍", "业务范围", "非技术表达"]
+    },
+    {
+      "id": "biz-social-03",
+      "label": "展会破冰",
+      "context": "模拟包装行业展会上，A在可重复使用周转箱的展位接待访客，B正在比较不同包装方式。展位有一个可折叠样品，下一场现场演示将在10分钟后开始。",
+      "roles": {
+        "a": {"label": "展位代表", "label_en": "Exhibitor", "objective": "用轻量问题开启交流，判断访客关注点并邀请其选择合适的了解方式。", "private_information": ["你今天希望收集访客对清洗和回收流程的反馈，不急于拿到订单。"], "constraints": ["不能未经同意扫描胸牌，也不能承诺现场定价。"]},
+        "b": {"label": "参展采购访客", "label_en": "Trade Show Visitor", "objective": "快速判断展品与自己的门店配送场景是否相关，并控制交流时长。", "private_information": ["你只剩4分钟，但如果样品便于回收，会考虑留下联系方式。"], "constraints": ["不透露年度采购量；不接受未经许可的后续营销。"]}
+      },
+      "stages": ["围绕样品或观展目的自然开场", "确认访客关注的配送场景", "展示一个相关特点", "询问是否继续演示或发送资料"],
+      "complications": ["另一组访客加入，A需要兼顾接待而不冷落B。", "B表示赶不上10分钟后的演示，需要商量更短的了解方式。"],
+      "targets": [
+        {"expression": "What caught your eye about this sample?", "meaning_zh": "这个样品的哪一点吸引了你？", "function": "从现场物品破冰"},
+        {"expression": "I'm mainly looking at options for store deliveries.", "meaning_zh": "我主要在看适合门店配送的方案。", "function": "说明观展方向"},
+        {"expression": "Would you prefer a quick look or a short email?", "meaning_zh": "你更希望快速看一下，还是收到一封简短邮件？", "function": "提供低压力下一步"}
+      ],
+      "success_criteria": {"a": ["用与展品相关的问题开场，而非直接索取联系方式。", "根据B的时间和兴趣提供一种合适的后续方式，并征求同意。"], "b": ["说明自己的使用场景和可用时间。", "明确接受或婉拒演示、资料及后续联系。"]},
+      "tags": ["展会", "破冰", "联系许可"]
+    },
+    {
+      "id": "biz-social-04",
+      "label": "商务午餐交流",
+      "context": "模拟项目沟通午餐安排在一家普通餐厅，A与B的团队刚完成第一次业务交流，尚未签订合作。午餐共45分钟，下午双方各有会议。",
+      "roles": {
+        "a": {"label": "客户关系负责人", "label_en": "Client Relations Manager", "objective": "营造轻松交流氛围，了解对方工作习惯，同时避免在餐桌上催促决策。", "private_information": ["你想了解B偏好的日常沟通方式，方便后续安排项目联系人。"], "constraints": ["不追问个人隐私，不把午餐谈话视为对合同条件的确认。"]},
+        "b": {"label": "项目协调人", "label_en": "Project Coordinator", "objective": "自然参与交流，表达用餐和时间安排，并说明适合的工作沟通方式。", "private_information": ["你不吃坚果，下午会议提前了10分钟；你更喜欢先邮件列出问题再开会。"], "constraints": ["不能讨论内部供应商评价，也没有签约权限。"]}
+      },
+      "stages": ["确认饮食需要和结束时间", "用中性话题建立轻松交流", "自然转入合作中的沟通习惯", "区分闲聊与待正式确认事项并结束午餐"],
+      "complications": ["服务员推荐一道含坚果的共享菜品，需要礼貌调整点单。", "谈话中有人问到尚未确认的项目启动日期，需要避免误作承诺。"],
+      "targets": [
+        {"expression": "Is there anything you don't eat?", "meaning_zh": "你有什么不吃的食物吗？", "function": "照顾用餐需要"},
+        {"expression": "How does your team prefer to stay in touch?", "meaning_zh": "你们团队更喜欢用什么方式保持沟通？", "function": "了解协作习惯"},
+        {"expression": "Let's confirm the start date separately after lunch.", "meaning_zh": "启动日期我们午餐后另行正式确认吧。", "function": "把正式承诺移回工作流程"}
+      ],
+      "success_criteria": {"a": ["确认饮食和时间需要，并据此调整安排。", "了解一种沟通偏好，对未定商务事项不代作承诺。"], "b": ["清楚表达饮食限制或离席时间。", "参与中性话题，并说明工作沟通偏好和权限边界。"]},
+      "tags": ["商务午餐", "礼貌表达", "关系建立"]
+    },
+    {
+      "id": "biz-social-05",
+      "label": "接待来访客户",
+      "context": "模拟客户来访安排在上午9点，计划为30分钟会议和20分钟样品区参观。A负责接待，B带一位同事到访，双方已收到访客登记要求。",
+      "roles": {
+        "a": {"label": "来访接待协调员", "label_en": "Visit Coordinator", "objective": "完成欢迎、人员介绍和议程确认，使来访在规定区域内顺利进行。", "private_information": ["演示负责人要晚到15分钟，你可以先带客户参观不涉及生产信息的样品区。"], "constraints": ["不可带访客进入生产区；访客证须在前台完成登记后发放。"]},
+        "b": {"label": "到访客户代表", "label_en": "Visiting Client Representative", "objective": "说明本次来访重点和同行人员分工，确认能否在离开前获得所需信息。", "private_information": ["你必须9点50分离开，同事主要想看样品尺寸，而你想确认售后联系人。"], "constraints": ["未经同意不拍照，不代替同事提交个人登记信息。"]}
+      },
+      "stages": ["欢迎来宾并核对人员", "协助完成登记和基本安排", "确认来访重点与结束时间", "协商议程顺序并介绍后续联系人"],
+      "complications": ["B的同事希望拍样品照片，需要先确认允许拍摄的范围。", "会议室临时延后10分钟可用，需要调整参观和会议顺序。"],
+      "targets": [
+        {"expression": "Welcome. May I introduce our visit coordinator?", "meaning_zh": "欢迎，我来介绍一下我们的来访协调员好吗？", "function": "欢迎并介绍人员"},
+        {"expression": "What would you most like to cover today?", "meaning_zh": "今天你最希望了解哪些内容？", "function": "确认来访优先事项"},
+        {"expression": "Could we visit the sample area first?", "meaning_zh": "我们可以先参观样品区吗？", "function": "协商议程调整"}
+      ],
+      "success_criteria": {"a": ["说明登记、参观范围和拍摄边界。", "根据客户时间及现场变化调整议程，并核对其接受程度。"], "b": ["介绍同行人员并提出两个来访重点。", "说明最晚离开时间，对议程或拍摄范围主动确认。"]},
+      "tags": ["客户接待", "议程确认", "现场协调"]
+    },
+    {
+      "id": "biz-social-06",
+      "label": "结束交谈并约后续联系",
+      "context": "模拟供应商开放日即将结束，A与B已讨论门店排班工具约15分钟。双方尚未约演示，下一场活动将在5分钟后开始。",
+      "roles": {
+        "a": {"label": "商务拓展专员", "label_en": "Business Development Specialist", "objective": "礼貌结束交谈，复述有价值的话题并争取一个有明确内容的后续联系。", "private_information": ["你下周二和周四上午可以安排20分钟线上沟通，也能先发一页功能概览。"], "constraints": ["未获许可不能加入营销名单；不能把模糊兴趣记录为已确认演示。"]},
+        "b": {"label": "门店运营负责人", "label_en": "Store Operations Lead", "objective": "保留有用联系，同时明确后续材料、时间和是否接受会议邀请。", "private_information": ["你需要先让一位同事看资料，目前只愿接受一封工作邮件，不想立即约会。"], "constraints": ["不分享同事联系方式；本周无法参加产品演示。"]}
+      },
+      "stages": ["提示需要结束并感谢交流", "各自概括一个相关话题", "询问后续联系的内容和渠道", "确认具体下一步或体面接受暂不约会"],
+      "complications": ["B没有名片，需要双方选择一个获准使用的联系渠道。", "A提出的两个时段都不合适，需要把约会改成先发资料。"],
+      "targets": [
+        {"expression": "I should let you get to your next session.", "meaning_zh": "我就不耽误你参加下一场了。", "function": "礼貌结束交谈"},
+        {"expression": "May I email you a one-page overview?", "meaning_zh": "我可以给你发一页概览吗？", "function": "征求后续联系许可"},
+        {"expression": "Let's start with the information and decide on a call later.", "meaning_zh": "我们先看资料，再决定是否通话吧。", "function": "明确低承诺下一步"}
+      ],
+      "success_criteria": {"a": ["用自然结束语和一句总结收尾。", "征求联系许可，确认发送内容且不把未确认会议当作约定。"], "b": ["明确同意的联系渠道和资料范围。", "对会议请求给出明确回应，并说清后续由谁发起。"]},
+      "tags": ["结束交谈", "后续联系", "商务礼仪"]
+    }
+  ]
+}

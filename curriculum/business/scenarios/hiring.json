@@ -1,0 +1,114 @@
+{
+  "id": "hiring",
+  "label": "招聘面试与入职",
+  "scenes": [
+    {
+      "id": "biz-hiring-01",
+      "label": "介绍与岗位相关的经历",
+      "context": "模拟运营协调员岗位初面有20分钟，候选人需先用两分钟介绍经历，岗位主要负责排期、资料核对和跨组跟进。",
+      "roles": {
+        "a": {"label": "求职者", "label_en": "Job Candidate", "objective": "筛选相关经历，区分个人贡献并诚实说明能力边界", "private_information": ["做过六次内部培训排期，尚未独立负责外部供应商采购"], "constraints": ["不能编造职责、成绩或透露前单位敏感数据"]},
+        "b": {"label": "招聘面试官", "label_en": "Hiring Interviewer", "objective": "了解经历与岗位的联系，并核实独立承担的工作", "private_information": ["岗位首月最需要排期能力，采购经验可入职后学习"], "constraints": ["只问岗位相关问题，不能在初面承诺录用"]}
+      },
+      "stages": ["概括最近职责", "用相关实例说明贡献", "核对经验与岗位要求", "说明能力缺口并讨论学习方式"],
+      "complications": ["面试官把介绍时间缩为一分钟", "候选人所用职位名称与本岗位职责不同"],
+      "targets": [
+        {"expression": "My most relevant experience is coordinating internal training.", "meaning_zh": "我最相关的经历是协调内部培训。", "function": "突出相关经历"},
+        {"expression": "Which parts did you handle yourself?", "meaning_zh": "哪些部分是你亲自负责的？", "function": "核实个人贡献"},
+        {"expression": "I haven't owned that process yet, but I have supported it.", "meaning_zh": "我还没独立负责过那个流程，但参与支持过。", "function": "诚实说明经验边界"}
+      ],
+      "success_criteria": {"a": ["用具体实例连接经历与岗位任务", "区分独立负责、参与支持和未做过的内容"], "b": ["追问相关任务和实际承担范围", "说明岗位重点而非仅评价表达流利度"]},
+      "tags": ["经历介绍", "岗位匹配", "贡献说明"]
+    },
+    {
+      "id": "biz-hiring-02",
+      "label": "用具体事件回答行为面试",
+      "context": "模拟项目助理面试进入行为题，面试官请候选人讲述一次在截止日期前处理突发问题的经历。",
+      "roles": {
+        "a": {"label": "项目助理候选人", "label_en": "Project Assistant Candidate", "objective": "按背景、任务、行动和结果讲清一次真实范围内的模拟经历", "private_information": ["活动前一天讲师取消，自己整理了两种替代安排，由主管最终选定"], "constraints": ["不能把主管决定说成自己决定，也不能编造收益数字"]},
+        "b": {"label": "行为面试官", "label_en": "Behavioral Interviewer", "objective": "了解候选人的判断、沟通行动和反思能力", "private_information": ["更看重是否及时报告风险，而非活动是否完全顺利"], "constraints": ["不能引导候选人编造理想答案或询问无关私人情况"]}
+      },
+      "stages": ["澄清事件背景和责任", "追问采取行动及顺序", "说明结果与证据", "讨论反思和下次改进"],
+      "complications": ["候选人最初只用“我们”描述行动", "结果有一项未达预期，需要如实说明"],
+      "targets": [
+        {"expression": "My responsibility was to keep the schedule workable.", "meaning_zh": "我的职责是让日程保持可执行。", "function": "说明当时任务"},
+        {"expression": "What did you do before escalating the issue?", "meaning_zh": "升级问题前你做了什么？", "function": "追问行动顺序"},
+        {"expression": "Looking back, I would flag the risk earlier.", "meaning_zh": "回头看，我会更早提示风险。", "function": "表达具体反思"}
+      ],
+      "success_criteria": {"a": ["按事件顺序说出自己的行动和权限", "陈述结果与局限并给出具体反思"], "b": ["追问行动依据和通知时点", "通过中性问题补齐缺失信息而非代答"]},
+      "tags": ["行为面试", "具体事例", "反思"]
+    },
+    {
+      "id": "biz-hiring-03",
+      "label": "应对面试官对成绩的追问",
+      "context": "模拟数据运营岗位复面，简历写着“缩短报表准备时间30%”，面试官希望了解测量方式和个人作用。",
+      "roles": {
+        "a": {"label": "复面候选人", "label_en": "Final-round Candidate", "objective": "解释成绩口径、团队分工和可分享的证据", "private_information": ["30%来自四次周报的平均耗时比较，模板由同事开发，自己整理字段和测试"], "constraints": ["不能提供前单位原始文件或把团队成果全归自己"]},
+        "b": {"label": "用人部门面试官", "label_en": "Department Interviewer", "objective": "检验成绩的可信范围并理解可迁移能力", "private_information": ["本岗位同样需要核对数据，但不要求编写自动化程序"], "constraints": ["不能要求泄露商业机密或仅凭单个数字做录用决定"]}
+      },
+      "stages": ["定义改进前后比较口径", "拆分团队与个人贡献", "追问其他可能影响因素", "联系新岗位并确认可提供的匿名说明"],
+      "complications": ["面试官误以为候选人亲自编写了工具", "候选人记不清一次原始耗时的精确数字"],
+      "targets": [
+        {"expression": "How did you measure that improvement?", "meaning_zh": "你是怎样衡量这项改进的？", "function": "核实成绩依据"},
+        {"expression": "My contribution was the field mapping and testing.", "meaning_zh": "我的贡献是字段对应和测试。", "function": "澄清个人作用"},
+        {"expression": "I can explain the method without sharing confidential files.", "meaning_zh": "我可以解释方法，但不能分享保密文件。", "function": "维护信息边界"}
+      ],
+      "success_criteria": {"a": ["交代样本和测量方法且不编造记不清的数字", "纠正贡献误解并提出非保密证据形式"], "b": ["用中性追问核实口径和分工", "说明哪些能力与岗位相关并尊重保密限制"]},
+      "tags": ["面试追问", "成绩核实", "保密边界"]
+    },
+    {
+      "id": "biz-hiring-04",
+      "label": "澄清薪酬与录用条件",
+      "context": "模拟录用意向沟通中，草案列月基本薪酬16,000元和绩效奖金，候选人与招聘协调员需核对结构和后续流程。",
+      "roles": {
+        "a": {"label": "候选人", "label_en": "Candidate", "objective": "理解固定与浮动部分，提出期望并核对书面条件", "private_information": ["期望基本薪酬17,000元，也愿意了解培训支持"], "constraints": ["不能假称持有其他录用意向，未核对条款前不作最终接受"]},
+        "b": {"label": "招聘协调员", "label_en": "Recruitment Coordinator", "objective": "准确解释草案并把薪酬调整请求交给授权人", "private_information": ["调整基本薪酬需用人主管批准，培训支持有单独申请流程"], "constraints": ["不能承诺奖金必发、擅自提高薪酬或解释法律与税后收入结论"]}
+      },
+      "stages": ["核对薪酬周期和组成", "说明候选人期望及依据", "区分可解释与待批准条件", "确认修订文本、答复时间和接受流程"],
+      "complications": ["草案未写清绩效评估周期", "口头到岗日期与邮件附件不一致"],
+      "targets": [
+        {"expression": "Could you clarify the fixed and variable components?", "meaning_zh": "能解释固定和浮动薪酬部分吗？", "function": "澄清薪酬结构"},
+        {"expression": "Is there room to review the base salary?", "meaning_zh": "基本薪酬还有重新考虑的空间吗？", "function": "提出薪酬协商"},
+        {"expression": "I'll need to check that with the authorized approver.", "meaning_zh": "我需要向有审批权限的人确认。", "function": "说明审批边界"}
+      ],
+      "success_criteria": {"a": ["区分基本薪酬与条件性奖金并提出具体问题", "表达期望且确认最终书面文本和答复时间"], "b": ["标明草案、已确认和待审批事项", "说明薪酬及入职日期问题的确认路径"]},
+      "tags": ["薪酬沟通", "录用条件", "书面确认"]
+    },
+    {
+      "id": "biz-hiring-05",
+      "label": "入职介绍与求助渠道",
+      "context": "模拟新运营专员第一天入职，伙伴同事带其了解团队、共享资料和首周日程，系统账号仍在开通。",
+      "roles": {
+        "a": {"label": "新入职员工", "label_en": "New Hire", "objective": "介绍自己，确认首周任务并知道如何安全求助", "private_information": ["从未使用团队的工单工具，需要基础演示"], "constraints": ["不能借用同事账号或将内部资料转存私人空间"]},
+        "b": {"label": "入职伙伴", "label_en": "Onboarding Buddy", "objective": "清楚介绍协作关系，帮助新人找到正确支持渠道", "private_information": ["可先安排只读演示，正式权限需主管确认后申请"], "constraints": ["不能替人事解释尚未确认的政策或共享个人密码"]}
+      },
+      "stages": ["互相介绍职责与相关经验", "说明首周安排和资料位置", "核查工具访问及培训需要", "确认联系人和首次检查时间"],
+      "complications": ["欢迎文档含一个失效链接", "新人被邀请参加与首周任务冲突的会议"],
+      "targets": [
+        {"expression": "Who should I contact for access issues?", "meaning_zh": "访问权限有问题应该联系谁？", "function": "询问求助渠道"},
+        {"expression": "Could you walk me through the ticketing tool?", "meaning_zh": "能带我了解工单工具怎么用吗？", "function": "请求操作指导"},
+        {"expression": "Let's check in again at the end of the week.", "meaning_zh": "我们周末前再沟通一次。", "function": "安排入职跟进"}
+      ],
+      "success_criteria": {"a": ["说明相关经验及需要指导的工具", "复述首周优先事项和权限求助渠道"], "b": ["区分伙伴、主管、人事和技术支持职责", "提供安全替代学习方式并约定检查点"]},
+      "tags": ["入职", "求助渠道", "工具培训"]
+    },
+    {
+      "id": "biz-hiring-06",
+      "label": "对齐试用阶段目标与表现反馈",
+      "context": "模拟运营专员入职第三周，主管与员工回顾最初任务，并讨论未来四周的工单质量和独立处理目标。",
+      "roles": {
+        "a": {"label": "直属主管", "label_en": "Line Manager", "objective": "用工作证据说明表现并制定可支持的阶段目标", "private_information": ["抽查10单中8单记录完整，2单缺少下一步责任人"], "constraints": ["不能在本次谈话中承诺最终用工决定，相关程序须经人事核实"]},
+        "b": {"label": "新员工", "label_en": "New Employee", "objective": "理解评价依据、反馈标准和获得支持的方式", "private_information": ["交接培训没有覆盖跨组工单，不清楚责任人字段怎么填"], "constraints": ["不能为达到数量目标跳过核查或自行授予处理权限"]}
+      },
+      "stages": ["核对原目标与工作样本", "说明具体表现和培训缺口", "共同设定下一阶段标准", "确认辅导、复查和人事咨询渠道"],
+      "complications": ["员工发现目标表使用了旧岗位模板", "新增任务挤占了约定培训时间"],
+      "targets": [
+        {"expression": "What would meeting the standard look like in practice?", "meaning_zh": "实际做到什么才算达到标准？", "function": "澄清评价标准"},
+        {"expression": "Let's review a few examples together.", "meaning_zh": "我们一起看几个具体例子。", "function": "基于证据反馈"},
+        {"expression": "What support do you need to work independently?", "meaning_zh": "要独立开展工作，你需要什么支持？", "function": "确认辅导资源"}
+      ],
+      "success_criteria": {"a": ["用样本描述优点与缺口而非给人格标签", "确认目标、辅导安排和需人事解释的程序"], "b": ["询问不明标准并说明培训缺口", "复述目标、证据记录方式和复查日期"]},
+      "tags": ["试用目标", "阶段反馈", "支持计划"]
+    }
+  ]
+}

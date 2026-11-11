@@ -1,0 +1,6 @@
+interface:
+  display_name: "口语练习台"
+  short_description: "Everyday and business English role-play with evidence-based review"
+  default_prompt: "Use $kouyu for English speaking practice. For business tasks, select a concrete scene, role and optional industry, then prepare a 20-minute guided session."
+policy:
+  allow_implicit_invocation: true

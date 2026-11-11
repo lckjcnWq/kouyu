@@ -1,0 +1,114 @@
+{
+  "id": "partnerships",
+  "label": "渠道伙伴与联合业务",
+  "scenes": [
+    {
+      "id": "biz-partnerships-01",
+      "label": "合作伙伴接洽",
+      "context": "模拟伙伴初谈中，A代表一家门店排班工具供应商，B代表一家服务本地零售商的运营咨询团队。双方通过行业活动认识，安排20分钟探索是否存在合作空间，尚无渠道协议。",
+      "roles": {
+        "a": {"label": "渠道拓展经理", "label_en": "Channel Development Manager", "objective": "了解对方客户类型和服务能力，判断是否有互补场景并提出低承诺的下一步。", "private_information": ["你希望伙伴能做流程梳理，不要求其马上承担系统实施；可先组织一次匿名业务场景交流。"], "constraints": ["不能在初谈中授予独家代理权，也不能未经许可交换客户名单。"]},
+        "b": {"label": "咨询团队业务负责人", "label_en": "Consulting Business Lead", "objective": "判断工具能否增强现有咨询服务，同时了解伙伴投入和客户关系安排。", "private_information": ["你们熟悉门店排班流程，但只有一名兼职技术协调员，不适合承担复杂配置。"], "constraints": ["不能承诺销售数量；不分享现有客户名称或联系方式。"]}
+      },
+      "stages": ["介绍各自服务对象与现有能力", "用匿名门店场景探讨互补点", "澄清合作可能要求的投入与边界", "确认是否继续并约定下一次交流内容"],
+      "complications": ["B以为合作必须先付加盟费，需要澄清仍处探索阶段及收费待确认。", "A提出共同联系一位客户，B要求先取得客户许可，双方需改用匿名案例。"],
+      "targets": [
+        {"expression": "Where do you see our services complementing each other?", "meaning_zh": "你认为我们的服务在哪些方面可以互补？", "function": "探索合作价值"},
+        {"expression": "What level of technical support would you expect from a partner?", "meaning_zh": "你希望伙伴提供什么程度的技术支持？", "function": "澄清能力要求"},
+        {"expression": "Let's explore one anonymous use case before making commitments.", "meaning_zh": "作出承诺前，我们先讨论一个匿名使用场景。", "function": "设置低风险探索步骤"}
+      ],
+      "success_criteria": {"a": ["询问客户类型和实际交付能力，说明一项互补假设。", "不越权授予资格，确认不涉及客户隐私的下一步。"], "b": ["准确说明自身优势与技术资源限制。", "询问合作投入，并明确是否愿意继续及需要先核实什么。"]},
+      "tags": ["伙伴接洽", "能力互补", "探索合作"]
+    },
+    {
+      "id": "biz-partnerships-02",
+      "label": "合作模式",
+      "context": "模拟渠道设计会中，A与B比较两种合作方向：B介绍线索后由A签约服务，或B作为转售方签约并承担一线咨询。双方需区分职责、客户体验和培训要求，正式协议尚未拟定。",
+      "roles": {
+        "a": {"label": "伙伴项目经理", "label_en": "Partner Program Manager", "objective": "解释两种模式的责任差别，确认B准备程度并记录需进一步审阅的安排。", "private_information": ["介绍模式下由你们处理开票和技术支持；转售模式要求伙伴至少有两名通过内部培训的联系人。"], "constraints": ["不能只用佣金差异解释模式，也不能当场批准转售资质或正式条款。"]},
+        "b": {"label": "区域服务伙伴负责人", "label_en": "Regional Service Partner Lead", "objective": "选择与当前团队能力匹配的模式，避免承担无法持续提供的售后责任。", "private_information": ["你们只有一名熟悉产品的人，短期可介绍线索，但希望未来保留转售可能。"], "constraints": ["不能承诺立刻安排两名专人，也不能在未批准前用授权转售商身份宣传。"]}
+      },
+      "stages": ["明确谁签约、谁开票、谁负责支持", "比较培训、客户交接和升级路径", "核对B现有能力及短期适用模式", "确认未来切换模式所需条件和审阅流程"],
+      "complications": ["B希望不签约但由自己开票，需要澄清混合安排须专项审阅。", "B已准备写官方代理的宣传语，A需先说明资格状态并暂停发布。"],
+      "targets": [
+        {"expression": "Who would contract with the customer under each model?", "meaning_zh": "每种模式下由谁与客户签约？", "function": "区分合作结构"},
+        {"expression": "Referral and resale involve different support responsibilities.", "meaning_zh": "线索介绍和转售承担的支持责任不同。", "function": "说明责任差异"},
+        {"expression": "Could we start with referrals and review readiness later?", "meaning_zh": "我们可以先做线索介绍，以后再评估准备程度吗？", "function": "提出阶段式合作模式"}
+      ],
+      "success_criteria": {"a": ["解释签约、开票和支持在两种模式下的分工。", "说明资格与宣传限制，记录需审阅的混合或切换安排。"], "b": ["说明当前人员能力及不能承担的责任。", "提出适合现状的选择，并确认未来切换所需条件。"]},
+      "tags": ["合作模式", "介绍与转售", "责任分工"]
+    },
+    {
+      "id": "biz-partnerships-03",
+      "label": "分成佣金",
+      "context": "模拟伙伴商务会中，A与B讨论线索介绍费草案，比例写为首年软件服务收入的10%。双方使用一笔首年软件费30000元、培训费5000元的虚构订单核对口径，不讨论投资收益或税务建议。",
+      "roles": {
+        "a": {"label": "渠道商务专员", "label_en": "Channel Commercial Specialist", "objective": "澄清计提基数、触发条件、结算节点和排除项目，避免只确认一个比例。", "private_information": ["内部草案以实际收到的软件款为基数，不含培训费；拟在收款后次月结算，退款调整方式仍待审批。"], "constraints": ["不能把草案当作最终批准，也不能给出税务处理或保证客户一定付款。"]},
+        "b": {"label": "线索介绍伙伴", "label_en": "Referral Partner", "objective": "核对预期介绍费的计算和时间，明确需要提供什么线索记录及结算资料。", "private_information": ["你原先按35000元计算了3500元介绍费，还以为签约后即可收款。"], "constraints": ["不能代替客户承诺付款；无法接受未说明的任意扣减，需正式书面口径。"]}
+      },
+      "stages": ["解释10%适用的收入项目", "用虚构订单逐项计算并核对", "确认签约、收款和结算的不同节点", "列出退款调整及材料要求等待审阅问题"],
+      "complications": ["客户将分两次支付软件款，双方需确认分期计提还是全部收齐后结算。", "B问续约是否也有分成，草案未覆盖，需单列确认而非默认包含。"],
+      "targets": [
+        {"expression": "What revenue is the percentage based on?", "meaning_zh": "这个比例以哪些收入为基数？", "function": "澄清分成计算口径"},
+        {"expression": "The draft excludes training fees from the calculation.", "meaning_zh": "草案中的计算不包含培训费。", "function": "说明排除项目"},
+        {"expression": "Does payment become due at signing or after collection?", "meaning_zh": "是在签约时，还是在实际收款后才应结算？", "function": "核对结算触发节点"}
+      ],
+      "success_criteria": {"a": ["用30000元基数解释模拟介绍费，而非只重复10%。", "区分草案与批准，列明结算触发、分期和退款的待确认问题。"], "b": ["核对软件费与培训费是否都计提。", "询问结算节点及续约范围，确认需书面明确的事项。"]},
+      "tags": ["佣金口径", "结算节点", "模拟计算"]
+    },
+    {
+      "id": "biz-partnerships-04",
+      "label": "联合售前",
+      "context": "模拟联合售前准备会在客户演示前一天举行。A负责排班工具，B作为业务咨询伙伴熟悉门店流程。次日演示为30分钟，客户最关心调班审批和多店数据汇总，双方尚未确认新增功能承诺。",
+      "roles": {
+        "a": {"label": "供应商售前顾问", "label_en": "Vendor Presales Consultant", "objective": "与伙伴分配议程、问题接手和承诺边界，让联合演示呈现一致且准确的信息。", "private_information": ["跨店汇总可演示，某些自定义审批仍需配置评估；你可现场讲清已有能力但不能确认定制日期。"], "constraints": ["不得让伙伴代替产品团队保证未验证功能；演示只能使用虚构门店数据。"]},
+        "b": {"label": "伙伴业务顾问", "label_en": "Partner Business Consultant", "objective": "把客户流程背景与演示任务连接，明确如何转交技术问题而不削弱客户信任。", "private_information": ["客户曾私下问你能否自动处理跨店换班，你只说需要确认，尚未给出答复。"], "constraints": ["不能自行报价或承诺交付；客户非公开流程细节只可在获准范围内介绍。"]}
+      },
+      "stages": ["对齐客户已知需求和未回答问题", "分配开场、场景讲解、演示及总结", "约定未知问题和报价问题的接手方式", "彩排一次问答转接并确认后续记录人"],
+      "complications": ["B的幻灯片写所有换班自动批准，需要演示前纠正。", "客户临时增加财务参会人，双方需预留费用范围问题但不现场猜价。"],
+      "targets": [
+        {"expression": "You can set the business context, and I'll handle the product walkthrough.", "meaning_zh": "你介绍业务背景，我负责产品操作演示。", "function": "分配联合售前职责"},
+        {"expression": "Let's agree on who takes technical questions.", "meaning_zh": "我们先约定谁来接技术问题。", "function": "建立问题转接机制"},
+        {"expression": "We'll capture unverified requests rather than promise them live.", "meaning_zh": "未验证需求先记录，不在现场直接承诺。", "function": "统一承诺边界"}
+      ],
+      "success_criteria": {"a": ["明确议程、产品讲解与问题接手分工。", "纠正过度承诺，约定未知问题记录及回复方式。"], "b": ["补充获准共享的客户背景和未答问题。", "展示一次自然的问题转接，区分业务解释与技术承诺权限。"]},
+      "tags": ["联合售前", "问答转接", "口径一致"]
+    },
+    {
+      "id": "biz-partnerships-05",
+      "label": "线索归属渠道冲突",
+      "context": "模拟渠道协调会中，A发现同一匿名零售客户同时出现在直销记录和B的伙伴报备中。双方需要核对时间、接触内容和报备状态，避免客户收到重复邀约，不在本轮认定佣金权利。",
+      "roles": {
+        "a": {"label": "渠道协调经理", "label_en": "Channel Coordination Manager", "objective": "收集可核对的接触证据，安排临时单一客户窗口并把归属争议交正式渠道流程。", "private_information": ["直销在3月4日有一次未接通电话，B在3月6日报备；现有记录没有说明两者谁先完成有效需求沟通。"], "constraints": ["不能仅以最早录入时间判定归属，也不能透露其他伙伴的保密记录。"]},
+        "b": {"label": "渠道客户负责人", "label_en": "Channel Account Lead", "objective": "说明自己的实际投入，获得公平的核对流程并保护客户体验。", "private_information": ["你在3月3日与客户做过需求沟通，但客户许可邮件尚未上传，可以补交脱敏证明。"], "constraints": ["不能直接向客户抱怨供应商或自行阻止直销联系；不能提交含无关个人信息的完整邮件链。"]}
+      },
+      "stages": ["暂停重复邀约并中性描述冲突", "核对报备、沟通和证据时间线", "区分已知事实与归属待定事项", "指定临时客户窗口、正式审阅人及反馈节点"],
+      "complications": ["客户表示收到两份不同议程，需要双方先统一外部沟通。", "B发现报备系统日期晚于实际会谈，需补证而非直接要求优先归属。"],
+      "targets": [
+        {"expression": "Let's establish the contact timeline before assigning ownership.", "meaning_zh": "确定归属前，我们先核对接触时间线。", "function": "以事实启动冲突处理"},
+        {"expression": "What evidence can we share without exposing private details?", "meaning_zh": "在不暴露私密细节的情况下，可以提供哪些证据？", "function": "界定安全核验材料"},
+        {"expression": "For now, the customer should have one point of contact.", "meaning_zh": "目前应让客户只有一个联系窗口。", "function": "保护客户体验"}
+      ],
+      "success_criteria": {"a": ["核对接触时间和性质，不凭单一日期裁决。", "安排单一客户窗口及正式审阅流程，明确归属仍待确认。"], "b": ["提供实际沟通线索并说明可补交的脱敏证据。", "配合避免重复联系，要求明确审阅人和回复节点。"]},
+      "tags": ["线索归属", "渠道冲突", "证据核对"]
+    },
+    {
+      "id": "biz-partnerships-06",
+      "label": "合作表现调整",
+      "context": "模拟季度伙伴回顾中，公共汇总显示B提交12条线索，4条进入正式需求沟通，1条成为试点。A与B要检查线索标准和协作支持，讨论下一季度调整，不仅以成交数量评价合作。",
+      "roles": {
+        "a": {"label": "伙伴成功经理", "label_en": "Partner Success Manager", "objective": "结合过程数据和双方投入找出改善点，形成可执行的伙伴协作调整。", "private_information": ["你方曾有5条线索超过约定三天才回复；可以每周设一次固定联合筛选时段。"], "constraints": ["不能把结果全部归咎于伙伴，也无权在回顾会上单方取消资格或调整正式佣金。"]},
+        "b": {"label": "伙伴业务运营负责人", "label_en": "Partner Business Operations Lead", "objective": "解释线索质量和跟进障碍，争取明确标准与支持，同时承诺自己能改进的动作。", "private_information": ["12条中有3条只是活动报名，你的团队误认为都应报备；可以安排两人参加资格判断辅导。"], "constraints": ["不能保证下季度成交数量，也不能要求供应商自动接收所有报名者作为有效线索。"]}
+      },
+      "stages": ["核对线索和阶段数据的定义", "各自回顾质量、时效和支持问题", "共同调整筛选标准及反馈机制", "确定各方行动、过程指标和复盘日期"],
+      "complications": ["双方使用不同的有效线索定义，需先重算可比较的汇总。", "B提出加倍佣金解决问题，双方需先判断是否与质量及响应障碍相关。"],
+      "targets": [
+        {"expression": "Are we using the same definition of a qualified lead?", "meaning_zh": "我们对合格线索的定义一致吗？", "function": "统一合作指标口径"},
+        {"expression": "Our response time also contributed to the gap.", "meaning_zh": "我们的响应时间也造成了差距。", "function": "承认自身协作责任"},
+        {"expression": "Let's agree on changes that each side can control.", "meaning_zh": "我们约定各自能够控制的改进动作。", "function": "形成双向改进计划"}
+      ],
+      "success_criteria": {"a": ["核对指标定义并承认本方一项改进责任。", "制定双方可控的过程行动和复盘节点，不保证成交或越权改条款。"], "b": ["说明误报或跟进障碍，区分活动报名与有效线索。", "承诺一个可执行培训或筛选动作，并提出需要的供应商支持。"]},
+      "tags": ["伙伴回顾", "线索质量", "双向改进"]
+    }
+  ]
+}

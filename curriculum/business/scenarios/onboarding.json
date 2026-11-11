@@ -1,0 +1,114 @@
+{
+  "id": "onboarding",
+  "label": "客户引导与使用培训",
+  "scenes": [
+    {
+      "id": "biz-onboarding-01",
+      "label": "客户启动",
+      "context": "模拟客户启动会安排40分钟，为一个24人的客服团队启用内部知识库。首期范围已确定为账号开通、资料导入和两次培训，A与B需要把合作分工和接下来两周的动作落定。",
+      "roles": {
+        "a": {"label": "客户引导经理", "label_en": "Onboarding Manager", "objective": "建立共同目标、双方责任和沟通节奏，确保启动会产生有负责人和日期的行动清单。", "private_information": ["你需要客户指定一名资料审核人，才能在第三个工作日开始导入；系统设置可先行准备。"], "constraints": ["不能替客户审核知识内容，也不能把启动会当成新增范围的批准。"]},
+        "b": {"label": "客户项目负责人", "label_en": "Client Project Owner", "objective": "明确本方需要投入的人员和资料，确保启动目标与客服排班相容。", "private_information": ["原定审核人本周休假，你可以请两位组长各审核一类资料，但需得到他们确认。"], "constraints": ["不能让24人同时离岗培训；未确认人员不能直接写成已接受任务。"]}
+      },
+      "stages": ["确认首期目标和不包含的工作", "逐项分配账号、资料和培训任务", "协商联系人与进度沟通节奏", "逐条复述行动、负责人、日期和待确认事项"],
+      "complications": ["B要求把历史聊天整理成知识文章，需要判断是否超出已确认导入范围。", "原定审核人无法参加，双方需安排临时分工并标注未确认状态。"],
+      "targets": [
+        {"expression": "What would a successful first two weeks look like?", "meaning_zh": "前两周达到什么状态才算顺利？", "function": "建立共同启动目标"},
+        {"expression": "Who will own the content review on your side?", "meaning_zh": "你们这边由谁负责内容审核？", "function": "明确客户任务负责人"},
+        {"expression": "Let's finish with an action list and due dates.", "meaning_zh": "结束前我们列出行动清单和完成日期。", "function": "形成可跟进闭环"}
+      ],
+      "success_criteria": {"a": ["核对首期目标与范围，说明客户必须提供的输入。", "确认至少三项行动的负责人、日期及未决状态。"], "b": ["说明排班或人员限制并提出可执行分工。", "复述本方任务，区分已接受与需内部确认的安排。"]},
+      "tags": ["客户启动", "责任分工", "行动清单"]
+    },
+    {
+      "id": "biz-onboarding-02",
+      "label": "上线准备",
+      "context": "模拟上线检查安排在周四，A与B计划下周一为3个服务点启用预约工具。公共检查表列出账号、权限、数据、操作培训和备用流程五项，是否就绪需在本次会议中核实。",
+      "roles": {
+        "a": {"label": "上线准备专员", "label_en": "Launch Readiness Specialist", "objective": "用证据逐项核实准备状态，区分可带问题上线与必须先处理的阻塞。", "private_information": ["测试管理员账号正常，但你还未收到第三服务点的一线登录确认。"], "constraints": ["不能仅凭客户口头说差不多就标记全绿；无权单方决定客户业务切换。"]},
+        "b": {"label": "客户上线协调员", "label_en": "Client Launch Coordinator", "objective": "如实报告各点准备程度，协商上线顺序并明确谁有权作出切换决定。", "private_information": ["第三服务点的账号邀请进了垃圾邮件，两名员工还没培训；前两个点已试过备用纸单。"], "constraints": ["不能替第三点确认准备完毕；区域负责人需要看到检查记录后才能决定。"]}
+      },
+      "stages": ["逐项核对准备清单与验证证据", "询问每个服务点的未完成事项", "讨论阻塞项、补救日期与分批选择", "向决策人提交明确的就绪摘要"],
+      "complications": ["B提出先使用共享账号绕过邀请问题，需要按权限流程处理。", "一个点的培训推迟到周一下午，双方需重新评估原定切换时间。"],
+      "targets": [
+        {"expression": "What evidence do we have that each site is ready?", "meaning_zh": "有哪些证据表明各服务点已准备好？", "function": "用证据核实就绪"},
+        {"expression": "Is this a launch blocker or something we can resolve afterward?", "meaning_zh": "这是上线阻塞，还是可以上线后解决的问题？", "function": "区分问题优先级"},
+        {"expression": "Who needs to approve the final go-ahead?", "meaning_zh": "最终放行需要谁批准？", "function": "确认上线决策权"}
+      ],
+      "success_criteria": {"a": ["询问五项准备状态，并至少要求一项具体证据。", "列出阻塞、补救任务和决策人，不自行宣布上线。"], "b": ["说明各点差异和未完成事项。", "提出可执行的补救或分批方案，并确认批准路径。"]},
+      "tags": ["上线准备", "就绪检查", "go-live"]
+    },
+    {
+      "id": "biz-onboarding-03",
+      "label": "操作流程",
+      "context": "模拟一对一操作指导中，A通过共享的训练页面教B提交物资领用申请。页面使用虚构物品，标准流程包括选择库存点、填写数量、提交审批和查看状态，本次不处理真实库存。",
+      "roles": {
+        "a": {"label": "使用指导专员", "label_en": "User Onboarding Specialist", "objective": "分步指导并让B亲自操作，说明草稿和正式提交的区别。", "private_information": ["训练页中保存只保留草稿，点击提交后才进入审批队列；重复点击会生成第二条申请。"], "constraints": ["不能代替B一直点击完成，也不能索取B的密码进行远程登录。"]},
+        "b": {"label": "物资申请员工", "label_en": "Supply Requester", "objective": "独立完成一条虚构申请，并学会确认是否提交成功及如何处理填错数量。", "private_information": ["你以前把保存当成提交，还不清楚待审批后能否直接修改数量。"], "constraints": ["只能操作训练账号；没有审批或直接修改库存的权限。"]}
+      },
+      "stages": ["说明本次任务和训练环境", "由B按步骤输入并解释自己的选择", "区分保存、提交和成功状态", "练习检查错误与申请修改的正确路径"],
+      "complications": ["B漏选库存点，页面提示必填，需要引导其读懂提示。", "B误点两次提交，双方需检查是否出现重复记录再按流程处理。"],
+      "targets": [
+        {"expression": "Choose the stock location before entering the quantity.", "meaning_zh": "先选择库存点，再填写数量。", "function": "给出有顺序的操作指令"},
+        {"expression": "Does saving a draft send it for approval?", "meaning_zh": "保存草稿会把它送去审批吗？", "function": "澄清操作后果"},
+        {"expression": "Check the status before clicking Submit again.", "meaning_zh": "再次点击提交前，先检查状态。", "function": "避免重复操作"}
+      ],
+      "success_criteria": {"a": ["用分步指令引导B亲自完成输入。", "解释草稿、提交和状态确认，并在错误时引导检查而非接管操作。"], "b": ["完成一条虚构申请并说出成功状态。", "主动询问不清楚的操作后果，解释数量填错后的处理路径。"]},
+      "tags": ["操作指导", "提交申请", "状态确认"]
+    },
+    {
+      "id": "biz-onboarding-04",
+      "label": "使用培训",
+      "context": "模拟线上培训面向8名首次使用排班工具的员工，时长30分钟。A主持培训，B是负责组织同事参与的客户超级用户，训练账号中只有虚构班次，本次目标是查看班次和申请调班。",
+      "roles": {
+        "a": {"label": "客户培训师", "label_en": "Customer Trainer", "objective": "安排短演示和动手练习，让不同熟练度的学员都完成两个关键任务。", "private_information": ["原课件还有报表内容，但你可以删除以保证调班练习和提问时间。"], "constraints": ["不能为赶进度跳过练习，也不能公开点名批评操作较慢的学员。"]},
+        "b": {"label": "客户超级用户", "label_en": "Customer Super User", "objective": "反映学员实际困难，帮助维持参与度并明确培训后谁提供一线支持。", "private_information": ["三名同事只用手机，另有两人因轮班晚到10分钟；你自己已熟悉查看班次。"], "constraints": ["不能代替每个同事完成练习；培训不能超时影响下一班交接。"]}
+      },
+      "stages": ["确认设备、到场情况和两项学习目标", "演示查看与调班各一个例子", "安排学员动手并由B反馈常见卡点", "集中答疑并确认培训资料与后续支持"],
+      "complications": ["手机端按钮位置不同，A需要说明设备差异而非重复电脑步骤。", "晚到学员加入，需要安排简短补学而不让全班重新开始。"],
+      "targets": [
+        {"expression": "By the end, you'll be able to check a shift and request a swap.", "meaning_zh": "结束时，你们将能查看班次并申请调班。", "function": "明确培训学习目标"},
+        {"expression": "Let's pause here so everyone can try it.", "meaning_zh": "我们在这里暂停，让每个人试一下。", "function": "安排动手练习"},
+        {"expression": "Some of us are on mobile. Is the process different?", "meaning_zh": "我们有些人使用手机，流程有区别吗？", "function": "提出设备适配问题"}
+      ],
+      "success_criteria": {"a": ["围绕两项目标分配演示、练习和答疑时间。", "回应设备或到场差异，并确认培训后支持渠道。"], "b": ["说明学员设备与到场限制。", "反馈一个真实练习卡点，确认补学材料和一线支持人。"]},
+      "tags": ["使用培训", "动手练习", "混合熟练度"]
+    },
+    {
+      "id": "biz-onboarding-05",
+      "label": "检查理解",
+      "context": "模拟培训结束后的10分钟检查中，A请B用训练账号演示访客预约。刚才已教过创建邀请、修改到访时间和取消邀请，所有访客姓名均为虚构，现在需要确认理解而非考试评分。",
+      "roles": {
+        "a": {"label": "培训辅导员", "label_en": "Training Coach", "objective": "用开放任务和复述检查B是否理解关键操作，发现误解后给予具体反馈。", "private_information": ["你观察到B刚才把修改时间与重新发邀请混淆，需要核实但不预先断言其不会。"], "constraints": ["不能只问听懂了吗就结束；不能在B回答前直接给出全部步骤。"]},
+        "b": {"label": "前台新用户", "label_en": "Front Desk User", "objective": "用自己的话和操作证明理解，并主动暴露仍不确定的地方。", "private_information": ["你能创建邀请，但以为删除自己日历里的事件就会取消访客通知。"], "constraints": ["不能尝试真实访客记录；遇到不清楚的后果要先询问而非猜测。"]}
+      },
+      "stages": ["说明检查目的是找出需要补练的地方", "请B独立处理一项到访改期任务", "用取消邀请情景检验理解", "反馈具体差异并让B重新解释正确流程"],
+      "complications": ["B因为担心做错而只说都懂了，A需换成低压力的具体任务。", "B在错误步骤后得到日历删除成功提示，需要分辨它与邀请取消的不同。"],
+      "targets": [
+        {"expression": "Could you show me how you would change the visit time?", "meaning_zh": "你能演示一下你会如何修改到访时间吗？", "function": "用实际任务检查理解"},
+        {"expression": "What do you expect to happen after that click?", "meaning_zh": "点击后你预计会发生什么？", "function": "检查对操作后果的理解"},
+        {"expression": "Let me explain the difference, then you can try again.", "meaning_zh": "我解释一下区别，然后你再试一次。", "function": "提供具体反馈并复练"}
+      ],
+      "success_criteria": {"a": ["至少用一项独立操作和一个后果问题检查理解。", "指出具体误解，解释后让B再次复述或操作。"], "b": ["独立展示已会任务并说出预期结果。", "主动承认不确定点，纠正取消与删除的理解。"]},
+      "tags": ["理解检查", "teach-back", "反馈复练"]
+    },
+    {
+      "id": "biz-onboarding-06",
+      "label": "上线支持",
+      "context": "模拟新排队系统上线首日，A远程值守，B在一处服务大厅现场协调。大厅有4个窗口，已约定9点至12点重点支持，现场继续保留纸质号码作为备用流程。",
+      "roles": {
+        "a": {"label": "上线支持协调员", "label_en": "Go-live Support Coordinator", "objective": "明确问题分级和联系路径，在现场保持服务的同时建立问题记录及升级节奏。", "private_information": ["你可立即处理账号和显示设置；排队顺序异常要交工程值班人检查，不应让客户反复刷新。"], "constraints": ["不能保证所有问题即时修复；不能自行要求现场停止全部窗口服务。"]},
+        "b": {"label": "现场上线负责人", "label_en": "On-site Launch Lead", "objective": "让现场服务连续进行，准确报告影响范围并按获准流程使用备用方式。", "private_information": ["一名窗口人员还不熟悉登录；若叫号顺序混乱，你有权限在主管知情下暂用纸号。"], "constraints": ["不能重置其他员工密码，也不能把含访客信息的屏幕照片发到群里。"]}
+      },
+      "stages": ["核对值守时段、联系人和备用流程", "区分单人操作问题与业务阻塞", "用脱敏信息记录影响、时间和已试操作", "约定升级、更新频率和午间交接"],
+      "complications": ["一个窗口登录失败但其他窗口正常，需要避免误报全站故障。", "临近12点出现待处理问题，双方必须安排交接而不是默认值守自动延长。"],
+      "targets": [
+        {"expression": "Is this affecting one window or the whole site?", "meaning_zh": "这影响一个窗口，还是整个现场？", "function": "判断上线问题范围"},
+        {"expression": "Use the agreed fallback while we investigate.", "meaning_zh": "我们调查期间，请使用已约定的备用流程。", "function": "维持业务连续性"},
+        {"expression": "Who will take over after the support window ends?", "meaning_zh": "重点支持时段结束后由谁接手？", "function": "确认支持交接"}
+      ],
+      "success_criteria": {"a": ["确认问题范围，按职责分配处理与升级。", "说明更新节点及值守结束后的接手人，不承诺即时修复。"], "b": ["报告可观察影响和已试操作，不发送个人信息。", "说明备用流程启用权限，并确认未完成事项交接。"]},
+      "tags": ["上线支持", "问题分级", "支持交接"]
+    }
+  ]
+}
