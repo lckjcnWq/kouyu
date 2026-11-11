@@ -12,5 +12,3 @@ session-*.json
 test-workbench/
 
 # Local test / package outputs
-*.zip
-artifacts/
